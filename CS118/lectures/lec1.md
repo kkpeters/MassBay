@@ -14,14 +14,16 @@
 - `$ pwd` "print working directory" \
 - `/home/kris` root or home is normal, root is commonly reused by linux \
 - `$ cd /` goes to the root file system, '/' is the root \
-- `$ ls -al` shows all files, even hidden ones, ll does the same for me, '-' is an indicator for a switch command (modifies the output), 'a' stands for all files, 'l' stands for long format, hidden files are files that have a dot (.) in front of them \
+- `$ ls -al` shows all files, even hidden ones, ll does the same for me, 
+&ensp;&ensp;&ensp;&ensp;&ensp;'-' is an indicator for a switch command (modifies the output), 'a' stands for all files, 'l' stands for long format, \
+&ensp;&ensp;&ensp;&ensp;&ensp;hidden files are files that have a dot (.) in front of them \
 - `$ touch xyz` creates a new file \
 - `$ ls -a /` shows all the files at the root. \
-`-rwxr-xr-x` '-' means it's a normal file \
-`drwxr-xr-x` 'd' means it's a directory \
-`lrwxr-xr-x` 'l' means it's a  link/shortcut \
+&ensp;&ensp;&ensp;&ensp;&ensp;`-rwxr-xr-x` '-' means it's a normal file \
+&ensp;&ensp;&ensp;&ensp;&ensp;`drwxr-xr-x` 'd' means it's a directory \
+&ensp;&ensp;&ensp;&ensp;&ensp;`lrwxr-xr-x` 'l' means it's a  link/shortcut \
 
-`$ ls -al g*` this is a wildcard, '\*' stands for every character, gets every file that begins with a lowercase g \
+- `$ ls -al g*` this is a wildcard, '\*' stands for every character, gets every file that begins with a lowercase g \
 - `$ ls -al g*g*` gets any file that has a g, then x number of characters then another g... \
 - `$ ls -al G?` gets any file with a captial G, and then ONLY ONE character, '?' stands for any ONE character \
 - `$ ls -al [Gg]*` gets BOTH G and g as the first character, and x characters after \
