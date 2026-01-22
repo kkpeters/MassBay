@@ -26,6 +26,15 @@
 - creates a new file \
 `$ ls -a /` \
 - shows all the files at the root. \
+`-rwxr-xr-x` '-' means it's a normal file \
+`drwxr-xr-x` 'd' means it's a directory \
+`lrwxr-xr-x` 'l' means it's a  link/shortcut \
+`ls -al g*` this is a wildcard, '\*' stands for every character \
+gets every file that begins with a lowercase g \
+`ls -al g*g*` gets any file that has a g, then x number of characters then another g... \
+`ls -al G?` gets any file with a captial G, and then ONLY ONE character, '?' stands for any ONE character \
+`ls -al [Gg]*` gets BOTH G and g as the first character, and x characters after \
+`ls -al [0-2]*` given it a range, any file that starts with 0 to 2, includes 000, 111, and 222. Goes from 0-9, then a-z, A-Z \
 
 ## Linux Directory Structure:
 1. / (Root Directory):
@@ -48,3 +57,16 @@
 - The /proc directory is a virtual file system that provides information about currently running processes and system resources. It contains a series of numbered directories and special files that represent running processes, kernel parameters, and system status.
 10. /mnt (Mount):
 - The /mnt directory serves as a mount point for temporarily mounting external storage devices such as USB drives, network shares, and external disks. When a device is mounted, its contents become accessible within the /mnt directory structure.
+
+## Linux Command Cheat Sheet
+### Navigation and Files
+### File Managment 
+### Viewing Files 
+### Perms and Ownership
+### Searching and Text Processing
+### System Information  
+### Processes 
+### Networking
+### Archives and Compression
+### Package Managment (Debian/Ubuntu)
+
