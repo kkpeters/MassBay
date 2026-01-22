@@ -14,8 +14,8 @@
 - `$ pwd` "print working directory" \
 - `/home/kris` root or home is normal, root is commonly reused by linux \
 - `$ cd /` goes to the root file system, '/' is the root \
-- `$ ls -al` shows all files, even hidden ones, ll does the same for me, 
-&ensp;&ensp;&ensp;&ensp;&ensp;'-' is an indicator for a switch command (modifies the output), 'a' stands for all files, 'l' stands for long format, \
+- `$ ls -al` shows all files, even hidden ones, ll does the same for me \
+&ensp;&ensp;&ensp;&ensp;&ensp;'-' is an indicator for a switch command (modifies the output), 'a' stands for all files, 'l' stands for long format \
 &ensp;&ensp;&ensp;&ensp;&ensp;hidden files are files that have a dot (.) in front of them \
 - `$ touch xyz` creates a new file \
 - `$ ls -a /` shows all the files at the root. \
@@ -62,14 +62,63 @@
 
 ## Linux Command Cheat Sheet
 ### Navigation and Files
-
+- pwd (show current directory)
+- ls (list files and directories)
+- ls -la (detailed list including hidden files)
+- cd/path (move up one directory)
+- tree (display directory tree (if installed)
 ### File Managment 
+- touch file (create empty file)
+- cp src dest (copy file)
+- cp -r dir1 dir2 (copy directory)
+- mv src dest (move or rename)
+- rm file (delete file)
+- rm -r dir (delete directory recursively)
 ### Viewing Files 
+- cat file (display file contents)
+- less file (view file page by page)
+- head file (show first 10 lines)
+- tail file (show last 10 lines)
+- fail -f file (follow file output)
 ### Perms and Ownership
+- chmod 755 file (change permissions)
+- chmod u+x file (add execute permission)
+- chown user file (change owner)
+- chgrp group file (change group)
 ### Searching and Text Processing
+- grep 'text' file (search for text)
+- grep -r 'text' dir (recursive search)
+- find /path -name file (find file)
+- wc file (word, line, byte coutn)
+- sort file (sort file contents)
 ### System Information  
+- uname -a (system information)
+- df -h (disk usage)
+- du -sh dir (directory size)
+- free -h (memory usage)
+- uptime (system running time)
 ### Processes 
+- ps aux (running processess)
+- top (real-time process view)
+- htop (enhanced top (if installed)
+- kill PID (terminate process)
+- kill -9 PID (force terminate)
 ### Networking
+- ip a (show IP addresses)
+- ping host (test connectivity)
+- curl url (fetch URL)
+- wget url (download file)
+- ssh user@host (remote login)
 ### Archives and Compression
+- tar -cvf file.tar dir (create tar)
+- tar -xvf file.tar (extract tar)
+- tar -czvf file.tar.gz dir (create gzip tar)
+- tar -xzvf file.tar.gz (extract gzip tar)
+- zip file.zip files (create zip)
+- unzip file.zip (extract zip)
 ### Package Managment (Debian/Ubuntu)
+- sudo apt update (update package list)
+- sudo apt upgrade (upgrade packages)
+- sudo apt install pkg (install package)
+- sudo apt remove pkg (remove package)
 
