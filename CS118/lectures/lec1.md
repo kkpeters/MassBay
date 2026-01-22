@@ -11,7 +11,7 @@
 
 
 ## Commands:
-`$ pwd` \
+``$ pwd`` \
 - "print working directory" \
 `/home/kris` \
 - root or home is normal, root is commonly reused by linux \
