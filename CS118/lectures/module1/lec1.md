@@ -139,7 +139,8 @@
 13. To search for a specific pattern or keyword in one or more files: `grep "keyword" file.txt` \
 14. To change the permissions of a file or directory: `chmod +x script.sh` \
 ###
-15. Echo prints text to the terminal. The echo command in Linux is  abuilt-in command that allows user to display lines of text or string that are passed as arguments. It is commonly used in shell scripts and batch (bash?) files to output status text to the screen or a file.
+### echo
+Echo prints text to the terminal. The echo command in Linux is  abuilt-in command that allows user to display lines of text or string that are passed as arguments. It is commonly used in shell scripts and batch (bash?) files to output status text to the screen or a file.
 Options: 
 - `echo -e "Welcome \bto \bCS118"` \b: removes all the spaces in between the text
 - `echo -e "Welcome \cto CS118"` \c: suppress trailing new line with backspace interpreter '-e' to continue without emitting new line.
@@ -149,7 +150,7 @@ Options:
 - `type echo` -> "echo is a shell builtin"
 - `whereis echo` -> shows where echo is: /usr/bin/echo ...
 - `echo "My name is Mike and I'm a \"geek.\""` you can use '\' to suppress the alternative function of a character, in this case, the quotations are used for parameters.\
-using variables with echo, define a variable 
+- using variables with echo, define a variable 
 ```
 foo=bar 
 echo foo
@@ -164,5 +165,15 @@ There is a caveat. If you've wrapped your string in single quote marks echo will
 `echo "Lets go to the $foo"` outputs: Lets go to the bar \
 versus \
 `echo 'Lets go to the $foo'` outputs: Lets go to the $foo \
-using echo with commands \
+- using echo with Commands
+We can use a command with echo and incorporate its output into the string that is written to the terminal window. We must use the dollar sign $ as though the command was a variable, and wrap the whole command in parentheses.
+`date +%D` this will display today's date (00/00/00) \
+`echo "Today's date is: $(date +%D)"` \
+```
+echo "Logfile started: $(date +%'D %T')" > logfile.text
+cat logfile.txt
+```
+outputs: Logfile started: 01/28/26 13:19:47 \
+- or you can use echo to create a blank line
 
+## Playing with CAT
