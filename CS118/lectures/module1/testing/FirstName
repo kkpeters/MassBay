@@ -1,0 +1,24 @@
+UID        PID  PPID  C STIME TTY          TIME CMD
+root         1     0  0 10:09 hvc0     00:00:01 /init
+root         5     1  0 10:09 hvc0     00:00:00 plan9 --control-socket 6 --log-level 4 --server-fd 7 --pipe-fd 9 --log-truncate
+root        22     1  0 13:16 ?        00:00:00 /init
+root        23    22  0 13:16 ?        00:00:06 /init
+kris        24    23  0 13:16 pts/0    00:00:00 -bash
+kris       329    24  0 13:41 pts/0    00:00:00 tmux
+kris       331    23  0 13:41 ?        00:00:16 tmux
+kris       332   331  0 13:41 pts/1    00:00:00 -bash
+kris       438   332  0 13:41 pts/1    00:00:00 nvim lec1.md
+kris       440   438  0 13:41 ?        00:00:06 nvim --embed lec1.md
+kris       480   332  0 13:50 pts/1    00:00:04 nvim lec1.md
+kris       482   480  0 13:50 ?        00:01:08 nvim --embed lec1.md
+kris       819   332  0 17:09 pts/1    00:00:01 nvim lec1.md
+kris       821   819  0 17:09 ?        00:00:17 nvim --embed lec1.md
+kris      1169   331  0 17:22 pts/2    00:00:00 -bash
+root      1310     1  0 17:38 ?        00:00:00 /init
+root      1311  1310  0 17:38 ?        00:00:00 /init
+kris      1312  1311  0 17:38 pts/3    00:00:00 -bash
+kris      1359  1312  0 17:38 pts/3    00:00:01 /usr/bin/python3 -O /usr/bin/ranger --choosedir=/tmp/ranger_cd.uTXKpW9KVq -- /home/kris
+kris      1380  1359  0 17:38 pts/3    00:00:00 /bin/sh -c set -- '/home/kris/MassBay/CS118/lectures/module1/moldule1notes.md'; ${VISUAL:-$EDITOR} -- "$@"
+kris      1381  1380  0 17:38 pts/3    00:00:00 vim -- /home/kris/MassBay/CS118/lectures/module1/moldule1notes.md
+kris      1599   821  0 17:54 ?        00:00:00 /usr/bin/xclip -quiet -i -selection clipboard
+kris      1657  1169  0 18:06 pts/2    00:00:00 ps -ef
