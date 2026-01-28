@@ -148,14 +148,14 @@ Options:
 - `echo` -> outputs a new line on the terminal
 - `type echo` -> "echo is a shell builtin"
 - `whereis echo` -> shows where echo is: /usr/bin/echo ...
-- `echo "My name is Mike and I'm a \"geek.\""` you can use '\' to suppress the alternative function of a character, in this case, the quotations are used for parameters.
-\ using variables with echo, define a variable \
+- `echo "My name is Mike and I'm a \"geek.\""` you can use '\' to suppress the alternative function of a character, in this case, the quotations are used for parameters.\
+using variables with echo, define a variable 
 ```
 foo=bar 
 echo foo
 ```
 outputs: foo \
-versus \
+versus 
 ```
 echo $foo
 ```
@@ -164,5 +164,5 @@ There is a caveat. If you've wrapped your string in single quote marks echo will
 `echo "Lets go to the $foo"` outputs: Lets go to the bar \
 versus \
 `echo 'Lets go to the $foo'` outputs: Lets go to the $foo \
-\ using echo with commands \
+using echo with commands \
 
