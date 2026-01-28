@@ -176,4 +176,131 @@ cat logfile.txt
 outputs: Logfile started: 01/28/26 13:19:47 \
 - or you can use echo to create a blank line
 
-## Playing with CAT
+## Playing with CAT (Concatenate)
+The cat command is one of the most commonly used commands in Linux. Its name comes from concatenate, and it is used to read, display, combine, and create files. The cat command outputs the contents of a file to the terminal or redirects that output to another file.
+### Preparation
+first, create two files using command output redirection: \
+```
+ps -ef > FirstName
+ls -al > LastName
+```
+### Common cat commands
+- display the contents of a file: `cat FirstName` 
+- display the contends of multiple files (in the order they are listed): `cat FirstName LastName`
+- combine files into a new file: `cat FirstName LastName > YourFullName`
+- append files to an existing file: `cat FirstName LastName >> YourFullName`
+- display file contents with line numbers: `cat -n FirstName`
+create a file using keyboard input: `cat > RandomInfo`, this allows you to type directly into the file. Press Ctrl + D when you are finished to save and exit. \
+create an empty file: `cat > NewFile`, press Ctrl + D immediately to save an empty file.
+- suppress repeated blank lines: `cat -s RandomInfo`
+- display file contents in reverse order: `tac FirstName`
+## SU and SUDO command
+the Unix commands sudo and su allow access to other commands as a different user.
+### The sudo command
+The sudo command allows you to run programs with the security privileges of another user (by default, as the superuser). It prompts you for your personal password and confirms your request to execute a command by checking a file, called sudoers, which the system administrator configures. Using the sudoers file, system administrators can give certain users or groups access to some or all commands without those users having to know the root password. It also logs all commands and arguments so there is a record of who used it for what, and when. \
+To use the sudo command, at the command prompt, enter: `sudo command`. Replace command with the command for which you want to use sudo. \
+The sudo command also makes it easier to practice the principle of least privilege (PoLP), which is a computer security concept that helps control system access and potential system exploits and compromises. \
+### The su command
+THe su command allows you to become another user. To use the su command on a per-command basis, enter: `su user -c command`. Replace user with the name of the account which you'd like to run the command as, and command with the command you need to run as another user. To switch users before running many commands, enter: `su user`. Replace user with the name of the account which you'd like to run the commands as. \
+The user feature is optional; if you don't provide a user, the su command defaults to the root account, which in Unix is the system administrator account. In either case, you'll be prompted for the password associated with the account for which you're trying to run the command. If you supply a user, you will be logged in as that account until you exit it. To do so, press Ctrl-d or type exit at the command prompt. \
+Using su creates security hazards, is potentially dangerous, and requires more administrative maintenance. It's not good practice to have numerous people knowing and using the root password because when logged in as root, you can do anything to the system. This could provide too much power for inexperienced users, who could unintentionally damage the system. Additionally, each time a user should no longer use the root account (for example, an employee leaves), the system administrator will have to change the root password. \
+
+## apt
+### The apt and apt-get Commands
+In Linux, apt stands for Advanced Package Tool. It is a command-line utility used to install, update, remove, and manage software packages on Debian-based systems such as Debian, Ubuntu, and their derivatives. \
+
+### Updating your System
+A common command used to keep a system up to date is: 
+```
+sudo apt-get update && sudo apt-get upgrade 
+```
+This command first updates the local package index and then upgrades all installed packages to their latest available versions. \
+### WHat Does apt do?
+The apt tool manages software packages and their dependencies. It ensures that applications are installed correctly and that required supporting software is also installed or updated as needed. \
+### Common apt and get-apt Commands
+- install a package: `sudo apt-get install <package>`
+- remove a package: `sudo apt-get remove <package>`, keeps configuration files
+- update the package list: `sudo apt-get update`, downloads the latest package information from configured repositories.
+- upgrade installed packages: `sudo apt-get upgrade`, upgrades all installed packages to their latest versions without removing existing packages.
+- smart upgrade with dependency handling: `sudo apt-get dist-upgrade`, performs upgrades while intelligently handling changing dependencies and package  removals.
+### Related Package Management Tools
+In addition to apt and apt-get, Linux systems may include other package management tools: 
+- apt-cache: Used to search for packages and view package information.
+- aptitude: Provides a more interactive and user-friendly interface for managing packages.
+```
+sudo apt-get update && sudo apt-get -y install powershell
+```
+## snap
+```
+sudo snap install powershell --classic
+```
+### Snap Package management
+Snap is a software packaging and deployment system developed by Canonical, the company behind Ubuntu Linux. It allows developers to package applications and all required dependencies into a single compressed file called a snap. \
+Snap packages are self-contained, meaning they include all the libraries and dependencies needed to run the application. This makes snaps portable across different Linux distributions and reduces compatibility issues. \
+
+### Security and Sandboxing
+Snap packages are designed to run in a sandboxed environment. Sandboxing limits a snap’s access to system resources unless explicit permission is granted. This improves system security by preventing applications from interfering with other software or accessing sensitive data without authorization. \
+
+### Using Snap
+Users can manage snap packages using the snap command-line tool or graphical interfaces such as the Ubuntu Software Center. \
+Common snap commands include: 
+- install a snap package: `sudo snap install <package>`
+- remove a snap package: `sudo snap remove <package>`
+- update snap packages: `sudo snap refresh`
+- list installed snap packages: `snap list`
+
+### Benefits of Snap Packages
+- Simplified installation and dependency management
+- Improved security through sandboxing
+- automatic updates
+- easier software distribution for developers
+- Consistent behavior across Linux distributions 
+
+## Man Packages
+### The man Command in Linux
+The man command in Linux is used to display the user manual for commands that can be run from the terminal. It provides detailed documentation that explains how a command works, how to use it, and what options are available. \
+A typical manual page includes information such as:
+- NAME - the command name and a brief description
+- SYNOPSIS – The syntax used to run the command
+- DESCRIPTION – A detailed explanation of what the command does
+- OPTIONS – Available command-line options and flags
+- EXIT STATUS – Exit codes returned by the command
+- RETURN VALUES – Values returned by functions (when applicable)
+- ERRORS – Possible error messages
+- FILES – Related files used by the command
+- VERSIONS – Version information
+- EXAMPLES – Usage examples
+- AUTHORS – Who wrote or maintains the command
+- SEE ALSO – Related commands and documentation
+
+### Manual Page Sections
+Linux manual pages are organized into numbered sections, each covering a specific type of information:
+1. Executable programs or shell commands
+2. System calls (functions provided by the kernel)
+3. Library calls (functions within program libraries)
+4. Games
+5. Special files (usually found in /dev)
+6. File formats and conventions (for example, /etc/passwd)
+7. Miscellaneous (including macro packages and conventions, such as groff(7))
+8. System administration commands (typically for the root user)
+9. Kernel routines (non-standard)
+
+If you're getting -bash: man: command not found on a WSL (Windows Subsystem for Linux) environment, it means the man (manual) pages system isn't installed. Here's how to fix it: \
+### Step-by-Step Fix 
+update your package list:
+```
+sudo apt update
+```
+Install the man command and the manual pages:
+```
+sudo apt install man-db manpages
+```
+(Optional but recommended) If you want additional documentation (e.g., for development tools), install:
+```
+sudo apt install manpages-dev
+```
+Verify it's working:
+```
+man ls 
+```
+You should now see the manual entry for ls.
