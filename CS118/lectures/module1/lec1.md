@@ -122,3 +122,31 @@
 - `sudo apt install pkg` (install package)
 - `sudo apt remove pkg` (remove package)
 
+## Common Linux Commands
+- Linux commands are typically entered into a terminal, which is a text-based interface where users can input commands and receive responses from the system. These commands allow users to perform a wide range of tasks, from managing files and directories to configuring system settings and networking.
+1. To display the kernel name, use: `uname -s` \
+2. To display the kernel release, use: `uname -r` \
+3. To display the kernel version, use: `uname -v` \
+4. To display the kernel hardware name use: `uname -m` \
+5. To display the network node hostname, use: `uname -n` \
+6. To display the processor type, use: `uname -p` \
+7. To display all information, use: `uname -a` \
+8. To remove a file: `rm` \
+9. To remove a directory: `rm -rf` \
+10. To copy a file: `cp file1.txt /path/to/destination` \
+11. To move a file: `mv file1.txt /new/path` \
+12. To create an empty file: `touch new_file.txt` \
+13. To search for a specific pattern or keyword in one or more files: `grep "keyword" file.txt` \
+14. To change the permissions of a file or directory: `chmod +x script.sh` \
+###
+15. Echo prints text to the terminal. The echo command in Linux is  abuilt-in command that allows user to display lines of text or string that are passed as arguments. It is commonly used in shell scripts and batch (bash?) files to output status text to the screen or a file.
+Options: 
+- `echo -e "Welcome \bto \bCS118"` \b: removes all the spaces in between the text
+- `echo -e "Welcome \cto CS118"` \c: suppress trailing new line with backspace interpreter '-e' to continue without emitting new line.
+- `echo -e "Welcome \nto \nCS118"` \n: this option creates a new line from where it is used.
+- redirect output: `echo "Hello World" > MassBay123` 
+- `echo` -> outputs a new line on the terminal
+- `type echo` -> "echo is a shell builtin"
+- `whereis echo` -> shows where echo is: /usr/bin/echo ...
+- `echo "My name is Mike and I'm a \"geek.\""` you can use '\' to suppress the alternative function of a character, in this case, the quotations are used for parameters.
+
