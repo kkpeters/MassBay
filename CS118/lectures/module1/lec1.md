@@ -199,11 +199,11 @@ the Unix commands sudo and su allow access to other commands as a different user
 ### The sudo command
 The sudo command allows you to run programs with the security privileges of another user (by default, as the superuser). It prompts you for your personal password and confirms your request to execute a command by checking a file, called sudoers, which the system administrator configures. Using the sudoers file, system administrators can give certain users or groups access to some or all commands without those users having to know the root password. It also logs all commands and arguments so there is a record of who used it for what, and when. \
 To use the sudo command, at the command prompt, enter: `sudo command`. Replace command with the command for which you want to use sudo. \
-The sudo command also makes it easier to practice the principle of least privilege (PoLP), which is a computer security concept that helps control system access and potential system exploits and compromises. \
+The sudo command also makes it easier to practice the principle of least privilege (PoLP), which is a computer security concept that helps control system access and potential system exploits and compromises. 
 ### The su command
 THe su command allows you to become another user. To use the su command on a per-command basis, enter: `su user -c command`. Replace user with the name of the account which you'd like to run the command as, and command with the command you need to run as another user. To switch users before running many commands, enter: `su user`. Replace user with the name of the account which you'd like to run the commands as. \
 The user feature is optional; if you don't provide a user, the su command defaults to the root account, which in Unix is the system administrator account. In either case, you'll be prompted for the password associated with the account for which you're trying to run the command. If you supply a user, you will be logged in as that account until you exit it. To do so, press Ctrl-d or type exit at the command prompt. \
-Using su creates security hazards, is potentially dangerous, and requires more administrative maintenance. It's not good practice to have numerous people knowing and using the root password because when logged in as root, you can do anything to the system. This could provide too much power for inexperienced users, who could unintentionally damage the system. Additionally, each time a user should no longer use the root account (for example, an employee leaves), the system administrator will have to change the root password. \
+Using su creates security hazards, is potentially dangerous, and requires more administrative maintenance. It's not good practice to have numerous people knowing and using the root password because when logged in as root, you can do anything to the system. This could provide too much power for inexperienced users, who could unintentionally damage the system. Additionally, each time a user should no longer use the root account (for example, an employee leaves), the system administrator will have to change the root password. 
 
 ## apt
 ### The apt and apt-get Commands
@@ -214,9 +214,9 @@ A common command used to keep a system up to date is:
 ```
 sudo apt-get update && sudo apt-get upgrade 
 ```
-This command first updates the local package index and then upgrades all installed packages to their latest available versions. \
-### WHat Does apt do?
-The apt tool manages software packages and their dependencies. It ensures that applications are installed correctly and that required supporting software is also installed or updated as needed. \
+This command first updates the local package index and then upgrades all installed packages to their latest available versions. 
+### What Does apt do?
+The apt tool manages software packages and their dependencies. It ensures that applications are installed correctly and that required supporting software is also installed or updated as needed. 
 ### Common apt and get-apt Commands
 - install a package: `sudo apt-get install <package>`
 - remove a package: `sudo apt-get remove <package>`, keeps configuration files
@@ -236,10 +236,10 @@ sudo snap install powershell --classic
 ```
 ### Snap Package management
 Snap is a software packaging and deployment system developed by Canonical, the company behind Ubuntu Linux. It allows developers to package applications and all required dependencies into a single compressed file called a snap. \
-Snap packages are self-contained, meaning they include all the libraries and dependencies needed to run the application. This makes snaps portable across different Linux distributions and reduces compatibility issues. \
+Snap packages are self-contained, meaning they include all the libraries and dependencies needed to run the application. This makes snaps portable across different Linux distributions and reduces compatibility issues. 
 
 ### Security and Sandboxing
-Snap packages are designed to run in a sandboxed environment. Sandboxing limits a snap’s access to system resources unless explicit permission is granted. This improves system security by preventing applications from interfering with other software or accessing sensitive data without authorization. \
+Snap packages are designed to run in a sandboxed environment. Sandboxing limits a snap’s access to system resources unless explicit permission is granted. This improves system security by preventing applications from interfering with other software or accessing sensitive data without authorization. 
 
 ### Using Snap
 Users can manage snap packages using the snap command-line tool or graphical interfaces such as the Ubuntu Software Center. \
@@ -285,7 +285,7 @@ Linux manual pages are organized into numbered sections, each covering a specifi
 8. System administration commands (typically for the root user)
 9. Kernel routines (non-standard)
 
-If you're getting -bash: man: command not found on a WSL (Windows Subsystem for Linux) environment, it means the man (manual) pages system isn't installed. Here's how to fix it: \
+If you're getting -bash: man: command not found on a WSL (Windows Subsystem for Linux) environment, it means the man (manual) pages system isn't installed. Here's how to fix it: 
 ### Step-by-Step Fix 
 update your package list:
 ```
@@ -304,3 +304,95 @@ Verify it's working:
 man ls 
 ```
 You should now see the manual entry for ls.
+
+## Adding a User 
+Users can be added in Linux from the command line using either the useradd or adduser command. While the exact behavior may vary slightly by Linux distribution, the following instructions apply to most Debian- and Red Hat-based systems.
+### Using useradd 
+The useradd command is the more universal option and is available on nearly all Linux distributions. It is non-interactive, meaning options must be specified explicitly. \
+- basic syntax: `sudo useradd [options] username`
+- ceate a user with a home directory: `sudo useradd -m username`, the -m options creates a home directory for the user.
+- set a password for the user: `sudo passwd username`, you will be prompted to enter and confirm the user's password.
+### Using adduser (More User-Friendly Option)
+The adduser command is an interactive wrapper around useradd. It automatically creates a home directory, prompts for a password, and allows you to enter user information such as full name and contact details. \
+Note: The adduser command may not be installed by default on all Linux distributions. \
+Example: `sudo adduser username`.
+### Additional Options
+- Specify a custom home directory and shell: `sudo useradd -m -d /path/to/home/dir -s /path/to/shell username`, the -d option specifies a custom home directory, and the -s option specifies the login shell.
+- add a user to additional groups: `sudo useradd -m -G group1,group2 username`.
+- Using adduser to add a user to a group: `sudo adduser username groupname`.
+### Important Notes
+- Replace username, /path/to/home/dir, /path/to/shell, and groupname with your desired values.
+- Administrative privileges (sudo) are required to add users.
+- Always ensure a password is set using the passwd command after creating a user.
+
+## Changing Passwords in Linux
+Changing a password in Linux is a straightforward process that is performed using the passwd command. This command can be used by regular users to change their own passwords and by system administrators (root or sudo users) to change passwords for other accounts.
+### Changing Your Own Password 
+If you are logged in and want to change your own password, follow these steps:
+1. Open a terminal.
+2. Type `passwd` and press Enter.
+3. Enter your current password when prompted.
+4. Enter your new password and retype it to confirm.
+
+### Changing Another User's Password
+If you have superuser or sudo privileges, you can change another user’s password without knowing their current password. \
+Steps:
+1. Open a terminal.
+2. Type `sudo passwd username`, replacing username with the account name.
+3. Enter the new password and retype it to confirm.
+4. The new password takes effect immediately after it is set.
+
+### Important Notes
+- Choose strong passwords that include a mix of uppercase and lowercase letters, numbers, and special characters.
+- Some Linux systems enforce password policies such as minimum length, complexity, or expiration requirements.
+- If you encounter permission errors, ensure you have the required privileges, especially when changing another user’s password.
+- Regularly changing passwords is a recommended security best practice.
+
+## Bash Aliases in Your Blackboard Shell
+An alias in Bash is a shortcut name you create for a longer or frequently used command. Aliases make it faster to type common commands and help standardize command options, such as always listing files in a detailed format.
+### What an Alias Does 
+When you define an alias, Bash remembers the shortcut for the rest of your terminal session. You can then run the shortcut as if it were a normal command.
+### Creating an Alias 
+Synatx: `alias name='command'` \
+Examples: 
+- `alias ll='ls -la'` 
+- `alias gs='git status'` 
+In these examples:
+- ll becomes a shortcut for ls -la 
+- gs becomes a shortcut for git status
+
+### Managing Aliases
+- view current aliases: `alias`
+- remove an alias: `unalias gs`
+
+### Making Aliases Permanent
+Aliases created at the command line disappear when you close the terminal. To make them permanent, add them to a shell startup file. \
+For Bash users, add aliases to:
+-  `~/.bashrc`
+- `~/.bash_profile`
+Example:
+- `vim ~/.bashrc`
+- `alias ll='ls -la'`
+- `source ~/.bashrc`
+
+## Wildcards
+### ###Linux Wildcards (Globbing) Overview
+In Linux, wildcards are special characters used by the shell (such as Bash) to match filenames and paths. This process is called globbing. \ 
+Important distinction: Wildcards are expanded by the shell, not by the command itself. \
+The shell replaces the wildcard pattern with matching filenames before the command runs. \
+Wildcards are commonly used with commands like:
+- ls 
+- cp 
+- mv 
+- rm 
+- find (with caveats)
+
+### Common Linux Wildcards 
+| Wildcard | Meaning                              | Example       |
+| -------- | ------------------------------------ | ------------- |
+| *        | Matches zero or more characters      | *.txt         |
+| ?        | Matches exactly one character        | file?.txt     |
+| []       | Matches a range or set of characters | file[1-3].txt |
+| {}       | Brace expansion (not a true wildcard | file{1,2}.txt |
+
+
