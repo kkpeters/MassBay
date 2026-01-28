@@ -149,4 +149,20 @@ Options:
 - `type echo` -> "echo is a shell builtin"
 - `whereis echo` -> shows where echo is: /usr/bin/echo ...
 - `echo "My name is Mike and I'm a \"geek.\""` you can use '\' to suppress the alternative function of a character, in this case, the quotations are used for parameters.
+\ using variables with echo, define a variable \
+```
+foo=bar 
+echo foo
+```
+outputs: foo \
+versus \
+```
+echo $foo
+```
+outputs: bar \
+There is a caveat. If you've wrapped your string in single quote marks echo will treat everything literally. To have the variable value displayed, and not the name of the variable, use double quote marks.
+`echo "Lets go to the $foo"` outputs: Lets go to the bar \
+versus \
+`echo 'Lets go to the $foo'` outputs: Lets go to the $foo \
+\ using echo with commands \
 
