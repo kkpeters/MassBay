@@ -55,3 +55,17 @@
 - `echo $MyName` -> returns your input
 - `--help` gives you switches to use
 - `.sh` is a script file, either add executable permissions: `chmod +x MyFirst.sh`, or use command bash to run it: `bash MyFirst.sh`
+
+## Scripting 
+- `#!/bin/bash`
+
+## Using the ps Command
+### Finding a specific process
+```
+ls -al /etc | grep "shadow"
+# finds all the files with "shadow" in the name in the /etc folder
+```
+
+# Lecture/Week 4 - 2/11/2026 
+
+

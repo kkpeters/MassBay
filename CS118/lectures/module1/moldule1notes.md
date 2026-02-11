@@ -873,3 +873,519 @@ command | sort [options]
 sort filename.txt
 ```
 Displays the file
+
+## Head and Tail 
+The head and tail commands in Linux are used to display the beginning or the end of a file, respectively. These commands are especially useful when working with large files, log files, or command output where viewing the entire file is unnecessary. By default, both commands display 10 lines of output unless otherwise specified.
+
+### Using the head Command
+The head command displays the first part of a file.
+### Basic Syntax
+```
+head [options] file
+```
+### Display the First 10 Lines
+```
+head filename.txt 
+```
+Displays the first 10 lines of the file.
+### Display a Specific Number of Lines 
+```
+head -n 5 filename.txt 
+```
+Displays the first 5 lines.
+### Display the First N Bytes
+``` 
+head -c 20 filename.txt
+```
+Displays the first 20 bytes of the file.
+
+### Using the tail Command
+The tail command displays the last part of a file.
+
+### Basic Syntax
+``` 
+tail [options] file
+```
+### Display the Last 10 Lines
+``` 
+tail filename.txt
+```
+Displays the last 10 lines of the file.
+
+### Display a Specific Number of Lines
+``` 
+tail -n 5 filename.txt
+```
+Displays the last 5 lines.
+
+### Follow a File in Real Time
+```
+tail -f logfile.txt
+```
+Displays new lines as they are added to the file. This is commonly used to monitor log files. Press Ctrl + C to stop following the file.
+
+### Using head and tail with Pipes
+``` 
+ps -ef | head
+```
+Displays the first 10 lines of process output.
+``` 
+ps -ef | tail -n 5
+```
+Displays the last 5 lines of process output.
+
+### Common Options
+| Option | Description                     |
+| ------ | ------------------------------- |
+| -n     | Specify number of lines         |
+| -c     | Specify number of bytes         |
+| -f     | Follow file updates (tail only) |
+
+### Why Use head and tail?
+- Quickly preview large files
+- Inspect logs and output files
+- Monitor system activity in real time
+- Combine with other commands in pipelines
+### Summary
+- The head and tail commands are simple yet powerful tools for viewing portions of files in Linux. They are essential utilities for efficiently inspecting large files and monitoring system output without opening a full text editor.
+
+## Introduction to Bash Scripting
+Bash scripting allows you to place a sequence of commands into a file and execute them as a program. Bash scripts are commonly used to automate repetitive tasks, manage systems, and improve efficiency when working in the terminal. \
+Instead of typing the same commands repeatedly, you can write a script once and run it whenever needed.
+### Creating a Bash Script 
+To create a Bash script, begin the file with a shebang. The shebang tells the operating system which interpreter should be used to execute the script.
+```
+#!/bin/bash 
+```
+After writing your script, you must give it execute permissions before it can be run.
+```
+chmod +x scriptname.sh
+```
+### Example: Simple Bash Script
+Below is a basic example of a Bash script that prints a greeting message:
+```
+#!/bin/bash
+# This script prints a greeting message
+ 
+echo "Hello, World!"
+```
+Run the script using:
+```
+./scriptname.sh
+```
+### Using Variables in Bash Scripts
+Variables allow scripts to store and reuse data. In Bash, variables are assigned using the = operator without spaces.
+### Example: Using Variables
+```
+#!/bin/bash
+# Assign a value to a variable
+ 
+name="World"
+echo "Hello, $name!"
+```
+In this example:
+- The variable name stores a value
+- The $name syntax retrieves the stored value
+- Double quotes allow the variable to be expanded
+### Summary
+Bash scripting is a powerful tool for automating tasks and improving productivity in Linux environments. By understanding script structure, execution permissions, and variables, you can begin writing scripts that simplify your daily work and form the foundation for more advanced scripting techniques.
+
+## Bash Syntax for Scripting 
+A Bash script is a file containing a sequence of commands that are executed by the Bash shell. Bash scripting is commonly used to automate repetitive tasks, manage systems, and perform complex operations efficiently. Understanding Bash syntax is essential for writing scripts that are clear, reliable, and easy to maintain.
+
+### Script Structure
+```
+#!/bin/bash
+# Script description
+# Author: Your Name
+ 
+commands
+```
+- The shebang or shabang (#!/bin/bash) tells the system to use Bash to run the script.
+- Comments describe what the script does and help others understand your code.
+
+### Basic Syntax Rules
+#### Comments
+```
+# This is a comment
+echo "Hello World"  # This prints text to the screen
+```
+#### Command Execution Order
+Bash executes commands sequentially, from top to bottom, unless control structures (loops or conditionals) alter the flow.
+```
+echo "First"
+echo "Second"
+echo "Third"
+```
+#### Using Semicolons
+A semicolon (;) allows multiple commands to be placed on a single line.
+```
+echo "Start"; echo "Middle"; echo "End"
+```
+Each command runs in order, just as if they were on separate lines.
+#### Variables
+Variables store data that can be reused throughout a script.
+Variables are assigned without spaces.
+```
+name="Alice"
+echo "Hello $name"
+```
+#### Quoting
+Quoting controls how Bash interprets text:
+- Double quotes (" ") allow variable expansion
+- Single quotes (' ') treat text literally
+```
+echo "$name"
+echo '$name'
+```
+#### Command Substitution
+Command output can be stored in a variable using $( ).
+```
+current_user=$(whoami)
+echo "You are logged in as $current_user"
+```
+#### Exit Status
+Every command returns an exit status:
+- 0 indicates success
+- Any non-zero value indicates an error
+```
+ls /tmp
+echo $?
+```
+#### Best Practices
+- Use meaningful variable names
+- Comment complex or non-obvious code
+- Indent code for readability
+- Test scripts incrementally
+- Avoid running scripts as root unless necessary
+#### Summary
+Bash scripting relies on simple but powerful syntax rules. By understanding how Bash interprets commands, variables, and execution flow, you can write scripts that are efficient, readable, and reliable. Mastering these fundamentals is the foundation for advanced scripting concepts such as conditionals, loops, and automation.
+
+## Managing File Permissions and Ownership in Linux Using chmod, chown, and chgrp
+Linux controls access to files and directories through permissions and ownership. The commands chmod, chown, and chgrp are used to manage who can read, write, or execute files and who owns them. Understanding these commands is essential for system administration, security, and scripting.
+
+### Understanding File Permissions 
+Each file and directory has three permission types:
+- Read (r) – View file contents or list directory contents
+- Write (w) – Modify a file or create/delete files in a directory
+- Execute (x) – Run a file as a program or access a directory
+
+Permissions apply to three categories:
+- User (u) – The file owner
+- Group (g) – Users in the file’s group
+- Others (o) – All other users
+
+You can view permissions using:
+```
+ls -l
+```
+Example output: 
+```
+-rwxr-xr--
+```
+
+### Using the chmod Command 
+The chmod command changes file and directory permissions.
+
+#### Basic Syntax 
+```
+chmod [options] permissions file
+```
+
+#### Using Symbolic Mode 
+```
+chmod u+x script.sh 
+# Adds execute permission for the file owner.
+
+chmod g-w file.txt 
+# Removes write permission from the group.
+
+chmod o+r file.txt 
+# Adds read permission for others.
+```
+
+### Using Numeric (Octal) Mode
+| Number | Permission  |
+| ------ | ----------- |
+| 4      | read (r)    |
+| 2      | write (w)   |
+| 1      | execute (e) |
+
+Example:
+```
+chmod 755 script.sh
+```
+- User: read, write, execute
+- Group: read, execute
+- Others: read, execute
+
+### Using the chown Command 
+The chown command changes the owner of a file or directory.
+
+#### Basic Syntax
+```
+chown user file
+
+sudo chown alice file.txt
+# Changes the owner of file.txt to alice.
+
+sudo chown alice:developers file.txt 
+# Sets the owner to alice and the group to developers.
+
+sudo chown -R alice myfolder/ 
+# Changes ownership of a directory and all its contents (RECURSIVELY).
+```
+
+### Using the chgrp Command
+The chgrp command changes the group ownership of a file or directory.
+
+#### Basic Syntax
+```
+chgrp group file 
+
+
+sudo chgrp staff report.txt
+# Assigns the file to the staff group.
+
+sudo chgrp -R staff shared_folder/
+# Changes group ownership for a directory and all subdirectories (RECURSIVELY).
+```
+
+## First Script - Script1.sh 
+```
+#!/bin/bash
+# ^ this is known as the shabang! and allows you to define the environment to run your script in﻿
+# Author : Mike Lyons
+# Hashtags are used here to ig﻿nore the line so 
+ 
+class="CS100"
+echo "What is your name?"
+read PERSON
+echo "Hello, $PERSON and welcome to $class"
+# Note that UNIX/Linux/BSD are case sensitive﻿
+```
+
+## Setting Variables 
+
+### Using Variables in Bash
+In Bash, variables are used to store values that can be referenced and reused later in a script or command line session. Variables do not require a data type and are assigned using the = operator (with no spaces).
+
+### Assigning and Displaying a Variable
+```
+foo=bar
+echo $foo
+
+# outputs: "bar"
+```
+
+### Assigning Command Output to a Variable 
+```
+foo=$(whoami)
+echo $foo
+
+# outputs: <your username>
+```
+
+### Assigning a Numeric Value
+```
+foo=1
+echo $foo
+
+# outputs: 1
+```
+
+### Performing Arithmetic with Variables
+```
+foo=$(( foo + 5 ))
+echo $foo
+
+# outputs: 6
+```
+
+### Key Notes
+- Do not use spaces around the = sign when assigning variables
+- Use $variable to reference a variable’s value
+- Use $(command) to store command output
+- Use $(( )) for arithmetic operations
+
+## Script2.sh - setting a variable as a command
+```
+#!/bin/bash
+greeting="Welcome"
+user=$(whoami)
+day=$(date +%A)
+echo "$greeting back $user!"
+echo "Today is $day, which is the best day of the entire week!"
+echo "Your Bash shell version is:"
+bash --version
+```
+We are setting variables at the top. \
+We are defining a variable to be a command. I had mentioned we could do this with an alias, but now, in BASH, we can set it similar to how we did it in PowerShell. \
+We can also call on the Bash command and its options to provide information.
+
+## Script3.sh - an illustration of positional variables 
+```
+#!/bin/bash
+echo "File Name: $0" # Positional variable, gives us the name
+echo "First Argument: $1"
+echo "Second Argument: $2"
+echo "Quoted Values: $@" # @ represent an array, all the argumnets we give the script, we can use this to run any code we write in this file
+echo "Quoted Values: $*" # everything that we passed in as arguments
+echo "Total Number of Arguments: $#"
+echo "Error code: $?"
+exit 10 # edits the exit code, only shows up after you run the script and type echo $?
+# when we come out of a script, $?, exit state, 0 is clean, error number otherwise
+
+# The $ character represents the process ID number, or PID, of the current shell Ã¢Ë†â€™
+# $echo $$
+# The above command writes the PID of the current shell
+ 
+# The following shows a number of special variables that you can use in your shell scripts
+# $0
+# The filename of the current script.
+ 
+# $n
+# These variables correspond to the arguments with which a script was invoked. Here n is a positive decimal number corresponding to the position of an argument (the first argument is 
+# $1, the second argument is $2, and so on).
+ 
+# $?
+# Will display the exit code on the script.
+ 
+# $#
+# The number of arguments supplied to a script.
+ 	
+# $*
+# All the arguments are double quoted. If a script receives two arguments, $* is equivalent to $1 $2.
+ 	
+# $@
+# All the arguments are individually double quoted. If a script receives two arguments, $@ is equivalent to $1 $2.
+ 	
+# $?
+# The exit status of the last command executed.
+ 	
+# $$
+# The process number of the current shell. For shell scripts, this is the process ID under which they are executing.
+ 	
+# $!
+# The process number of the last background command.
+```
+
+## Bash Data Types
+
+### Strings 
+```
+name="Michael"
+echo "Hello $name"
+```
+
+### Quoting Strings 
+- Double quotes (" ") allow variable expansion
+- Single quotes (' ') treat text literally
+```
+echo "$name"
+echo '$name'
+```
+
+### Integers (Numeric Values) 
+```
+count=5
+count=$((count + 3))
+echo $count
+```
+Arithmetic operations are performed inside $(( )).
+
+### Arrays
+```
+colors=("red" "green" "blue")
+echo ${colors[0]} # displays "red"
+echo ${colors[@]} # displays all the elements in the array
+echo ${#colors[@]} # displays the length of the array
+```
+
+## Boolean Values (True/False)
+```
+if [ -f "/etc/passwd" ]; then
+  echo "File exists"
+fi
+```
+
+## Command Substitution
+```
+user=$(whoami)
+echo "Current user: $user"
+```
+
+## Special Variables
+
+| Variable | Description                 |
+| -------- | --------------------------- |
+| $0       | Script name                 |
+| $1-$9    | Positional parameters       |
+| $#       | Number of arguments         |
+| $?       | Exit status of last command |
+| $$       | Process ID of the script    |
+
+## Environment Variables
+Environment variables store system-wide values and are typically written in uppercase.
+```
+echo $HOME
+echo $PATH
+```
+To create one:
+```
+export MY_VAR="example"
+```
+
+## Best Practices 
+- Treat all variables as strings unless performing arithmetic
+- Use $(( )) for math operations
+- Quote variables to prevent unexpected behavior
+- Use arrays for lists of related values
+- Check exit statuses to control logic flow
+
+## PS 
+The ps command in Linux is used to display information about currently running processes on a system. It provides a snapshot of active processes at the moment the command is executed and is commonly used for system monitoring, troubleshooting, and process management. \
+Each process shown by ps includes details such as the process ID (PID), the user running the process, CPU usage, memory usage, and the command that started the process.
+
+### Basic Syntax
+```
+ps [options]
+```
+
+### Common ps Command Options
+```
+
+# Display Processes for the Current User
+ps
+# Shows processes associated with the current terminal session.
+
+# Display All Running Processes
+ps -e
+# OR 
+ps -A 
+# Displays all processes running on the system.
+
+# Display Detailed Process Information 
+ps -ef 
+# - -e shows all processes
+# -f displays full-format output
+# This is one of the most commonly used ps commands.
+```
+
+### BSD-Style Output (Commonly Used)
+```
+ps aux
+```
+- a shows processes for all users
+- u displays user-oriented output
+- x includes processes without a controlling terminal
+
+
+
+
+## Top 
+
+## Kill 
+
+## Script4.sh - background processes and kill 
+
