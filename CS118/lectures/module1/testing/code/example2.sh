@@ -1,10 +1,14 @@
 #!/bin/bash
-echo "Guess my number!"
-myNum=73
+echo "Guess my number! Type "GU" to Give Up."
+myNum=$RANDOM
 guesses=()
 while true;
 do
     read guess
+    if [ $guess = "GU" ]; then
+        echo "Nice try! My number was $myNum"
+        exit
+    fi
     if [ $myNum -lt $guess ]; then
         echo
         echo "A little high!"

@@ -68,4 +68,42 @@ ls -al /etc | grep "shadow"
 
 # Lecture/Week 4 - 2/11/2026 
 
+## DNS
+root DNS
+- .edu
+- .com 
+- .net 
+- etc...
 
+www.google.com  
+computer reads it backwards, com.google.www (there's actually a missing period at the end)
+google.com -> SOA (start of authority)
+www is arbitrary, it's a service you use to create a domain name, services like squarespace will also host it
+SOA
+- the master record, the system of authority, if i make a change here, it replicates that change to all the other servers
+
+firwall triangle
+top corner: WAN (public ip address)
+right corner: LAN (will hold the address that people can access)
+left corner: DMZ (isolated network, nobody can jump from another network to your personal one)
+
+## PORTS
+
+## Network Commands
+```
+ping dns.google.com
+```
+continuously ping, timeout after 4 responses on windows. cancel ping with ctrl+c 
+```
+ping -c4 dns.google.com 
+```
+runs for 4 pings and then finishes, -c stands for count, -c4 makes it look like default ping on a windows system
+
+```
+ping -c4 -i0.5 dns.google.com 
+```
+makes it run quicker, -i is the interval between pings
+```
+ping -c4 -i0.5 -s1000 dns.google.com
+```
+-s is the packet size
