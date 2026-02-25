@@ -3628,3 +3628,363 @@ By using ShellCheck, developers can catch potential issues in their shell script
 ```
 shellcheck script.sh
 ```
+
+## What is Open-Source Software? 
+
+Open source software (OSS) is software released with its source code made available for anyone to inspect, modify, and enhance. This open availability encourages a collaborative approach to software development, where developers from around the globe can contribute improvements, fix bugs, or adapt the software to meet new needs. Open-source software distribution is governed by open-source licenses, which stipulate how the software can be freely used, modified, and shared.
+
+### Critical Characteristics of Open Source Software:
+- Accessibility of Source Code: The source code of open-source software must be readily available, allowing users and developers to study how the software works and modify it to fit their requirements.
+- Freedom to Modify: Users have the right to modify the software's source code, either to improve its functionality, fix errors, or customize it for personal use or within their organization.
+- Free Redistribution: Open-source software can be freely redistributed to anyone. This can include the original and modified versions of the software.
+- Community Collaboration: The development and improvement of open-source software are often driven by an active community of contributors. This community model promotes continuous innovation and support.
+- Variety of Licenses: Open source software is released under various licenses, such as the GNU General Public License (GPL), Apache License, and MIT License, among others. These licenses differ in how the software can be used, modified, and distributed, but they all adhere to the basic principles of open source.
+### Advantages of Open Source Software:
+- Cost-Effectiveness: Open-source software is usually free, reducing the financial barrier to access and use.
+- Flexibility and Customization: Since the source code is accessible, it can be modified to meet specific needs, offering high flexibility and customization.
+- Quality and Reliability: With numerous developers contributing to the project, open-source software often benefits from robust development, thorough testing, and quick bug fixes, enhancing its quality and reliability.
+- Security: The transparency of open source code allows for continuous inspection by a global community, potentially leading to more secure software as vulnerabilities can be identified and addressed promptly.
+- Interoperability: Open source projects often adhere to open standards, promoting interoperability with other software and systems.
+### Examples of Open Source Software:
+- Linux: An open-source kernel that is the foundation for various Linux distributions.
+- Apache HTTP Server: A widely used web server software.
+- Mozilla Firefox: A popular web browser known for its speed and privacy features.
+- LibreOffice: A comprehensive office suite that serves as an alternative to Microsoft Office.
+- Python: A high-level programming language known for its readability and broad applicability in various domains.
+
+Open-source software is crucial in technology, powering everything from individual projects to enterprise solutions. It fosters innovation through collaboration, making technology more accessible and adaptable to a wide range of users and applications.
+
+## NMAP 
+
+Nmap, short for Network Mapper, is an open-source network scanner created by Gordon Lyon (also known by his pseudonym, Fyodor Vaskovich). It was designed to discover hosts and services on a computer network, thereby building a "map" of the network. Using IP packets, Nmap sends specially crafted packets to target hosts and then analyzes the responses to discover host availability and running services, along with their versions, types of devices, operating systems, and firewall configurations.
+
+### Key Features of Nmap:
+- Host Discovery: Identifies hosts on a network. For instance, it can determine which hosts are available, their IP addresses, and whether they respond to requests.
+- Port Scanning: Determining which ports are open on a target host is crucial for understanding the network's attack surface.
+- Version Detection: Attempts to identify the software version of the services running on open ports. This is useful for identifying potential vulnerabilities.
+- OS Detection: Uses various techniques to determine networked devices' operating system and hardware characteristics.
+- Scriptable Interaction: Comes with a scripting engine (Nmap Scripting Engine, or NSE) that allows developers to write scripts to automate a wide range of networking tasks, from network discovery to vulnerability detection.
+- Network Inventory: This can create a detailed inventory of the network's connected devices and services.
+- Auditing the Network's Security: Helps identify open ports and services that attackers could potentially exploit.
+- Flexible: Supports a wide range of scanning techniques, such as UDP, TCP connect(), TCP SYN (half open), and ICMP (for example, ping scans).
+- GUI Version: Besides the command-line interface, Nmap can be used through Zenmap, a graphical user interface designed for interactive scanning.
+### Common Use Cases:
+- Security Auditing: Nmap is widely used in the security industry to audit the security of networks and detect open ports and vulnerabilities.
+- Network Inventory: It is used by network administrators to keep an inventory of devices and services on their networks.
+- Monitoring Network Hosts: These are useful for monitoring which devices are up and running at any given time on a network.
+- Firewall Testing: Administrators use it to test network firewalls, identifying open ports and the rules allowing or blocking traffic.
+- Finding Unauthorized Servers: Helps identify rogue servers or devices on a network.
+- Despite its powerful capabilities, users of Nmap should always seek permission before scanning networks they do not own, as unauthorized scanning can be considered illegal or intrusive by network owners.
+
+### Using NMAP:
+First, make sure you are current on your system \
+```
+sudo apt update
+
+sudo apt upgrade
+```
+Second, make sure it is installed
+```
+nmap --version
+```
+If not install it:
+```
+sudo apt install nmap
+```
+Then verify it
+```
+nmap --version
+```
+Review help and switches:
+```
+nmap -h
+```
+Scan an IP address:
+```
+nmap 192.168.23.38
+```
+Scan a range:
+```
+nmap 192.168.23.1-100
+```
+Scan Multiple IPs or Subnets. You can scan multiple targets by separating them with spaces:
+```
+nmap 192.168.23.1 10.10.10.1-50
+```
+Or scan the entire VLAN:
+```
+nmap -sP 192.168.23.0/24
+```
+Scan a Domain. To scan a domain instead of an IP address:
+```
+www.example.com
+```
+Find Open Ports. To detect open ports on a host and identify the associated services:
+```
+nmap -p 1-65535 192.168.23.38
+```
+Scan for Specific Services. To scan for specific services (e.g., HTTP or FTP), specify the port numbers:
+```
+nmap -p 80,21 192.168.23.38
+
+sudo nmap -sT -p 80,442 192.168.1.0/24
+```
+Scan Using TCP Connect. TCP connect scan (also known as a full open scan) is the default TCP scan without any special privileges:
+```
+nmap -sT 192.168.23.38
+```
+This leverages the 3-way handshake. \
+The client sends a SYN packet or synchronization packet. On the port, you want to talk. \
+The server responds that it can talk on that port. Send back SYN ACK or synchronization acknowledge packet. \
+The client returns an ACK packet (acknowledge), and systems can start talking. \
+Since I do not specify a port it will scan for the top 1000 ports by default. \
+This is an intrusive scan that could trigger the IDS. \
+
+Stealthy Scan. A SYN scan is less intrusive and stealthier than a TCP connect scan:
+```
+nmap -sS 192.168.23.38
+```
+Called a half-open scan or syn scan \
+Only the first two handshakes \
+
+Scan for the operating system:
+```
+nmap -O 192.168.23.38
+```
+Aggressive Scan. An aggressive scan provides more detailed information about the host, including the OS, service versions, etc. Use with caution:
+```
+nmap -A 192.168.1.1
+```
+Choosing Between -A and -sT
+Use nmap -A when you need a comprehensive overview of the target system, including services, operating system details, and potential vulnerabilities. It is best used in authorized penetration testing or auditing environments where thoroughness is more important than stealth. \
+Use nmap -sT for basic checks to see which TCP ports are open on a target. It is suitable when you do not need detailed information about the target's services or when running scans from a non-privileged user account. \
+
+Save Scan Results. To save the scan results to a file:
+```
+nmap -oN output.txt 192.168.1.1
+```
+Scan with OS and Service Detection. To attempt to identify the operating system and services running on target machines:
+```
+nmap -A -T4 192.168.1.1
+```
+### nmap -A
+The -A option in Nmap enables what is known as "aggressive scanning." This mode is a combination of several advanced scanning features that are designed to provide a comprehensive overview of the target host. Specifically, the -A option enables: 
+
+- OS detection (-O), which attempts to identify the operating system of the target.
+- Version detection (-sV), which tries to determine the version numbers of the services running on open ports.
+- Script scanning (--script=default), which uses the default set of Nmap Scripting Engine (NSE) scripts for additional discovery and exploitation. This can reveal a wealth of information such as vulnerabilities, misconfigurations, and more.
+- Traceroute (--traceroute), which traces the path packets take from the host to the target.
+In essence, nmap -A is a thorough scanning option that can provide a detailed view of the target's configuration, services, and potential vulnerabilities. However, it is more intrusive and likely to be detected by intrusion detection systems (IDS). \
+
+#### What is obfuscation in cybersecurity?
+Data obfuscation is the process of hiding original data with modified content, such as characters or other data. This process is used to safeguard information classified as personally identifiable information (PII) or other sensitive data (e.g. commercially competitive). \
+
+Use a decoy
+```
+nmap -sS -D 192.168.1.2 192.168.1.1
+```
+It stills sends the packet from me but sends a second decoy packet to try to hide me. \
+
+The Nmap Scripting Engine (NSE) is an advanced feature of Nmap that extends its capabilities beyond simple network scanning and port detection. It allows users to perform a wide range of network tasks, including more sophisticated activities like vulnerability detection, exploitation, and network discovery using scripts. NSE makes Nmap not just a scanning tool but a powerful network exploration and security auditing tool.
+
+
+### Core Features of NSE:
+- Flexibility: NSE scripts can perform various tasks, from network discovery and vulnerability scanning to more advanced functions like exploitation and brute-forcing of services.
+- Script-Based: The scripts are written in Lua, a powerful, fast, and lightweight programming language. Lua's simplicity and efficiency make it ideal for writing custom scripts running within Nmap.
+- Extensive Script Library: Nmap comes with hundreds of pre-written scripts that cover many common use cases, such as finding specific vulnerabilities, detecting misconfigurations, and gathering information about network hosts.
+- Integration with Nmap: Scripts can leverage the robust host discovery and port scanning features of Nmap, allowing them to operate on a well-defined set of targets identified by the initial network scans.
+- Categorization: NSE scripts are organized into categories such as safe, vuln, intrusive, etc., allowing users to quickly select scripts based on their scanning goals and the risk level they are prepared to accept.
+
+#### How It Works:
+NSE allows for the execution of scripts during various stages of the scanning process. This integration enables scripts to use the data gathered by Nmap's standard scanning capabilities to perform more targeted and sophisticated analyses. The scripts can query ports and services Nmap identifies, send and receive custom network packets, and process the responses.
+
+#### Example Use Case:
+For instance, if you want to scan a server for common vulnerabilities, you could use the following command:
+```
+nmap --script vuln 192.168.1.1
+```
+This command would run all scripts categorized under "vuln" against target.host.com, identifying potential vulnerabilities based on known signatures and behaviors.
+
+### Writing Custom Scripts:
+Users are not limited to the scripts that come with Nmap. Since NSE uses Lua, it's relatively straightforward for those with programming skills to write their own scripts tailored to specific needs or scenarios. The Nmap scripting API provides a rich set of functions that script writers can use to interact with network hosts, manipulate packets, and integrate seamlessly with the rest of the Nmap scanning process. \
+NSE Website: https://nmap.org/book/nse.html
+
+### Using nmap with BASH:
+Using Nmap within a Bash shell allows you to leverage the power of shell scripting along with Nmap's robust network scanning capabilities. This can be especially useful for automating repetitive tasks, processing scan results programmatically, or integrating Nmap scans into larger security assessment workflows. Below are several examples of how you might use Nmap in a Bash script: \
+
+Basic Host Discovery \
+This script pings hosts in a subnet to see which ones are up.
+```
+#!/bin/bash
+
+subnet="192.168.1.0/24"
+
+echo "Scanning for live hosts in the subnet $subnet"
+
+nmap -sn $subnet 
+```
+Scan Multiple Hosts from a List \
+This script reads a list of hosts from a file and performs a basic port scan on each.
+```
+#!/bin/bash
+
+while IFS= read -r host
+
+do
+
+  echo "Scanning $host"
+
+  nmap -p 80,443 $host
+
+done < "hosts.txt"
+```
+In this example, `hosts.txt` should contain one host (IP address or domain name) per line. \
+Automated Vulnerability Scan \
+Scan hosts for vulnerabilities and output results to separate files.
+```
+#!/bin/bash
+
+for host in 192.168.1.10 192.168.1.11 192.168.1.12; do
+
+  echo "Performing an aggressive scan on $host"
+
+  nmap -A $host -oN "scan_$host.txt"
+
+done
+```
+Checking for Specific Service \
+This script checks if a web server is running on port 80 for a list of hosts.
+```
+#!/bin/bash
+
+hosts=("192.168.1.10" "192.168.1.11" "192.168.1.12")
+
+
+
+
+for host in "${hosts[@]}"; do
+
+  echo "Checking HTTP service on $host"
+
+  nmap -p 80 --script http-title $host
+
+done
+```
+
+
+Sequential Port Scanning with Output Processing \
+Scan a range of ports on a host and process the output to find open ports.
+```
+#!/bin/bash
+ 
+host="192.168.1.10"
+ 
+ports=$(seq 1 100)
+ 
+ 
+ 
+ 
+for port in $ports; do
+ 
+  result=$(nmap -p $port $host | grep open)
+ 
+  if [[ -n $result ]]; then
+ 
+    echo "Port $port is open on $host"
+ 
+  fi
+ 
+done
+```
+These examples showcase the versatility of combining Nmap with Bash scripting. They range from simple scans to complex operations involving loops, conditionals, and output processing. Remember, these scripts should be used responsibly and ethically, ensuring you have permission to scan the network and hosts targeted by these scripts.
+
+### Using nmap with BASH:
+Using Nmap within a Bash shell allows you to leverage the power of shell scripting along with Nmap's robust network scanning capabilities. This can be especially useful for automating repetitive tasks, processing scan results programmatically, or integrating Nmap scans into larger security assessment workflows. Below are several examples of how you might use Nmap in a Bash script: \
+Basic Host Discovery \
+This script pings hosts in a subnet to see which ones are up.
+```
+#!/bin/bash
+
+subnet="192.168.1.0/24"
+
+echo "Scanning for live hosts in the subnet $subnet"
+
+nmap -sn $subnet
+```
+Scan Multiple Hosts from a List \
+This script reads a list of hosts from a file and performs a basic port scan on each.
+```
+#!/bin/bash
+
+while IFS= read -r host
+
+do
+
+  echo "Scanning $host"
+
+  nmap -p 80,443 $host
+
+done < "hosts.txt"
+```
+In this example, `hosts.txt` should contain one host (IP address or domain name) per line. \
+Automated Vulnerability Scan \
+Scan hosts for vulnerabilities and output results to separate files.
+```
+#!/bin/bash
+
+for host in 192.168.1.10 192.168.1.11 192.168.1.12; do
+
+  echo "Performing an aggressive scan on $host"
+
+  nmap -A $host -oN "scan_$host.txt"
+
+done
+```
+Checking for Specific Service \
+This script checks if a web server is running on port 80 for a list of hosts.
+```
+#!/bin/bash
+
+hosts=("192.168.1.10" "192.168.1.11" "192.168.1.12")
+
+
+
+
+for host in "${hosts[@]}"; do
+
+  echo "Checking HTTP service on $host"
+
+  nmap -p 80 --script http-title $host
+
+done
+```
+Sequential Port Scanning with Output Processing \
+Scan a range of ports on a host and process the output to find open ports.
+```
+#!/bin/bash
+
+host="192.168.1.10"
+
+ports=$(seq 1 100)
+
+
+
+
+for port in $ports; do
+
+  result=$(nmap -p $port $host | grep open)
+
+  if [[ -n $result ]]; then
+
+    echo "Port $port is open on $host"
+
+  fi
+
+done
+```
+These examples showcase the versatility of combining Nmap with Bash scripting. They range from simple scans to complex operations involving loops, conditionals, and output processing. Remember, these scripts should be used responsibly and ethically, ensuring you have permission to scan the network and hosts targeted by these scripts.
+
+
+# Practice/Lab
+
+
