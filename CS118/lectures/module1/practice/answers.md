@@ -214,3 +214,38 @@ How the Script Works:
 - Translate characters: Replace specific characters with other characters.
 - Delete characters: Remove specified characters from the input.
 - Squeeze characters: Replace sequences of repeated characters with a single instance.
+
+# Create a Script
+Please create a bash script that will ask the user for a folder name. It will then test if that folder exists. If it does exist it will echo back that it exists and exit the script. If it does not exist it will create the directory with that name. It will then ask the user for a file name. It will then create create version of that file name in all capital letters, another in all lowercase letters, and a third with the number 1 at the end.
+```
+#!/bin/bash
+
+# Ask the user for a folder name
+echo "Please enter a folder name:"
+read folder_name
+
+
+# Check if the folder exists
+if [ -d "$folder_name" ]; then
+    echo "The folder '$folder_name' already exists."
+    exit 0
+else
+    # Create the directory
+    mkdir "$folder_name"
+    echo "The folder '$folder_name' has been created."
+fi
+
+
+# Ask the user for a file name
+echo "Please enter a file name (without extension):"
+read file_name
+
+
+# Create file versions in the specified folder
+touch "${folder_name}/${file_name^^}.txt" # Capital letters
+touch "${folder_name}/${file_name,,}.txt" # Lowercase letters
+touch "${folder_name}/${file_name}1.txt"  # Name with a '1' at the end
+
+
+echo "Files have been created in the '$folder_name' directory."
+```
