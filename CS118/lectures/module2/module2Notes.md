@@ -1228,6 +1228,7 @@ Batch Script language also provides assignment operators. Following are the assi
 
 
 | Operator | Description | Example |
+| -------- | ----------- | ------- |
 | += | This adds right operand to the left operand and assigns the result to left operand | Set /A a = 5 \\ a += 3 \\ Output will be 8 |
 | -= | This subtracts the right operand from the left operand and assigns the result to the left operand | Set /A a = 5 \\ a -= 3 \\ Output will be 2 |
 | *= | This multiplies the right operand with the left operand and assigns the result to the left operand | Set /A a = 5 \\ a *= 3 \\ Output will be 15 |
