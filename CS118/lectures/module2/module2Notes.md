@@ -1218,6 +1218,7 @@ The batch language is equipped with a full set of Boolean logic operators like A
 
 
 | Operator | Description | 
+| -------- | ----------- |
 | AND | This is the logical “and” operator | 
 | OR | This is the logical “or” operator |
 | NOT | This is the logical “not” operator |
