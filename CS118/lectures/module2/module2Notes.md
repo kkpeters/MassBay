@@ -1211,6 +1211,43 @@ Relational operators allow of the comparison of objects. Below are the relationa
 | GTR | Checks to see if the left object is greater than the right operand | 3 GTR 2 will give true |
 | GEQ | Checks to see if the left object is greater than or equal to the right operand | 3 GEQ 2 will give true |
 
+### Logical Operators
+Logical operators are used to evaluate Boolean expressions. Following are the logical operators available.
+
+The batch language is equipped with a full set of Boolean logic operators like AND, OR, XOR, but only for binary numbers. Neither are there any values for TRUE or FALSE. The only logical operator available for conditions is the NOT operator.
+
+
+| Operator | Description | 
+| AND | This is the logical “and” operator | 
+| OR | This is the logical “or” operator |
+| NOT | This is the logical “not” operator |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
