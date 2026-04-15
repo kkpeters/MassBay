@@ -307,6 +307,7 @@ pause
 
 ### When to Use Batch vs PowerShell
 | Task | Batch | PowerShell | 
+| ---- | ----- | ---------- |
 | Simple automation | ✅ | ✅ |
 | Legacy systems | ✅ | Warning |
 | Complex logic | ❌ | ✅ |
