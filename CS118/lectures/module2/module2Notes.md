@@ -4665,6 +4665,1368 @@ do {
 
 ## Powershell Arrays
 
+PowerShell provides a built-in data structure called an array, which stores a sequential collection of elements. An array can hold values of any type, including numbers, strings, objects, or even other arrays.
+
+Instead of creating many individual variables (for example number0, number1, number2), you can use a single array variable and access its elements by index.
+
+```
+$numbers[0]
+$numbers[1]
+$numbers[2]
+```
+
+Arrays make scripts cleaner, more scalable, and easier to maintain.
+
+### Declaring Array Variables
+
+#### Basic Array Declaration
+
+You can create an array by separating values with commas:
+
+```
+$A = 1, 2, 3, 4
+```
+You can also create an array using a range operator:
+
+```
+$A = 1..4
+```
+
+#### Typed Arrays
+
+By default, PowerShell arrays are of type System.Object[]. You can explicitly specify a type if needed.
+
+```
+[int32[]]$intA = 1500, 2230, 3350, 4000
+```
+
+#### Checking the Array Type
+```
+$A = 1, 2, 3, 4
+$A.GetType()
+```
+Result (simplified):
+
+```
+Object[]
+```
+This shows the array is a collection of objects.
+
+
+#### Accessing Array Elements
+PowerShell arrays use zero-based indexing, meaning the first element is at index 0.
+
+
+```
+$myList = 5.6, 4.5, 3.3, 13.2, 4.0, 34.33, 34.0, 45.45, 99.993, 11123
+```
+| Index | Value |
+| ----- | ----- |
+| 0 | 5.6 |
+| 1 | 4.5 |
+| 2 | 3.3 |
+| 9 | 11123 |
+
+#### Examples
+```
+$myList[0]    # First element
+$myList[1]    # Second element
+```
+
+### Processing Arrays
+Arrays are commonly processed using for, foreach, or while loops.
+
+#### Display All Elements
+
+```
+Write-Host "Print all the array elements"
+$myList
+```
+
+#### Get Array Length
+``` 
+Write-Host "Get the length of array"
+$myList.Length
+```
+
+
+#### Get a Specific Element
+``` 
+Write-Host "Get second element of array"
+$myList[1]
+```
+
+#### Get a Sub-Array (Slice)
+``` 
+Write-Host "Get partial array"
+$subList = $myList[1..3]
+$subList
+```
+
+### Looping Through Arrays
+
+#### Using a for Loop
+ 
+```
+Write-Host "Using for loop"
+for ($i = 0; $i -lt $myList.Length; $i++) {
+    $myList[$i]
+}
+```
+
+#### Using a foreach Loop (Most Common)
+``` 
+Write-Host "Using foreach loop"
+foreach ($element in $myList) {
+    $element
+}
+```
+
+#### Using a while Loop
+``` 
+Write-Host "Using while loop"
+$i = 0
+while ($i -lt 4) {
+    $myList[$i]
+    $i++
+}
+```
+
+#### Modifying Array Elements
+You can assign a new value to an existing array index:
+
+``` 
+Write-Host "Assign values"
+$myList[1] = 10
+$myList
+```
+This replaces the value at index 1.
+
+### Array Method Examples
+
+#### Creating an Array with @()
+``` 
+$myList = @(0..4)
+```
+
+#### Printing the Array
+```
+Write-Host "Print array"
+$myList
+```
+
+#### Modifying an Element
+``` 
+Write-Host "Assign values"
+$myList[1] = 10
+$myList
+```
+Result:
+```
+0
+10
+2
+3
+4
+```
+
+### Key Points for Students
+- Arrays store multiple values in one variable
+- Array indexes start at 0
+- .Length returns the number of elements
+- Arrays are commonly processed with foreach
+- PowerShell arrays are object-based
+- You can easily slice, loop, and modify arrays
+### When to Use Arrays
+- Working with lists of files
+- Processing command output
+- Repeating operations
+- Storing related values together
+### One-sentence takeaway
+Arrays allow PowerShell scripts to handle collections of data efficiently using indexed values and loops.
+
+## PowerShell Hashtables
+
+A hashtable in PowerShell is a data structure that stores key/value pairs.
+
+Each key uniquely identifies a value, allowing fast lookup and organized data storage.
+
+Unlike arrays, which use numeric indexes, hashtables use named keys, making code easier to read and maintain.
+
+```
+$student["Name"]
+$student["Course"]
+```
+Hashtables are commonly used for:
+- Configuration settings
+- Lookups
+- Grouped related data
+- Structured script output
+
+### Declaring and Creating Hashtables
+#### Basic Hashtable Syntax
+
+```
+$student = @{
+    Name   = "Owen"
+    Course = "CS118"
+    Grade  = 95
+}
+```
+- Keys appear on the left
+- Values appear on the right
+- Keys are usually strings or numbers
+
+#### Accessing Values by Key
+
+```
+$student["Name"]
+$student["Grade"]
+```
+
+#### Displaying the Entire Hashtable
+```
+$student
+```
+
+### Adding and Updating Hashtable Entries
+#### Add a New Key/Value Pair
+```
+$student["Status"] = "Active"
+```
+
+#### Update an Existing Value
+``` 
+$student["Grade"] = 98
+```
+### Removing Entries from a Hashtable
+#### Remove a Key
+``` 
+$student.Remove("Status")
+```
+#### Checking for Key Existence
+``` 
+$student.ContainsKey("Course")
+```
+Returns:
+- True if the key exists
+- False if it does not
+
+#### Getting Keys and Values
+Get All Keys
+``` 
+$student.Keys
+``` 
+Get All Values
+``` 
+$student.Values
+``` 
+
+### Looping Through a Hashtable
+#### Using foreach with Keys
+``` 
+foreach ($key in $student.Keys) {
+    "$key : $($student[$key])"
+}
+``` 
+#### Looping Through Key/Value Pairs
+ 
+``` 
+foreach ($item in $student.GetEnumerator()) {
+    "$($item.Key) = $($item.Value)"
+}
+``` 
+### Hashtable Properties and Methods
+#### Count Entries
+ 
+``` 
+$student.Count
+``` 
+ 
+#### Clear Hashtable
+ 
+``` 
+$student.Clear()
+``` 
+#### Ordered Hashtables
+By default, PowerShell hashtables do not preserve order.
+
+To keep items in insertion order, use an ordered hashtable.
+
+```
+$orderedStudent = [ordered]@{
+    Name   = "Maria"
+    Course = "CS118"
+    Grade  = 88
+}
+```
+
+### Hashtables vs Arrays
+| Feature | Hashtable | Array |
+| ------- | --------- | ----- |
+| Access method | Key | Index |
+| Lookup speed | Fast | Slower |
+| Order guaranteed | No (unless ordered) | Yes |
+| Readability | High | Moderate |
+| Best for | Named data | Sequential data |
+
+
+### Real-World Example: Configuration Settings
+``` 
+$config = @{
+    LogPath = "C:\Logs"
+    MaxSize = 10
+    Debug   = $true
+}
+ 
+if ($config["Debug"]) {
+    "Debug mode is enabled"
+}
+```
+### Hashtables with Objects
+``` 
+$services = @{
+    "Print Spooler" = "Spooler"
+    "Windows Update" = "wuauserv"
+}
+ 
+foreach ($svc in $services.Values) {
+    Get-Service $svc
+}
+``` 
+
+### Key Points for Students
+- Hashtables store key/value pairs
+- Keys must be unique
+- Hashtables are ideal for structured data
+- Use [ordered] if order matters
+- Prefer hashtables over arrays when data has meaningful labels
+### One-sentence takeaway
+Hashtables allow PowerShell scripts to store and retrieve data using meaningful keys instead of numeric indexes.
+
+
+## REGEX
+
+A regular expression (regex) is a pattern used to search, match, extract, or manipulate text. PowerShell supports regex through built-in operators such as:
+
+- -match
+- -notmatch
+- -replace
+- -split
+- Select-String
+Regex is extremely useful for:
+
+- Validating input
+- Searching logs and text files
+- Extracting data
+- Filtering command output
+
+### Using Regex in PowerShell
+
+#### Basic Syntax
+``` 
+"Hello123" -match "\d+"
+``` 
+ 
+Returns:
+ 
+``` 
+True
+``` 
+To see what matched:
+ 
+``` 
+$Matches[0]
+``` 
+
+### Common Regex Metacharacters
+| Symbol | Matches |
+| ------ | ------- |
+| ^ | Beginning of a line |
+| $ | End of a line |
+| . | Any single character |
+| [abc] | Any one character listed |
+| [^abc] | Any character not listed |
+| \A | Start of entire string |
+| \z | End of entire string |
+| * | 0 or more occurrences |
+| + | 1 or more occurrences |
+| ? | 0 or 1 occurrence |
+| {n} | Exactly n occurrences |
+| {n,} | n or more |
+| {n,m} | Between n and m |
+| `a | b` |
+| (re) | Capture group |
+| (?:re) | Non-capturing group |
+| \w | Word characters |
+| \W | Non-word characters |
+| \s | Whitespace |
+| \S | Non-whitespace |
+| \d | Digits |
+| \D | Non-digits |
+| \b | Word boundary |
+| \B | Non-word boundary |
+| \n, \t | Newline, tab |
+| \Q...\E | Escape literal text |
+
+### 1) Match Characters
+
+#### Example: Match Digits
+``` 
+"CS118" -match "\d+"
+$Matches[0]
+```
+Result:
+
+```
+118
+```
+#### Example: Match Beginning and End
+``` 
+"PowerShell" -match "^Power"
+ 
+"PowerShell" -match "Shell$"
+```
+
+### 2) Match Character Classes
+#### Example: Match Letters Only
+ 
+```
+"Hello123" -match "^[A-Za-z]+$"
+```
+Returns False because numbers are present.
+
+#### Example: Match Email-like Pattern
+ 
+```
+"user123@example.com" -match "\w+@\w+\.\w+"
+$Matches[0]
+```
+#### Example: Match Whitespace
+ 
+```
+"Hello World" -match "\s"
+```
+
+### 3) Match Quantifiers
+#### Example: One or More Digits
+ 
+```
+"Order ID: 45892" -match "\d+"
+```
+ 
+#### Example: Optional Character
+ 
+```
+"color" -match "colou?r"
+```
+Matches both color and colour.
+
+#### Example: Exact Length
+ 
+```
+"12345" -match "^\d{5}$"
+```
+ 
+### Using Regex with PowerShell Cmdlets
+#### Select-String (Search Text)
+
+```
+Get-Content example.txt | Select-String "\d{3}"
+```
+ 
+#### -replace (Modify Text)
+ 
+```
+"Phone: 555-1234" -replace "\d", "X"
+```
+Result:
+
+ 
+```
+Phone: XXX-XXXX
+```
+ 
+#### -split (Split Using Regex)
+ 
+```
+"red, blue; green" -split "[,;]\s*"
+```
+ 
+#### Capture Groups with $Matches
+ 
+```
+"User: Mike, ID: 42" -match "User:\s(\w+),\sID:\s(\d+)"
+$Matches[1]   # Name
+$Matches[2]   # ID
+```
+
+### Common PowerShell Regex Operators
+| Operator | Purpose |
+| -------- | ------- |
+| -match | Test for match |
+| -notmatch | Test for no match |
+| -replace | Replace text |
+| -split | Split string |
+| Select-String | Search files/streams |
+
+### CS118 Safety & Best Practices
+- ✔ Test patterns on small input
+- ✔ Start simple, then add complexity
+- ✔ Use anchors (^, $) when validating
+- ✔ Comment complex regex patterns
+- ✔ Avoid overly complex expressions
+
+### Key Takeaways for Students
+- Regex is a pattern-matching language
+- PowerShell integrates regex natively
+- Regex works on strings and text streams
+- Capture groups allow data extraction
+- Regex is powerful but should be readable
+### One-sentence takeaway
+Regular expressions let PowerShell scripts search, validate, and transform text using flexible pattern rules.
+
+## Regex Cheat Sheet for PowerShell
+
+### Where Regex Shows Up in PowerShell
+- Match: -match, -notmatch
+- Replace: -replace
+- Split: -split
+- Search files/text: Select-String
+``` 
+"CS118" -match "\d+"     # True
+$Matches[0]              # "118"
+"abc123" -replace "\d","X"   # "abcXXX"
+"red, blue; green" -split "[,;]\s*"
+Select-String -Path .\log.txt -Pattern "error|fail"
+``` 
+
+### Core Metacharacters
+| Pattern | Meaning | Example Match |
+| ------- | ------- | ------------- |
+| . | any char (except newline) | a.c → abc |
+| ^ | start of string/line | ^Hi |
+| $ | end of string/line | end$ |
+| \ | escape a special char | \. matches literal . |
+| ` | ` | OR |
+| () | capture group | (\d+) |
+| (?: ) | non-capturing group | `(?:Mr |
+| [] | character set | [aeiou] |
+| [^] | negated set | [^0-9] |
+
+`
+### Character Classes
+| Pattern | Meaning |
+| ------- | ------- |
+| \d / \D | digit / not digit |
+| \w / \W | word char (A–Z a–z 0–9 _) / not word |
+| \s / \S | whitespace / not whitespace |
+| [0-9] | digit range |
+| [A-Za-z] | letter range |
+
+
+### Quantifiers (How Many?)
+| Pattern | Meaning | Example |
+| ------- | ------- | ------- |
+| * | 0 or more | a* |
+| + | 1 or more | \d+ |
+| ? | 0 or 1 | colou?r |
+| {n} | exactly n | \d{5} |
+| {n,} | n or more | \w{3,} |
+| {n,m} | between n and m | \d{2,4} |
+
+#### Greedy vs Lazy
+
+- Greedy (default): .*
+- Lazy: .*?
+
+### Anchors & Boundaries
+| Pattern | Meaning | 
+| ------- | ------- |
+| ^ | start | 
+| $ | end | 
+| \b | word boundary | 
+| \B | not a word boundary | 
+
+#### Examples:
+
+``` 
+"cat" -match "^\w+$"     # only word chars
+"cat." -match "\bcat\b"  # whole word cat
+```
+
+### PowerShell: $Matches and Captures
+When you use -match, PowerShell fills $Matches:
+
+``` 
+"User: Mike ID: 42" -match "User:\s(\w+)\sID:\s(\d+)"
+$Matches[0]  # full match
+$Matches[1]  # "Mike"
+$Matches[2]  # "42"
+``` 
+Named groups:
+
+``` 
+"User: Mike ID: 42" -match "User:\s(?<Name>\w+)\sID:\s(?<ID>\d+)"
+$Matches["Name"]  # Mike
+$Matches["ID"]    # 42
+``` 
+
+#### ### Handy “Copy/Paste” Patterns
+#### Numbers
+- Integer: ^\d+$
+- 5-digit ZIP: ^\d{5}$
+- US phone (simple): ^\d{3}-\d{3}-\d{4}$
+#### Words / IDs
+- Only letters: ^[A-Za-z]+$
+- Username: ^[A-Za-z0-9_]{3,16}$
+#### Dates (basic)
+- YYYY-MM-DD: ^\d{4}-\d{2}-\d{2}$
+#### Email (basic, not perfect)
+- ^\w+@\w+\.\w+$
+#### IP Address (simple)
+- ^\d{1,3}(\.\d{1,3}){3}$ (doesn’t validate 0–255)
+
+### Common PowerShell Regex Tasks
+#### Test a match
+``` 
+if ("CS118" -match "\d+") { "Has digits" }
+``` 
+#### Filter objects with regex
+ 
+``` 
+Get-Process | Where-Object { $_.Name -match "^w" }
+``` 
+#### Replace with capture groups
+ 
+``` 
+"Last, First" -replace "(\w+),\s(\w+)", "$2 $1"
+``` 
+# "First Last"
+#### Search a file
+ 
+``` 
+Select-String -Path .\app.log -Pattern "error|fail|critical"
+``` 
+ 
+#### Quick Tips (Worth Remembering)
+- Use ^ and $ when validating an entire string.
+- Escape special characters: \. \? \+ 
+- Start simple, then add constraints.
+- Comment your regex if it’s longer than one line.
+
+
+## Backticks
+
+### Overview
+In PowerShell, the backtick (`) is the escape character.
+`
+It is used to:
+
+- Escape special characters
+- Insert special characters (newline, tab, etc.)
+- Continue commands onto the next line (line continuation)
+Key point for students:
+
+- The backtick is powerful but should be used sparingly and carefully.
+
+### 1) Escaping Special Characters
+The backtick allows special characters to be treated as literal text instead of having special meaning.
+
+Example: Escaping a Dollar Sign
+``` 
+Write-Host "The cost is `$10"
+``` 
+ 
+Output:
+
+ 
+``` 
+The cost is $10
+``` 
+Without the backtick, PowerShell would treat $10 as a variable.
+
+Example: Escaping Quotes
+ 
+``` 
+Write-Host "She said `"Hello`" to me"
+``` 
+Output:
+
+ 
+``` 
+She said "Hello" to me
+``` 
+
+### 2) Special Characters Using Backticks
+PowerShell supports several escape sequences using the backtick.
+
+| Sequence | Meaning |
+| -------- | ------- |
+| `n | New line | 
+| `r | Carriage return | 
+| `t | Tab | 
+  | `` | Literal backtick | 
+| `" | Double quote | 
+| `$ | Dollar sign | 
+| `0 | Null character | 
+
+### Example: New Line
+ 
+```
+Write-Host "Line one`nLine two"
+```
+### Example: Tab
+ 
+```
+Write-Host "Name`tScore"
+Write-Host "Owen`t95"
+```
+
+### 3) Line Continuation (Multi-Line Commands)
+A backtick at the end of a line tells PowerShell the command continues on the next line.
+
+Example
+``` 
+Get-Process `
+    | Where-Object { $_.CPU -gt 50 } `
+    | Sort-Object CPU -Descending
+```
+This improves readability for long commands.
+
+### 4) Backticks in Strings vs Single Quotes
+#### Double-Quoted Strings
+- Backticks are processed
+- Variables are expanded
+ 
+```
+$name = "Alex"
+Write-Host "Hello `$name"
+```
+#### Single-Quoted Strings
+- Backticks are literal
+- Variables are not expanded
+``` 
+Write-Host 'Hello `$name'
+``` 
+
+### 5) Common Mistakes with Backticks
+#### ❌ Trailing Spaces After a Backtick
+The backtick must be the last character on the line.
+
+``` 
+Get-Process `   # ❌ This will fail
+```
+ 
+#### ❌ Overusing Backticks for Line Continuation
+Better alternatives exist.
+
+#### Better option: Parentheses
+``` 
+Get-Process |
+    Where-Object { $_.CPU -gt 50 } |
+    Sort-Object CPU -Descending
+``` 
+#### Better option: Splatting
+ 
+``` 
+$params = @{
+    Path = "C:\Logs"
+    Recurse = $true
+}
+Get-ChildItem @params
+``` 
+
+### 6) Backticks in Here-Strings
+Backticks still work inside here-strings, but usually aren’t needed.
+
+``` 
+$text = @"
+First line
+Second line
+"@
+```
+### When to Use Backticks (Best Practices)
+- ✔ Escaping $, ", or `
+- ✔ Adding tabs or new lines in output
+- ✔ Rare cases of line continuation
+
+### When to Avoid Backticks
+- ❌ Complex pipelines
+- ❌ Long scripts
+- ❌ Readability-sensitive code
+`
+
+### CS118 Summary Table
+| Use Case | Recommended |
+| -------- | ----------- |
+| Escape characters | Yes |
+| Newlines & tabs | Yes |
+| Line continuation | Sometimes |
+| Complex scripts | Avoid |
+
+### One-Sentence Takeaway
+In PowerShell, the backtick is the escape character, useful for special characters and formatting, but it should be used carefully to avoid hard-to-debug errors.
+
+## Brackets
+
+PowerShell supports three types of brackets, each with a different purpose:
+
+- Parentheses ()
+- Braces {}
+- Square brackets []
+Understanding how and when to use each type is essential for writing clear, correct PowerShell scripts.
+
+### 1) Parentheses ()
+#### What Parentheses Are Used For
+Parentheses are used to:
+
+- Pass arguments
+- Group expressions
+- Resolve ambiguity in calculations
+- Enclose conditions
+- Create arrays (with @())
+### Examples
+#### Grouping Expressions
+``` 
+$result = (5 + 3) * 2
+$result
+``` 
+ 
+Without parentheses, multiplication would happen first.
+
+#### Passing Arguments
+ 
+``` 
+Get-Process (Get-Content processlist.txt)
+``` 
+ 
+#### Enclosing Conditions
+ 
+``` 
+$x = 10
+if ($x -le 20) {
+    Write-Host "x is less than or equal to 20"
+}
+``` 
+#### Creating an Array
+ 
+``` 
+$array = @("item1", "item2", "item3")
+``` 
+ 
+#### Using Parentheses in Loops
+ 
+``` 
+foreach ($element in $array) {
+    $element
+}
+``` 
+Output:
+ 
+``` 
+item1
+item2
+item3
+``` 
+
+### 2) Braces {}
+#### What Braces Are Used For
+Braces define script blocks. They are used to:
+
+- Enclose blocks of code
+- Group multiple statements
+- Define logic structures
+- Create functions and loops
+Key idea:
+
+Braces tell PowerShell what code belongs together.
+
+### Examples
+#### if Statement
+``` 
+$x = 10
+ 
+if ($x -le 20) {
+    Write-Host "This is an if statement"
+}
+``` 
+Output:
+
+ 
+``` 
+This is an if statement
+``` 
+ 
+#### Loop Block
+ 
+``` 
+for ($i = 0; $i -lt 3; $i++) {
+    Write-Host "Iteration $i"
+}
+``` 
+#### Function Definition
+ 
+``` 
+function Show-Message {
+    Write-Host "Hello from a function"
+}
+``` 
+
+### 3) Square Brackets []
+#### What Square Brackets Are Used For
+Square brackets are used to:
+
+- Access array elements
+- Access hashtable values
+- Define types
+- Perform wildcard or pattern filtering
+- Work with ranges
+### Examples
+#### Accessing an Array Element
+``` 
+$array = @("item1", "item2", "item3")
+$array[0]
+``` 
+#### Looping Through an Array Using Index
+ 
+``` 
+for ($i = 0; $i -lt $array.Length; $i++) {
+    $array[$i]
+}
+``` 
+Output:
+
+ 
+``` 
+item1
+item2
+item3
+``` 
+#### Accessing Hashtable Values
+ 
+``` 
+$student = @{
+    Name = "Owen"
+    Course = "CS118"
+}
+ 
+$student["Name"]
+``` 
+#### Type Declaration
+ 
+``` 
+[int]$number = 5
+ 
+Pattern Filtering (Wildcards / Regex-like)
+ 
+Get-Process [r-s]*
+``` 
+This retrieves processes whose names start with r through s.
+
+
+### Summary Table
+| Bracket Type | Syntax | Common Uses |
+| ------------ | ------ | ----------- |
+| Parentheses | () | Arguments, conditions, expressions, arrays |
+| Braces | {} | Code blocks, logic, functions |
+| Square Brackets | [] | Indexing, types, filtering |
+
+
+### Common Mistakes to Avoid
+- ❌ Confusing {} with ()
+- ❌ Forgetting that arrays are zero-based
+- ❌ Mixing up array indexing [] with script blocks {}
+
+### Key Takeaway for Students
+Each type of bracket in PowerShell has a specific role: parentheses group expressions, braces define code blocks, and square brackets access data and types.
+
+## PowerShell Cmdlets (Advanced Usage Examples)
+
+Tip for students: Most “advanced PowerShell” is just learning to combine cmdlets using the pipeline |.
+
+### 1) Get-Unique
+Purpose: Removes duplicate items from a sorted list.
+
+```
+"apple","apple","banana","banana","cherry" | Sort-Object | Get-Unique
+```
+ 
+Get-Unique works best when the input is already sorted.
+
+### 2) Group-Object
+Purpose: Groups items and shows counts.
+
+ 
+```
+Get-Service | Group-Object Status
+```
+ 
+### 3) Measure-Object
+Purpose: Calculates count, min, max, average, sum.
+
+ 
+```
+Get-Process | Measure-Object -Property CPU -Average -Maximum -Minimum
+```
+ 
+### 4) Compare-Object
+Purpose: Compares two lists and shows differences.
+
+ 
+```
+$a = "A","B","C"
+$b = "B","C","D"
+Compare-Object $a $b
+```
+### 5) Format-List
+Purpose: Displays objects in a detailed list format.
+
+ 
+```
+Get-Process -Name explorer | Format-List *
+```
+ 
+### 6) Format-Wide
+Purpose: Displays output in wide columns (compact view).
+
+ 
+```
+Get-ChildItem | Format-Wide -Property Name -Column 3
+```
+ 
+### 7) Where-Object
+Purpose: Filters objects based on a condition.
+
+ 
+```
+Get-Process | Where-Object { $_.CPU -gt 50 }
+```
+ 
+### 8) Get-ChildItem
+Purpose: Lists files and folders (like dir).
+
+ 
+```
+Get-ChildItem -Path $env:TEMP -Filter *.log -Recurse -ErrorAction SilentlyContinue
+```
+ 
+### 9) ForEach-Object
+Purpose: Performs an action for each item in the pipeline.
+
+ 
+```
+Get-Service | ForEach-Object { "$($_.Name) is $($_.Status)" }
+```
+ 
+### 10) Start-Sleep
+Purpose: Pauses script execution.
+
+
+```
+Write-Host "Waiting..."
+Start-Sleep -Seconds 2
+Write-Host "Done."
+```
+### 11) Read-Host
+Purpose: Prompts the user for input.
+
+ 
+```
+$name = Read-Host "Enter your name"
+Write-Host "Hello, $name"
+```
+### 12) Select-Object
+Purpose: Selects specific properties or limits output.
+
+ 
+```
+Get-Process | Select-Object -First 5 Name, Id, CPU
+```
+ 
+### 13) Sort-Object
+Purpose: Sorts objects.
+
+ 
+```
+Get-Process | Sort-Object CPU -Descending | Select-Object -First 10 Name, CPU
+```
+ 
+### 14) Write-Warning
+Purpose: Displays a warning message (yellow).
+
+ 
+```
+Write-Warning "This is a warning message. Proceed carefully."
+```
+ 
+### 15) Write-Host
+Purpose: Prints directly to the console.
+
+ 
+```
+Write-Host "This prints to the screen only (not pipeline output)."
+```
+Teaching tip: In scripts, prefer producing output objects over Write-Host when possible.
+
+### 16) Invoke-Item
+Purpose: Opens a file or folder using the default program.
+
+ 
+```
+Invoke-Item $env:TEMP
+```
+ 
+### 17) Invoke-Expression (Use with caution)
+Purpose: Runs a string as PowerShell code.
+
+ 
+```
+$cmd = "Get-Date"
+Invoke-Expression $cmd
+```
+⚠ Security warning: Don’t use this on untrusted input.
+
+### 18) Measure-Command
+Purpose: Measures how long a command takes to run.
+
+ 
+```
+Measure-Command { Get-ChildItem $env:TEMP -Recurse -ErrorAction SilentlyContinue }
+```
+ 
+### 19) Invoke-History
+Purpose: Runs a previous command from session history by ID.
+
+ 
+```
+Get-History
+Invoke-History 1
+```
+### 20) Add-History
+Purpose: Adds a command to your session history.
+
+ 
+```
+Add-History -InputObject (Get-History -Count 1)
+Get-History
+```
+(Realistically, students will mostly use Get-History + rerun.)
+
+### 21) Get-History
+Purpose: Displays your session command history.
+
+ 
+```
+Get-History
+```
+ 
+### 22) Get-Culture
+Purpose: Shows system culture settings (date/time, number formats).
+
+ 
+```
+Get-Culture
+```
+Example use:
+
+ 
+```
+(Get-Culture).DateTimeFormat.ShortDatePattern
+```
+
+### Quick “Pipeline Patterns” (Great for CS118)
+#### Filter → Sort → Select
+``` 
+Get-Process |
+Where-Object { $_.CPU -gt 10 } |
+Sort-Object CPU -Descending |
+Select-Object -First 5 Name, CPU
+``` 
+#### Group and Count
+ 
+``` 
+Get-ChildItem $env:TEMP |
+Group-Object Extension |
+Sort-Object Count -Descending |
+Select-Object -First 10 Name, Count
+``` 
+
+## Exercise - File Input and Output
+
+### PowerShell Scripts: Creating and Reading Different File Types
+#### Safe Lab Setup (Run First)
+``` 
+$LabRoot = Join-Path $env:TEMP "PS_FileTypes_Lab"
+New-Item -Path $LabRoot -ItemType Directory -Force | Out-Null
+Set-Location $LabRoot
+"Lab folder: $LabRoot"
+``` 
+ 
+#### 1) Create Text File
+Purpose: Create a .txt file and write content to it.
+
+``` 
+"Hello from PowerShell!" | Set-Content -Path "$LabRoot\example.txt"
+``` 
+ 
+#### 2) Read Text File
+Purpose: Read the contents of a .txt file.
+
+ 
+``` 
+Get-Content -Path "$LabRoot\example.txt"
+``` 
+ 
+#### 3) Create XML File
+Purpose: Create a simple .xml file.
+
+ 
+``` 
+$xmlContent = @"
+<Students>
+  <Student>
+    <Name>Owen</Name>
+    <Course>CS118</Course>
+  </Student>
+  <Student>
+    <Name>Maria</Name>
+    <Course>CS118</Course>
+  </Student>
+</Students>
+"@
+ 
+$xmlContent | Set-Content -Path "$LabRoot\students.xml"
+``` 
+
+#### 4) Read XML File
+Purpose: Load XML into an object and read nodes.
+
+``` 
+[xml]$xml = Get-Content -Path "$LabRoot\students.xml"
+$xml.Students.Student | ForEach-Object {
+    "Name: $($_.Name)  Course: $($_.Course)"
+}
+``` 
+#### 5) Create CSV File
+Purpose: Create a .csv file from objects.
+
+ 
+``` 
+$data = @(
+    [pscustomobject]@{ Name="Owen";  Course="CS118"; Score=95 }
+    [pscustomobject]@{ Name="Maria"; Course="CS118"; Score=88 }
+)
+ 
+$data | Export-Csv -Path "$LabRoot\grades.csv" -NoTypeInformation
+``` 
+#### 6) Read CSV File
+Purpose: Import the CSV as objects and work with the data.
+
+ 
+``` 
+$grades = Import-Csv -Path "$LabRoot\grades.csv"
+$grades | Format-Table -AutoSize
+``` 
+Example filtering:
+
+ 
+``` 
+$grades | Where-Object { [int]$_.Score -ge 90 }
+``` 
+
+#### 7) Create HTML File
+Purpose: Create a basic HTML page.
+
+``` 
+$html = @"
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PowerShell HTML Demo</title>
+</head>
+<body>
+  <h1>Hello from PowerShell</h1>
+  <p>This file was generated by a script.</p>
+</body>
+</html>
+"@
+ 
+$html | Set-Content -Path "$LabRoot\demo.html"
+``` 
+Optional: open it in your default browser:
+
+ 
+``` 
+Start-Process "$LabRoot\demo.html"
+``` 
+ 
+#### 8) Read HTML File
+Purpose: Read the file contents (HTML is just text).
+
+ 
+``` 
+Get-Content -Path "$LabRoot\demo.html"
+``` 
+Optional: read as a single string:
+
+ 
+``` 
+Get-Content -Path "$LabRoot\demo.html" -Raw
+``` 
+
+#### 9) Erasing File Content
+Purpose: Clear a file without deleting it.
+```
+Method A (Clear-Content):
+
+ 
+Clear-Content -Path "$LabRoot\example.txt"
+```
+Method B (Overwrite with empty content):
+
+ 
+```
+"" | Set-Content -Path "$LabRoot\example.txt"
+```
+ 
+#### 10) Append Text Data
+Purpose: Add content to the end of a file.
+
+ 
+```
+"New line added at $(Get-Date)" | Add-Content -Path "$LabRoot\example.txt"
+```
+Verify:
+
+ 
+```
+Get-Content -Path "$LabRoot\example.txt"
+```
+
+### Quick Reference: Best Cmdlets for File Content
+| Task | Cmdlet |
+| ---- | ------ |
+| Write/overwrite file | Set-Content |
+| Append to file | Add-Content |
+| Read file | Get-Content |
+| Clear file contents | Clear-Content |
+| Export objects to CSV | Export-Csv |
+| Import CSV to objects | Import-Csv |
+
+
+
+### Optional Cleanup (End of Lab)
+``` 
+Remove-Item -Path $LabRoot -Recurse -Force
+```
+
+
+
+
+
+
+
 
 
 
