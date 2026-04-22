@@ -230,34 +230,34 @@ JavaScript and Java are both popular programming languages, but they have differ
 
 ### JavaScript
 1. Purpose and Use:
-    Primarily used for adding interactive behavior to web pages.
-    Commonly used in web development for front-end and increasingly for back-end (e.g., Node.js).
+    - Primarily used for adding interactive behavior to web pages.
+    - Commonly used in web development for front-end and increasingly for back-end (e.g., Node.js).
 2. Execution Environment:
-    Runs in web browsers and on servers via environments like Node.js.
+    - Runs in web browsers and on servers via environments like Node.js.
 3. Syntax and Language Type:
-    Dynamically typed, meaning variable types are determined at runtime.
-    Interpreted language (though modern engines often use just-in-time compilation).
+    - Dynamically typed, meaning variable types are determined at runtime.
+    - Interpreted language (though modern engines often use just-in-time compilation).
 4. Integration:
-    Directly embedded in HTML and executed within the browser.
-    Works alongside HTML and CSS in web development.
+    - Directly embedded in HTML and executed within the browser.
+    - Works alongside HTML and CSS in web development.
 5. Concurrency:
-    Uses event-driven, non-blocking I/O model through the event loop (asynchronous programming).
+    - Uses event-driven, non-blocking I/O model through the event loop (asynchronous programming).
 
 ### Java
 1. Purpose and Use:
-    General-purpose programming language.
-    Widely used in enterprise environments, Android app development, and large systems.
+    - General-purpose programming language.
+    - Widely used in enterprise environments, Android app development, and large systems.
 2. Execution Environment:
-    Runs on the Java Virtual Machine (JVM), which makes it platform-independent.
-    Requires compilation to bytecode before execution on the JVM.
+    - Runs on the Java Virtual Machine (JVM), which makes it platform-independent.
+    - Requires compilation to bytecode before execution on the JVM.
 3. Syntax and Language Type:
-    Statically typed, meaning variable types are known at compile time.
-    Compiled language (source code is compiled into bytecode, which runs on the JVM).
+    - Statically typed, meaning variable types are known at compile time.
+    - Compiled language (source code is compiled into bytecode, which runs on the JVM).
 4. Integration:
-    Not directly embedded in HTML; usually used to build standalone applications, back-end servers, and Android applications.
-    Often used with frameworks like Spring for web applications.
+    - Not directly embedded in HTML; usually used to build standalone applications, back-end servers, and Android applications.
+    - Often used with frameworks like Spring for web applications.
 5. Concurrency:
-    Uses multi-threading capabilities for handling concurrency (synchronous programming).
+    - Uses multi-threading capabilities for handling concurrency (synchronous programming).
 
 ### Summary
 - JavaScript is mainly used for web development to create interactive web pages and can run directly in browsers. It's dynamically typed and follows an event-driven model.
