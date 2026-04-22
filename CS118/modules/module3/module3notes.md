@@ -265,4 +265,145 @@ JavaScript and Java are both popular programming languages, but they have differ
 
 Despite their similar names, they are quite different in terms of their usage, syntax, and runtime environments.
 
+## First Webpage
+
+```
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="CS118">
+  <meta name="keywords" content="HTML, CSS, JavaScript">
+  <meta name="author" content="Michael Lyons">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fun with JavaScript</title>
+</head>
+ 
+ 
+<body>
+<h1>Welcome to CS118</h1>
+<br>
+<h2>Fun with JavaScript</h2>
+<b>This is some sample text</b>
+<br>
+<br>
+<i>That shows the different formats of the file</i>
+<br>
+<br>
+<img src=" https://i.natgeofe.com/n/5d00b0cc-ab95-4522-ad13-7c65b7589e6b/NationalGeographic_748483.jpg?w=636&h=424">
+<br>
+<br>
+<tt> I can insert images by referencing their locations and writing them in typewriter style.</tt>
+<br>
+<br>
+<h3>I can make lists</h3>
+<br>
+<br>
+<li>Dogs</li>
+<li>Cats</li>
+<li>Fish</li>
+<li>Bears</li>
+</BODY>
+</HTML>
+```
+
+## HEAD vs. BODY
+
+In HTML, the <head> and <body> elements serve distinct purposes and contain different content types crucial for a web page. Here is a basic overview:
+
+### <head>
+The <head> element contains metadata and other elements that are not directly visible to users but are essential for the document's functionality, search engine optimization (SEO), and linking to external resources. Common contents include:
+
+- Title: Defined with the <title> tag, this specifies the webpage title that appears in the browser's title bar or tab.
+- Stylesheets: External CSS files are linked here with the <link> tag to style the webpage.
+- Scripts: JavaScript files can be included with the <script> tag for interactivity or functionality. While scripts can also be placed in the <body>, scripts in the <head> are loaded before the body content.
+- Meta Tags: Provide metadata such as character set declaration (<meta charset="utf-8">), viewport settings for responsive design (<meta name="viewport" content="width=device-width, initial-scale=1.0">), description, keywords, and author of the document.
+- Link to External Resources: Besides CSS, other resources like icons (<link rel="icon" href="favicon.ico">) can be specified.
+- Base URL: The base URL of the document can be set with the <base> tag for resolving relative URLs.
+### <body>
+The <body> element contains everything visible to the user on the webpage. This includes:
+
+- Content: Text, images, videos, and other media displayed on the page.
+- Structural Markup: Elements like <h1> through <h6> for headings, <p> for paragraphs, <div> and <span> for grouping, and <ul>/<ol> for lists.
+- Links: Hyperlinks defined with the <a> tag that users can interact with.
+- Forms: Interactive forms for inputting data, defined with the <form> tag.
+- Scripts: While typically included in the <head>, JavaScript can also be placed at the end of the <body> to improve page load times since it ensures that the script runs after the HTML content has been loaded.
+
+In summary, the <head> section is for elements that affect the whole page or link to external resources but do not directly display content to the web page's visitor. The <body> section is for all content meant to be visible and directly interacted with by the user.
+
+
+## HTML Attributes
+- All HTML elements can have attributes
+- Attributes provide additional information about elements
+- Attributes are always specified in the start tag
+- Attributes usually come in name/value pairs like: name="value"
+### The href Attribute
+The <a> tag defines a hyperlink. The href attribute specifies the URL of the page the link goes to
+```
+<a href="https://www.massbay.edu">Visit MassBay</a>
+```
+
+### The src Attribute
+The <img> tag is used to embed an image in an HTML page. The src attribute specifies the path to the image to be displayed
+```
+<img src="example.jpg">
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Example.jpg">
+```
+There are two ways to specify the URL in the src attribute:
+
+1. Absolute URL - Links to an external image hosted on another website. Example: src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Example.jpg".
+
+2. Relative URL - Links to an image hosted within the website. Here, the URL does not include the domain name. If the URL begins without a slash, it will be relative to the current page. Example: src="img_girl.jpg". If the URL begins with a slash, it will be relative to the domain. Example: src="/images/example.jpg".
+
+Be mindful of copyright laws.
+
+
+### The width and height Attributes
+The <img> tag should also contain the width and height attributes, which specify the width and height of the image (in pixels)
+
+<img src="example.jpg" width="500" height="600">
+
+### The alt Attribute
+The required alt attribute for the <img> tag specifies an alternate text for an image if the image, for some reason, cannot be displayed. This can be due to a slow connection, an error in the src attribute, or if the user uses a screen reader.
+
+<img src="example.jpg" alt="This is an image of a sign that says This is an Example.">
+
+The style Attribute
+The style attribute adds styles to an element, such as color, font, size, and more.
+```
+<p style="color:red;">This is a red paragraph.</p>
+```
+
+### The lang Attribute
+You should always include the lang attribute inside the <html> tag to declare the Web page's language. This is meant to assist search engines and browsers.
+
+The following example specifies English as the language:
+```
+<!DOCTYPE html>
+<html lang="en">
+<body>
+...
+</body>
+</html>
+```
+
+
+Country codes can also be added to the language code in the lang attribute. So, the first two characters define the language of the HTML page, and the last two define the country.
+
+The following example specifies English as the language and United States as the country:
+```
+<!DOCTYPE html>
+<html lang="en-US">
+<body>
+...
+</body>
+</html>
+```
+
+### The title Attribute
+The title attribute defines some extra information about an element.
+
+The value of the title attribute will be displayed as a tooltip when you mouse over the element:
+```
+<p title="I am explaining title">This is a paragraph.</p>
+```
 
