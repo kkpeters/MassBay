@@ -306,7 +306,7 @@ Despite their similar names, they are quite different in terms of their usage, s
 </HTML>
 ```
 
-## HEAD vs. BODY
+## `<HEAD>` vs. `<BODY>`
 
 In HTML, the `<head>` and `<body>` elements serve distinct purposes and contain different content types crucial for a web page. Here is a basic overview:
 
@@ -409,3 +409,314 @@ The value of the title attribute will be displayed as a tooltip when you mouse o
 <p title="I am explaining title">This is a paragraph.</p>
 ```
 
+## Formatting
+
+### HTML Paragraphs
+The HTML `<p>` element defines a paragraph.
+
+A paragraph always starts on a new line, and browsers automatically add some white space (a margin) before and after a paragraph.
+
+```
+<p>This is a paragraph.</p>
+<p>This is another paragraph.</p>
+```
+What happens when you enter it like this in your editor?
+
+```
+<p>
+
+This paragraph
+
+contains a lot of lines
+
+in the source code,
+
+but the browser
+
+ignores it.
+
+</p>
+
+```
+
+```
+<p>
+
+This paragraph
+
+contains        a lot of spaces
+
+in the source        code,
+
+but the       browser
+
+ignores it.
+
+</p>
+```
+
+HTML contains several elements for defining text with a special meaning.
+
+- `<b>` - Bold text
+- `<strong>` - Important text
+- `<i>` - Italic text
+- `<em>` - Emphasized text
+- `<mark>` - Marked text
+- `<small>` - Smaller text
+- `<del>` - Deleted text
+- `<ins>` - Inserted text
+- `<sub>` - Subscript text
+- `<sup>` - Superscript text
+
+```
+<b>This text is bold</b>
+<br>
+<strong>This text is important!</strong>
+<br>
+<i>This text is italic</i>
+<br>
+<em>This text is emphasized</em>
+<br>
+<small>This is some smaller text.</small>
+<br>
+<p>Do not forget to buy <mark>milk</mark> today.</p>
+<br>
+<p>My favorite color is <del>blue</del> red.</p>
+<br>
+<p>My favorite color is <del>blue</del> <ins>red</ins>.</p>
+<br>
+<p>This is <sub>subscripted</sub> text.</p>
+<br>
+<p>This is <sup>superscripted</sup> text.</p>
+```
+
+One of my favorites was `<tt>`
+
+The `<tt>` tag in HTML stands for "teletype text" and was used to represent text in a monospace (fixed-width) font, which is similar to the text produced by a typewriter. This tag was commonly used to display computer code or any other content where the alignment and spacing of characters are important. However, it is important to note that the `<tt>` tag has been deprecated in HTML5, meaning it is no longer recommended for use in modern web development. Instead, CSS and other more semantic HTML tags like `<code>` for code snippets, `<pre>` for preformatted text, and `<samp>` for sample output are recommended to achieve similar effects.
+
+```
+<p>This is regular text - and this is <tt>monospace text</tt>.</p>
+```
+
+### Modern Alternative
+To achieve a similar monospace styling in a manner that's compliant with HTML5, you would use CSS. Here is how you can replicate the effect of the `<tt>` tag using CSS:
+
+In the HTML file:
+
+```
+<p>This is regular text - and this is <span class="monospace">monospace text</span>.</p>
+```
+
+
+In the CSS file:
+
+```
+.monospace {
+    font-family: monospace;
+}
+```
+This approach allows for greater flexibility and control over the styling of the text, as well as being semantic and accessible. It is always a good practice to use semantic HTML and CSS for styling to ensure your web content is accessible and maintainable.
+
+### HTML Comment Tag
+You can add comments to your HTML source by using the following syntax:
+
+```
+<!-- Write your comments here -->
+```
+Try this out:
+
+```
+<!-- This is a comment -->
+ 
+<p>This is a paragraph.</p>
+ 
+<!-- Remember to add more information here -->
+```
+Then this one:
+
+```
+<p>This is a paragraph.</p>
+<!--
+<p>Look at this cool image:</p>
+<img border="0" src="example.jpg" alt="This is an example image">
+-->
+<p>This is a paragraph too.</p>
+```
+
+## Quotes and Citation
+
+### HTML `<blockquote>` for Quotations
+
+The HTML `<blockquote>` element defines a quoted section from another source.
+
+Browsers usually indent `<blockquote>` elements.
+```
+<p>Here is a quote from WWF's website:</p>
+<blockquote cite="http://www.worldwildlife.org/who/index.html">
+For 60 years, WWF has worked to help people and nature thrive. As the world's leading conservation organization, WWF works in nearly 100 countries. At every level, we collaborate with people around the world to develop and deliver innovative solutions that protect communities, wildlife, and the places in which they live.
+</blockquote>
+```
+### HTML `<q>` for Short Quotations
+The HTML `<q>` tag defines a short quotation.
+
+Browsers usually insert quotation marks around the quotation.
+
+```
+<p>WWF's goal is to: <q>Build a future where people live in harmony with nature.</q></p>
+```
+
+### HTML `<abbr>` for Abbreviations
+The HTML `<abbr>` tag defines an abbreviation or an acronym, like "HTML", "CSS", "Mr.", "Dr.", "ASAP", "ATM".
+
+Marking abbreviations can give useful information to browsers, translation systems, and search-engines.
+```
+<p>The <abbr title="World Health Organization">WHO</abbr> was founded in 1948.</p>
+```
+
+### HTML `<address>` for Contact Information
+The HTML `<address>` tag defines the contact information for the author/owner of a document or an article.
+
+The contact information can be an email address, URL, physical address, phone number, social media handle, etc.
+
+The text in the `<address>` element usually renders in italics, and browsers will always add a line break before and after the `<address>` element.
+```
+<address>
+Written by John Doe.<br>
+Visit us at:<br>
+Example.com<br>
+Box 564, Disneyland<br>
+USA
+</address>
+```
+
+### HTML `<cite>` for Work Title
+The HTML `<cite>` tag defines the title of a creative work (e.g. a book, a poem, a song, a movie, a painting, a sculpture, etc.).
+
+Note: A person's name is not the title of a work.
+
+The text in the `<cite>` element usually renders in italic.
+```
+<p><cite>Scream</cite> directed Wes Craven. Released in 1996.</p>
+```
+
+### HTML `<bdo>` for Bi-Directional Override
+BDO stands for Bi-Directional Override.
+
+The HTML `<bdo>` tag is used to override the current text direction:
+```
+<bdo dir="rtl">This text will be written from right to left</bdo>
+```
+
+## Style 
+
+### The HTML Style Attribute
+Setting the style of an HTML element can be done with the style attribute.
+
+The HTML style attribute has the following syntax:
+
+```
+<tagname style="property:value;">
+```
+The property is a CSS property. The value is a CSS value.
+
+### Background Color
+The CSS background-color property defines the background color for an HTML element.
+```
+<body style="background-color:powderblue;">
+ 
+<h1>This is a heading</h1>
+<p>This is a paragraph.</p>
+ 
+</body>
+```
+
+
+The background-color CSS property specifies the background color of an element. The color can be specified in several different ways:
+
+- Keyword: Using predefined color names like red, blue, green, etc. There are over 140 named colors recognized by modern browsers.
+- Hexadecimal (Hex): A # followed by either 3, 4, 6, or 8 hexadecimal characters. For example, #ff0000 is red, #00ff00 is green, and #0000ff is blue. The 3- and 4-character notations are shorthand for the 6- and 8-character forms, where each character is repeated (e.g., #f00 is shorthand for #ff0000).
+- RGB and RGBA: rgb() and rgba() functions are used, where rgb stands for red, green, blue, and stands for alpha (opacity). For example, rgb(255, 0, 0) is red, rgba(255, 0, 0, 0.5) is red with 50% opacity.
+- HSL and HSLA: Standing for hue, saturation, lightness, and alpha (opacity), this is another functional notation. For example, hsl(0, 100%, 50%) is bright red, and hsla(0, 100%, 50%, 0.5) adds 50% opacity to that color.
+- Transparent: Specifies that the background color should be transparent. This can be useful when overlaying elements on top of each other.
+- CurrentColor: This keyword specifies that the value of the background color should be the same as the computed value of the color property for the element.
+
+- System Colors (deprecated): These names were originally intended to allow web designers to match their content to the user's system theme. However, they are now deprecated due to inconsistencies across platforms and browsers.
+You can choose any of these methods based on your specificity, opacity, and compatibility needs. Hexadecimal and RGB(A) are the most commonly used methods due to their simplicity and broad support across all browsers.
+
+What happens with this?
+
+```
+<body>
+ 
+<h1 style="background-color:powderblue;">This is a heading</h1>
+<p style="background-color:tomato;">This is a paragraph.</p>
+ 
+</body>
+```
+
+
+### Text Color
+The CSS color property defines the text color for an HTML element
+```
+<h1 style="color:green;">This is a heading</h1>
+<p style="color:blue;">This is a paragraph.</p>
+```
+
+#### Color Names Supported by All Browsers
+All modern browsers support the following 140 color names (click on a color name, or a hex value, to view the color as the background color along with different text colors): https://www.w3schools.com/colors/colors_hex.asp
+
+### Fonts
+The CSS font-family property defines the font for an HTML element.
+```
+<h1 style="font-family:verdana;">This is a heading</h1>
+<p style="font-family:courier;">This is a paragraph.</p>
+```
+You have several options when you specify fonts in CSS using the font-family property. These can be broadly categorized into web-safe fonts and web fonts.
+
+### Web-Safe Fonts
+Web-safe fonts are widely installed across different operating systems, ensuring a consistent look of your text across different devices without downloading additional fonts. Here are some commonly used web-safe font families:
+
+1. Serif Fonts:
+    - Times New Roman
+    - Georgia
+    - Garamond
+2. Sans-Serif Fonts:
+    - Arial
+    - Helvetica
+    - Verdana
+    - Tahoma
+    - Trebuchet MS
+3. Monospace Fonts:
+    - Courier New
+    - Lucida Console
+    - Monaco
+
+These fonts are called "web-safe" because they are likely to be present on most devices, and therefore, the page will display as intended without needing to fetch and load an external font.
+
+### Web Fonts
+Web fonts are fonts that are not pre-installed on a user’s device and are downloaded from the web as needed. This allows web designers more flexibility and creativity in their designs but requires ensuring that the fonts are correctly loaded and accessible to users. Some sources for web fonts include:
+
+1. Google Fonts: A popular library of licensed fonts that can be included in your web pages.
+2. Adobe Fonts: Offers a vast collection of quality fonts accessible through Adobe's subscription services.
+3. Font Squirrel: Provides hand-selected fonts that are licensed for commercial work.
+
+To use web fonts, you typically link to the font externally using <link> in your HTML or @import in your CSS, then specify the font in your font-family property.
+
+### Specifying Fonts in CSS
+When specifying the font-family in CSS, it is a good practice to list multiple font names as a "fallback" system if the first choice font is unavailable. You should end the list with one of the five generic font families: serif, sans-serif, monospace, cursive, and fantasy.
+
+Remember, the availability of web fonts depends on the method you use to include them in your project (e.g., direct linking, downloading, etc.), and ensuring they are accessible across all devices requires proper font licensing and inclusion techniques.
+
+### Text Size
+The CSS font-size property defines the text size for an HTML element.
+```
+<h1 style="font-size:300%;">This is a heading</h1>
+<p style="font-size:160%;">This is a paragraph.</p>
+```
+
+### Text Alignment
+The CSS text-align property defines the horizontal text alignment for an HTML element.
+```
+<h1 style="text-align:center;">Centered Heading</h1>
+<p style="text-align:center;">Centered paragraph.</p>
+```
