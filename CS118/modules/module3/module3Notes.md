@@ -1,4 +1,4 @@
-# Module 3 Notes (Javascript)
+# Module 3.1 Notes (HTML and CSS)
 
 ## HTML Cheat Sheet
 
@@ -720,3 +720,704 @@ The CSS text-align property defines the horizontal text alignment for an HTML el
 <h1 style="text-align:center;">Centered Heading</h1>
 <p style="text-align:center;">Centered paragraph.</p>
 ```
+
+## CSS 
+
+CSS stands for Cascading Style Sheets. It is a style sheet language used to describe the presentation of a document written in markup language like HTML. CSS describes how elements should be rendered on screen, in print, or other media. It controls the layout, colors, fonts, and other visual aspects of web pages, allowing web designers to separate the content of a webpage from its presentation style, making it easier to maintain and update websites. CSS selects HTML elements and applies various styles, defined in a separate CSS file or embedded within the HTML document.
+
+### Using CSS
+CSS can be added to HTML documents in 3 ways:
+
+- Inline - by using the style attribute inside HTML elements
+- Internal - by using a `<style>` element in the `<head>` section
+- External - by using a `<link>` element to link to an external CSS file
+The most common way to add CSS is to keep the styles in external CSS files. However, in this tutorial, we will use inline and internal styles because they are easier to demonstrate and try.
+
+### Inline CSS
+An inline CSS is used to apply a unique style to a single HTML element.
+
+An inline CSS uses the style attribute of an HTML element.
+
+The following example sets the text color of the `<h1>` element to blue and the text color of the `<p>` element to red:
+
+```
+<h1 style="color:blue;">A Blue Heading</h1>
+ 
+<p style="color:red;">A red paragraph.</p>
+```
+<h1 style="color:blue;">A Blue Heading</h1>
+
+### Internal CSS
+An internal CSS defines a style for a single HTML page.
+
+An internal CSS is defined in an HTML page's `<head>` section within a `<style>` element.
+
+The following example sets the text color of ALL the `<h1>` elements (on that page) to blue and the text color of ALL the `<p>` elements to red. In addition, the page will be displayed with a "powderblue" background color: 
+
+Third Webpage:
+```
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {background-color: powderblue;}
+h1   {color: blue;}
+p    {color: red;}
+</style>
+</head>
+<body>
+ 
+<h1>This is a heading</h1>
+<p>This is a paragraph.</p>
+ 
+</body>
+</html>
+```
+### External CSS
+An external style sheet defines the style for many HTML pages.
+
+To use an external style sheet, add a link to it in the `<head>` section of each HTML page:
+
+HTML FILE:
+```
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+ 
+<h1>This is a heading</h1>
+<p>This is a paragraph.</p>
+ 
+</body>
+</html>
+```
+
+The external style sheet can be written in any text editor. The file must not contain any HTML code and must be saved with a .css extension.
+
+Note: You styes.css file could be listed on another site.
+
+CSS file - styles.css
+```
+body {
+  background-color: powderblue;
+}
+h1 {
+  color: blue;
+}
+p {
+  color: red;
+}
+```
+
+### CSS Colors, Fonts, and Sizes
+Here, we will demonstrate some commonly used CSS properties. You will learn more about them later.
+
+- The CSS color property defines the text color to be used.
+- The CSS font-family property defines the font to be used.
+- The CSS font-size property defines the text size to be used.
+
+Webpage 4
+```
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1 {
+  color: blue;
+  font-family: verdana;
+  font-size: 300%;
+}
+p {
+  color: red;
+  font-family: courier;
+  font-size: 160%;
+}
+</style>
+</head>
+<body>
+ 
+<h1>This is a heading</h1>
+<p>This is a paragraph.</p>
+ 
+</body>
+</html>
+```
+
+### CSS Border
+The CSS border property defines a border around an HTML element.
+
+```
+p {
+  border: 2px solid powderblue;
+}
+```
+
+## Tables and Lists
+HTML tables allow web developers to arrange data into rows and columns.
+
+```
+table>
+  <tr>
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Country</th>
+  </tr>
+  <tr>
+    <td>MassBay</td>
+    <td>Mike Lyons</td>
+    <td>USA</td>
+  </tr>
+  <tr>
+    <td>NFL</td>
+    <td>Roger Goodell</td>
+    <td>Mars</td>
+  </tr>
+</table>
+
+```
+
+Each table cell is defined by a `<td>` and a `</td>` tag.
+
+Each table row starts with a `<tr>` and ends with a `</tr>` tag.
+
+`<th>` is used for the table header.
+
+HTML lists allow web developers to group related items in lists.
+
+Unordered List
+```
+<ul>
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ul>
+```
+
+
+Ordered List
+
+```
+<ol>
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ol>
+```
+
+
+Description List
+
+```
+<dl>
+  <dt>Coffee</dt>
+  <dd>- black hot drink</dd>
+  <dt>Milk</dt>
+  <dd>- white cold drink</dd>
+</dl>
+```
+
+## Forms, Elements, and Inputs
+
+An HTML form is used to collect user input. The user input is most often sent to a server for processing.
+
+The `<form>` Element
+The HTML `<form>` element is used to create an HTML form for user input:
+```
+<form>
+.
+form elements
+.
+</form>
+```
+
+### The HTML `<form>` Elements
+The HTML `<form>` element can contain one or more of the following form elements:
+```
+<input>
+<label>
+<select>
+<textarea>
+<button>
+<fieldset>
+<legend>
+<datalist>
+<output>
+<option>
+<optgroup>
+```
+
+### The `<input>` Element
+The HTML `<input>` element is the most used form element.
+
+Depending on the type attribute, an `<input>` element can be displayed in many ways.
+
+Here are the different input types you can use in HTML:
+``` 
+    <input type="button">
+    <input type="checkbox">
+    <input type="color">
+    <input type="date">
+    <input type="datetime-local">
+    <input type="email">
+    <input type="file">
+    <input type="hidden">
+    <input type="image">
+    <input type="month">
+    <input type="number">
+    <input type="password">
+    <input type="radio">
+    <input type="range">
+    <input type="reset">
+    <input type="search">
+    <input type="submit">
+    <input type="tel">
+    <input type="text">
+    <input type="time">
+    <input type="url">
+    <input type="week">
+``` 
+
+### Text Fields
+The `<input type="text">` defines a single-line input field for text input.
+```
+<form>
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname"><br>
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lname">
+</form>
+```
+
+### The `<label>` Element
+Notice the use of the `<label>` element in the example above.
+
+The `<label>` tag defines a label for many form elements.
+
+The `<label>` element is useful for screen-reader users because the screen-reader will read out loud the label when the user focuses on the input element.
+
+The `<label>` element also helps users who have difficulty clicking on minimal regions (such as radio buttons or checkboxes) - because when the user clicks the text within the `<label>` element, it toggles the radio button/checkbox.
+
+The attribute of the `<label>` tag should be equal to the id attribute of the `<input>` element to bind them together.
+
+### Radio Buttons
+The `<input type="radio">` defines a radio button.
+
+Radio buttons let a user select ONE of a limited number of choices.
+```
+<p>Choose your favorite Web language:</p>
+ 
+<form>
+  <input type="radio" id="html" name="fav_language" value="HTML">
+  <label for="html">HTML</label><br>
+  <input type="radio" id="css" name="fav_language" value="CSS">
+  <label for="css">CSS</label><br>
+  <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+  <label for="javascript">JavaScript</label>
+</form>
+```
+
+### Checkboxes
+The `<input type="checkbox">` defines a checkbox.
+
+Checkboxes let a user select ZERO or MORE options of a limited number of choices.
+
+```
+<form>
+  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+  <label for="vehicle1"> I have a bike</label><br>
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+  <label for="vehicle2"> I have a car</label><br>
+  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+  <label for="vehicle3"> I have a boat</label>
+</form>
+```
+
+### The Submit Button
+The `<input type="submit">` defines a button for submitting the form data to a form-handler.
+
+The form-handler is typically a file on the server with a script for processing input data.
+
+The form-handler is specified in the form's action attribute.
+
+You will have to do this on your machines.
+
+```
+<form action="/action_page.php">
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname" value="John"><br>
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lname" value="Doe"><br><br>
+  <input type="submit" value="Submit">
+</form>
+```
+
+### The Name Attribute for `<input>`
+Notice that each input field must have a name attribute to be submitted.
+
+If the name attribute is omitted, the input field's value will not be sent at all.
+
+```
+<form action="/action_page.php">
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" value="John"><br><br>
+  <input type="submit" value="Submit">
+</form>
+```
+### The `<select>` Element
+The `<select>` element defines a drop-down list:
+
+```
+<label for="cars">Choose a car:</label>
+<select id="cars" name="cars">
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="fiat">Fiat</option>
+  <option value="audi">Audi</option>
+</select>
+```
+Now change it and tell me why we don't see audi?
+```
+<label for="cars">Choose a car:</label>
+<select id="cars" name="cars" size="3">
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="fiat">Fiat</option>
+  <option value="audi">Audi</option>
+</select>
+```
+### The `<textarea>` Element
+The `<textarea>` element defines a multi-line input field (a text area):
+
+```
+<textarea name="message" rows="10" cols="30">
+I want tacos.
+</textarea>
+```
+### The `<button>` Element
+The `<button>` element defines a clickable button:
+```
+<button type="button" onclick="alert('Hello World!')">Click Me!</button>
+```
+
+### The `<fieldset>` and `<legend>` Elements
+The `<fieldset>` element is used to group related data in a form.
+
+The `<legend>` element defines a caption for the `<fieldset>` element.
+
+```
+<form action="/action_page.php">
+  <fieldset>
+    <legend>Personalia:</legend>
+    <label for="fname">First name:</label><br>
+    <input type="text" id="fname" name="fname" value="John"><br>
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname" name="lname" value="Doe"><br><br>
+    <input type="submit" value="Submit">
+  </fieldset>
+</form>
+```
+### Input Type Password
+```
+<input type="password"> defines a password field:
+
+<form>
+  <label for="username">Username:</label><br>
+  <input type="text" id="username" name="username"><br>
+  <label for="pwd">Password:</label><br>
+  <input type="password" id="pwd" name="pwd">
+</form>
+```
+
+### Input Type Reset
+`<input type="reset">` defines a reset button that will reset all form values to their default values:
+```
+
+<form action="/action_page.php">
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname" value="John"><br>
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lname" value="Doe"><br><br>
+  <input type="submit" value="Submit">
+  <input type="reset" value="Reset">
+</form>
+```
+### Input Type Date
+The `<input type="date">` is used for input fields that should contain a date.
+
+Depending on browser support, a date picker can show up in the input field.
+```
+<form>
+  <label for="datemax">Enter a date before 1980-01-01:</label>
+  <input type="date" id="datemax" name="datemax" max="1979-12-31"><br><br>
+  <label for="datemin">Enter a date after 2000-01-01:</label>
+  <input type="date" id="datemin" name="datemin" min="2000-01-02">
+</form>
+```
+
+### Input Type Email
+The `<input type="email">` is used for input fields that should contain an e-mail address.
+
+The e-mail address can be automatically validated when submitted, depending on browser support.
+
+Some smartphones recognize the email type and add ".com" to the keyboard to match email input.
+```
+<form>
+  <label for="email">Enter your email:</label>
+  <input type="email" id="email" name="email">
+</form>
+```
+
+### Input Type File
+The `<input type="file">` defines a file-select field and a "Browse" button for file uploads.
+```
+<form>
+  <label for="myfile">Select a file:</label>
+  <input type="file" id="myfile" name="myfile">
+</form>
+```
+
+### Input Type Hidden
+The `<input type="hidden">` defines a hidden input field (not visible to a user).
+
+A hidden field lets web developers include data that users cannot see or modify when a form is submitted.
+
+A hidden field often stores what database record needs to be updated when the form is submitted.
+```
+<form>
+  <label for="fname">First name:</label>
+  <input type="text" id="fname" name="fname"><br><br>
+  <input type="hidden" id="custId" name="custId" value="3487">
+  <input type="submit" value="Submit">
+</form>
+```
+
+### Input Type Number
+The `<input type="number">` defines a numeric input field.
+
+You can also set restrictions on what numbers are accepted.
+
+The following example displays a numeric input field, where you can enter a value from 1 to 5:
+
+```
+<form>
+  <label for="quantity">Quantity (between 1 and 5):</label>
+  <input type="number" id="quantity" name="quantity" min="1" max="5">
+</form>
+```
+
+### Input Restrictions
+Here is a list of some common input restrictions:
+
+| Attribute | Description |
+| --------- | ----------- |
+| checked | Specifies that an input field should be pre-selected when the page loads (for type="checkbox" or type="radio") |
+| disabled | Specifies that an input field should be disabled |
+| max | Specifies the maximum value for an input field |
+| maxlength | Specifies the maximum number of character for an input field |
+| min | Specifies the minimum value for an input field |
+| pattern | Specifies a regular expression to check the input value against |
+| readonly | Specifies that an input field is read only (cannot be changed) |
+| required | Specifies that an input field is required (must be filled out) |
+| size | Specifies the width (in characters) of an input field |
+| step | Specifies the legal number intervals for an input field |
+| value | Specifies the default value for an input field |
+
+### Drag and Drop
+Drag and drop is a widespread feature. It is when you "grab" an object and drag it to a different location.
+
+```
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+ 
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+ 
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+</script>
+</head>
+<body>
+ 
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+ 
+<img id="drag1" src="img_logo.gif" draggable="true" ondragstart="drag(event)" width="336" height="69">
+ 
+</body>
+</html>
+```
+
+
+HTML page that includes some JavaScript functions. Here is an example:
+
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML with Functions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 100px;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #ff5733;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #e64125;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HTML with Functions</h1>
+        <button onclick="sayHello()">Click me</button>
+        <p id="demo"></p>
+    </div>
+ 
+ 
+    <script>
+        // JavaScript function to be called when the button is clicked
+        function sayHello() {
+            // Change the content of the paragraph with id "demo"
+            document.getElementById("demo").innerHTML = "Hello, World!";
+        }
+    </script>
+</body>
+</html>
+``` 
+ 
+This example has an HTML page with a heading, a button, and an empty paragraph (<p>). When the button is clicked, the sayHello() function is called, which changes the paragraph's content to "Hello, World!". This is a basic example of how to use JavaScript functions within an HTML page. You can expand upon this by adding more functions and more complex JavaScript logic as needed.
+
+## Media 
+
+### The HTML `<video>` Element
+To show a video in HTML, use the `<video>` element:
+```
+<video width="320" height="240" controls>
+  <source src="movie.mp4" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+Your browser does not support the video tag.
+</video>
+```
+### HTML `<video>` Autoplay
+To start a video automatically, use the autoplay attribute:
+
+```
+<video width="320" height="240" autoplay>
+  <source src="movie.mp4" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+Your browser does not support the video tag.
+</video>
+```
+### The HTML `<audio>` Element
+To play an audio file in HTML, use the `<audio>` element:
+
+```
+<audio controls>
+  <source src="dog.ogg" type="audio/ogg">
+  <source src="dog.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+```
+
+### HTML `<audio>` Autoplay
+To start an audio file automatically, use the autoplay attribute:
+
+```
+<audio controls autoplay>
+  <source src="dog.ogg" type="audio/ogg">
+  <source src="dog.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+```
+
+### Playing a YouTube Video in HTML
+To play your video on a web page, do the following:
+
+- Upload the video to YouTube
+- Take note of the video id
+- Define an `<iframe>` element in your web page
+- Let the src attribute point to the video URL
+- Use the width and height attributes to specify the dimensions of the player
+- Add any other parameters to the URL (see below)
+Final Webpage for the night:
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Never Gonna Give You Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 100px;
+        }
+        h1 {
+            color: #333;
+        }
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff5733;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        a:hover {
+            background-color: #e64125;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Never Give Up</h1>
+        <p>Click the button below to enjoy the 10-hour video!</p>
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Watch Now</a>
+    </div>
+</body>
+</html>
+```
+
+This code creates a basic HTML page with a heading, a paragraph describing the content, and a button/link to the video on YouTube. The video will be opened in a new tab when the button is clicked. You can customize this HTML code further based on your preferences.
+
+
