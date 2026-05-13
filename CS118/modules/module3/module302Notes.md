@@ -249,6 +249,7 @@ let back = JSON.parse(json);
 In JavaScript you cannot use these reserved words as variables, labels, or function names:
 
 
+| 00000000 | 000000000 | 000000 | 0000000 |
 | -------- | --------- | ------ | ------- |
 | abstract | arguments | await* | boolean |
 | break | byte | case | catch |
@@ -289,17 +290,17 @@ Click me to display Date and Time.</button>
 ```
 The HTML code sets up a simple webpage that uses JavaScript to display the current date and time when a button is clicked. Here is a breakdown of each part:
 
-    1. `<!DOCTYPE html>`: This declaration defines the document type and version of HTML. It tells the browser to expect HTML5 content.
-    2. `<html>`: The tags that will bookend the HTML elements.
-    3. `<body>`: Contains the content of the HTML document, such as text, hyperlinks, images, tables, lists, etc.
-    4. `<h2>My First JavaScript</h2>`: Defines a header for the page. It uses the <h2> tag, which is used for subheadings.
-    5. `<button type="button" onclick="document.getElementById('demo').innerHTML = Date()">Click me to display Date and Time.</button>`:
-        - `<button type="button">`: Creates a clickable button on the webpage.
-        - `onclick`: An attribute defining a JavaScript action when clicking the button. Here, it runs the code inside the quotes.
-        - `document.getElementById('demo').innerHTML = Date()`: JavaScript code executed when the button clicks. It does the following:document.getElementById('demo'): Finds an HTML element with the ID demo.
-        - .innerHTML = Date(): Sets the inner HTML content of the identified element to the current date and time. The Date() function in JavaScript retrieves the current date and time.
-    6. `<p id="demo"></p>`: Defines a paragraph element with an ID of demo. Initially, this paragraph is empty. However, when you click the button, the JavaScript code updates this element to display the current date and time.
-    7. `</body> and </html>`: Close the body.
+1. `<!DOCTYPE html>`: This declaration defines the document type and version of HTML. It tells the browser to expect HTML5 content.
+2. `<html>`: The tags that will bookend the HTML elements.
+3. `<body>`: Contains the content of the HTML document, such as text, hyperlinks, images, tables, lists, etc.
+4. `<h2>My First JavaScript</h2>`: Defines a header for the page. It uses the <h2> tag, which is used for subheadings.
+5. `<button type="button" onclick="document.getElementById('demo').innerHTML = Date()">Click me to display Date and Time.</button>`:
+    - `<button type="button">`: Creates a clickable button on the webpage.
+    - `onclick`: An attribute defining a JavaScript action when clicking the button. Here, it runs the code inside the quotes.
+    - `document.getElementById('demo').innerHTML = Date()`: JavaScript code executed when the button clicks. It does the following:document.getElementById('demo'): Finds an HTML element with the ID demo.
+    - .innerHTML = Date(): Sets the inner HTML content of the identified element to the current date and time. The Date() function in JavaScript retrieves the current date and time.
+6. `<p id="demo"></p>`: Defines a paragraph element with an ID of demo. Initially, this paragraph is empty. However, when you click the button, the JavaScript code updates this element to display the current date and time.
+7. `</body> and </html>`: Close the body.
 
 When you load this HTML file in a browser, you will see a header titled "My First JavaScript," a button that says "Click me to display Date and Time," and an empty paragraph. Clicking the button will populate the paragraph with the current date and time.
 
