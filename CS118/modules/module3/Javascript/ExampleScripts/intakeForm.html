@@ -1,0 +1,148 @@
+<html>
+<head>
+  <title>Form Validation</title>
+  <script type="text/javascript">
+    let divs = new Array();
+    divs[0] = "errFirst";
+    divs[1] = "errLast";
+    divs[2] = "errEmail";
+    divs[3] = "errUid";
+    divs[4] = "errPassword";
+    divs[5] = "errConfirm";
+    function validate()
+    {
+      let inputs = new Array();
+      inputs[0] = document.getElementById('first').value;
+      inputs[1] = document.getElementById('last').value;
+      inputs[2] = document.getElementById('email').value;
+      inputs[3] = document.getElementById('uid').value;
+      inputs[4] = document.getElementById('password').value;
+      inputs[5] = document.getElementById('confirm').value;
+      let errors = new Array();
+      errors[0] = "<span style='color:red'>Please enter your first name!</span>";
+      errors[1] = "<span style='color:red'>Please enter your last name!</span>";
+      errors[2] = "<span style='color:red'>Please enter your email!</span>";
+      errors[3] = "<span style='color:red'>Please enter your user id!</span>";
+      errors[4] = "<span style='color:red'>Please enter your password!</span>";
+      errors[5] = "<span style='color:red'>Please confirm your password!</span>";
+      for (i in inputs)
+      {
+        let errMessage = errors[i];
+        let div = divs[i];
+        if (inputs[i] == "")
+            document.getElementById(div).innerHTML = errMessage;
+        else if (i==2)
+        {
+          let atpos=inputs[i].indexOf("@");
+          let dotpos=inputs[i].lastIndexOf(".");
+          if (atpos<1 || dotpos<atpos+2 || dotpos+2>=inputs[i].length)
+            document.getElementById('errEmail').innerHTML = "<span style='color: red'>Enter a valid email address!</span>";
+          else
+            document.getElementById(div).innerHTML = "OK!";
+        }
+        else if (i==5)
+        {
+          let first = document.getElementById('password').value;
+          let second = document.getElementById('confirm').value;
+          if (second != first)
+            document.getElementById('errConfirm').innerHTML = "<span style='color: red'>Your passwords don't match!</span>";
+          else
+            document.getElementById(div).innerHTML = "OK!";
+        }
+        else
+            document.getElementById(div).innerHTML = "OK!";
+       }
+     }
+        function finalValidate()
+        {
+          let count = 0;
+          for(i=0;i<6;i++)
+          {
+            let div = divs[i];
+            if(document.getElementById(div).innerHTML == "OK!")
+            count = count + 1;
+          }
+          if(count == 6)
+            document.getElementById("errFinal").innerHTML = "All the data you entered is correct!!!";
+        }
+   </script>
+</head>
+<body>
+    <table id="table1">
+      <tr>
+        <td>First Name:</td>
+        <td><input type="text" id="first" xx="validate();" /></td>
+        <td><div id="errFirst"></div></td>
+      </tr>
+      <tr>
+        <td>Last Name:</td>
+        <td><input type="text" id="last" xx="validate();"/></td>
+        <td><div id="errLast"></div></td>
+      </tr>
+      <tr>
+        <td>Email:</td>
+        <td><input type="text" id="email" xx="validate();"/></td>
+        <td><div id="errEmail"></div></td>
+      </tr>
+      <tr>
+        <td>User Id:</td>
+        <td><input type="text" id="uid" xx="validate();"/></td>
+        <td><div id="errUid"></div></td>
+      </tr>
+      <tr>
+        <td>Password:</td>
+        <td><input type="password" id="password" xx="validate();"/></td>
+        <td><div id="errPassword"></div></td>
+      </tr>
+      <tr>
+        <td>Confirm Password:</td>
+        <td><input type="password" id="confirm" xx="validate();"/></td>
+        <td><div id="errConfirm"></div></td>
+      </tr>
+      <tr>
+        <td><input type="button" id="create" value="Create" xx="validate();finalValidate();"/></td>
+        <td><div id="errFinal"></div></td>
+      </tr>
+    </table>
+</body>
+</html>
+
+<!--
+# HTML Structure
+
+HTML Table: Contains input fields for first name, last name, email, user ID, password, and password confirmation. Each input field is accompanied by a <div> where error messages or validation status ("OK!") will be displayed.
+Buttons: There is a "Create" button that triggers the validation functions when clicked.
+
+
+
+
+# JavaScript Details
+
+Variable Initialization:
+- divs: Array of IDs for <div> elements where error messages will be shown.
+- inputs: Array that will hold the actual values entered in the input fields.
+- errors: Array of error messages in HTML format with styling.
+
+
+validate Function:
+- Retrieves values from each input field and stores them in the inputs array.
+- Loops through the inputs array:
+- If an input is empty, displays the corresponding error message from the errors array in the related <div>.
+- Special validation for the email address:
+- Checks if the email is properly formatted by looking for the "@" symbol and a dot "." that follows at least one character after "@" and has at least two characters before the end of the string.
+- If the format is incorrect, it displays a specific error message.
+
+
+Password confirmation:
+- Checks if the password and confirmation match. If not, displays an error message.
+- If the field has valid input, displays "OK!" in the corresponding <div>.
+
+
+
+finalValidate Function:
+- Counts the number of input fields that have been validated correctly ("OK!" message).
+- If all input fields are validated correctly (count equals 6), it displays a final confirmation message in errFinal.
+
+
+-->
+

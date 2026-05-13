@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>Add Numbers</title>
+    <script>
+        function calculateTotal() {
+            // Get the input values
+            let num1 = parseFloat(document.getElementById('num1').value);
+            let num2 = parseFloat(document.getElementById('num2').value);
+ 
+            // Check if the input is a valid number
+            if (isNaN(num1) || isNaN(num2)) {
+                alert('Please enter valid numbers.');
+                return;
+            }
+ 
+            // Calculate the total
+            let total = num1 + num2;
+ 
+            // Display the total in a pop-up
+            alert('The total is: ' + total);
+        }
+    </script>
+</head>
+<body>
+    <h1>Add Numbers</h1>
+    <form>
+        <label for="num1">Enter number 1:</label>
+        <input type="text" id="num1" name="num1" required>
+ 
+        <br>
+ 
+        <label for="num2">Enter number 2:</label>
+        <input type="text" id="num2" name="num2" required>
+ 
+        <br>
+ 
+        <button type="button" onclick="calculateTotal()">Calculate Total</button>
+    </form>
+</body>
+</html>
+

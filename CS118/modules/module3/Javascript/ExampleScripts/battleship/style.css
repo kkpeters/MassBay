@@ -1,0 +1,21 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(10, 40px);
+    grid-template-rows: repeat(10, 40px);
+    gap: 1px;
+    border: 1px solid black;
+    width: 410px;
+    height: 410px;
+}
+ 
+ 
+.grid-item {
+    background-color: lightblue;
+    border: 1px solid black;
+}
+ 
+ 
+button {
+    margin-top: 20px;
+}
+

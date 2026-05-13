@@ -1,0 +1,15 @@
+body, html {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 50px;
+}
+ 
+ 
+#clock {
+    font-size: 48px;
+    letter-spacing: 2px;
+    color: #333;
+}
+
