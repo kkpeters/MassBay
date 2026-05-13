@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <div id="myDiv">Hello, world!</div>
+  <button onclick="changeContent()">Click Me</button>
+ 
+  <script>
+    function changeContent() {
+      // Get the div element
+      let div = document.getElementById('myDiv');
+ 
+      // Get the current innerHTML
+      console.log(div.innerHTML); // Outputs: Hello, world!
+ 
+      // Set new innerHTML
+      div.innerHTML = '<b>Content changed!</b>';
+    }
+  </script>
+</body>
+</html>
