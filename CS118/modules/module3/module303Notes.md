@@ -88,15 +88,15 @@ To prevent such vulnerabilities, you should never directly include untrusted dat
 Several widely known cases of Cross-Site Scripting (XSS) have affected major companies and platforms over the years. XSS vulnerabilities are common due to the nature of web development and the widespread reliance on client-side scripting. Here are a few notable examples:
 
 ### 1. MySpace (Samy Worm)
-    Perhaps the most famous XSS attack, the "Samy Worm," occurred in 2005 on MySpace. It was perpetrated by Samy Kamkar, who created a self-propagating XSS worm. The worm automatically added him as a friend and copied itself onto the victim’s profile when viewed. In less than 24 hours, over one million users had "friended" him, demonstrating the rapid spread and potential damage of XSS vulnerabilities. This event raised awareness about XSS and its implications dramatically.
+Perhaps the most famous XSS attack, the "Samy Worm," occurred in 2005 on MySpace. It was perpetrated by Samy Kamkar, who created a self-propagating XSS worm. The worm automatically added him as a friend and copied itself onto the victim’s profile when viewed. In less than 24 hours, over one million users had "friended" him, demonstrating the rapid spread and potential damage of XSS vulnerabilities. This event raised awareness about XSS and its implications dramatically.
 ### 2. Yahoo! Mail
-    In 2006, a security researcher discovered an XSS vulnerability in Yahoo! Mail that could allow an attacker to read a user’s email messages and send emails on their behalf. This vulnerability was due to a failure in filtering malicious script tags from email content, illustrating the risks associated with dynamic content and user input.
+In 2006, a security researcher discovered an XSS vulnerability in Yahoo! Mail that could allow an attacker to read a user’s email messages and send emails on their behalf. This vulnerability was due to a failure in filtering malicious script tags from email content, illustrating the risks associated with dynamic content and user input.
 ### 3. Facebook
-    In 2011, Facebook was targeted by an XSS attack involving a link that automatically started posting spam and malicious links on their friends' walls when clicked by a user. This attack exploited an XSS vulnerability in Facebook’s site, using a malicious script embedded in a URL.
+In 2011, Facebook was targeted by an XSS attack involving a link that automatically started posting spam and malicious links on their friends' walls when clicked by a user. This attack exploited an XSS vulnerability in Facebook’s site, using a malicious script embedded in a URL.
 ### 4. Google and Amazon
-    Over the years, XSS vulnerabilities have also been discovered on various Google and Amazon subdomains. These companies often host bug bounty programs that help identify and mitigate such vulnerabilities before they can be exploited maliciously. Nonetheless, occasional lapses have led to temporary vulnerabilities that could, if exploited, lead to unauthorized access to user data.
+Over the years, XSS vulnerabilities have also been discovered on various Google and Amazon subdomains. These companies often host bug bounty programs that help identify and mitigate such vulnerabilities before they can be exploited maliciously. Nonetheless, occasional lapses have led to temporary vulnerabilities that could, if exploited, lead to unauthorized access to user data.
 ### 5. eBay
-    In 2014, eBay suffered an XSS attack where attackers could inject malicious JavaScript into product listing pages. This script was designed to redirect users to a phishing website where their credentials were stolen. This attack targets the trust users have in a site, demonstrating the significant impact XSS can have on both users and the company's reputation.
+In 2014, eBay suffered an XSS attack where attackers could inject malicious JavaScript into product listing pages. This script was designed to redirect users to a phishing website where their credentials were stolen. This attack targets the trust users have in a site, demonstrating the significant impact XSS can have on both users and the company's reputation.
 
 ## Cross-Site Request Forgery (CSRF)
 
@@ -198,15 +198,15 @@ On the server side, the application would check that the csrfToken provided in t
 Cross-Site Request Forgery (CSRF) is another common vulnerability that has affected numerous high-profile websites. This type of attack exploits a web application's trust in the user's browser, allowing attackers to perform actions on behalf of the users without their consent. Here are a few notable examples of CSRF attacks:
 
 ### 1. ING Direct
-    One of the earliest well-documented CSRF attacks occurred on the banking website ING Direct in 2008. Attackers could use CSRF to transfer money from a user's account by getting them to click on a malicious link. This was especially concerning because it involved direct financial transactions.
+One of the earliest well-documented CSRF attacks occurred on the banking website ING Direct in 2008. Attackers could use CSRF to transfer money from a user's account by getting them to click on a malicious link. This was especially concerning because it involved direct financial transactions.
 ### 2. Netflix
-    In 2006, researchers demonstrated a CSRF attack against Netflix. By tricking users into visiting a malicious website, attackers could change the user's email address associated with their Netflix account. This could allow an attacker to reset the user’s password and gain account control.
+In 2006, researchers demonstrated a CSRF attack against Netflix. By tricking users into visiting a malicious website, attackers could change the user's email address associated with their Netflix account. This could allow an attacker to reset the user’s password and gain account control.
 ### 3. Gmail
-    In 2007, a CSRF vulnerability in Gmail allowed attackers to set up filters in users' email accounts by getting them to visit a malicious website. This could automatically transfer emails containing specific keywords to an email address controlled by the attacker, potentially leading to identity theft or fraud.
+In 2007, a CSRF vulnerability in Gmail allowed attackers to set up filters in users' email accounts by getting them to visit a malicious website. This could automatically transfer emails containing specific keywords to an email address controlled by the attacker, potentially leading to identity theft or fraud.
 ### 4. YouTube
-    CSRF vulnerabilities on YouTube allowed attackers to add videos to a user’s favorites or subscribe to channels without the user’s knowledge. While less harmful than stealing financial information, this attack could be used for spamming or manipulating service metrics.
+CSRF vulnerabilities on YouTube allowed attackers to add videos to a user’s favorites or subscribe to channels without the user’s knowledge. While less harmful than stealing financial information, this attack could be used for spamming or manipulating service metrics.
 ### 5. CSRF in Home Routers
-    CSRF attacks have also been employed against home routers. Many users do not change the default password on their routers, making them vulnerable to CSRF attacks where malicious websites can change router settings (like DNS servers) simply by having the user visit a web page. This attack can redirect the user’s internet traffic through attacker-controlled servers.
+CSRF attacks have also been employed against home routers. Many users do not change the default password on their routers, making them vulnerable to CSRF attacks where malicious websites can change router settings (like DNS servers) simply by having the user visit a web page. This attack can redirect the user’s internet traffic through attacker-controlled servers.
 
 ## Code Injection
 
@@ -251,13 +251,13 @@ JavaScript code injection vulnerabilities can be particularly insidious because 
 several notable cases of code injection vulnerabilities, including those involving JavaScript, affect well-known organizations and platforms. These incidents typically involve executing malicious code on a server or client, leading to data breaches, unauthorized access, or other malicious activities. Here are a few prominent examples:
 
 ### 1. eBay XSS/Code Injection (2014)
-    In 2014, eBay suffered from a significant security issue where it was revealed that their site was vulnerable to XSS (Cross-Site Scripting), a form of code injection. Attackers were able to inject malicious JavaScript into eBay product listings, which were then executed in the browsers of users visiting these listings. This incident allowed attackers to steal users' credentials and redirect them to phishing sites.
+In 2014, eBay suffered from a significant security issue where it was revealed that their site was vulnerable to XSS (Cross-Site Scripting), a form of code injection. Attackers were able to inject malicious JavaScript into eBay product listings, which were then executed in the browsers of users visiting these listings. This incident allowed attackers to steal users' credentials and redirect them to phishing sites.
 ### 2. WordPress Plugin Vulnerabilities
-    WordPress, one of the most popular content management systems, has seen its fair share of code injection vulnerabilities, often through third-party plugins. One notable example is the vulnerability found in the WP GDPR Compliance plugin, which was actively exploited to allow unauthorized administrative access and potentially led to the injection of malicious JavaScript and other harmful actions.
+WordPress, one of the most popular content management systems, has seen its fair share of code injection vulnerabilities, often through third-party plugins. One notable example is the vulnerability found in the WP GDPR Compliance plugin, which was actively exploited to allow unauthorized administrative access and potentially led to the injection of malicious JavaScript and other harmful actions.
 ### 3. Apache Struts Vulnerabilities (2017)
-    While primarily a case of remote code execution affecting a server-side framework (and not directly related to JavaScript), the Apache Struts vulnerability notably impacted Equifax, leading to a massive data breach. This vulnerability allowed attackers to inject code into the server due to improper handling of untrusted inputs. It is an important example because it underscores the broader theme of code injection risks in web technologies.
+While primarily a case of remote code execution affecting a server-side framework (and not directly related to JavaScript), the Apache Struts vulnerability notably impacted Equifax, leading to a massive data breach. This vulnerability allowed attackers to inject code into the server due to improper handling of untrusted inputs. It is an important example because it underscores the broader theme of code injection risks in web technologies.
 ### 4. Node.js Event-Stream Incident (2018)
-    In this incident, a popular npm package named event-stream was compromised. An attacker injected Malicious code into the package after the original maintainer transferred control. The injected code was designed to steal cryptocurrency from users' wallets by targeting a specific library application. This type of attack, known as a supply chain attack, is a form of code injection at the library level.
+In this incident, a popular npm package named event-stream was compromised. An attacker injected Malicious code into the package after the original maintainer transferred control. The injected code was designed to steal cryptocurrency from users' wallets by targeting a specific library application. This type of attack, known as a supply chain attack, is a form of code injection at the library level.
 
 ## Security Misconfiguration
 
@@ -427,11 +427,11 @@ There are few publicized incidents labeled Server-Side JavaScript Injection (SSJ
 However, the risks associated with SSJI are real, especially with the increasing use of JavaScript on the server side via platforms like Node.js. Below are a couple of conceptual examples and common vulnerabilities that align closely with SSJI:
 
 ### 1. Node.js eval() Vulnerabilities
-    There have been multiple instances where Node.js applications were vulnerable to SSJI due to unsafe usage of the eval() function, where user input was either directly passed to eval() or insufficiently sanitized. These are typically identified during security audits or reported through bug bounty programs rather than being exploited in the wild, as details of such exploits are usually kept confidential to prevent widespread abuse.
+There have been multiple instances where Node.js applications were vulnerable to SSJI due to unsafe usage of the eval() function, where user input was either directly passed to eval() or insufficiently sanitized. These are typically identified during security audits or reported through bug bounty programs rather than being exploited in the wild, as details of such exploits are usually kept confidential to prevent widespread abuse.
 ### 2. MongoDB Injection via Node.js
-    While not a direct example of SSJI, MongoDB injection vulnerabilities in Node.js applications often occur in a similar context. Developers might allow user input to directly influence database queries without proper sanitation, leading to NoSQL injection attacks. This issue demonstrates the broader risk of injecting malicious code into server-side scripts that interact with databases.
+While not a direct example of SSJI, MongoDB injection vulnerabilities in Node.js applications often occur in a similar context. Developers might allow user input to directly influence database queries without proper sanitation, leading to NoSQL injection attacks. This issue demonstrates the broader risk of injecting malicious code into server-side scripts that interact with databases.
 ### 3. Module Vulnerabilities
-    Vulnerabilities in Node.js modules can also lead to situations akin to SSJI. For example, if a module evaluates user-supplied data without proper validation, it can act as a vector for SSJI. Such vulnerabilities are occasionally disclosed in various npm packages, underscoring the importance of maintaining and auditing dependencies.
+Vulnerabilities in Node.js modules can also lead to situations akin to SSJI. For example, if a module evaluates user-supplied data without proper validation, it can act as a vector for SSJI. Such vulnerabilities are occasionally disclosed in various npm packages, underscoring the importance of maintaining and auditing dependencies.
 
 ### Prevention and Response
 To mitigate the risk of SSJI and similar threats:
@@ -472,15 +472,15 @@ By understanding and implementing these strategies, developers, and administrato
 Here are some well-documented examples:
 
 ### 1. Superfish Adware on Lenovo Devices (2015)
-    One of the most notorious MitM cases involved Lenovo pre-installing Superfish adware on its consumer laptops. This software included a universal SSL certificate that intercepted encrypted HTTPS traffic to inject ads. This effectively enabled a MitM attack by compromising web security, allowing attackers to eavesdrop on encrypted connections.
+One of the most notorious MitM cases involved Lenovo pre-installing Superfish adware on its consumer laptops. This software included a universal SSL certificate that intercepted encrypted HTTPS traffic to inject ads. This effectively enabled a MitM attack by compromising web security, allowing attackers to eavesdrop on encrypted connections.
 ### 2. DigiNotar Certificate Authority Breach (2011)
-    The Dutch certificate authority DigiNotar was compromised in this significant security breach, and fraudulent certificates were issued. Attackers used these certificates to conduct MitM attacks on users of Google and other large services, mainly targeting users in Iran. This breach led to a loss of trust in DigiNotar, ultimately causing the company to go bankrupt.
+The Dutch certificate authority DigiNotar was compromised in this significant security breach, and fraudulent certificates were issued. Attackers used these certificates to conduct MitM attacks on users of Google and other large services, mainly targeting users in Iran. This breach led to a loss of trust in DigiNotar, ultimately causing the company to go bankrupt.
 ### 3. Belgacom Hack (2013)
-    Belgacom, a large Belgian telecommunications company, was infiltrated by the British intelligence agency GCHQ, as revealed by documents from Edward Snowden. The operation, dubbed "Operation Socialist," was essentially a MitM attack where the agency gained access to Belgacom’s core systems to monitor communications, including those encrypted.
+Belgacom, a large Belgian telecommunications company, was infiltrated by the British intelligence agency GCHQ, as revealed by documents from Edward Snowden. The operation, dubbed "Operation Socialist," was essentially a MitM attack where the agency gained access to Belgacom’s core systems to monitor communications, including those encrypted.
 ### 4. Quantum Insert
-    Quantum Insert is an NSA and GCHQ technique revealed in the Snowden leaks. It involves identifying a request to a website from a target's computer and racing to respond to the request faster than the legitimate website, effectively delivering malicious payloads directly to the target's computer. This technique was reportedly used to target employees of OPEC and other organizations.
+Quantum Insert is an NSA and GCHQ technique revealed in the Snowden leaks. It involves identifying a request to a website from a target's computer and racing to respond to the request faster than the legitimate website, effectively delivering malicious payloads directly to the target's computer. This technique was reportedly used to target employees of OPEC and other organizations.
 ### 5. Wi-Fi Pineapple
-    Although not a single public case, using devices like the Wi-Fi Pineapple to conduct MitM attacks in public Wi-Fi networks demonstrates how easily data can be intercepted in unsecured wireless environments. These devices are often used in security demonstrations to show how attackers can intercept communications on public networks to capture passwords, cookies, and other sensitive data.
+Although not a single public case, using devices like the Wi-Fi Pineapple to conduct MitM attacks in public Wi-Fi networks demonstrates how easily data can be intercepted in unsecured wireless environments. These devices are often used in security demonstrations to show how attackers can intercept communications on public networks to capture passwords, cookies, and other sensitive data.
 ### Prevention Measures
 To mitigate the risk of MitM attacks, several strategies are recommended:
 
