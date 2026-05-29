@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Question 20</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+
+    <body>
+
+        <!--
+        Create code: Please create a webpage that does the following.
+            Create a game where the player can choose rock, paper, or scissors against the computer.
+            The background should be light green, and the text should be red.
+        -->
+
+        <div id="gameBox">
+            <div id="buttonsBox">
+                <button onclick="computeWinner('r')">Rock!</button>
+                <button onclick="computeWinner('p')">Paper!</button>
+                <button onclick="computeWinner('s')">Scissors!</button>
+                <button id="resetBtn" onclick="reset()">Reset Game</button>
+            </div>
+            <div id="outcome">
+                <p></p>
+            </div>
+        </div>
+
+        <script src="main.js"></script>
+    </body>
+</html>
+

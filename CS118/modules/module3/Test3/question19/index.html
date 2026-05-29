@@ -1,0 +1,35 @@
+<!-- based on the quiz app example -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Question 19</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+
+    <body>
+        <!--
+        Create code: Please create a webpage that does the following.
+            Develop a web application that presents users with a series of questions and choices.
+            It should provide feedback based on their answers.
+        -->
+        <div id="quiz-container">
+            <div id="question"></div>
+                <ul id="answers">
+                <li class="answer"></li>
+                <li class="answer"></li>
+                <li class="answer"></li>
+                <li class="answer"></li>
+                </ul>
+                <button id="next-button">Next</button>
+            </div>
+            <div id="result-container" style="display: none;">
+            <div id="result"></div>
+            <button onclick="location.reload();">Restart Quiz</button>
+        </div>
+
+
+    </body>
+    <script src="main.js"></script>
+</html>

@@ -1,3 +1,5 @@
+<!-- using X, O, AND ? as player pieces, meaning there are 3 players -->
+
 <html>
 <head>
     <title>Tic Tac Toe</title>
@@ -52,7 +54,17 @@
     }
  
     function togglePlayer() {
-        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        // changing the script to incorporate another player
+        if (currentPlayer == 'X') {
+            currentPlayer = 'O';
+        }
+        else if (currentPlayer == 'O') {
+            currentPlayer = '?';
+        }
+        else {
+            currentPlayer = 'X';
+        }
+        // currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
     }
  
     function checkWinner() {
@@ -80,3 +92,4 @@
  
 </body>
 </html>
+

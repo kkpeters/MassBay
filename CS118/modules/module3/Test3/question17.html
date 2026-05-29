@@ -1,0 +1,31 @@
+<!DOCTYPE>
+<html lang="en">
+<head>
+    <title>Pick a Book</title>
+        <!--scripts to script-->
+        <script>
+        function checkBookAvailability() {
+            var books = ["1984", "To Kill a Mockingbird", "The Great Gatsby", "Pride and Prejudice"];
+            var userInput = document.getElementById("bookInput").value;
+            var message = document.getElementById("message");
+         
+         
+            if (books.includes(userInput)) {
+                message.textContent = "Yes, we have " + userInput + " available!";
+            } else {
+                message.textContent = "Sorry, we do not have " + userInput + ".";
+            }
+        }
+        </script>
+    </head>
+
+
+    <body>
+        <h1>Pick a Book</h1>
+        <p>Enter the title of the book you're looking for:</p>
+        <!--removed the // so this line of code is read by the function-->
+        <input type="text" id="bookInput">
+        <button onclick="checkBookAvailability()">Check Availability</button>
+        <p id="message"></p>
+    </body>
+</html>
