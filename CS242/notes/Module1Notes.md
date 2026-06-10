@@ -1,4 +1,4 @@
-# Module 1 Notes
+# Module 1: Networking Today
 
 - Packet Tracer is a tool that allows you to simulate real networks. It provides three main menus:
     - You can add devices and connect them via cables or wireless.
