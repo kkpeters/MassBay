@@ -375,3 +375,210 @@ It also describes the interaction of each layer with the layers directly above a
 | 3 - Network | The network layer provides services to exchange the individual pieces of data over the network between identified end devices. |
 | 2 - Data Link | The data link layer protocols describe methods for exchanging data frames between devices over a common media |
 | 1 - Physical | The physical layer protocols describe the mechanical, electrical, functional, and procedural means to activate, maintain, and de-activate physical connections for a bit transmission to and from a network device. |
+
+
+Note: Whereas the TCP/IP model layers are referred to only by name, the seven OSI model layers are more often referred to by number rather than by name. For instance, the physical layer is referred to as Layer 1 of the OSI model, data link layer is Layer2, and so on.
+
+## 3.5.3 The TCP/IP Protocol Model
+
+The TCP/IP protocol model for internetwork communications was created in the early 1970s and is sometimes referred to as the internet model. This type of model closely matches the structure of a particular protocol suite. The TCP/IP model is a protocol model because it describes the functions that occur at each layer of protocols within the TCP/IP suite. TCP/IP is also used as a reference model. The table shows details about each layer of the TCP/IP model.
+
+| TCP/IP Model Layer | Description |
+|---|---|
+| 4 - Application | Represents data to the user, plus encoding and dialog control. |
+| 3 - Transport | Supports communication between various devices across diverse networks. |
+| 2 - Internet | Determines the best path through the network. |
+| 1 - Network Access | Controls the hardware devices and media that make up the network. |
+
+The definitions of the standard and the TCP/IP protocols are discussed in a public forum and defined in a publicly available set of IETF RFCs. An RFC is authored by networking engineers and sent to other IETF members for comments.
+
+## 3.5.4 OSI and TCP/IP Model Comparison
+
+The protocols that make up the TCP/IP protocol suite can also be described in terms of the OSI reference model. In the OSI model, the network access layer and the application layer of the TCP/IP model are further divided to describe discrete functions that must occur at these layers.
+
+At the network access layer, the TCP/IP protocol suite does not specify which protocols to use when transmitting over a physical medium; it only describes the handoff from the internet layer to the physical network protocols. OSI Layers 1 and 2 discuss the necessary procedures to access the media and the physical means to send data over a network.
+
+![OSITCPIP](OSITCPIP.png)
+
+The key similarities are in the transport and network layers; however, the two models differ in how they relate to the layers above and below each layer:
+- OSI Layer 3, the network layer, maps directly to the TCP/IP internet layer. This layer is used to describe protocols that address and route messages through an internetwork.
+- OSI Layer 4, the transport layer, maps directly to the TCP/IP transport layer. This layer describes general services and functions that provide ordered and reliable delivery of data between source and destination hosts.
+- The TCP/IP application layer includes several protocols that provide specific functionality to a variety of end user applications. The OSI model Layers 5, 6, and 7 are used as references for application software developers and vendors to produce applications that operate on networks.
+- Both the TCP/IP and OSI models are commonly used when referring to protocols at various layers. Because the OSI model separates the data link layer from the physical layer, it is commonly used when referring to these lower layers.
+
+## 3.5.5 Packet Tracer - Investigate the TCP/IP and OSI Models in Action
+
+# 3.6 Data Encapsulation 
+
+## 3.6.1 Segmenting Messages
+
+Knowing the OSI reference model and the TCP/IP protocol model will come in handy when you learn about how data is encapsulated as it moves across a network. It is not as simple as a physical letter being sent through the mail system.
+
+In theory, a single communication, such as a video or an email message with many large attachments, could be sent across a network from a source to a destination as one massive, uninterrupted stream of bits. However, this would create problems for other devices needing to use the same communication channels or links. These large streams of data would result in significant delays. Further, if any link in the interconnected network infrastructure failed during the transmission, the complete message would be lost and would have to be retransmitted in full.
+
+A better approach is to divide the data into smaller, more manageable pieces to send over the network. Segmentation is the process of dividing a stream of data into smaller units for transmissions over the network. Segmentation is necessary because data networks use the TCP/IP protocol suite send data in individual IP packets. Each packet is sent separately, similar to sending a long letter as a series of individual postcards. Packets containing segments for the same destination can be sent over different paths.
+
+This leads to segmenting messages having two primary benefits:
+
+- **Increases speed** - Because a large data stream is segmented into packets, large amounts of data can be sent over the network without tying up a communications link. This allows many different conversations to be interleaved on the network called multiplexing.
+- **Increases efficiency** -If a single segment is fails to reach its destination due to a failure in the network or network congestion, only that segment needs to be retransmitted instead of resending the entire data stream.
+
+Click each button in the figure to view the animations of segmentation and multiplexing.
+
+![segmentation](segmentation.png)
+
+![multiplexing](multiplexing.png)
+
+## 3.6.2 Sequencing
+
+The challenge to using segmentation and multiplexing to transmit messages across a network is the level of complexity that is added to the process. Imagine if you had to send a 100-page letter, but each envelope could only hold one page. Therefore, 100 envelopes would be required and each envelope would need to be addressed individually. It is possible that the 100-page letter in 100 different envelopes arrives out-of-order. Consequently, the information in the envelope would need to include a sequence number to ensure that the receiver could reassemble the pages in the proper order.
+
+In network communications, each segment of the message must go through a similar process to ensure that it gets to the correct destination and can be reassembled into the content of the original message, as shown in the figure. TCP is responsible for sequencing the individual segments.
+
+![sequencing](sequencing.png)
+
+## 3.6.3 Protocol Data Units
+
+As application data is passed down the protocol stack on its way to be transmitted across the network media, various protocol information is added at each level. This is known as the encapsulation process.
+
+Note: Although the UDP PDU is called datagram, IP packets are sometimes also referred to as IP datagrams.
+
+The form that a piece of data takes at any layer is called a protocol data unit (PDU). During encapsulation, each succeeding layer encapsulates the PDU that it receives from the layer above in accordance with the protocol being used. At each stage of the process, a PDU has a different name to reflect its new functions. Although there is no universal naming convention for PDUs, in this course, the PDUs are named according to the protocols of the TCP/IP suite. The PDUs for each form of data are shown in the figure.
+
+![PDU](PDU.png)
+
+- Data - The general term for the PDU used at the application layer
+- Segment - Transport layer PDU
+- Packet - Network layer PDU
+- Frame - Data Link layer PDU
+- Bits - Physical layer PDU used when physically transmitting data over the medium
+
+Note: If the Transport header is TCP, then it is a segment. If the Transport header is UDP then it is a datagram.
+
+## 3.6.4 Encapsulation Example
+
+When messages are being sent on a network, the encapsulation process works from top to bottom. At each layer, the upper layer information is considered data within the encapsulated protocol. For example, the TCP segment is considered data within the IP packet.
+
+You saw this animation previously in this module. This time, click Play and focus on the encapsulation process as a web server sends a web page to a web client.
+
+## 3.6.5 De-encapsulation Example
+
+This process is reversed at the receiving host and is known as de-encapsulation. De-encapsulation is the process used by a receiving device to remove one or more of the protocol headers. The data is de-encapsulated as it moves up the stack toward the end-user application.
+
+You saw this animation previously in this module. This time, click Play and focus on the de-encapsulation process.
+
+# 3.7 Data Access 
+
+# 3.7.1 Addresses
+
+As you just learned, it is necessary to segment messages in a network. But those segmented messages will not go anywhere if they are not addressed properly. This topic gives an overview of network addresses. You will also get the chance to use the Wireshark tool, which will help you to 'view' network traffic.
+
+The network and data link layers are responsible for delivering the data from the source device to the destination device. As shown in the figure, protocols at both layers contain a source and destination address, but their addresses have different purposes:
+
+- **Network layer source and destination addresses** - Responsible for delivering the IP packet from the original source to the final destination, which may be on the same network or a remote network.
+- **Data link layer source and destination addresses** - Responsible for delivering the data link frame from one network interface card (NIC) to another NIC on the same network.
+
+![addresses](addresses.png)
+
+## 3.7.2 Layer 3 Logical Address
+
+An IP address is the network layer, or Layer 3, logical address used to deliver the IP packet from the original source to the final destination, as shown in the figure.
+
+![logicalAddress](logicalAddress.png)
+
+The IP packet contains two IP addresses:
+- Source IP address - The IP address of the sending device, which is the original source of the packet.
+- Destination IP address - The IP address of the receiving device, which is the final destination of the packet.
+
+The IP addresses indicate the original source IP address and final destination IP address. This is true whether the source and destination
+are on the same IP network or different IP networks.
+
+An IP address contains two parts:
+- Network portion (IPv4) or Prefix (IPv6) - The left-most part of the address that indicates the network in which the IP address is a member. All devices on the same network will have the same network portion of the address.
+- Host portion (IPv4) or Interface ID (IPv6) - The remaining part of the address that identifies a specific device on the network. This portion is unique for each device or interface on the network.
+
+Note: The subnet mask (IPv4) or prefix-length (IPv6) is used to identify the network portion of an IP address from the host portion.
+
+## 3.7.3 Devices on the Same Network
+
+In this example we have a client computer, PC1, communicating with an FTP server on the same IP network.
+
+- **Source IPv4 address** - The IPv4 address of the sending device, the client computer PC1: 192.168.1.110.
+- **Destination IPv4 address** - The IPv4 address of the receiving device, FTP server: 192.168.1.9.
+
+Notice in the figure that the network portion of the source IPv4 address and the network portion of the destination IPv4 address are the same and therefore; the source and destination are on the same network.
+
+![deviceSameNetwork](deviceSameNetwork.png)
+
+## 3.7.4 Role of the Data Link Layer Addresses - Same IP Network
+
+When the sender and receiver of the IP packet are on the same network, the data link frame is sent directly to the receiving device. On an Ethernet network, the data link addresses are known as Ethernet Media Access Control (MAC) addresses, as highlighted in the figure.
+
+![dataLinkLayer](dataLinkLayer.png)
+
+MAC addresses are physically embedded on the Ethernet NIC.
+- **Source MAC address** - This is the data link address, or the Ethernet MAC address, of the device that sends the data link frame with the encapsulated IP packet. The MAC address of the Ethernet NIC of PC1 is AA-AA-AA-AA-AA-AA, written in hexadecimal notation.
+- **Destination MAC address** - When the receiving device is on the same network as the sending device, this is the data link address of the receiving device. In this example, the destination MAC address is the MAC address of the FTP server: CC-CC-CC-CC-CC- CC, written in hexadecimal notation.
+
+The frame with the encapsulated IP packet can now be transmitted from PC1 directly to the FTP server.
+
+## 3.7.5 Devices on a Remote Network
+
+But what are the roles of the network layer address and the data link layer address when a device is communicating with a device on a remote network? In this example we have a client computer, PC1, communicating with a server, named Web Server, on a different IP network.
+
+## 3.7.6 Role of the Network Layer Addresses
+
+When the sender of the packet is on a different network from the receiver, the source and destination IP addresses will represent hosts
+on different networks. This will be indicated by the network portion of the IP address of the destination host.
+
+- **Source IPv4 address** - The IPv4 address of the sending device, the client computer PC1: 192.168.1.110.
+- **Destination IPv4 address** - The IPv4 address of the receiving device, the server, Web Server: 172.16.1.99.
+
+Notice in the figure that the network portion of the source IPv4 address and destination IPv4 address are on different networks.
+
+![networkLayerAddresses](networkLayerAddresses.png)
+
+## 3.7.7 Role of the Data Link Layer Addresses - Different IP Networks
+
+When the sender and receiver of the IP packet are on different networks, the Ethernet data link frame cannot be sent directly to the destination host because the host is not directly reachable in the network of the sender. The Ethernet frame must be sent to another device known as the router or default gateway. In our example, the default gateway is R1. R1 has an Ethernet data link address that is on the same network as PC1. This allows PC1 to reach the router directly.
+- Source MAC address - The Ethernet MAC address of the sending device, PC1. The MAC address of the Ethernet interface of PC1
+is AA-AA-AA-AA-AA-AA.
+- Destination MAC address - When the receiving device, the destination IP address, is on a different network from the sending device, the sending device uses the Ethernet MAC address of the default gateway or router. In this example, the destination MAC address is the MAC address of the R1 Ethernet interface, 11-11-11-11-11-11. This is the interface that is attached to the same network as PC1, as shown in the figure.
+
+![dataLinkDifIP](dataLinkDifIP.png)
+
+The Ethernet frame with the encapsulated IP packet can now be transmitted to R1. R1 forwards the packet to the destination, Web Server. This may mean that R1 forwards the packet to another router or directly to Web Server if the destination is on a network connected to R1.
+
+It is important that the IP address of the default gateway be configured on each host on the local network. All packets to a destination on remote networks are sent to the default gateway. Ethernet MAC addresses and the default gateway are discussed in more detail in other modules.
+
+## 3.7.8 Data Link Addresses
+
+The data link Layer 2 physical address has a different role. The purpose of the data link address is to deliver the data link frame from one network interface to another network interface on the same network.
+
+Before an IP packet can be sent over a wired or wireless network, it must be encapsulated in a data link frame, so it can be transmitted over the physical medium.
+
+### Host to Router 
+
+![hostToRouter](hostToRouter.png)
+
+### Router to Router 
+
+![routerToRouter](routerToRouter.png)
+
+### Router to Server 
+
+![routerToServer](routerToServer.png)
+
+As the IP packet travels from host-to-router, router-to-router, and finally router-to-host, at each point along the way the IP packet is encapsulated in a new data link frame. Each data link frame contains the source data link address of the NIC card sending the frame, and the destination data link address of the NIC card receiving the frame.
+
+The Layer 2, data link protocol is only used to deliver the packet from NIC-to-NIC on the same network. The router removes the Layer 2 information as it is received on one NIC and adds new data link information before forwarding out the exit NIC on its way towards the final destination.
+
+The IP packet is encapsulated in a data link frame that contains the following data link information:
+- **Source data link address** - The physical address of the NIC that is sending the data link frame.
+- **Destination data link address** - The physical address of the NIC that is receiving the data link frame. This address is either the next hop router or the address of the final destination device.
+
+## 3.7.9 Lab - Install Wireshark 
+
+## 3.7.10 Lab - Use Wireshark to View Network Traffic 
+
+# Module Quiz
