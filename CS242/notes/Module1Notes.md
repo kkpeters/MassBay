@@ -92,6 +92,15 @@ The four main criteria for choosing network media are these:
 - What is the amount of data and at what speed must it be transmitted? 
 - What is the cost of the media and installation?
 
+## 1.2.6 Quiz 
+
+1. Which of the following is the name for all computers connected to a network that participate directly in network communication?
+    **Hosts**
+2. When data is encoded as pulses of light, which media is being used to transmit the data?
+    **Fiber-optic cable**
+3. Which two devices are intermediary devices? (Choose two)
+    **Routers** and **Switches**
+
 # 1.3 Network Representations and Topologies
 
 ## 1.3.1 Network Representations
@@ -129,6 +138,17 @@ Logical topology diagrams illustrate devices, ports, and the addressing scheme o
 ![logical topology diagram](imgs/logicalTopology.png)
 
 The topologies shown in the physical and logical diagrams are appropriate for your level of understanding at this point in the course. Search the internet for “network topology diagrams” to see some more complex examples. If you add the word “Cisco” to your search phrase, you will find many topologies using icons that are similar to what you have seen in these figures.
+
+## 1.3.3 Quiz 
+
+1. Which connection physically connects the end device to the network?
+    **NIC**
+2. Which connections are specialized ports on a networking device that connect to individual networks?
+    **Interface**
+3. Which type of network topology lets you see which end devices are connected to which intermediary devices and what media is being used?
+    **Logical Topology**
+4. Which type of network topology lets you see the actual location of intermediary devices and cable installation?
+    **Physical Topology**
 
 # 1.4 Common Types of Networks
 
@@ -213,6 +233,15 @@ An organization may use an extranet to provide secure and safe access to individ
 The figure illustrates the levels of access that different groups have to a company intranet, a company extranet, and the internet.
 
 ![internetExtranetIntranet diagram](imgs/internetExtranetIntranet.png)
+
+## 1.4.5 Quiz 
+
+1. Which network infrastructure provides access to users and end devices in a small geographical area, which is typically a network in a department in an enterprise, a home, or small business?
+    **LAN** 
+2. Which network infrastructure might an organization use to provide secure and safe access to individuals who work for a different organization but require access to the organization's data?
+    **Extranet**
+3. Which network infrastructure provides access to other networks over a large geographical area, which is often owned and managed by a telecommunications service provider?
+    **WAN**
 
 # 1.5 Internet Connectons 
 
@@ -318,6 +347,17 @@ Network administrators must also protect the information contained within the pa
 - Integrity - Data integrity assures users that the information has not been altered in transmission, from origin to destination.
 - Availability - Data availability assures users of timely and reliable access to data services for authorized users.
 
+## 1.6.6 Quiz 
+
+1. When designers follow accepted standards and protocols, which of the four basic characteristics of network architecture is achieved?
+    **Scalability**
+2. Confidentiality, integrity, and availability are requirements of which of the four basic characteristics of network architecture?
+    **Security**
+3. With which type of policy, a router can manage the flow of data and voice traffic, giving priority to voice communications if the network experiences congestion?
+    **Qos**
+4. Having multiple paths to a destination is known as redundancy. This is an example of which characteristic of network architecture?
+    **Fault Tolerance**
+
 # 1.7 Network Trends
 
 ## 1.7.1 Recent Trends 
@@ -413,6 +453,19 @@ Another wireless solution for the home and small businesses is wireless broadban
 
 This solution uses the same cellular technology as a smart phone. An antenna is installed outside the house providing either wireless or wired connectivity for devices in the home. In many areas, home wireless broadband is competing directly with DSL and cable services.
 
+## 1.7.10 Quiz 
+
+1. Which feature is a good conferencing tool to use with others who are located elsewhere in your city, or even in another country?
+    **Video Communication**
+2. Which feature describes using personal tools to access information and communicate across a business or campus network?
+    **BYOD**
+3. Which feature contains options such as Public, Private, Custom and Hybrid?
+    **Cloud Computing**
+4. Which feature is being used when connecting a device to the network using an electrical outlet?
+    **Powerline**
+5.  Which feature uses the same cellular technology as a smartphone?
+    **Wireless Broadband**
+
 # 1.8 Network Security 
 
 ## 1.8.1 Security Threats 
@@ -456,8 +509,52 @@ Network security requirements must consider the environment, as well as the vari
 
 The study of network security threats and mitigation techniques starts with a clear understanding of the underlying switching and routing infrastructure used to organize network services.
 
+## 1.8.3 Quiz 
+
+1. Which attack slows down or crashes equipment and programs?
+    **Denial of Service (DoS)
+2. Which option creates a secure connection for remote workers?
+    **Virtual Private Network (VPN)**
+3. Which option blocks unauthorized access to your network?
+    **Firewall**
+4. Which option describes a network attack that occurs on the first day that a vulnerability becomes known?
+    **Zero-day** or **Zero-hour**
+5. Which option describes malicious code running on user devices?
+    **Virus, worm, or Trojan horse**
+
 # 1.9 The IT Professional
 
 ## 1.9.1 CCNA
 
 # Module Quiz
+
+1. During a routine inspection, a technician discovered that software that was installed on a computer was secretly collecting data about websites that were visited by users of the computer. Which type of threat is affecting this computer?
+    **Spyware**
+2. Which term refers to a network that provides secure access to the corporate offices by suppliers, customers and collaborators?
+    **Extranet** 
+3. A large corporation has modified its network to allow users to access network resources from their personal laptops and smart phones. Which networking trend does this describe?
+    **BYOD**
+4. What is an ISP?
+    **It is an organization that enables individuals and businesses to connect to the Internet.**
+5. In which scenario would the use of a WISP be recommended?
+    **A farm in a rural area without wired broadband access**
+6. What characteristic of a network enables it to quickly grow to support new users and applications without impacting the performance of the service being delivered to existing users?
+    **Scalability**
+7. A college is building a new dormitory on its campus. Workers are digging in the ground to install a new water pipe for the dormitory. A worker accidentally damages a fiber optic cable that connects two of the existing dormitories to the campus data center. Although the cable has been cut, students in the dormitories only experience a very short interruption of network services. What characteristic of the network is shown here?
+    **Fault Tolerance**
+8. What are two characteristics of a scalable network? (Choose two.)
+    **Grows in size without impacting existing users** and **Suitable for modular devices that allow for expansion**
+9. Which device performs the function of determining the path that messages should take through internetworks?
+    **A router**
+10. Which two Internet connection options do not require that physical cables be run to the building? (Choose two.)
+    **Cellular** and **Satellite**
+11. What type of network must a home user access in order to do online shopping?
+    **The Internet**
+12. How does BYOD change the way in which businesses implement networks?
+    **BYOD provides flexibility in where and how users can access network resources.**
+13. An employee wants to access the network of the organization remotely, in the safest possible way. What network feature would allow an employee to gain secure remote access to a company network?
+    **VPN**
+14. What is the Internet?
+    **It provides connections through interconnected global networks.**
+15. What are two functions of end devices on a network? (Choose two.)
+    **They originate the data that flows through the network.** and **They are the interface between humans and the communication network.**

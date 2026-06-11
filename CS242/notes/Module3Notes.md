@@ -138,6 +138,17 @@ Networking documents and topologies often represent networking and end devices u
 
 ![nodeIcon](imgs/nodeIcon.png)
 
+## 3.1.12 Quiz 
+
+1. What is the process of converting information into the proper form for transmission?
+    **Encoding**
+2. Which step of the communication process is concerned with properly identifying the address of the sender and receiver?
+    **Formatting**
+3. Which three are components of message timing? (Choose three.)
+    **Flow control**, **Access method**, and **Response timeout**
+4. Which delivery method is used to transmit information to one or more end devices, but not all devices on the network?
+    **Multicast**
+
 # 3.2 Protocols 
 
 ## 3.2.1 Network Protocols Overview
@@ -184,6 +195,17 @@ The protocols in the figure are described as follows:
 - Transmission Control Protocol (TCP) - This protocol manages the individual conversations. TCP is responsible for guaranteeing the reliable delivery of the information and managing flow control between the end devices.
 - Internet Protocol (IP) - This protocol is responsible for delivering messages from the sender to the receiver. IP is used by routers to forward the messages across multiple networks.
 - Ethernet- This protocol is responsible for the delivery of messages from one NIC to another NIC on the same Ethernet local area network (LAN).
+
+## 3.2.4 Quiz 
+
+1. BGP and OSPF are examples of which type of protocol?
+    **Routing**
+2. Which two protocols are service discovery protocols? (Choose two.)
+    **DNS** and **DHCP**
+3. What is the purpose of the sequencing function in network communication?
+    **To uniquely label transmitted segments of data for proper reassembly by the receiver**
+4. This protocol is responsible for guaranteeing the reliable delivery of information.
+    **TCP**
 
 # 3.3 Protocol Suites
 
@@ -295,6 +317,22 @@ The animations in the figures demonstrate the complete communication process usi
 
 ![tcpipComProc](imgs/tcpipComProc.png)
 
+## 3.3.6 Quiz 
+
+1. UDP and TCP belong to which layer of the TCP/IP protocol?
+    **Transport**
+2. Which two protocols belong in the TCP/IP model application layer?
+    **DNS** and **DHCP**
+3. Which protocol operates at the network access layer of the TCP/IP model?
+    **Ethernet**
+4. Which of the following are protocols that provide feedback from the destination host to the source host regarding errors in packet
+delivery? (Choose two.)
+    **ICMPv4** and **ICMPV6**
+5. A device receives a data link frame with data and processes and removes the Ethernet information. What information would be the next to be processed by the receiving device?
+    **IP at the internet layer**
+6. Which services are provided by the internet layer of the TCP/IP protocol suite? (Choose three.)
+    **Routing Protocols**, **Messaging**, and **Internet Protocol**
+
 # 3.4 Standards Organizations 
 
 ## 3.4.1 Open Standards
@@ -339,6 +377,17 @@ These standard organizations include the following:
 - Electronic Industries Alliance (EIA) - Organization is best known for its standards relating to electrical wiring, connectors, and the 19-inch racks used to mount networking equipment.
 - Telecommunications Industry Association (TIA) - Organization responsible for developing communication standards in a variety of areas including radio equipment, cellular towers, Voice over IP (VolP) devices, satellite communications, and more.
 - International Telecommunications Union-Telecommunication Standardization Sector (ITU-T) - One of the largest and oldest communication standards organizations. The ITU-T defines standards for video compression, Internet Protocol Television (IPTV), and broadband communications, such as a digital subscriber line (DSL).
+
+## 3.4.5 Quiz 
+
+1. True or false. Standards organizations are usually vendor-neutral.
+    **True**
+2. This standards organization is concerned with the Request for Comments (RF) documents that specify new protocols and update existing ones.
+    **Internet Engineering Task Force (IETF)**
+3. This standards organization is responsible for IP address allocation and domain name management.
+    **Internet Assigned Numbers Authority (IANA)**
+4. What types of standards are developed by the Electronics Industries Alliance (EIA)?
+    **Electric wiring and connectors**
 
 # 3.5 Reference Models
 
@@ -467,6 +516,17 @@ This process is reversed at the receiving host and is known as de-encapsulation.
 
 You saw this animation previously in this module. This time, click Play and focus on the de-encapsulation process.
 
+## 3.6.6 Quiz 
+
+1. What is the process of dividing a large data stream into smaller pieces prior to transmission?
+    **Segmentation**
+2. What is the PDU associated with the transport layer?
+    **Segment**
+3. Which protocol stack layer encapsulates data into frames?
+    **Data link**
+4. What is the name of the process of adding protocol information to data as it moves down the protocol stack?
+    **Encapsulation**
+
 # 3.7 Data Access 
 
 # 3.7.1 Addresses
@@ -581,4 +641,51 @@ The IP packet is encapsulated in a data link frame that contains the following d
 
 ## 3.7.10 Lab - Use Wireshark to View Network Traffic 
 
+## 2.7.11 Quiz 
+
+1. True or false? Frames exchanged between devices in different IP networks must be forwarded to a default gateway.
+    **True**
+2. True or false? The right-most part of an IP address is used to identify the network that a device belongs to.
+    **False**
+3. What is used to determine the network portion of an IPv4 address?
+    **Subnet Mask**
+4. Which of the following statements are true regarding network layer and data link layer addresses? (Choose three.)
+    **Network layer addresses are logical and data link addresses are expressed as 12 hexadecimal digits.**, **Data link layer addresses are physical and network layer addresses are logical.**, and **Network laver addresses are either 32 or 128 bits in lenath.**
+5. What is the order of the two addresses in the data link frame?
+    **Destination MAC, source MAC**
+6. True or False? Data Link addresses are physical so they never change in the data link frame from source to destination.
+    **False**
+
 # Module Quiz
+
+1. Which three acronyms/initialisms represent standards organizations? (Choose three.)
+    **IANA**, **IEEE**, and **IETF**
+2. What type of communication will send a message to all devices on a local area network?
+    **Broadcast**
+3. In computer communication, what is the purpose of message encoding?
+    **To convert information to the appropriate form for transmission**
+4. Which message delivery option is used when all devices need to receive the same message simultaneously?
+    **Broadcast**
+5. What are two benefits of using a layered network model? (Choose two.)
+    **It assists in protocol design.** and **It prevents technology in one layer from affecting other layers.**
+6. What is the purpose of protocols in data communications?
+    **Providing the rules required for a specific type of communication to occur**
+7. Which logical address is used for delivery of data to a remote network?
+    **Destination IP address**
+8. What is the general term that is used to describe a piece of data at any layer of a networking model?
+    **Protocol data unit**
+9. Which two protocols function at the internet layer? (Choose two.)
+    **IP** and **ICMP**
+10. Which layer of the OSI model defines services to segment and reassemble data for individual communications between end devices?
+    **Transport**
+11. Which type of communication will send a message to a group of host destinations simultaneously?
+    **Multicast**
+12. What process is used to receive transmitted data and convert it into a readable message?
+    **Decoding**
+13. What is done to an IP packet before it is transmitted over the physical medium?
+    **It is encapsulated in a Layer 2 frame.**
+14. What process is used to place one message inside another message for transfer from the source to the destination?
+    **Encapsulation**
+15. A web client is sending a request for a webpage to a web server. From the perspective of the client, what is the correct order of the protocol stack that is used to prepare the request for transmission?
+    **HTTP, TCP, IP, Ethernet**
+
