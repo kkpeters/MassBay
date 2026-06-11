@@ -13,19 +13,11 @@ If you want to be a part of a global online community, your computer, tablet, or
 
 All computers that are connected to a network and participate directly in network communication are classified as hosts. Hosts can be called end devices. Some hosts are also called clients. However, the term hosts specifically refers to devices on the network that are assigned a number for communication purposes. This number identifies the host within a particular network. This number is called the Internet Protocol (IP) address. An IP address identifies the host and the network to which the host is attached.
 
-# 1.9 The IT Professional
-
-## 1.9.1 CCNA
-
-
-
 Servers are computers with software that allow them to provide information, like email or web pages, to other end devices on the network. Each service requires separate server software. For example, a server requires web server software in order to provide web services to the network. A computer with server software can provide services simultaneously to many different clients.
 
 As mentioned before, clients are a type of host. Clients have software for requesting and displaying the information obtained from the server, as shown in the figure.
 
-```
-Client PC < --- > Internet < --- > Server 
-```
+![clientInternetServer](imgs/clientInternetServer.png)
 
 An example of client software is a web browser, like Chrome or FireFox. A single computer can also run multiple types of client software. For example, a user can check email and view a web page while instant messaging and listening to an audio stream. The table lists three common types of server software.
 
@@ -524,7 +516,20 @@ The study of network security threats and mitigation techniques starts with a cl
 
 # 1.9 The IT Professional
 
+
 ## 1.9.1 CCNA
+
+As a NetAcad student, you may already have a career in IT, or are still educating yourself to prepare for your career. In either case, it is good to know about the skills needed to match the types of jobs that are available in IT.
+
+The role and skills required of network engineers are evolving and are more vital than ever. The Cisco Certified Network Associate (CCNA) certification demonstrates that you have a knowledge of foundational technologies and ensures you stay relevant with skill sets needed for the adoption of next-generation technologies.
+
+A consolidated and updated CCNA for networking engineers is three courses and one exam which covers the fundamental topics for all network technologies. The new CNA focuses on IP foundation and security topics along with wireless, virtualization, automation, and network programmability.
+
+There are new DevNet certifications at the associate, specialist and professional levels, to validate your software development skills.
+
+There are specialist certification options to validate your skills in line with your job role and interests. This includes the Cisco Enterprise Advanced Infrastructure Specialist certification.
+
+You can start where you want. There are no prerequisites to start earning your associate, specialist, professional, or expert level certification. Continuing education credits for recertification and ongoing development are now available for CCNA.
 
 # Module Quiz
 
