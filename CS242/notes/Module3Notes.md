@@ -31,7 +31,7 @@ Prior to communicating, the devices must agree on how to communicate. They must 
 
 As shown in the animation, this is also true for computer communication.
 
-![communicationProtocols](communicationProtocols.png)
+![communicationProtocols](imgs/communicationProtocols.png)
 
 ## 3.1.4 Rule Establishment 
 
@@ -126,11 +126,11 @@ Network communications has similar delivery options to communicate. As shown in 
 - **Multicast** - Information is being transmitted to a one or more end devices.
 - **Broadcast** - Information is being transmitted to all end devices.
 
-![unicast](unicast.png)
+![unicast](imgs/unicast.png)
 
-![multicast](multicast.png)
+![multicast](imgs/multicast.png)
 
-![broadcast](broadcast.png)
+![broadcast](imgs/broadcast.png)
 
 ## 3.1.11 A Note About the Node inflections
 
