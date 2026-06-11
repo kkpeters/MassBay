@@ -5,7 +5,7 @@
 
 All end devices and network devices require an operating system (OS). As shown in the figure, the portion of the OS that interacts directly with computer hardware is known as the kernel. The portion that interfaces with applications and the user is known as the shell. The user can interact with the shell using a command-line interface (CLI) or a graphical user interface (GUI).
 
-![operatingSystems diagram](operatingSystems.png)
+![operatingSystems diagram](imgs/operatingSystems.png)
 - Shell - The user interface that allows users to request specific tasks from the computer. These requests can be made either through the CLI or GUI interfaces.
 - Kernel - Communicates between the hardware and software of a computer and manages how hardware resources are used to meet software requirements.
 - Hardware - The physical part of a computer including underlying electronics.
@@ -62,15 +62,15 @@ There are several terminal emulation programs you can use to connect to a networ
 
 PuTTY 
 
-![PuTTY image](PuTTY.png)
+![PuTTY image](imgs/PuTTY.png)
 
 Tera Term 
 
-![teraterm image](teraterm.png)
+![teraterm image](imgs/teraterm.png)
 
 SecureCRT
 
-![secureCRT image](secureCRT.png)
+![secureCRT image](imgs/secureCRT.png)
 
 # 2.2 IOS Navigation
 
@@ -86,8 +86,8 @@ The table summarizes the two modes and displays the default CLI prompts of a Cis
 
 | Command Mode | Description | Default Device Prompt |
 | ------------ | ----------- | --------------------- |
-| User Exec Mode | Mode allows access to only a limited number of basic monitoring commands. It is often referred to as “view-only" mode. | ![userexecmode](userexecmode.png)
-| Privileged EXEC Mode | Mode allows access to all commands and features. The user can use any monitoring commands and execute configuration and management commands. | ![privEXECmode](privEXECmode.png)
+| User Exec Mode | Mode allows access to only a limited number of basic monitoring commands. It is often referred to as “view-only" mode. | ![userexecmode](imgs/userexecmode.png)
+| Privileged EXEC Mode | Mode allows access to all commands and features. The user can use any monitoring commands and execute configuration and management commands. | ![privEXECmode](imgs/privEXECmode.png)
 
 ## 2.2.2 Configuration Mode and Subconfiguration Modes
 
@@ -149,7 +149,7 @@ This topic covers the basic structure of commands for the Cisco IOS. A network a
 
 A Cisco IOS device supports many commands. Each IOS command has a specific format, or syntax, and can only be executed in the appropriate mode. The general syntax for a command, shown in the figure, is the command followed by any appropriate keywords and arguments.
 
-![iosCommandStructure](iosCommandStructure.png)
+![iosCommandStructure](imgs/iosCommandStructure.png)
 
 - Keyword - This is a specific parameter defined in the operating system (in the figure, ip protocols).
 - Argument - This is not predefined; it is a value or variable defined by the user (in the figure, 192.168.10.5).
@@ -176,7 +176,7 @@ The following examples demonstrate conventions used to document and use IOS comm
 
 If a command is complex with multiple arguments, you may see it represented like this:
 
-![commandSyntaxCheck](commandSyntaxCheck.png)
+![commandSyntaxCheck](imgs/commandSyntaxCheck.png)
 
 The command will typically be followed with a detailed description of the command and each argument.
 
@@ -263,7 +263,7 @@ The default name should be changed to something more descriptive. By choosing na
 
 An organization must choose a naming convention that makes it easy and intuitive to identify a specific device. The hostnames used in the device IOS preserve capitalization and lowercase characters. For example, the figure shows that three switches, spanning three different floors, are interconnected together in a network. The naming convention that was used incorporated the location and the purpose of each device. Network documentation should explain how these names were chosen so additional devices can be named accordingly.
 
-![floorSwitches](floorSwitches.png)
+![floorSwitches](imgs/floorSwitches.png)
 
 When the naming convention has been identified, the next step is to use the CLI to apply the names to the devices. As shown in the example, from the privileged EXEC mode, access the global configuration mode by entering the **configure terminal** command. Notice the change in the command prompt.
 
@@ -355,7 +355,7 @@ The command applies weak encryption to all unencrypted passwords. This encryptio
 
 Use the **show running-config** command to verify that passwords are now encrypted.
 
-![passwordEncryption](passwordEncryption.png)
+![passwordEncryption](imgs/passwordEncryption.png)
 
 ## 2.4.5 Banner Messages 
 
@@ -384,7 +384,7 @@ There are two system files that store the device configuration:
 
 The **show running-config** privileged EXEC mode command is used to view the running config. As shown in the example, the command will list the complete configuration currently stored in RAM.
 
-![runningConfig](runningConfig.png)
+![runningConfig](imgs/runningConfig.png)
 
 To view the startup configuration file, use the **show startup-config** privileged EXEC command. 
 
@@ -412,11 +412,11 @@ For example, assume that a switch has been configured, and the running config ha
 
 **Step 1.** Open terminal emulation software, such as PuTTY or Tera Term, that is already connected to a switch.
 
-![step1](step1.png)
+![step1](imgs/step1.png)
 
 **Step 2.** Enable logging in the terminal software and assign a name and file location to save the log file. The figure displays that **All session output** will be captured to the file specified (i.e., MySwitchLogs).
 
-![step2](step2.png)
+![step2](imgs/step2.png)
 
 **Step 3.** Execute the **show running-config** or **show startup-config** command at the privileged EXEC prompt. Text displayed in the terminal window will be placed into the chosen file.
 
@@ -428,7 +428,7 @@ Building configuration...
 
 **Step 4.** Disable logging in the terminal software. The figure shows how to disable logging by choosing the **None** session logging option. 
 
-![step4](step4.png)
+![step4](imgs/step4.png)
 
 The text file created can be used as a record of how the device is currently implemented. The file could require editing before being used to restore a saved configuration to a device.
 
@@ -464,17 +464,17 @@ With the IPv4 address, a subnet mask is also necessary. An IPv4 subnet mask is a
 
 The example in the figure displays the IPv4 address (192.168.1.10), subnet mask (255.255.255.0), and default gateway (192.168.1.1) assigned to a host. The default gateway address is the IP address of the router that the host will use to access remote networks, including the internet.
 
-![ipAddress1](ipAddress1.png)
+![ipAddress1](imgs/ipAddress1.png)
 
 IPv6 addresses are 128 bits in length and written as a string of hexadecimal values. Every four bits is represented by a single hexadecimal digit; for a total of 32 hexadecimal values. Groups of four hexadecimal digits are separated by a colon (:) . IPv6 addresses are not case-sensitive and can be written in either lowercase or uppercase.
 
-![ipAddress2](ipAddress2.png)
+![ipAddress2](imgs/ipAddress2.png)
 
 ## 2.6.2 Interfaces and Ports 
 
 Network communications depend on end user device interfaces, networking device interfaces, and the cables that connect them. Each physical interface has specifications, or standards, that define it. A cable connecting to the interface must be designed to match the physical standards of the interface. Types of network media include twisted-pair copper cables, fiber-optic cables, coaxial cables, or wireless, as shown in the figure.
 
-![interfacesAndPorts](interfacesAndPorts.png)
+![interfacesAndPorts](imgs/interfacesAndPorts.png)
 
 Different types of network media have different features and benefits. Not all network media have the same characteristics. Not all media are appropriate for the same purpose. These are some of the differences between various types of media:
 - Distance the media can successfully carry a signal
@@ -500,13 +500,13 @@ IPv4 address information can be entered into end devices manually, or automatica
 
 To manually configure an IPv4 address on a Windows host, open the **Control Panel > Network Sharing Center > Change adapter settings** and choose the adapter. Next right-click and select **Properties** to display the **Local Area Connection Properties**, as shown in the figure.
 
-![ipconfig1](ipconfig1.png)
+![ipconfig1](imgs/ipconfig1.png)
 
 Highlight Internet Protocol Version 4 (TCP/IPv4) and click **Properties** to open the **Internet Protocol Version 4 (TCP/IPv4) Properties** window, shown in the figure. Configure the IPv4 address and subnet mask information, and default gateway.
 
 Note: IPv6 addressing and configuration options are similar to IPv4.
 
-![ipconfig2](ipconfig2.png)
+![ipconfig2](imgs/ipconfig2.png)
 
 Note:  The DNS server addresses are the IPv4 and IPv6 addresses of the Domain Name System (DNS) servers, which are used to translate IP addresses to domain names, such as www.cisco.com. 
 
@@ -520,7 +520,7 @@ As shown in the figure, to configure DHCP on a Windows PC, you only need to sele
 
 Note: IPv6 uses DHCPv6 and SLAAC (Stateless Address Autoconfiguration) for dynamic address allocation.
 
-![ipconfigEndDevices](ipconfigEndDevices.png)
+![ipconfigEndDevices](imgs/ipconfigEndDevices.png)
 
 ## 2.7.3 Syntax Checker - Verify Windows PC IP Configuration 
 

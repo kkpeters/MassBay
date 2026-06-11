@@ -76,7 +76,7 @@ To communicate the message, she converts her thoughts into an agreed upon langua
 
 Encoding between hosts must be in an appropriate format for the medium. Messages sent across the network are first converted into bits by the sending host. Each bit is encoded into a pattern of voltages on copper wires, infrared light in optical fibers, or microwaves for wireless systems. The destination host receives and decodes the signals to interpret the message.
 
-![messageEncoding](messageEncoding.png)
+![messageEncoding](imgs/messageEncoding.png)
 
 ## 3.1.7 Message Formatting and Excapsulation 
 
@@ -88,7 +88,7 @@ An envelope has the address of the sender and receiver, each located at the prop
 
 The process of placing one message format (the letter) inside another message format (the envelope) is called encapsulation. De-encapsulation occurs when the process is reversed by the recipient and the letter is removed from the envelope.
 
-![formattingEncapsulation1](formattingEncapsulation1.png)
+![formattingEncapsulation1](imgs/formattingEncapsulation1.png)
 
 ### Network
 
@@ -98,7 +98,7 @@ Internet Protocol (IP) is a protocol with a similar function to the envelope exa
 
 Note: The fields of the IPv6 packet are discussed in detail in another module.
 
-![formattingEncapsulation2](formattingEncapsulation2.png)
+![formattingEncapsulation2](imgs/formattingEncapsulation2.png)
 
 ## 3.1.8 Message Size 
 
@@ -136,7 +136,7 @@ Network communications has similar delivery options to communicate. As shown in 
 
 Networking documents and topologies often represent networking and end devices using a node icon. Nodes are typically represented as a circle. The figure shows a comparison of the three different delivery options using node icons instead of computer icons.
 
-![nodeIcon](nodeIcon.png)
+![nodeIcon](imgs/nodeIcon.png)
 
 # 3.2 Protocols 
 
@@ -160,7 +160,7 @@ The table lists the various types of protocols that are needed to enable communi
 
 Network communication protocols are responsible for a variety of functions necessary for network communications between end devices. For example, in the figure how does the computer send a message, across several network devices, to the server?
 
-![networkProtocolFunctions](networkProtocolFunctions.png)
+![networkProtocolFunctions](imgs/networkProtocolFunctions.png)
 
 Computers and network devices use agreed-upon protocols to communicate. The table lists the functions of these protocols.
 
@@ -177,7 +177,7 @@ Computers and network devices use agreed-upon protocols to communicate. The tabl
 
 A message sent over a computer network typically requires the use of several protocols, each one with its own functions and format. The figure shows some common network protocols that are used when a device sends a request to a web server for its web page.
 
-![protocolInteraction](protocolInteraction.png)
+![protocolInteraction](imgs/protocolInteraction.png)
 
 The protocols in the figure are described as follows:
 - Hypertext Transfer Protocol (HTTP) - This protocol governs the way a web server and a web client interact. HTTP defines the content and formatting of the requests and responses that are exchanged between the client and server. Both the client and the web server software implement HTTP as part of the application. HTTP relies on other protocols to govern how the messages are transported between the client and server.
@@ -197,7 +197,7 @@ One of the best ways to visualize how the protocols within a suite interact is t
 
 As illustrated in the figure, we can use layers to describe the activity occurring in face-to-face communication. At the bottom is the physical layer where we have two people with voices saying words out loud. In the middle is the rules layer that stipulates the requirements of communication including that a common language must be chosen. At the top is the content layer and this is where the content of the communication is actually spoken.
 
-![protocolSuites](protocolSuites.png)
+![protocolSuites](imgs/protocolSuites.png)
 
 Protocol suites are sets of rules that work together to help solve a problem.
 
@@ -207,7 +207,7 @@ A protocol suite is a set of protocols that work together to provide comprehensi
 
 During the evolution of network communications and the internet there were several competing protocol suites, as shown in the figure.
 
-![evolutionProtocolSuites](evolutionProtocolSuites.png)
+![evolutionProtocolSuites](imgs/evolutionProtocolSuites.png)
 
 - Internet Protocol Suite or TCP/IP - This is the most common and relevant protocol suite used today. The TCP/IP protocol suite is an open standard protocol suite maintained by the Internet Engineering Task Force (IETF).
 - Open Systems Interconnection (OSI) protocols - This is a family of protocols developed jointly in 1977 by the International Organization for Standardization (ISO) and the International Telecommunications Union (ITU). The OSI protocol also included a seven-layer model called the OSI reference model. The OSI reference model categorizes the functions of its protocols. Today OSI is mainly known for its layered model. The OSI protocols have largely been replaced by TCP/IP.
@@ -219,13 +219,13 @@ TCP/IP protocols are available for the application, transport, and internet laye
 
 The figure shows an example of the three TCP/IP protocols used to send packets between the web browser of a host and the web server. HTTP, TCP, and IP are the C/IP protocols used. At the network access layer, Ethernet is used in the example. However, this could also be a wireless standard such as WLAN or cellular service.
 
-![tcpipProtocolEx](tcpipProtocolEx.png)
+![tcpipProtocolEx](imgs/tcpipProtocolEx.png)
 
 ## 3.3.4 TCP/IP Protocol Suite
 
 Today, the TCP/IP protocol suite includes many protocols and continues to evolve to support new services. Some of the more popular ones are shown in the figure.
 
-![tcpipProtocolSuite](tcpipProtocolSuite.png)
+![tcpipProtocolSuite](imgs/tcpipProtocolSuite.png)
 
 TCP/IP is the protocol suite used by the internet and the networks of today. TCP/IP has two important aspects for vendors and manufacturers:
 - Open standard protocol suite - This means it is freely available to the public and can be used by any vendor on their hardware or in their software.
@@ -293,7 +293,7 @@ Data Link Protocols
 
 The animations in the figures demonstrate the complete communication process using an example of a web server transmitting data to a client.
 
-![tcpipComProc](tcpipComProc.png)
+![tcpipComProc](imgs/tcpipComProc.png)
 
 # 3.4 Standards Organizations 
 
@@ -308,7 +308,7 @@ Standards organizations are usually vendor-neutral, non-profit organizations est
 
 A standards organization may draft a set of rules entirely on its own or, in other cases, may select a proprietary protocol as the basis for the standard. If a proprietary protocol is used, it usually involves the vendor who created the protocol.
 
-![openStandards](openStandards.png)
+![openStandards](imgs/openStandards.png)
 
 ## 3.4.2 Internet Standards
 
@@ -316,7 +316,7 @@ Various organizations have different responsibilities for promoting and creating
 
 The figure displays standards organizations involved with the development and support of the internet.
 
-![organizations](organizations.png)
+![organizations](imgs/organizations.png)
 
 - Internet Society (ISOC) - Responsible for promoting the open development and evolution of internet use throughout the world.
 - Internet Architecture Board (IAB) - Responsible for the overall management and development of internet standards
@@ -325,7 +325,7 @@ The figure displays standards organizations involved with the development and su
 
 The next figure displays standards organizations involved with the development and support of TCP/IP and include IANA and ICANN.
 
-![ianaIcann](ianaIcann.png)
+![ianaIcann](imgs/ianaIcann.png)
 
 - Internet Corporation for Assigned Names and Numbers (ICANN)- Based in the United States, ICANN coordinates IP address allocation, the management of domain names, and assignment of other information used in TCP/IP protocols.
 - Internet Assigned Numbers Authority (IANA) - Responsible for overseeing and managing IP address allocation, domain name management, and protocol identifiers for ICANN.
@@ -358,7 +358,7 @@ As shown in the figure, there are two layered models that are used to describe n
 - Open System Interconnection (OSI) Reference Model
 - TCP/IP Reference Model
 
-![layeredModel](layeredModel.png)
+![layeredModel](imgs/layeredModel.png)
 
 ## 3.5.2 The OSI Reference Model
 
@@ -398,7 +398,7 @@ The protocols that make up the TCP/IP protocol suite can also be described in te
 
 At the network access layer, the TCP/IP protocol suite does not specify which protocols to use when transmitting over a physical medium; it only describes the handoff from the internet layer to the physical network protocols. OSI Layers 1 and 2 discuss the necessary procedures to access the media and the physical means to send data over a network.
 
-![OSITCPIP](OSITCPIP.png)
+![OSITCPIP](imgs/OSITCPIP.png)
 
 The key similarities are in the transport and network layers; however, the two models differ in how they relate to the layers above and below each layer:
 - OSI Layer 3, the network layer, maps directly to the TCP/IP internet layer. This layer is used to describe protocols that address and route messages through an internetwork.
@@ -425,9 +425,9 @@ This leads to segmenting messages having two primary benefits:
 
 Click each button in the figure to view the animations of segmentation and multiplexing.
 
-![segmentation](segmentation.png)
+![segmentation](imgs/segmentation.png)
 
-![multiplexing](multiplexing.png)
+![multiplexing](imgs/multiplexing.png)
 
 ## 3.6.2 Sequencing
 
@@ -435,7 +435,7 @@ The challenge to using segmentation and multiplexing to transmit messages across
 
 In network communications, each segment of the message must go through a similar process to ensure that it gets to the correct destination and can be reassembled into the content of the original message, as shown in the figure. TCP is responsible for sequencing the individual segments.
 
-![sequencing](sequencing.png)
+![sequencing](imgs/sequencing.png)
 
 ## 3.6.3 Protocol Data Units
 
@@ -445,7 +445,7 @@ Note: Although the UDP PDU is called datagram, IP packets are sometimes also ref
 
 The form that a piece of data takes at any layer is called a protocol data unit (PDU). During encapsulation, each succeeding layer encapsulates the PDU that it receives from the layer above in accordance with the protocol being used. At each stage of the process, a PDU has a different name to reflect its new functions. Although there is no universal naming convention for PDUs, in this course, the PDUs are named according to the protocols of the TCP/IP suite. The PDUs for each form of data are shown in the figure.
 
-![PDU](PDU.png)
+![PDU](imgs/PDU.png)
 
 - Data - The general term for the PDU used at the application layer
 - Segment - Transport layer PDU
@@ -478,13 +478,13 @@ The network and data link layers are responsible for delivering the data from th
 - **Network layer source and destination addresses** - Responsible for delivering the IP packet from the original source to the final destination, which may be on the same network or a remote network.
 - **Data link layer source and destination addresses** - Responsible for delivering the data link frame from one network interface card (NIC) to another NIC on the same network.
 
-![addresses](addresses.png)
+![addresses](imgs/addresses.png)
 
 ## 3.7.2 Layer 3 Logical Address
 
 An IP address is the network layer, or Layer 3, logical address used to deliver the IP packet from the original source to the final destination, as shown in the figure.
 
-![logicalAddress](logicalAddress.png)
+![logicalAddress](imgs/logicalAddress.png)
 
 The IP packet contains two IP addresses:
 - Source IP address - The IP address of the sending device, which is the original source of the packet.
@@ -508,13 +508,13 @@ In this example we have a client computer, PC1, communicating with an FTP server
 
 Notice in the figure that the network portion of the source IPv4 address and the network portion of the destination IPv4 address are the same and therefore; the source and destination are on the same network.
 
-![deviceSameNetwork](deviceSameNetwork.png)
+![deviceSameNetwork](imgs/deviceSameNetwork.png)
 
 ## 3.7.4 Role of the Data Link Layer Addresses - Same IP Network
 
 When the sender and receiver of the IP packet are on the same network, the data link frame is sent directly to the receiving device. On an Ethernet network, the data link addresses are known as Ethernet Media Access Control (MAC) addresses, as highlighted in the figure.
 
-![dataLinkLayer](dataLinkLayer.png)
+![dataLinkLayer](imgs/dataLinkLayer.png)
 
 MAC addresses are physically embedded on the Ethernet NIC.
 - **Source MAC address** - This is the data link address, or the Ethernet MAC address, of the device that sends the data link frame with the encapsulated IP packet. The MAC address of the Ethernet NIC of PC1 is AA-AA-AA-AA-AA-AA, written in hexadecimal notation.
@@ -536,7 +536,7 @@ on different networks. This will be indicated by the network portion of the IP a
 
 Notice in the figure that the network portion of the source IPv4 address and destination IPv4 address are on different networks.
 
-![networkLayerAddresses](networkLayerAddresses.png)
+![networkLayerAddresses](imgs/networkLayerAddresses.png)
 
 ## 3.7.7 Role of the Data Link Layer Addresses - Different IP Networks
 
@@ -545,7 +545,7 @@ When the sender and receiver of the IP packet are on different networks, the Eth
 is AA-AA-AA-AA-AA-AA.
 - Destination MAC address - When the receiving device, the destination IP address, is on a different network from the sending device, the sending device uses the Ethernet MAC address of the default gateway or router. In this example, the destination MAC address is the MAC address of the R1 Ethernet interface, 11-11-11-11-11-11. This is the interface that is attached to the same network as PC1, as shown in the figure.
 
-![dataLinkDifIP](dataLinkDifIP.png)
+![dataLinkDifIP](imgs/dataLinkDifIP.png)
 
 The Ethernet frame with the encapsulated IP packet can now be transmitted to R1. R1 forwards the packet to the destination, Web Server. This may mean that R1 forwards the packet to another router or directly to Web Server if the destination is on a network connected to R1.
 
@@ -559,15 +559,15 @@ Before an IP packet can be sent over a wired or wireless network, it must be enc
 
 ### Host to Router 
 
-![hostToRouter](hostToRouter.png)
+![hostToRouter](imgs/hostToRouter.png)
 
 ### Router to Router 
 
-![routerToRouter](routerToRouter.png)
+![routerToRouter](imgs/routerToRouter.png)
 
 ### Router to Server 
 
-![routerToServer](routerToServer.png)
+![routerToServer](imgs/routerToServer.png)
 
 As the IP packet travels from host-to-router, router-to-router, and finally router-to-host, at each point along the way the IP packet is encapsulated in a new data link frame. Each data link frame contains the source data link address of the NIC card sending the frame, and the destination data link address of the NIC card receiving the frame.
 

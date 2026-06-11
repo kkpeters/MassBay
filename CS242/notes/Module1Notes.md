@@ -121,12 +121,12 @@ Topology diagrams are mandatory documentation for anyone working with a network.
 ### Physical Topology diagrams
 Physical topology diagrams illustrate the physical location of intermediary devices and cable installation, as shown in the figure. You can see that the rooms in which these devices are located are labeled in this physical topology.
 
-![physical topology diagram](physicalTopology.png)
+![physical topology diagram](imgs/physicalTopology.png)
 
 ### Logical Topology diagrams
 Logical topology diagrams illustrate devices, ports, and the addressing scheme of the network, as shown in the figure. You can see which end devices are connected to which intermediary devices and what media is being used.
 
-![logical topology diagram](logicalTopology.png)
+![logical topology diagram](imgs/logicalTopology.png)
 
 The topologies shown in the physical and logical diagrams are appropriate for your level of understanding at this point in the course. Search the internet for “network topology diagrams” to see some more complex examples. If you add the word “Cisco” to your search phrase, you will find many topologies using icons that are similar to what you have seen in these figures.
 
@@ -166,7 +166,7 @@ Network infrastructures vary greatly in terms of:
 
 The two most common types of network infrastructures are Local Area Networks (LANs), and Wide Area Networks (WANs). A LAN is a network infrastructure that provides access to users and end devices in a small geographical area. A LAN is typically used in a department within an enterprise, a home, or a small business network. A WAN is a network infrastructure that provides access to other networks over a wide geographical area, which is typically owned and managed by a larger corporation or a telecommunications service provider. The figure shows LANs connected to a WAN.
 
-![diagram of lans connected to wans](lansConnectedToWans.png)
+![diagram of lans connected to wans](imgs/lansConnectedToWans.png)
 
 ### LANs 
 
@@ -175,7 +175,7 @@ A LAN is a network infrastructure that spans a small geographical area. LANs hav
 - A LAN is usually administered by a single organization or individual. Administrative control is enforced at the network level and governs the security and access control policies. 
 - LANs provide high-speed bandwidth to internal end devices and intermediary devices, as shown in the figure.
 
-![lan diagram](lanDiagram.png)
+![lan diagram](imgs/lanDiagram.png)
 
 ### WANs 
 
@@ -186,13 +186,13 @@ WANs have specific characteristics:
 - WANs are usually administered by multiple service providers.
 - WANs typically provide slower speed links between LANs.
 
-![wan diagram](wanDiagram.png)
+![wan diagram](imgs/wanDiagram.png)
 
 ## 1.4.3 The Internet
 
 The internet is a worldwide collection of interconnected networks (internetworks, or internet for short). The figure shows one way to view the internet as a collection of interconnected LANs and WANs.
 
-![lan and wan diagram](lanAndWan.png)
+![lan and wan diagram](imgs/lanAndWan.png)
 LANs use WAN services to interconnect.
 
 Some of the LAN examples are connected to each other through a WAN connection. WANs are then connected to each other. WANs can connect through copper wires, fiber-optic cables, and wireless transmissions (not shown).
@@ -212,7 +212,7 @@ An organization may use an extranet to provide secure and safe access to individ
 
 The figure illustrates the levels of access that different groups have to a company intranet, a company extranet, and the internet.
 
-![internetExtranetIntranet diagram](internetExtranetIntranet.png)
+![internetExtranetIntranet diagram](imgs/internetExtranetIntranet.png)
 
 # 1.5 Internet Connectons 
 
@@ -226,7 +226,7 @@ Organizations usually need access to other corporate sites as well as the intern
 
 ## 1.5.2 Home and Small Office Internet Connections 
 
-![smallHomeOfficeConnections diagram](smallHomeOfficeConnections.png)
+![smallHomeOfficeConnections diagram](imgs/smallHomeOfficeConnections.png)
 
 - Cable - Typically offered by cable television service providers, the internet data signal transmits on the same cable that delivers cable television. It provides a high bandwidth, high availability, and an always-on connection to the internet.
 - DSL - Digital Subscriber Lines also provide high bandwidth, high availability, and an always-on connection to the internet. DSL runs over a telephone line. In general, small office and home office users connect using Asymmetrical DSL (ADSL), which means that the download speed is faster than the upload speed.
@@ -242,7 +242,7 @@ Corporate connection options differ from home user options. Businesses may requi
 
 The figure illustrates common connection options for businesses.
 
-![businessConnections diagram](businessConnections.png)
+![businessConnections diagram](imgs/businessConnections.png)
 
 - Dedicated Leased Line - Leased lines are reserved circuits within the service provider’s network that connect geographically separated offices for private voice and/or data networking. The circuits are rented at a monthly or yearly rate.
 - Metro Ethernet - This is sometimes known as Ethernet WAN. In this module, we will refer to it as Metro Ethernet. Metro ethernets extend LAN access technology into the WAN. Ethernet is a LAN technology you will learn about in a later module.
@@ -257,13 +257,13 @@ Traditional Separate Networks
 
 Consider a school built thirty years ago. Back then, some classrooms were cabled for the data network, telephone network, and video network for televisions. These separate networks could not communicate with each other. Each network used different technologies to carry the communication signal. Each network had its own set of rules and standards to ensure successful communication. Multiple services ran on multiple networks.
 
-![traditionalSeparateNetworks diagram](traditionalSeparateNetworks.png)
+![traditionalSeparateNetworks diagram](imgs/traditionalSeparateNetworks.png)
 
 Converged Networks
 
 Today, the separate data, telephone, and video networks converge. Unlike dedicated networks, converged networks are capable of delivering data, voice, and video between many different types of devices over the same network infrastructure. This network infrastructure uses the same set of rules, agreements, and implementation standards. Converged data networks carry multiple services on one network.
 
-![convergedNetworks diagram](convergedNetworks.png)
+![convergedNetworks diagram](imgs/convergedNetworks.png)
 
 # 1.6 Reliable Networks 
 
@@ -287,13 +287,13 @@ A fault tolerant network is one that limits the number of affected devices durin
 
 Implementing a packet-switched network is one way that reliable networks provide redundancy. Packet switching splits traffic into packets that are routed over a shared network. A single message, such as an email or a video stream, is broken into multiple message blocks, called packets. Each packet has the necessary addressing information of the source and destination of the message. The routers within the network switch the packets based on the condition of the network at that moment. This means that all the packets in a single message could take very different paths to the same destination. In the figure, the user is unaware and unaffected by the router that is dynamically changing the route when a link fails.
 
-![faultTolerance diagram](faultTolerance.png)
+![faultTolerance diagram](imgs/faultTolerance.png)
 
 ## 1.6.3 Scalability
 
 A scalable network expands quickly to support new users and applications. It does this without degrading the performance of services that are being accessed by existing users. The figure shows how a new network is easily added to an existing network. These networks are scalable because the designers follow accepted standards and protocols. This lets software and hardware vendors focus on improving products and services without having to design a new set of rules for operating within the network.
 
-![scalability diagram](scalability.png)
+![scalability diagram](imgs/scalability.png)
 
 ## 1.6.4 Quality of Service 
 
@@ -303,7 +303,7 @@ Congestion occurs when the demand for bandwidth exceeds the amount available. Ne
 
 When the volume of traffic is greater than what can be transported across the network, devices will hold the packets in memory until resources become available to transmit them. In the figure, one user is requesting a web page, and another is on a phone call. With a QoS policy in place, the router can manage the flow of data and voice traffic, giving priority to voice communications if the network experiences congestion.The focus of QoS is to prioritize time-sensitive traffic. The type of traffic, not the content of the traffic, is what is important.
 
-![qos diagram](qos.png)
+![qos diagram](imgs/qos.png)
 
 ## 1.6.5 Network Security 
 
@@ -311,7 +311,7 @@ The network infrastructure, services, and the data contained on network-attached
 
 Securing the network infrastructure includes physically securing devices that provide network connectivity and preventing unauthorized access to the management software that resides on them, as shown in the figure.
 
-![networkSecurity diagram](networkSecurity.png)
+![networkSecurity diagram](imgs/networkSecurity.png)
 
 Network administrators must also protect the information contained within the packets being transmitted over the network, and the information stored on network attached devices. In order to achieve the goals of network security, there are three primary requirements.
 - Confidentiality - Data confidentiality means that only the intended and authorized recipients can access and read data.
@@ -389,7 +389,7 @@ Smart home technology is currently being developed for all rooms within a house.
 
 Powerline networking for home networks uses existing electrical wiring to connect devices, such as shown in the figure. 
 
-![powerlineNetworking diagram](powerlineNetworking.png)
+![powerlineNetworking diagram](imgs/powerlineNetworking.png)
 
 Using a standard powerline adapter, devices can connect to the LAN wherever there is an electrical outlet. No data cables need to be installed, and there is little to no additional electricity used. Using the same wiring that delivers electricity, powerline networking sends information by sending data on certain frequencies.
 
@@ -409,7 +409,7 @@ Although a separate transmission tower may be installed for the antenna, typical
 
 Another wireless solution for the home and small businesses is wireless broadband, as shown in the figure.
 
-![wirelessBroadbandServices diagram](wirelessBroadbandServices.png)
+![wirelessBroadbandServices diagram](imgs/wirelessBroadbandServices.png)
 
 This solution uses the same cellular technology as a smart phone. An antenna is installed outside the house providing either wireless or wired connectivity for devices in the home. In many areas, home wireless broadband is competing directly with DSL and cable services.
 
@@ -434,7 +434,7 @@ There are several common external threats to networks:
 
 It is equally important to consider internal threats. There have been many studies that show that the most common data breaches happen because of internal users of the network. This can be attributed to lost or stolen devices, accidental misuse by employees, and in the business environment, even malicious employees. With the evolving BYOD strategies, corporate data is much more vulnerable. Therefore, when developing a security policy, it is important to address both external and internal security threats, as shown in the figure.
 
-![securityThreats diagram](securityThreats.png)
+![securityThreats diagram](imgs/securityThreats.png)
 
 ## 1.8.2 Security Solutions
 
