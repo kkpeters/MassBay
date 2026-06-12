@@ -650,7 +650,7 @@ The IP packet is encapsulated in a data link frame that contains the following d
 3. What is used to determine the network portion of an IPv4 address?
     **Subnet Mask**
 4. Which of the following statements are true regarding network layer and data link layer addresses? (Choose three.)
-    **Network layer addresses are logical and data link addresses are expressed as 12 hexadecimal digits.**, **Data link layer addresses are physical and network layer addresses are logical.**, and **Network laver addresses are either 32 or 128 bits in lenath.**
+    **Network layer addresses are logical and data link addresses are expressed as 12 hexadecimal digits.**, **Data link layer addresses are physical and network layer addresses are logical.**, and **Network layer addresses are either 32 or 128 bits in length.**
 5. What is the order of the two addresses in the data link frame?
     **Destination MAC, source MAC**
 6. True or False? Data Link addresses are physical so they never change in the data link frame from source to destination.
