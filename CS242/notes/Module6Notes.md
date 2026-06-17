@@ -159,3 +159,188 @@ Both devices can transmit and receive on the media but cannot do so simultaneous
 
 ![halfAndFullDuplex1](imgs/module6/halfAndFullDuplex1.png)
 ![halfAndFullDuplex2](imgs/module6/halfAndFullDuplex2.png)
+
+### Full-duplex communication
+
+Both devices can simultaneously transmit and receive on the shared media. The data link layer assumes that the media is available for transmission for both nodes at any time. Ethernet switches operate in full-duplex mode by default, but they can operate in half-duplex if connecting to a device such as an Ethernet hub. Click play in the figure to see the animation showing full-duplex communication.
+
+![fullDuplex](imgs/module6/fullDuplex.png)
+
+In summary, half-duplex communications restrict the exchange of data to one direction at a time. Full-duplex allows the sending and receiving of data to happen simultaneously.
+
+It is important that two interconnected interfaces, such as a host NIC and an interface on an Ethernet switch, operate using the same duplex mode. Otherwise, there will be a duplex mismatch creating inefficiency and latency on the link.
+
+## 6.2.6 Access Control Methods
+
+Ethernet LANs and WLANs are examples of multiaccess networks. A multiaccess network is a network that can have two or more end devices attempting to access the network simultaneously.
+
+Some multiaccess networks require rules to govern how devices share the physical media. There are two basic access control methods for shared media:
+- Contention-based access
+- Controlled access
+
+### Contention-based access
+In contention-based multiaccess networks, all nodes are operating in half-duplex, competing for the use of the medium. However, only one device can send at a time. Therefore, there is a process if more than one device transmits at the same time. Examples of contention- based access methods include the following:
+- Carrier sense multiple access with collision detection (CSMA/CD) used on legacy bus-topology Ethernet LANs
+- Carrier sense multiple access with collision avoidance (CSMA/CA) used on Wireless LANs
+
+![accessControlMethods](imgs/module6/accessControlMethods.png)
+
+### Controlled access
+In a controlled-based multiaccess network, each node has its own time to use the medium. These deterministic types of legacy networks are inefficient because a device must wait its turn to access the medium. Examples of multiaccess networks that use controlled access include the following:
+- Legacy Token Ring
+- Legacy ARCNET
+
+![controlledAccess](imgs/module6/controlledAccess.png)
+
+Each node must wait for its turn to access the network medium.
+
+## 6.2.7 Contention-Based Access - CSMA/CD
+
+Examples of contention-based access networks include the following:
+
+- Wireless LAN (uses CSMA/CA)
+- Legacy bus-topology Ethernet LAN (uses CSMA/CD)
+- Legacy Ethernet LAN using a hub (uses CSMA/CD)
+
+These networks operate in half-duplex mode, meaning only one device can send or receive at a time. This requires a process to govern when a device can send and what happens when multiple devices send at the same time.
+
+If two devices transmit at the same time, a collision will occur. For legacy Ethernet LANs, both devices will detect the collision on the network. This is the collision detection (CD) portion of CSMA/CD. The NIC compares data transmitted with data received, or by recognizing that the signal amplitude is higher than normal on the media. The data sent by both devices will be corrupted and will need to be resent.
+
+### PC1 Sends a Frame 
+
+![pc1sends](imgs/module6/pc1sends.png)
+
+### The Hub Recieves the Frame 
+
+![hubRecieves](imgs/module6/hubRecieves.png)
+
+### The Hub sends the Frame 
+
+![hubSends](imgs/module6/hubSends.png)
+
+## 6.2.8 Contention-Based Access - CSMA/CA
+
+Another form of CSMA used by IEEE 802.11 WLANs is carrier sense multiple access/collision avoidance (CSMA/CA).
+
+CMSA/CA uses a method similar to CSMA/CD to detect if the media is clear. CMSA/CA uses additional techniques. In wireless environments it may not be possible for a device to detect a collision. CMSA/CA does not detect collisions but attempts to avoid them by waiting before transmitting. Each device that transmits includes the time duration that it needs for the transmission. All other wireless devices receive this information and know how long the medium will be unavailable.
+
+In the figure, if host A is receiving a wireless frame from the access point, hosts B, and C will also see the frame and how long the medium will be unavailable.
+
+![contentionBasedAccessCA](imgs/module6/contentionBasedAccessCA.png)
+
+After a wireless device sends an 802.11 frame, the receiver returns an acknowledgment so that the sender knows the frame arrived.
+
+Whether it is an Ethernet LAN using hubs, or a WLAN, contention-based systems do not scale well under heavy media use.
+
+**Note:** Ethernet LANs using switches do not use a contention-based system because the switch and the host NIC operate in full-duplex mode.
+
+# 6.3 Data Link Frame 
+
+## 6.3.1 The Frame
+
+This topic discusses in detail what happens to the data link frame as it moves through a network. The information appended to a frame is determined by the protocol being used.
+
+The data link layer prepares the encapsulated data (usually an IPv4 or IPv6 packet) for transport across the local media by encapsulating it with a header and a trailer to create a frame.
+
+The data link protocol is responsible for NIC-to-NIC communications within the same network. Although there are many different data link layer protocols that describe data link layer frames, each frame type has three basic parts:
+
+- Header
+- Data
+- Trailer
+
+Unlike other encapsulation protocols, the data link layer appends information in the form of a trailer at the end of the frame.
+
+All data link layer protocols encapsulate the data within the data field of the frame. However, the structure of the frame and the fields contained in the header and trailer vary according to the protocol.
+
+There is no one frame structure that meets the needs of all data transportation across all types of media. Depending on the environment, the amount of control information needed in the frame varies to match the access control requirements of the media and logical topology.
+
+For example, a WLAN frame must include procedures for collision avoidance and therefore requires additional control information when compared to an Ethernet frame.
+
+As shown in the figure, in a fragile environment, more controls are needed to ensure delivery. The header and trailer fields are larger as more control information is needed.
+
+![theFrame](imgs/module6/theFrame.png)
+
+Greater effort is needed to ensure delivery. This means higher overhead and slower transmission rates.
+
+## 6.3.2 Frame Fields 
+
+Framing breaks the stream into decipherable groupings, with control information inserted in the header and trailer as values in different fields. This format gives the physical signals a structure that are by recognized by nodes and decoded into packets at the destination.
+
+The generic frame fields are shown in the figure. Not all protocols include all these fields. The standards for a specific data link protocol define the actual frame format.
+
+![frameFields](imgs/module6/frameFields.png)
+
+Frame fields include the following:
+- Frame start and stop indicator flags - Used to identify the beginning and end limits of the frame.
+- Addressing - Indicates the source and destination nodes on the media.
+- Type - Identifies the Layer 3 protocol in the data field.
+- Control - Identifies special flow control services such as quality of service (QoS). QoS gives forwarding priority to certain types of messages. For example, voice over IP (VoIP) frames normally receive priority because they are sensitive to delay.
+- Data - Contains the frame payload (i.e., packet header, segment header, and the data).
+- Error Detection - Included after the data to form the trailer.
+
+Data link layer protocols add a trailer to the end of each frame. In a process called error detection, the trailer determines if the frame arrived without error. It places a logical or mathematical summary of the bits that comprise the frame in the trailer. The data link layer adds error detection because the signals on the media could be subject to interference, distortion, or loss that would substantially change the bit values that those signals represent.
+
+A transmitting node creates a logical summary of the contents of the frame, known as the cyclic redundancy check (CRC) value. This value is placed in the frame check sequence (FCS) field to represent the contents of the frame. In the Ethernet trailer, the FCS provides a method for the receiving node to determine whether the frame experienced transmission errors.
+
+## 6.3.3 Layer 2 Addresses
+
+The data link layer provides the addressing used in transporting a frame across a shared local media. Device addresses at this layer are referred to as physical addresses. Data link layer addressing is contained within the frame header and specifies the frame destination node on the local network. It is typically at the beginning of the frame, so the NIC can quickly determine if it matches its own Layer 2 address before accepting the rest of the frame. The frame header may also contain the source address of the frame.
+
+Unlike Layer 3 logical addresses, which are hierarchical, physical addresses do not indicate on what network the device is located. Rather, the physical address is unique to the specific device. A device will still function with the same Layer 2 physical address even if the device moves to another network or subnet. Therefore, Layer 2 addresses are only used to connect devices within the same shared media, on the same IP network.
+
+The figures illustrate the function of the Layer 2 and Layer 3 addresses. As the IP packet travels from host-to-router, router-to-router, and finally router-to-host, at each point along the way the IP packet is encapsulated in a new data link frame. Each data link frame contains the source data link address of the NIC sending the frame, and the destination data link address of the NIC receiving the frame.
+
+### Host-to-Router 
+
+![hostToRouter](imgs/module6/hostToRouter.png)
+
+### Router-to-Router 
+
+![routerToRouter](imgs/module6/routerToRouter.png)
+
+### Router-to-Host 
+
+![routerToHost](imgs/module6/routerToHost.png)
+
+The data link layer address is only used for local delivery. Addresses at this layer have no meaning beyond the local network. Compare this to Layer 3, where addresses in the packet header are carried from the source host to the destination host, regardless of the number of network hops along the route.
+
+If the data must pass onto another network segment, an intermediary device, such as a router, is necessary. The router must accept the frame based on the physical address and de-encapsulate the frame in order to examine the hierarchical address, which is the IP address. Using the IP address, the router can determine the network location of the destination device and the best path to reach it. When it knows where to forward the packet, the router then creates a new frame for the packet, and the new frame is sent on to the next network segment toward its final destination.
+
+## 6.3.4 LAN and WAN Frames 
+
+Ethernet protocols are used by wired LANs. Wireless communications fall under WLAN (IEEE 802.11) protocols. These protocols were designed for multiaccess networks.
+
+WANs traditionally used other types of protocols for various types of point-to-point, hub-spoke, and full-mesh topologies. Some of the common WAN protocols over the years have included:
+- Point-to-Point Protocol (PPP)
+- High-Level Data Link Control (HDLC)
+- Frame Relay
+- Asynchronous Transfer Mode (ATM)
+- X.25
+
+These Layer 2 protocols are now being replaced in the WAN by Ethernet.
+
+In a TCP/IP network, all OSI Layer 2 protocols work with IP at OSI Layer 3. However, the Layer 2 protocol used depends on the logical topology and the physical media.
+
+Each protocol performs media access control for specified Layer 2 logical topologies. This means that a number of different network devices can act as nodes that operate at the data link layer when implementing these protocols. These devices include the NICs on computers as well as the interfaces on routers and Layer 2 switches.
+
+The Layer 2 protocol that is used for a particular network topology is determined by the technology used to implement that topology. The technology used is determined by the size of the network, in terms of the number of hosts and the geographic scope, and the services to be provided over the network.
+
+A LAN typically uses a high bandwidth technology capable of supporting large numbers of hosts. The relatively small geographic area of a LAN (a single building or a multi-building campus) and its high density of users make this technology cost-effective.
+
+However, using a high bandwidth technology is usually not cost-effective for WANs that cover large geographic areas (cities or multiple cities, for example). The cost of the long-distance physical links and the technology used to carry the signals over those distances typically results in lower bandwidth capacity.
+
+The difference in bandwidth normally results in the use of different protocols for LANs and WANs.
+
+Data link layer protocols include:
+- Ethernet
+- 802.11 Wireless
+- Point-to-Point Protocol (PPP)
+- High-Level Data Link Control (HDLC)
+- Frame Relay
+
+![LANandWANFrames1](imgs/module6/LANandWANFrames1.png)
+![LANandWANFrames2](imgs/module6/LANandWANFrames2.png)
+![LANandWANFrames3](imgs/module6/LANandWANFrames3.png)
+![LANandWANFrames4](imgs/module6/LANandWANFrames4.png)
+![LANandWANFrames5](imgs/module6/LANandWANFrames5.png)
+![LANandWANFrames6](imgs/module6/LANandWANFrames6.png)
