@@ -413,3 +413,71 @@ Fiber patch cords are required for interconnecting infrastructure devices. The u
 ### SC-ST Single-Mode Patch Cord 
 
 ![SCST](imgs/module4/SCST.png)
+
+Note: Fiber cables should be protected with a small plastic cap when not in use.
+
+## 4.5.6 Fiber versus Copper
+
+There are many advantages to using fiber-optic cable compared to copper cables. The table highlights some of these differences. At present, in most enterprise environments, optical fiber is primarily used as backbone cabling for high-traffic, point-to-point connections between data distribution facilities. It is also used for the interconnection of buildings in multi-building campuses. Because fiber-optic cables do not conduct electricity and have a low signal loss, they are well suited for these uses.
+
+### UTP and Fiber-Optic Cabling Comparison
+
+| Implementation Issues | UTP Cabling | Fiber-Optic Cabling |
+|---|---|---|
+| Bandwidth supported | 10 Mb/s - 10 Gb/s | 10 Mb/s - 100 Gb/s |
+| Distance | Relatively short (1 - 100 meters) | Relatively long (1 - 100,000 meters) |
+| Immunity to EMI and RFI | Low | High (Completely immune) |
+| Immunity to electrical hazards | Low | High (Completely immune) |
+| Media and connector costs | Lowest | Highest |
+| Installation skills required | Lowest | Highest |
+| Safety precautions | Lowest | Highest |
+
+# 4.6 Wireless Media 
+
+## 4.6.1 Properties of Wireless Media
+
+You may be taking this course using a tablet or a smart phone. This is only possible due to wireless media, which is the third way to connect to the physical layer of a network.
+
+Wireless media carry electromagnetic signals that represent the binary digits of data communications using radio or microwave frequencies.
+
+Wireless media provide the greatest mobility options of all media, and the number of wireless-enabled devices continues to increase. Wireless is now the primary way users connect to home and enterprise networks.
+
+These are some of the limitations of wireless:
+
+-   **Coverage area** - Wireless data communication technologies work well in open environments. However, certain construction materials used in buildings and structures, and the local terrain, will limit the effective coverage.
+-   **Interference** - Wireless is susceptible to interference and can be disrupted by such common devices as household cordless phones, some types of fluorescent lights, microwave ovens, and other wireless communications.
+-   **Security** - Wireless communication coverage requires no access to a physical strand of media. Therefore, devices and users, not authorized for access to the network, can gain access to the transmission. Network security is a major component of wireless network administration.
+-   **Shared medium** - WLANs operate in half-duplex, which means only one device can send or receive at a time. The wireless medium is shared amongst all wireless users. Many users accessing the WLAN simultaneously results in reduced bandwidth for each user.
+
+Although wireless is increasing in popularity for desktop connectivity, copper and fiber are the most popular physical layer media for deployment of intermediary network devices, such as routers and switches.
+
+## 4.6.2 Types of Wireless Media
+
+The IEEE and telecommunications industry standards for wireless data communications cover both the data link and physical layers. In each of these standards, physical layer specifications are applied to areas that include the following:
+- Data to radio signal encoding
+- Frequency and power of transmission
+- Signal reception and decoding requirements
+- Antenna design and construction
+
+These are the wireless standards:
+- **Wi-Fi (IEEE 802.11)** - Wireless LAN (WLAN) technology, commonly referred to as Wi-Fi. WLAN uses a contention-based protocol known as carrier sense multiple access/collision avoidance (CSMA/CA). The wireless NIC must first listen before transmitting to determine if the radio channel is clear. If another wireless device is transmitting, then the NIC must wait until the channel is clear. Wi-Fi is a trademark of the Wi-Fi Alliance. Wi-Fi is used with certified WLAN devices based on the IEEE 802.11 standards.
+- **Bluetooth (IEEE 802.15)** - This is a wireless personal area network (WPAN) standard, commonly known as "Bluetooth." It uses a device pairing process to communicate over distances from 1 to 100 meters.
+- **WiMAX (IEEE 802.16)** - Commonly known as Worldwide Interoperability for Microware Access (WiMAX), this wireless standard uses a point-to-multipoint topology to provide wireless broadband access.
+- **Zigbee (IEEE 802.15.4)** - Zigbee is a specification used for low-data rate, low-power communications. It is intended for applications that require short-range, low data-rates and long battery life. Zigbee is typically used for industrial and Internet of Things (IoT) environments such as wireless light switches and medical device data collection.
+
+**Note:** Other wireless technologies such as cellular and satellite communications can also provide data network connectivity. However, these wireless technologies are out of scope for this module.
+
+## 4.6.3 Wireless LAN
+
+A common wireless data implementation is enabling devices to connect wirelessly via a LAN. In general, a WLAN requires the following network devices:
+
+-   **Wireless Access Point (AP)** - These concentrate the wireless signals from users and connect to the existing copper-based network infrastructure, such as Ethernet. Home and small business wireless routers integrate the functions of a router, switch, and access point into one device, as shown in the figure.
+-   **Wireless NIC adapters** - These provide wireless communication capability to network hosts.
+
+As the technology has developed, a number of WLAN Ethernet-based standards have emerged. When purchasing wireless devices, ensure compatibility and interoperability.
+
+The benefits of wireless data communications technologies are evident, especially the savings on costly premises wiring and the convenience of host mobility. Network administrators must develop and apply stringent security policies and processes to protect WLANS from unauthorized access and damage.
+
+### Cisco Meraki MX64W
+
+![ciscoMerakiMX64W](imgs/module4/ciscoMerakiMX64W.png)
