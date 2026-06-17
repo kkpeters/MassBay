@@ -287,8 +287,129 @@ UTP cable is usually terminated with an RJ-45 connector. The TIA/EIA-568 standar
 
 As shown in the figure, the RJ-45 connector is the male component, crimped at the end of the cable.
 
-# RJ-45 UTP Sockets
+### RJ-45 UTP Sockets
 
 ![RJ45UTPSockets](imgs/module4/RJ45UTPSockets.png)
 
 The socket, shown in the figure, is the female component of a network device, wall, cubicle partition outlet, or patch panel. When terminated improperly, each cable is a potential source of physical layer performance degradation.
+
+
+### Poorly Terminated UTP Cable
+
+![badlyTerminated](imgs/module4/badlyTerminated.png)
+
+This figure shows an example of a badly terminated UTP cable. This bad connector has wires that are exposed, untwisted, and not entirely covered by the sheath.
+
+### Properly Terminated UTP Cable
+
+![properlyTerminated](imgs/module4/properlyTerminated.png)
+
+This figure shows a properly terminated UTP cable. It is a good connector with wires that are untwisted only to the extent necessary to attach the connector.
+
+## 4.4.3 Straight-through and Crossover UTP Cables
+
+Different situations may require UTP cables to be wired according to different wiring conventions. This means that the individual wires in the cable have to be connected in different orders to different sets of pins in the RJ-45 connectors.
+
+The following are the main cable types that are obtained by using specific wiring conventions:
+- Ethernet Straight-through - The most common type of networking cable. It is commonly used to interconnect a host to a switch and a switch to a router.
+- Ethernet Crossover - A cable used to interconnect similar devices. For example, to connect a switch to a switch, a host to a host, or a router to a router. However, crossover cables are now considered legacy as NICs use medium-dependent interface crossover (auto-MDIX) to automatically detect the cable type and make the internal connection.
+
+Note: Another type of cable is a rollover cable, which is Cisco proprietary. It is used to connect a workstation to a router or switch console port.
+
+Using a crossover or straight-through cable incorrectly between devices may not damage the devices, but connectivity and communication between the devices will not take place. This is a common error and checking that the device connections are correct should be the first troubleshooting action if connectivity is not achieved.
+
+The figure identifies the individual wire pairs for the T568A and T568B standards.
+
+### T568A and T568B Standards
+
+![T5T6Standards](imgs/module4/T5T6Standards.png)
+
+The table shows the UTP cable type, related standards, and typical application of these cables.
+
+### Cable Types and Standards
+
+| Cable Type | Standard | Application |
+|---|---|---|
+| Ethernet Straight-through | Both ends T568A or both ends T568B | Connects a network host to a network device such as a switch or hub |
+| Ethernet Crossover | One end T568A, other end T568B | Connects two network hosts Connects two network intermediary devices (switch to switch or router to router) |
+| Rollover | Cisco proprietary | Connects a workstation serial port to a router console port, using an adapter |
+
+# 4.5 Fiber-Optic Cabling 
+
+# 4.5.1 Properties of Fiber-Optic Cabling
+
+As you have learned, fiber-optic cabling is the other type of cabling used in networks. Because it is expensive, it is not as commonly used at the various types of copper cabling. But fiber-optic cabling has certain properties that make it the best option in certain situations, which you will discover in this topic.
+
+Optical fiber cable transmits data over longer distances and at higher bandwidths than any other networking media. Unlike copper wires, fiber-optic cable can transmit signals with less attenuation and is completely immune to EMI and RFI. Optical fiber is commonly used to interconnect network devices.
+
+Optical fiber is a flexible, but extremely thin, transparent strand of very pure glass, not much bigger than a human hair. Bits are encoded on the fiber as light impulses. The fiber-optic cable acts as a waveguide, or "light pipe," to transmit light between the two ends with minimal loss of signal.
+
+As an analogy, consider an empty paper towel roll with the inside coated like a mirror. It is a thousand meters in length, and a small laser pointer is used to send Morse code signals at the speed of light. Essentially that is how a fiber-optic cable operates, except that it is smaller in diameter and uses sophisticated light technologies.
+
+## 4.5.2 Types of Fiber Media
+
+Fiber-optic cables are broadly classified into two types:
+
+- Single-mode fiber (SMF)
+- Multimode fiber (MMF)
+
+![SingleModeFiber](imgs/module4/SingleModeFiber.png)
+
+![MultimodeFiber](imgs/module4/MultimodeFiber.png)
+
+One of the highlighted differences between MMF and SMF is the amount of dispersion. Dispersion refers to the spreading out of a light pulse over time. Increased dispersion means increased loss of signal strength. MMF has a greater dispersion than SMF. That is why MMF can only travel up to 500 meters before signal loss.
+
+## 4.5.3 Fiber-Optic Cabling Usage
+
+Fiber-optic cabling is now being used in four types of industry:
+- Enterprise Networks - Used for backbone cabling applications and interconnecting infrastructure devices
+- Fiber-to-the-Home (FTTH) - Used to provide always-on broadband services to homes and small businesses
+- Long-Haul Networks - Used by service providers to connect countries and cities
+- Submarine Cable Networks - Used to provide reliable high-speed, high-capacity solutions capable of surviving in harsh undersea environments at up to transoceanic distances. Search the internet for "submarine cables telegeography map" to view various maps online.
+
+Our focus in this course is the use of fiber within the enterprise.
+
+
+## 4.5.4 Fiber-Optic Connectors
+
+An optical-fiber connector terminates the end of an optical fiber. A variety of optical-fiber connectors are available. The main differences among the types of connectors are dimensions and methods of coupling. Businesses decide on the types of connectors that will be used, based on their equipment.
+
+**Note:** Some switches and routers have ports that support fiber-optic connectors through a small form-factor pluggable (SFP) transceiver. Search the internet for various types of SFPs.
+
+### Straight-Tip(ST) Connectors 
+
+![STConnectors](imgs/modern/STConnectors.png)
+
+### Subscriber Connector (SC) Connectors 
+
+![SCConnectors](imgs/module4/SCConnectors.png)
+
+### Lucent Connector (LC) Simplex Connectors 
+
+![LCConnectors](/imgs/module4/LCConnectors.png)
+
+### Duplex Multimode LC Connectors 
+
+![DuplexMultimodeLCConnectors](imgs/module4/DuplexMultimodeLCConnectors.png)
+
+Until recently, light could only travel in one direction over optical fiber. Two fibers were required to support the full duplex operation. Therefore, fiber-optic patch cables bundle together two optical fiber cables and terminate them with a pair of standard, single-fiber connectors. Some fiber connectors accept both the transmitting and receiving fibers in a single connector known as a duplex connector, as shown in the Duplex Multimode LC Connector in the figure. BX standards such as 100BASE-BX use different wavelengths for sending and receiving over a single fiber.
+
+## 4.5.5 Fiber Patch Cords
+
+Fiber patch cords are required for interconnecting infrastructure devices. The use of color distinguishes between single-mode and multimode patch cords. A yellow jacket is for single-mode fiber cables and orange (or aqua) for multimode fiber cables.
+
+### SC-SC Multimode Patch Cord 
+
+![SCSC](imgs/module4/SCSC.png)
+
+### LC-LC Single-Mode Patch Cord 
+
+![LCLC](imgs/module4/LCLC.png)
+
+### ST-LC Multimode Patch Cord 
+
+![STLC](imgs/module4/STLC.png)
+
+### SC-ST Single-Mode Patch Cord 
+
+![SCST](imgs/module4/SCST.png)
