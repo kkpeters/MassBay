@@ -193,7 +193,102 @@ In LANs, UTP cable consists of four pairs of color-coded wires that have been tw
 As seen in the figure, the color codes identify the individual pairs and wires and aid in cable termination.
 
 ![UTP](imgs/module4/UTP.png)
+
 The numbers in the figure identify some key characteristics of unshielded twisted-pair cable:
 1. The outer jacket protects the copper wires from physical damage.
 2. Twisted-pairs protect the signal from interference.
 3. Color-coded plastic insulation electrically isolates wires from each other and identifies each pair.
+
+## 4.3.4 Shielded twisted-pair (STP)
+
+Shielded twisted-pair (STP) provides better noise protection than UTP cabling. However, compared to UTP cable, STP cable is significantly more expensive and difficult to install. Like UTP cable, STP uses an RJ-45 connector.
+
+STP cables combine the techniques of shielding to counter EMI and RFI, and wire twisting to counter crosstalk. To gain the full benefit of the shielding, STP cables are terminated with special shielded STP data connectors. If the cable is improperly grounded, the shield may act as an antenna and pick up unwanted signals.
+
+The STP cable shown uses four pairs of wires, each wrapped in a foil shield, which are then wrapped in an overall metallic braid or foil.
+
+![STP](imgs/module4/STP.png)
+
+The numbers in the figure identify some key features of shielded twisted-pair cable:
+1. Outer jacket
+2. Braided or foil shield
+3. Foil shields
+4. Twisted pairs
+
+## 4.3.5 Coaxial cable
+
+Coaxial cable, or coax for short, gets its name from the fact that there are two conductors that share the same axis. As shown in the figure, coaxial cable consists of the following:
+
+- A copper conductor is used to transmit the electronic signals.
+- A layer of flexible plastic insulation surrounds a copper conductor.
+- The insulating material is surrounded in a woven copper braid, or metallic foil, that acts as the second wire in the circuit and as a shield for the inner conductor. This second layer, or shield, also reduces the amount of outside electromagnetic interference.
+- The entire cable is covered with a cable jacket to prevent minor physical damage.
+
+There are different types of connectors used with coax cable. The Bayonet Neill-Concelman (BNC), N type, and F type connectors are shown in the figure.
+
+Although UTP cable has essentially replaced coaxial cable in modern Ethernet installations, the coaxial cable design is used in the following situations:
+
+- **Wireless installations** - Coaxial cables attach antennas to wireless devices. The coaxial cable carries radio frequency (RF) energy between the antennas and the radio equipment.
+- **Cable internet installations** - Cable service providers provide internet connectivity to their customers by replacing portions of the coaxial cable and supporting amplification elements with fiber-optic cable. However, the wiring inside the customer's premises is still coax cable.
+
+The numbers in the figure identify some key features of coaxial cable:
+1. Outer jacket
+2. Braided copper shielding
+3. Plastic insulation
+4. Copper conductor
+
+# 4.4 UTP Cabling 
+
+## 4.4.1 Properties of UTP Cabling
+
+In the previous topic, you learned a bit about unshielded twisted-pair (UTP) copper cabling. Because UTP cabling is the standard for use in LANs, this topic goes into detail about its advantages and limitations, and what can be done to avoid problems.
+
+When used as a networking medium, UTP cabling consists of four pairs of color-coded copper wires that have been twisted together and then encased in a flexible plastic sheath. Its small size can be advantageous during installation.
+
+UTP cable does not use shielding to counter the effects of EMI and RFI. Instead, cable designers have discovered other ways that they can limit the negative effect of crosstalk:
+
+-   **Cancellation** - Designers now pair wires in a circuit. When two wires in an electrical circuit are placed close together, their magnetic fields are the exact opposite of each other. Therefore, the two magnetic fields cancel each other and also cancel out any outside EMI and RFI signals.
+-   **Varying the number of twists per wire pair** - To further enhance the cancellation effect of paired circuit wires, designers vary the number of twists of each wire pair in a cable. UTP cable must follow precise specifications governing how many twists or braids are permitted per meter (3.28 feet) of cable. Notice in the figure that the orange/orange white pair is twisted less than the blue/blue white pair. Each colored pair is twisted a different number of times.
+
+UTP cable relies solely on the cancellation effect produced by the twisted wire pairs to limit signal degradation and effectively provide self-shielding for wire pairs within the network media.
+
+![UTPcabling](imgs/module4/UTPcabling.png)
+
+## 4.4.2 UTP Cabling Standards and Connectors
+
+UTP cabling conforms to the standards established jointly by the TIA/EIA. Specifically, TIA/EIA-568 stipulates the commercial cabling standards for LAN installations and is the standard most commonly used in LAN cabling environments. Some of the elements defined are as follows:
+- Cable types
+- Cable lengths
+- Connectors
+- Cable termination
+- Methods of testing cable
+
+The electrical characteristics of copper cabling are defined by the Institute of Electrical and Electronics Engineers (IEEE). IEEE rates UTP cabling according to its performance. Cables are placed into categories based on their ability to carry higher bandwidth rates. For example, Category 5 cable is used commonly in 100BASE-TX Fast Ethernet installations. Other categories include Enhanced Category 5 cable, Category 6, and Category 6a.
+
+Cables in higher categories are designed and constructed to support higher data rates. As new gigabit speed Ethernet technologies are being developed and adopted, Category 5e is now the minimally acceptable cable type, with Category 6 being the recommended type for new building installations.
+
+The figure shows three categories of UTP cable:
+- Category 3 was originally used for voice communication over voice lines, but later used for data transmission.
+- Category 5 and 5e is used for data transmission. Category 5 supports 100Mbps and Category 5e supports 1000 Mbps
+- Category 6 has an added separator between each wire pair to support higher speeds. Category 6 supports up to 10 Gbps.
+- Category 7 also supports 10 Gbps.
+- Category 8 supports 40 Gbps.
+
+Some manufacturers are making cables exceeding the TIA/EIA Category 6a specifications and refer to these as Category 7.
+
+![UTPStandards](imgs/module4/UTPStandards.png)
+
+UTP cable is usually terminated with an RJ-45 connector. The TIA/EIA-568 standard describes the wire color codes to pin assignments (pinouts) for Ethernet cables.
+
+
+### RJ-45 UTP Plugs
+
+![RJ45UTPPlugs](imgs/module4/RJ45UTPPlugs.png)
+
+As shown in the figure, the RJ-45 connector is the male component, crimped at the end of the cable.
+
+# RJ-45 UTP Sockets
+
+![RJ45UTPSockets](imgs/module4/RJ45UTPSockets.png)
+
+The socket, shown in the figure, is the female component of a network device, wall, cubicle partition outlet, or patch panel. When terminated improperly, each cable is a potential source of physical layer performance degradation.
