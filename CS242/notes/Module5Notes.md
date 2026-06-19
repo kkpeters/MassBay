@@ -77,6 +77,13 @@ Note: n⁰ is = 1.
 | Add Them Up.. | 128 | + 64 | +0 | +0 | +0 | +0 | +0 | +0 |
 | Result | 192 |  |  |  |  |  |  |  |
 
+## 5.1.4 Quiz 
+
+1. Which is the binary equivalent to the 192.168.11.10 IP address?
+    **11000000.10101000.00001011.00001010**
+2. Which of the following is the binary equivalent to the 172.16.31.30 IP address?
+    **101100.00010000.00011111.00011110**
+
 ## 5.1.5 Convert Binary to Decimal
 
 To convert a binary IPv4 address to its dotted decimal equivalent, divide the IPv4 address into four 8-bit octets. Next apply the binary positional value to the first octet binary number and calculate accordingly.
@@ -205,6 +212,9 @@ The sample topology in the figure displays IPv6 hexadecimal addresses.
 
 ## 5.2.3 Decimal to Hexadecimal Conversions
 
+![decToHex1](imgs/module5/decToHex1.png)
+![decToHex2](imgs/module5/decToHex2.png)
+
 Converting decimal numbers to hexadecimal values is straightforward. Follow the steps listed:
 1. Convert the decimal number to 8-bit binary strings.
 2. Divide the binary strings in groups of four starting from the rightmost position.
@@ -219,6 +229,9 @@ For example, **168** converted into hex using the three-step process.
 **Answer**: 168 is **A8** in hexadecimal.
 
 ## 5.2.4 Hexadecimal to Decimal Conversion
+
+![hexToDec](imgs/module5/hexToDec.png)
+![hexToDec2](imgs/module5/hexToDec2.png)
 
 Converting hexadecimal numbers to decimal values is also straightforward. Follow the steps listed:
 
