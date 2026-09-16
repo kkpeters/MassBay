@@ -16,4 +16,4 @@
 ## Principles of Security 
 
 ### Confidentiality, Integrity, and Availability (CIA)
-- **Confidentiality**. It is important that only approved individuals can access sensitive information. For example, the credit card number used to make an online purchase must be kept secure and not made available to other parties. <span style="color=purple">Confidentiality</span> ensures that 
+- **Confidentiality**. It is important that only approved individuals can access sensitive information. For example, the credit card number used to make an online purchase must be kept secure and not made available to other parties. *Confidentiality* ensures that 
