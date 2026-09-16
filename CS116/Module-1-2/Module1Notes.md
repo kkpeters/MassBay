@@ -57,5 +57,5 @@
 
 ### Table 1-3: Control types
 | Control Type | Description | When it Occurs | Example |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | Deterrent Control | Discourage attack | Before attack | Signs indicating that the area is under video surveillance |
