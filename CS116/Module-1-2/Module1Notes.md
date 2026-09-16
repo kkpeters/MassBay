@@ -11,7 +11,7 @@
 - The relationship between security and convenience is **inversely proportional**, as security is increase, convenience is decreased. 
 
 ### Figure 1-1: Relationship of security to convenience.
-![figure 1](imgs/figure1.png)
+![figure 1-1](imgs/figure1-1.png)
 
 ## Principles of Security 
 
@@ -59,3 +59,26 @@
 | Control Type | Description | When it Occurs | Example |
 | --- | --- | --- | --- |
 | Deterrent Control | Discourage attack | Before attack | Signs indicating that the area is under video surveillance |
+| Preventive Control | Prevent attack | Before attack | Security awareness training for all users |
+| Directive Control | Prevent attack | Before attack | An incentive to employees who pass a training course |
+| Detective Control | Identify attack | During attack | Installing motion detection sensors |
+| Compensating Control | Alternative to normal control | During attack | An infected computer is isolated on a different network |
+| Corrective Control | Lessen damage from attack | After attack | A virus is cleaned from an infected server |
+
+## Cybersecurity versus Information Security 
+
+- Different terms are sometimes used when describing securiyt protections in an enterprise: **information security**, **computer security**, **IT security**, **cybersecurity**, and **information assurance**, just to name a few. 
+- Cybersecurity usually involes a range of practices, processes, and technologies intended to protect devices, networks, and programs that process and store data in an electronic form. 
+- Information security, on the other hand, protects "processed data" (information) that is essential in an enterprise business environment (more so than "raw data"). In addition, in a business, this information may be in any format, from electronic files to paper documents. Because business enterprises most often deal with information and that information is in a variety of formats, *information security* is often considered the most appropriate term in this setting. 
+- Note: although there is no universal agreement on these definitions, generally speaking, *cybersecurity* is considered an overall umbrella term under which information security is found. 
+
+## Defining Information Security 
+
+- Information security describes the tasks of securing enterprise information often found in a digital format, whether it be manipulated by a microprocessor, preserved on a storage device, or transmitted over a network.
+- Yet information security cannot completely prevent successful attacks or gaurante that a system is totally secure. 
+- The goal of information security is to ensure that protective measures are propyl implemented to ward off attacks, prevent the total collapse of the system when a successful attack does occur, and recover as quickly as possible. 
+- Thus, information security is, first and foremost, "protection".
+
+- As shown in Figure 1-2, information and hardware, software, and communications are protected in three layers: **products**, **people**, and **policies and procedures**. The processed enable people to understand how to use products to protect information.
+
+![figure 1-2](imgs/figure1-2.png)
