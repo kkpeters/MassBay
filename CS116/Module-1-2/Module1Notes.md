@@ -82,3 +82,13 @@
 - As shown in Figure 1-2, information and hardware, software, and communications are protected in three layers: **products**, **people**, and **policies and procedures**. The processed enable people to understand how to use products to protect information.
 
 ![figure 1-2](imgs/figure1-2.png)
+
+- Thus, information security may be defined as *that which protects the integrity, confidentiality, and availability of information through products, people, and procedures on the devices that store, manipulate, and trasmit the information*.
+
+## Threat Actors and Their Motivations 
+
+- In information security a **threat actor** (also called a **malicious actor**) is a term used to describe individuals or entities who are responsible for attacks. 
+- Financial gain is the primary focus today; this financial cybercrime can be divided in the following three categories based on different targets:
+    - **Individual Users**. Threat actors steal and use stolen data, credit card numbers, online financial account information, or SSNs to profit from its victims. 
+    - **Enterprises**. Threat actors attempt to steal research on a new product from an enterprise so that they can sell it to an unscrupulous foreign supplier who will then build an imitation model of the product to sell worldwide. This deprives the legitimate business of profits after investing often hundreds of millions of dollars in product development and, because these foreign suppliers are in a different country, they are beyond the reach of domestic enforcement agencies and courts. 
+    - **Governments**.
