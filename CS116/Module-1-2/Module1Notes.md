@@ -46,4 +46,16 @@
 | **Technical** | Controls incorporated as part of hardware, software, or firmware | Hardware that blocks malicious content from entering the network |
 | **Physical** | Controls that implement security in a defined structure and location | Installing a fence to prevent an unauthorized person from entering a building |
 
+- Specific types of controls are found within these four broad catagories: 
+    - **Deterrent Controls**. A *deterrent control* attempts to discourage security violations before they occur.
+    - **Preventive Controls**. A *preventive control* works to prevent the threat from coming in contact with the vulnerability.
+    - **Detective Controls**. A *detective control*  identifies any threat that has reached the system. 
+    - **Compensating Controls**. A *compensating control* provides an alternative to normal controls that for some reason cannot be used. 
+    - **Corrective Controls**. A *corrective control* mitigates or lessens the damage caused by the incident. 
+    - **Directive Controls**. A *directive control* ensures that  aparticular outcome is achieved. 
+        - One type of directive control is **incentive**, which is the "carrot" instead of the "stick". 
 
+### Table 1-3: Control types
+| Control Type | Description | When it Occurs | Example |
+| --- |
+| Deterrent Control | Discourage attack | Before attack | Signs indicating that the area is under video surveillance |
