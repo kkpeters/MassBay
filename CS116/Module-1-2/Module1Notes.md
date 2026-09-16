@@ -16,4 +16,34 @@
 ## Principles of Security 
 
 ### Confidentiality, Integrity, and Availability (CIA)
-- **Confidentiality**. It is important that only approved individuals can access sensitive information. For example, the credit card number used to make an online purchase must be kept secure and not made available to other parties. *Confidentiality* ensures that 
+- **Confidentiality**. It is important that only approved individuals can access sensitive information. For example, the credit card number used to make an online purchase must be kept secure and not made available to other parties. *Confidentiality* ensures that only authorized parties can view the information. Providing confidentiality can involve several different security tools, ranging from software to encrypt the credit card number stored on the web server to door locks to prevent access to those servers. 
+- **Integrity**. *Integrity* ensures that the information is correct and no authorized person or malicious software has altered the data. In the example of the online purchse, an attacker who could change the amount of a purchase from $10,000.00 to $1.00 would violate the integrity of the information. 
+- **Availability**. Information has value if the authorized parties who are assured of its integrity can access the information. *Availability* ensures that data is accessible to only authorized users and not to unapproved individuals. In this example, the total umber of items ordered as the result of an online purchase must be available to an employee in a warehouse so that the correct items can be shipped to the customer but not made available to a competitor. 
+
+### Authentication, Authorization, and Accounting (AAA)
+- The second basic security principle, *authentication, authorization, and accounting (AAA)*, involves controlling access to information. 
+- [Based on scenario given] Checking the delivery person's credentials to be sure that they are authentic and not fabricated is *authentication*. Computer users, likewise, must have their credentials authenticated to ensure that they are who they claim to be. This is often done by entering a password, fingerprint scan, or other type of approved credentials. 
+- *Authorization*, granting permission to take an action, is the next step... once users have presented their identification and been authenticated, they can log in to a computer system. 
+- [Gabe] signing into the tablet is akin to *accounting*. Accounting creates a record that is preserved of who accessed the enterprise network, what recourses they accessed, and when they disconnected from the network. 
+    - Accounting data can be used not only to provide an audit trail but also for billing, determining trends, identifying resource usage, and future capacity planning. 
+- AAA provides a framework for controlling access to computer resources. The basic steps in this access control process are summarized in Table 1-1.
+
+### Table 1-1: Basic steps in controlling access. 
+| Action | Description | Scenario Example | Computer Process |
+| --- | --- | --- | --- | 
+| Identification | Review of credentials | Delivery person shows employee badge | User enters username |
+| Authentication | Validate credentials as genuine | Gabe reads badge to determine it is real | User provides password |
+| Authorization | Permission granted for admittance | Gabe opens door to allow delivery person in | User allowed to access only specific data |
+| Accounting | Recod of user actions | Gabe signs to confirm he picked up the package | Information recorded in log file |
+
+- A security **control** is a safegaurd (sometimes called a **countermeasure**) that is employed within an enterprise to protect the CIA of information. A control attempts to limit the exposure of an asset to a danger. The four broad categories of controls are listed in Table 1-2.
+
+### Table 1-2: Categories of controls 
+| Control Category | Description | Example |
+| --- | --- | --- |
+| **Managerial** | Controls that use administrative methods | Acceptable use policy that specifies users should not visit mmalicious websites |
+| **Operational** | Controls implemented and executed by people | Conducting workshops to help train users to identify and delete suspicious mesages |
+| **Technical** | Controls incorporated as part of hardware, software, or firmware | Hardware that blocks malicious content from entering the network |
+| **Physical** | Controls that implement security in a defined structure and location | Installing a fence to prevent an unauthorized person from entering a building |
+
+
