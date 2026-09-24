@@ -6,6 +6,8 @@
     - **Security administrator**. The security administer has both technical knowledge and managerial skills. A security administrator manages daily operations of security technology and may analyze and design security solutions within a specific entity as well as identify users' needs. 
     - **Security technician**. This is generally an entry-level position for a person who has the necessary technical skills. Technicians provide technical support to configure security hardware, implement security software, and diagnose and troubleshoot problems. 
 
+# What is Information Security? 
+
 ## Understanding Security
 - The **goal** of security is "the state of being free from danger". It is also defined as the "measures taken to ensure safety," which is the **process** of security. Since complete security can never be fully achieved, the focus of security is more often on the process instead of the goal. In this light, security can be defined as "the necessary steps to protect from harm."
 - The relationship between security and convenience is **inversely proportional**, as security is increase, convenience is decreased. 
@@ -85,10 +87,16 @@
 
 - Thus, information security may be defined as *that which protects the integrity, confidentiality, and availability of information through products, people, and procedures on the devices that store, manipulate, and trasmit the information*.
 
-## Threat Actors and Their Motivations 
+# Threat Actors and Their Motivations 
 
 - In information security a **threat actor** (also called a **malicious actor**) is a term used to describe individuals or entities who are responsible for attacks. 
 - Financial gain is the primary focus today; this financial cybercrime can be divided in the following three categories based on different targets:
     - **Individual Users**. Threat actors steal and use stolen data, credit card numbers, online financial account information, or SSNs to profit from its victims. 
-    - **Enterprises**. Threat actors attempt to steal research on a new product from an enterprise so that they can sell it to an unscrupulous foreign supplier who will then build an imitation model of the product to sell worldwide. This deprives the legitimate business of profits after investing often hundreds of millions of dollars in product development and, because these foreign suppliers are in a different country, they are beyond the reach of domestic enforcement agencies and courts. 
-    - **Governments**.
+    - **Enterprises**. Threat actors attempt to steal research on a new product from an enterprise so that they can sell it to an unscrupulous foreign supplier who will then build an imitation model of the product to sell worldwide. This deprives the legitimate business of profits after investing often hundreds of millions of dollars in product development and, because these foreign suppliers are in a diLEZHIN] Point Character Drawing Set & Secret Character Drawing [Taco]fferent country, they are beyond the reach of domestic enforcement agencies and courts. 
+    - **Governments**. If the latest information on a nwe missile defense system can be stolen, it can be sold-at a high price-to that government's enemies. In addition, government information is often stolen and published to embarrass the government before its citizens and force it to stop what is considered a nefarious action. 
+
+Note: In the past, **hacker** referred to a person who used advanced computer skills to attack computers. Yet this term was not always accurate, so it was then qualified in an attempt to distinguish between different types of hackers. For example, a **white hat hacker**, also known as an **ethical hacker**, would probe a system for weaknesses and then provide that information back to the organization. 
+
+## Unskilled Attackers
+
+- High technical skills and knowledge are not a prerequesite to attack a system. Instead, easy-to-use attack tools are freely available or can be purchased at a low cost to perform sophisticated attacks. Individuals who want to perform attacks yet lack the technical knowledge to carry them out are sometimes called **unskilled attackers**. 
