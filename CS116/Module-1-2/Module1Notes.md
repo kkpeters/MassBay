@@ -100,3 +100,25 @@ Note: In the past, **hacker** referred to a person who used advanced computer sk
 ## Unskilled Attackers
 
 - High technical skills and knowledge are not a prerequesite to attack a system. Instead, easy-to-use attack tools are freely available or can be purchased at a low cost to perform sophisticated attacks. Individuals who want to perform attacks yet lack the technical knowledge to carry them out are sometimes called **unskilled attackers**. 
+- Note: In the early days of information security, the term "script kiddies" was used to describe unskilled attackers since they downloaded freely available automated attack software called scripts to perform malicious attacks. 
+- Unskilled attackers can often be successful in penetrating defenses, particularly if the defenses are weak. Their motivation is usually **data exfiltration** (unauthorized copying of data) or **service disruption** (obstructing normal business electronic processes). 
+
+## Shadow IT 
+
+- The process of bypassing coporate approval for technology purchases is known as **shadow IT**. The employee's motivation is often **ethical** (has sound moral principles) but nevertheless weakens security.
+
+## Organized Crime 
+
+- **Organized crime** is a close-knit group of highly centralized enterprises set up for the purpose of engaging in illegal activities... In recent years, evidence indicates that organized crime has moved into cyberattacks, which they consider to be less risky and more rewarding than traditional crimes. The motivation by organized crime is generally **financial gain**. 
+
+## Insider Threats 
+
+- Another serious threat to an enterprise actually comes from its own employees, contractors, and business partners, called **insiders**, who pose an **insider threat** from the position of a trusted entity. 
+- Motivations can be **revenge** or avenge by retaliation. Blackmail may also be used against insiders as a threat if they don't cooperate by stealing research and development data.
+- Attacks from an insider treat are hard to recognize because the threat actor is already trusted to use the computer system and because they coem from within the enterprise, whos focus is watching for outsiders. 
+
+## Hacktivists 
+
+- 
+
+## Nation-State Actors 
