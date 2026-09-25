@@ -152,7 +152,7 @@ Note: In the past, **hacker** referred to a person who used advanced computer sk
 ### Table 1-5
 
 | Category | Attack Surface | Explanation |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | Software | Vulnerable software | Vulnerable software contains one or more security vulnerabilities; this software can either be **client-based software** (software applications installed on a computer connected to a network) or **agentless software** (no additional processes are required to run in the background). |
 | Software | File-based | Many attacks focus on infecting individual files on a compuoter. |
 | Software | Image-based | An image is a copy of all the computer's contents, and a vulnerability would permit an attack on the image. |
