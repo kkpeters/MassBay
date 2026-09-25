@@ -162,3 +162,12 @@ Note: In the past, **hacker** referred to a person who used advanced computer sk
 | Network | Open service ports | Unnecessary ports that are disabled can allow attackers access to devices and networks. |
 | Network | Default credentials | Networks may have default (preselected options) administrator accounts with a well-known password that attackers could target. |
 
+### Specialized Threat Actors 
+
+- Other threat vectors eyed by threat actors as potential targets are more specialized. These catagories include ommunications and supply chain. 
+
+#### Communications 
+
+
+
+#### Supply Chain 
