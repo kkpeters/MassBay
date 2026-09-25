@@ -128,3 +128,14 @@ Note: In the past, **hacker** referred to a person who used advanced computer sk
 - Instead of using an army to march across the battlefield to strike an adversary, governments are increasingly employing their own state-sponsered attackers for launching cyberattacks against their foes. These are knwon as **nation-state actors**. 
 - The motivation is **espionage** (spying) or even to create war. 
 - Many security researchers believe that nation-state actors might be the deadliest of any threat actor. Nation-state actors keep working until they are successful, unlike other hackers that will move onto different targets. Nation-State Actors are highly skilled and have enough government resources to breach almost any security defense.
+- Nation-State actors are often involved in multiyear instrusion campaigns targeting highly sensitive economic, proprietary, or national security information. This has created a new class of attacks called **Advanced Persistent Threats (APTs)**. These attacks use innovative attack tools (**advanced**) and once a system is infected, it silently extracts data over an extended period of time (**persistent**). APTs are most commonly associated with nation-state actors. 
+
+## Other Threat Actors 
+
+| Threat Actor | Description | Explanation |
+| --- | --- | --- |
+| Competitors | Launch attack against an opponent's system to steal classified information. | Competitors may steal new product research or a list of current customers to gain a competitive advantage. |
+| Brokers | Sell their knowledge of a weakness to other attackers or governments. | Individuals who uncover weaknesses do not report them to the software vendor but instead sell them to the highest bidder, who are willing to pay a high price for the unknown weakness. |
+| Cyberterrorists | Attack a nation's network and computer infrastructure to cause disruption and panic among citizens. | Targets may include a small group of computers or networks that can affect the largest number of users, such as the computers that control the electrical power grid of a state or region. |
+
+# How Attacks Occur 
