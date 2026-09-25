@@ -139,3 +139,26 @@ Note: In the past, **hacker** referred to a person who used advanced computer sk
 | Cyberterrorists | Attack a nation's network and computer infrastructure to cause disruption and panic among citizens. | Targets may include a small group of computers or networks that can affect the largest number of users, such as the computers that control the electrical power grid of a state or region. |
 
 # How Attacks Occur 
+
+## Threat Vectors and Attack Surfaces 
+
+- An **attack surface**, also called a **threat vector**, is a digital plaatform that threat actors target for their exploits. These can be divided into mainstream attack surfaces and specialized threat vectors. 
+
+### Mainstream Attack Surfaces 
+
+- Some attack surfaces can be considered **mainstream** for several reasons. First, they have been the primary targets of threat actors since the beginning of cyberattacks. Second, these attack surfaces are found in all technology settings. Third, they continue to bear the brunt of attacks today. 
+- The categories of mainstream attack surfaces are software, hardware, and networks. 
+
+### Table 1-5
+
+| Category | Attack Surface | Explanation |
+| --- | --- | --- | --- |
+| Software | Vulnerable software | Vulnerable software contains one or more security vulnerabilities; this software can either be **client-based software** (software applications installed on a computer connected to a network) or **agentless software** (no additional processes are required to run in the background). |
+| Software | File-based | Many attacks focus on infecting individual files on a compuoter. |
+| Software | Image-based | An image is a copy of all the computer's contents, and a vulnerability would permit an attack on the image. |
+| Hardware | Unsupported systems and applications | Computer systems and applications no longer supported by the organization are often ignored and do not recieve security updates. |
+| Hardware | Removable devices | A removable media device, like a USB flash drive, can be connected to an unsecure computer and become infected with malware and, when inserted into a "clean" computer, it can infect that device. |
+| Network | Unsecure networks | Unsecure wired and wireless networks are a vulnerability since an attacker who can breach the network could have access to hundreds of connected devices. 
+| Network | Open service ports | Unnecessary ports that are disabled can allow attackers access to devices and networks. |
+| Network | Default credentials | Networks may have default (preselected options) administrator accounts with a well-known password that attackers could target. |
+
