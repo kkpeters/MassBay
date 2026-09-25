@@ -119,6 +119,12 @@ Note: In the past, **hacker** referred to a person who used advanced computer sk
 
 ## Hacktivists 
 
-- 
+- A group that is strongly motivated by **philosophical/policital beliefs** (ideology for the sake of principles) is **hacktivists** (a combination of the words hack and activism). 
+- Attacks are often used to "make a stateent", and some other attacks were retaliatory.
+- Today many hacktivists work through disinformation campaigns by spreading fake news and supporting conspiracy theories, making their motivation **disruption/chaos**.
 
 ## Nation-State Actors 
+
+- Instead of using an army to march across the battlefield to strike an adversary, governments are increasingly employing their own state-sponsered attackers for launching cyberattacks against their foes. These are knwon as **nation-state actors**. 
+- The motivation is **espionage** (spying) or even to create war. 
+- Many security researchers believe that nation-state actors might be the deadliest of any threat actor. Nation-state actors keep working until they are successful, unlike other hackers that will move onto different targets. Nation-State Actors are highly skilled and have enough government resources to breach almost any security defense.
