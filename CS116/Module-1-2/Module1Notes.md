@@ -271,7 +271,7 @@ Note: In the past, **hacker** referred to a person who used advanced computer sk
 | Functions | The most basic information security tasks | Identify, protect, detect, respond, and recover. |
 | Categories | Tasks to be carried out for each of the 5 functions | To protect a function, organizations must implement software updates, install antivirus and anti-malware programs, and have access control policies in place. |
 | Subcategories | Tasks or challenges associated with each category | To implement software updates (a category), organizations must be sure that Windows computers have auto-updates turned on. |
-|
+| Information Studies | The documents or manuals that detail specific tasks for users and explain how to accomplish the tasks | A document is required that details how auto-updates are enabled on Windows computers. |
 
 ## Regulations 
 
