@@ -262,7 +262,12 @@ Note: In the past, **hacker** referred to a person who used advanced computer sk
 - The NIST frameworks are divided into 3 basic parts:
     - **Framework core**. Defines the acticies needed to attain different cybersecurity results. Subdivided into 4 different elements. 
     - **Implementation Tiers**. Specifies four implementation tiers that help organizations identify their level of compliance, the higher the more compliant.
-    - **Profiles**. Relate both to the status of hte organization's cybersecurity measures and the "roadmaps" towards compliance with the NIST cybersecurity framework. 
+    - **Profiles**. Relate both to the status of hte organization's cybersecurity measures and the "roadmaps" towards compliance with the NIST cybersecurity framework. Profiles are like an executive summary of everything an organization has done for the NIST cybersecurity framework and can help demonstrate how each function, category, or subcategorie can increase security. These profiles allows organizations to see their vulnerabilities at each step; once the vulnerabilities are mitigated, the organization can move up to higher implementation tiers.
+- There are two widely used NIST frameworks:
+    - **Risk Management Framework**. The **NIST Risk Management Framework (RMF)** is considered a guidance document designed to help organizations assess and manage risks to thier information and systems. Seen as a comprehensive roadmap.
+    - **Cybersecurity Framework**. The **NIST Cybersecurity Framework (CSF)** is used as a measuring stick against which companies can compare their cybersecurity practices relative to the threats they face.
+
+![NISTCybersecurityFramework](imgs/NISTCybersecurityFramework.png)
 
 ### Table 1-9 NIST Framework Core Elements 
 
@@ -273,7 +278,11 @@ Note: In the past, **hacker** referred to a person who used advanced computer sk
 | Subcategories | Tasks or challenges associated with each category | To implement software updates (a category), organizations must be sure that Windows computers have auto-updates turned on. |
 | Information Studies | The documents or manuals that detail specific tasks for users and explain how to accomplish the tasks | A document is required that details how auto-updates are enabled on Windows computers. |
 
+
+
 ## Regulations 
+
+
 
 ## Legislation 
 
