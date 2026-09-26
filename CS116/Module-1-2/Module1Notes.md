@@ -168,6 +168,36 @@ Note: In the past, **hacker** referred to a person who used advanced computer sk
 
 #### Communications 
 
-
+- Tools used for communication may not always be validated: it is assumed that the person with whom a written conversation is taking place is actually that person and not an imposter.
+- The most common communication tools are **message-based**, including the following:
+    - **Email**. Almost 94% of all malware is delivered through email to an unsuspecting user. The goal is to trick the user to open an attachment that contains malware or click a hyperlink that takes the user to an imposter website that looks legitimate but belongs to the threat actor. 
+    - **Texts**. Mobile devices use a messaging service called the **Short Message Service (SMS)** that has a limit of 160 characters. A similar servive, Multimedia Messaging Service (MMS), allows for the text to be accompanied with an attached file such as a picture, video, emoji, or website link. Threat actors may send a text containing a link that installs malware and then persuade the victim to click the link.
+    - **Instant Messages**. **Instant messaging (IM)** is a technology that allows user to send real-time messages through a software applicaiton over the Internet and is not restricted to a cell phone. Like texts, IMs from a threat actor pretend to be from a reliable source but can contain malicious links.
+    - **Voice Calls**. Typically targets olrder users. Attackers may call pretending to be from a credit card company with news that the user's account has been breached and that the victim should immediately give their password over the phone to stop the attack. 
 
 #### Supply Chain 
+
+- A **supply chain** is a network that moves a product from its creation tot he end-user. This chain is typically made up of **suppliers** (the first step in the chain) that provide the raw materials, manufacturers who convert the material into products, **vendors** who purchase the products to resell them, warehouses that store products, distribution centers that deliver products to the retailers, and retailers who sell the product ultimately to the consumer. 
+- Proucts like computer hardware sold by a **hardware provider** move through many steps in the supply chain, which has opened the door for malware to be injected into the product during its manufacturing, storage, and distribution. These are called **supply chain infections**. 
+- More recently, software supply chains, which sources software from a **software provider** (the software developer and supplier) for delivery to an end-user, have been the target if attacjers, 
+- Instead of targetting the originating software provider (supplier), other software supply chain infections have focused on the downstream "middlemen" **service providers** (businesses that furnish solutions or services to users and organizations). IT service providers who manage networks, computers, cloud resources, and information security typically for small-to-medium enterprises (SMEs) are called **managed service providers (MSPs)**. An infected MSP can distribute malicious software to its many SME clients.
+- A particularly alarming typ eof supply chain infection targets **open-source software**, software for which the source code is available for anyone to freely use without restrictions. Open-source software is usually supported by volunteer contributors, and rarely are the contributions vetted. This makes an ideal situation for threat actors to add their malicious code to an open-source project, which is hten downloaded and installed by many unsuspecting victims. 
+
+## Catagories of Vulnerabilites
+
+- A **vulnerability** is defined as the state of being exposed to the possibility of being attacked or harmed. 
+- Can be catagorized into software, hardware, misconfigurations, and zero-day vulnerabilities.
+
+### Software 
+
+- Vulnerabilites are most predominately found in software, with operating system (OS) software being the chief culprit (known as **OS-based vulnerabilities**). 
+- The more complex, the more vulnerable.
+- **Applications** can also have vulnerabilities. One attack uses a **malicious update**, in which a threat actor uses deceptive methods to cuase a user to download and install code that is believed to be a valid update to the application, when in reality, it is not. 
+
+### Hardware
+
+- Several hardware vulnerabilities can lead to a successful attack, including 
+    - **Difficulty Patching Firmware**. **Firmware** is software that is embedded into hardware. It provides low-level controls and instructions for the hardware. Updating firmware to address a vulnerability contained in its code can be difficult and required specialized steps. Not all firmware can be patched with security updates. As a result, firmware with a vulnerability can be a target for attackers. 
+    - **Legacy Platforms**. A **legacy platform** is an older hardware platform for which a more modern version is available but for a variety of reasons has not be updated or replaced... The result is that the hardware legacy platform has been deprived of the most recent security features. 
+    - **End-of-life Hardware**. 
+
