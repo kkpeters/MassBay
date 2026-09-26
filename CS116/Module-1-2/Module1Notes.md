@@ -214,11 +214,33 @@ Note: In the past, **hacker** referred to a person who used advanced computer sk
 
 - Modern hardware and software platforms provide a wide array of features and security settings. Each of these must be properly configured to repel attacks. However, often the configuration settings are not properly implemented, resulting in **misconfigurations**.
 
+#### Table 1-7 Misconfigurations 
+
+| Configuration | Explanation | Example |
+| --- | --- | --- |
+| Default Settings | Default settings are predetermined by the vender for usability and ease of use (and not security) so the user can immediately begin using the product. | A router comes with a default password that is widely known. |
+| Open ports and services | Devices and services are often configured to allow the most access so that the user can then close those that are specific to that organization | A firewall comes with FTP ports 20 and 21 open. |
+| Unsecured root accounts | A root account can give a user unfettered access to all resources. | A misconfigured cloud storage repository could give any user access to all data. |
+| Open permissions | Open permissions are user access over files that should have been restricted. | A user could be given Read, Write, and Execute privileges when they should have only been given Read permissions. |
+| Unsecure protocols | Also called insecure protocols, it is using protocols for telecommunications that do not provide adequate protections. | Using devices that run services with unsecure protocols like Telnet or SNMPv1. |
+| Weak encryption | Choosing a known vulnerable encryption mechanism. | Selecting an encryption scheme that has a known weakness or a key value that is too short. |
+| Errors | Human mistakes in selecting one setting over another without conisdering the security implications. | Using deprecated settings instead of current configurations. |
+
 ### Zero-Day Vulnerabilites 
 
 - A **Zero-Day** vulnerability is when a vulnerability is first found by a threat actors. Attackers can exploit the vulnerable before anyone else even knows it exists.
 - Called zero-day because there are zero days of warning. 
 
+## Impact of Attacks 
 
+- A successful attack always results in several negative impacts, classified as data impacts and overall effects on the organization.
 
+### Data Impacts 
 
+- 
+
+### Overall Effects 
+
+### Table 1-8 Consequences of Data Attack 
+
+# Information Security Resources 
