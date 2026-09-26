@@ -237,10 +237,44 @@ Note: In the past, **hacker** referred to a person who used advanced computer sk
 
 ### Data Impacts 
 
-- 
+- Whereas the goal of some attacks may be harm to a system, such as manipulating an industrial control system to shut down a water filtration facility, most attacks focus on data as the primary target.
+
+#### Table 1-8 Consequences of Data Attack 
+
+| Impact | Description | Example |
+| --- | --- | --- |
+| Data loss | The destruction of data so that it cannot be recovered. | Maliciously erasing patient data used for cancer research. |
+| Data exfiltration | Stealing data to distribute it to other parties. | Taking a list of current customers and selling it to a competitor. |
+| Data breach | Stealing data to disclose it in an unauthorized fashion. | Theft of credit card numbers to sell to other threat actors. |
+| Identity Theft | Taking personally identifiable information to impersonate someone. | Stealing a SSN to secure a bank loan in the victims name. |
 
 ### Overall Effects 
 
-### Table 1-8 Consequences of Data Attack 
+- A successful attack can also have grave consequences for an enterprise. First, systems may be inaccessible and cannot be accessed (**availability loss**). This results in lost productivity, which can impact the normal tasks of a successful income (**financial loss**). 
+- One of the most devastating effects is the impact upon the public perception of the enterprise (**reputation**).Customers may move their business to a competitor. 
 
 # Information Security Resources 
+
+## Frameworks 
+
+- An information security **framework** is a series of documented processes used to define policies and proceures for implementation and management of security controls in an enterprise environment.
+- One of the most popular comes from the National Institute of Standards and Technology (NIST). THe NIST cybersecurity fraeworks are a set of guidelines for helping private companies identify, detect, and respond to attacks. This includes guidelines for how to prevent and recover from an attack. 
+- The NIST frameworks are divided into 3 basic parts:
+    - **Framework core**. Defines the acticies needed to attain different cybersecurity results. Subdivided into 4 different elements. 
+    - **Implementation Tiers**. Specifies four implementation tiers that help organizations identify their level of compliance, the higher the more compliant.
+    - **Profiles**. Relate both to the status of hte organization's cybersecurity measures and the "roadmaps" towards compliance with the NIST cybersecurity framework. 
+
+### Table 1-9 NIST Framework Core Elements 
+
+| Element name | Description | Example |
+| --- | --- | --- |
+| Functions | The most basic information security tasks | Identify, protect, detect, respond, and recover. |
+| Categories | Tasks to be carried out for each of the 5 functions | To protect a function, organizations must implement software updates, install antivirus and anti-malware programs, and have access control policies in place. |
+| Subcategories | Tasks or challenges associated with each category | To implement software updates (a category), organizations must be sure that Windows computers have auto-updates turned on. |
+|
+
+## Regulations 
+
+## Legislation 
+
+## Standards 
