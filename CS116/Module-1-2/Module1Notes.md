@@ -199,5 +199,26 @@ Note: In the past, **hacker** referred to a person who used advanced computer sk
 - Several hardware vulnerabilities can lead to a successful attack, including 
     - **Difficulty Patching Firmware**. **Firmware** is software that is embedded into hardware. It provides low-level controls and instructions for the hardware. Updating firmware to address a vulnerability contained in its code can be difficult and required specialized steps. Not all firmware can be patched with security updates. As a result, firmware with a vulnerability can be a target for attackers. 
     - **Legacy Platforms**. A **legacy platform** is an older hardware platform for which a more modern version is available but for a variety of reasons has not be updated or replaced... The result is that the hardware legacy platform has been deprived of the most recent security features. 
-    - **End-of-life Hardware**. 
+    - **End-of-life Hardware**. End-of-life is when hardware reaches the end of its manufacturing lifespan. By this point the device should be retired and a new model installed. 
+
+#### Table 1-6 EOL Risks
+
+| EOL Risk | Explanation |
+| --- | --- | --- |
+| Lack of security updates | The primary risk of EOL hardware is that any vulnerabilities will not be patched and will remain until the device is replaced; it may also be difficult to identify that a vulnerability in EOL hardware is the culprit for a successful attack. |
+| High cost of maintenance | In addition to no security updates, EOL hardware recieves no firmware upgrades or new functionality, and hardware replacement parts of accessories are not available, thus dramatically increasing the cost of maintenance. |
+| Loss of comprehensive security | In addition to creating employee downtime, aging hardware is often unreliable and fails more frequently, making it likely to result in an unexpected security "hole" in the network that threat actors can exploit. |
+| Legal implications | Using EOL hardware can be considered a failure to comply with regulatory standards that could result in fines and legal consequences. |
+
+### Misconfigurations 
+
+- Modern hardware and software platforms provide a wide array of features and security settings. Each of these must be properly configured to repel attacks. However, often the configuration settings are not properly implemented, resulting in **misconfigurations**.
+
+### Zero-Day Vulnerabilites 
+
+- A **Zero-Day** vulnerability is when a vulnerability is first found by a threat actors. Attackers can exploit the vulnerable before anyone else even knows it exists.
+- Called zero-day because there are zero days of warning. 
+
+
+
 
