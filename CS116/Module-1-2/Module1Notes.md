@@ -282,8 +282,22 @@ Note: In the past, **hacker** referred to a person who used advanced computer sk
 
 ## Regulations 
 
-
+- Another information security resource are **regulations**, and the process of adhering to them is called **regulatory compliance**.
+- Organizations must follow multiple regulations from different regulatory bodies. For information security, there are **broadly applicable regulations**, **industry-specific regulations**, **U.S. state regulartions**, and **international regulations**. 
 
 ## Legislation 
 
+- Specific legislation or laws can also be enacted by governing bodies that can provide an information security resource. These include national, territorial, and state laws. However, with the number of different entities involved in passing multiple-and even contradictory-legislation, this often leads to a "hodge-podge" of legislation and is not always a good cybersecurity resource.
+
 ## Standards 
+
+- A **standard** is a document approved through consensus by a recognized standardization body. It provides for frameworks, rules, guidelines, or characteristics for products or related processes and production methods. 
+- One information security compliance standard is the **Payment Card Industry Data Security Standard (PCI DSS)**. PCI DSS was introduced to provide a minimum degree of security for handling customer card information.
+
+## Benchmarks/Secure Configuration Guides 
+
+- **Benchmark/secure configuration guides** are usually distributed by hardware manufacturers and software developers. These serve as a guideline for configuring a device or software so that it is resilient to attacks. Usually these are platform-/vendor-specific guides that only apply to specific products. Guides are available for network infrastructure devices, OSs, web servers, and application servers.
+
+## Information Sources 
+
+- There are specilized research sources that apply specifically to cybersecurity. **Requests for comments (RFCs)** are document "white papers" that are authored by technology bodies employing specialists, engineers, and scientists who are experts in those areas. These RFCs describe methods, behaviors, research, or innovations applicable to information security. **Data Feeds** are continually maintained databases of the latest cybersecurity incidences.
