@@ -204,7 +204,7 @@ Note: In the past, **hacker** referred to a person who used advanced computer sk
 #### Table 1-6 EOL Risks
 
 | EOL Risk | Explanation |
-| --- | --- | --- |
+| --- | --- |
 | Lack of security updates | The primary risk of EOL hardware is that any vulnerabilities will not be patched and will remain until the device is replaced; it may also be difficult to identify that a vulnerability in EOL hardware is the culprit for a successful attack. |
 | High cost of maintenance | In addition to no security updates, EOL hardware recieves no firmware upgrades or new functionality, and hardware replacement parts of accessories are not available, thus dramatically increasing the cost of maintenance. |
 | Loss of comprehensive security | In addition to creating employee downtime, aging hardware is often unreliable and fails more frequently, making it likely to result in an unexpected security "hole" in the network that threat actors can exploit. |
