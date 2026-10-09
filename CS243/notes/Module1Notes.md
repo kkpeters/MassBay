@@ -406,7 +406,494 @@ If the interface is up, but issues with connectivity are still present:
 
 # 1.3 Secure Remote Access
 
+## 1.3.1 Telnet Operation
+
+You might not always have direct access to your switch when you need to configure it. You need to be able to access it remotely and it is imperative that your access is secure. This topic discusses how to configure Secure Shell (SSH) for remote access. A Packet Tracer activity gives you the opportunity to try this yourself.
+
+Telnet uses TCP port 23. It is an older protocol that uses unsecure plaintext transmission of both the login authentication (username and password) and the data transmitted between the communicating devices. A threat actor can monitor packets using Wireshark. For example, in the figure the threat actor captured the username admin and password ccna from a Telnet session.
+
+![telnetOperations](telnetOperations.png)
+
+## 1.3.2 SSH Operation
+Secure Shell (SSH) is a secure protocol that uses TCP port 22. It provides a secure (encrypted) management connection to a remote device. SSH should replace Telnet for management connections. SSH provides security for remote connections by providing strong encryption when a device is authenticated (username and password) and also for the transmitted data between the communicating devices.
+
+For example, the figure shows a Wireshark capture of an SSH session. The threat actor can track the session using the IP address of the administrator device. However, unlike Telnet, with SSH the username and password are encrypted.
+
+![SSHOperation](SSHOperation.png)
+
+## 1.3.3 Verify the Switch Supports SSH
+
+To enable SSH on a Catalyst 2960 switch, the switch must be using a version of the IOS software including cryptographic (encrypted) features and capabilities. Use the show version command on the switch to see which IOS the switch is currently running. An IOS filename that includes the combination “k9” supports cryptographic (encrypted) features and capabilities. The example shows the output of the show version command.
+
+```
+S1# show version
+Cisco IOS Software, C2960 Software (C2960-LANBASEK9-M), Version 15.0(2)SE7, RELEASE SOFTWARE (fc1)
+```
+
+## 1.3.4 Configure SSH
+
+Before configuring SSH, the switch must be minimally configured with a unique hostname and the correct network connectivity settings.
+
+### Step 1
+
+Verify SSH support.
+
+Use the show ip ssh command to verify that the switch supports SSH. If the switch is not running an IOS that supports cryptographic features, this command is unrecognized.
+
+```
+S1# show ip ssh
+```
+
+### Step 2
+
+Configure the IP domain.
+
+Configure the IP domain name of the network using the ip domain-name domain-name global configuration mode command. In the figure, the domain-name value is cisco.com.
+
+```
+S1(config)# ip domain-name cisco.com
+```
+
+### Step 3
+
+Generate RSA key pairs.
+
+Not all versions of the IOS default to SSH version 2, and SSH version 1 has known security flaws. To configure SSH version 2, issue the ip ssh version 2 global configuration mode command. Generating an RSA key pair automatically enables SSH. Use the crypto key generate rsa global configuration mode command to enable the SSH server on the switch and generate an RSA key pair. When generating RSA keys, the administrator is prompted to enter a modulus length. The sample configuration in the figure uses a modulus size of 1,024 bits. A longer modulus length is more secure, but it takes longer to generate and to use.
+
+Note: To delete the RSA key pair, use the crypto key zeroize rsa global configuration mode command. After the RSA key pair is deleted, the SSH server is automatically disabled.
+
+```
+S1(config)# crypto key generate rsa
+How many bits in the modulus [512]: 1024
+```
+
+### Step 4
+
+Configure user authentication.
+
+The SSH server can authenticate users locally or using an authentication server. To use the local authentication method, create a username and password pair using the username username secret password global configuration mode command. In the example, the user admin is assigned the password ccna.
+
+```
+S1(config)# username admin secret ccna
+```
+
+### Step 5
+
+Configure the vty lines.
+
+Enable the SSH protocol on the vty lines by using the transport input ssh line configuration mode command. The Catalyst 2960 has vty lines ranging from 0 to 15. This configuration prevents non-SSH (such as Telnet) connections and limits the switch to accept only SSH connections. Use the line vty global configuration mode command and then the login local line configuration mode command to require local authentication for SSH connections from the local username database.
+
+```
+S1(config)# line vty 0 15
+S1(config-line)# transport input ssh
+S1(config-line)# login local
+S1(config-line)# exit
+```
+
+### Step 6
+
+Enable SSH version 2.
+
+By default, SSH supports both versions 1 and 2. When supporting both versions, this is shown in the show ip ssh output as supporting version 2. Enable SSH version using the ip ssh version 2 global configuration command.
+
+```
+S1(config)# ip ssh version 2
+```
+
+## 1.3.5 Verify SSH is Operational
+
+On a PC, an SSH client such as PuTTY, is used to connect to an SSH server. For example, assume the following is configured:
+
+SSH is enabled on switch S1
+Interface VLAN 99 (SVI) with IPv4 address 172.17.99.11 on switch S1
+PC1 with IPv4 address 172.17.99.21
+The figure shows the PuTTY settings for PC1 to initiate an SSH connection to the SVI VLAN IPv4 address of S1.
+
+![ConnectViaSSH](ConnectViaSSH.png)
+
+When connected, the user is prompted for a username and password as shown in the example. Using the configuration from the previous example, the username admin and password ccna are entered. After entering the correct combination, the user is connected via SSH to the command line interface (CLI) on the Catalyst 2960 switch.
+
+```
+Login as: admin
+Using keyboard-interactive
+Authentication.
+Password:
+S1> enable
+Password:
+S1#
+```
+
+To display the version and configuration data for SSH on the device that you configured as an SSH server, use the show ip ssh command. In the example, SSH version 2 is enabled.
+
+
+```
+S1# show ip ssh
+SSH Enabled - version 2.0
+Authentication timeout: 120 secs; Authentication retries: 3
+To check the SSH connections to the device, use the show ssh command as shown.
+S1# show ssh
+%No SSHv1 server connections running.
+Connection Version Mode Encryption  Hmac                State          Username
+0          2.0     IN   aes256-cbc  hmac-sha1    Session started       admin
+0          2.0     OUT  aes256-cbc  hmac-sha1    Session started       admin
+S1#
+```
+
 # 1.4 Basic Router Configuration 
+
+## 1.4.1 Configure Basic Router Settings
+Up to now, this module has only covered switches. If you want devices to be able to send and receive data outside of your network, you will have to configure routers. This topic teaches you basic router configuration and provides two Syntax Checkers and a Packet Tracer activity so you can practice these skills.
+
+Cisco routers and Cisco switches have many similarities. They support a similar modal operating system, similar command structures, and many of the same commands. In addition, both devices have similar initial configuration steps. For example, the following configuration tasks should always be performed. Name the device to distinguish it from other routers and configure passwords, as shown in the example.
+
+```
+Router# configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)# hostname R1
+R1(config)# enable secret class
+R1(config)# line console 0
+R1(config-line)# password cisco
+R1(config-line)# login
+R1(config-line)# exit
+R1(config)# line vty 0 4
+R1(config-line)# password cisco
+R1(config-line)# login
+R1(config-line)# exit
+R1(config)# service password-encryption
+R1(config)#
+```
+
+Configure a banner to provide legal notification of unauthorized access, as shown in the example.
+
+```
+R1(config)# banner motd #Authorized Access Only!#
+R1(config)#
+```
+
+Save the changes on a router, as shown in the example.
+
+```
+R1# copy running-config startup-config
+Destination filename [startup-config]?
+Building configuration...
+[OK]
+```
+
+## 1.4.3 Dual Stack Topology
+
+One distinguishing feature between switches and routers is the type of interfaces supported by each. For example, Layer 2 switches support LANs; therefore, they have multiple FastEthernet or Gigabit Ethernet ports. The dual stack topology in the figure is used to demonstrate the configuration of router IPv4 and IPv6 interfaces.
+
+![DualStackTopology](DualStackTopology.png)
+
+## 1.4.4 Configure Router Interfaces
+
+Routers support LANs and WANs and can interconnect different types of networks; therefore, they support many types of interfaces. For example, G2 ISRs have one or two integrated Gigabit Ethernet interfaces and High-Speed WAN Interface Card (HWIC) slots to accommodate other types of network interfaces, including serial, DSL, and cable interfaces.
+
+To be available, an interface must be:
+
+- Configured with at least one IP address - Use the ip address ip-address subnet-mask and the ipv6 address ipv6-address/prefix interface configuration commands.
+- Activated - By default, LAN and WAN interfaces are not activated (shutdown). To enable an interface, it must be activated using the no shutdown command. (This is similar to powering on the interface.) The interface must also be connected to another device (a hub, a switch, or another router) for the physical layer to be active.
+- Description - Optionally, the interface could also be configured with a short description of up to 240 characters. It is good practice to configure a description on each interface. On production networks, the benefits of interface descriptions are quickly realized as they are helpful in troubleshooting and in identifying a third-party connection and contact information.
+
+The following example shows the configuration for the interfaces on R1.
+
+```
+R1(config)# interface gigabitethernet 0/0/0
+R1(config-if)# ip address 192.168.10.1 255.255.255.0
+R1(config-if)# ipv6 address 2001:db8:acad:1::1/64
+R1(config-if)# description Link to LAN 1
+R1(config-if)# no shutdown
+R1(config-if)# exit
+R1(config)# interface gigabitethernet 0/0/1
+R1(config-if)# ip address 192.168.11.1 255.255.255.0
+R1(config-if)# ipv6 address 2001:db8:acad:2::1/64
+R1(config-if)# description Link to LAN 2
+R1(config-if)# no shutdown
+R1(config-if)# exit
+R1(config)# interface serial 0/0/0
+R1(config-if)# ip address 209.165.200.225 255.255.255.252
+R1(config-if)# ipv6 address 2001:db8:acad:3::225/64
+R1(config-if)# description Link to R2
+R1(config-if)# no shutdown
+R1(config-if)# exit
+R1(config)#
+```
+
+## 1.4.6 IPv4 Loopback Interfaces
+Another common configuration of Cisco IOS routers is enabling a loopback interface.
+
+The loopback interface is a logical interface that is internal to the router. It is not assigned to a physical port and can never be connected to any other device. It is considered a software interface that is automatically placed in an “up” state, as long as the router is functioning.
+
+The loopback interface is useful in testing and managing a Cisco IOS device because it ensures that at least one interface will always be available. For example, it can be used for testing purposes, such as testing internal routing processes, by emulating networks behind the router.
+
+Loopback interfaces are also commonly used in lab environments to create additional interfaces. For example, you can create multiple loopback interfaces on a router to simulate more networks for configuration practice and testing purposes. In this curriculum, we often use a loopback interface to simulate a link to the internet.
+
+Enabling and assigning a loopback address is simple:
+
+```
+Router(config)# interface loopback number 
+```
+
+```
+Router(config-if)# ip address ip-address subnet-mask 
+```
+Multiple loopback interfaces can be enabled on a router. The IPv4 address for each loopback interface must be unique and unused by any other interface, as shown in the example configuration of loopback interface 0 on R1.
+
+```
+R1(config)# interface loopback 0
+R1(config-if)# ip address 10.0.0.1 255.255.255.0
+R1(config-if)# exit
+R1(config)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Loopback0, changed state to up
+```
 
 # 1.5 Verify Directly Connected Networks
 
+## 1.5.1 Interface Verification Commands
+
+There is no point in configuring your router unless you verify the configuration and connectivity. This topic covers
+the commands to use to verify directly connected networks. It includes two Syntax Checkers and a Packet
+Tracer.
+
+There are several **show** commands that can be used to verify the operation and configuration of an interface.
+The topology in the figure is used to demonstrate the verification of router interface settings.
+
+![TopologyFigure](TopologyFigure.png)
+
+The following commands are especially useful to quickly identify the status of an interface:
+
+- **show ip interface brief** and **show ipv6 interface brief** - These display a summary for all interfaces including the IPv4 or IPv6 address of the interface and current operational status.
+- **show running-config interface** *interface-id* - This displays the commands applied to the specified interface.
+- **show ip route** and **show ipv6 route** - These display the contents of the IPv4 or IPv6 routing table stored in RAM. In Cisco IOS 15, active interfaces should appear in the routing table with two related entries identified by the code 'C' (Connected) or 'L' (Local). In previous IOS versions, only a single entry with the code 'C' will appear.
+
+## 1.5.2 Verify Interface Status
+
+The output of the show ip interface brief and show ipv6 interface brief commands can be used to quickly reveal the status of all interfaces on the router. You can verify that the interfaces are active and operational as indicated by the Status of "up" and Protocol of "up", as shown in the example. A different output would indicate a problem with either the configuration or the cabling.
+
+```
+R1# show ip interface brief
+Interface IP-Address OK? Method Status Protocol
+GigabitEthernet0/0/0 192.168.10.1 YES manual up up
+GigabitEthernet0/0/1 192.168.11.1 YES manual up up
+Serial0/1/0 209.165.200.225 YES manual up up
+Serial0/1/1 unassigned YES unset administratively down down
+R1# show ipv6 interface brief
+GigabitEthernet0/0/0 [up/up]
+FE80::7279:B3FF:FE92:3130
+2001:DB8:ACAD:1::1
+GigabitEthernet0/0/1 [up/up]
+FE80::7279:B3FF:FE92:3131
+2001:DB8:ACAD:2::1
+Serial0/1/0 [up/up]
+FE80::7279:B3FF:FE92:3130
+2001:DB8:ACAD:3::1
+Serial0/1/1 [down/down] unassigned
+```
+
+## # 1.5.3 Verify IPv6 Link Local and Multicast Addresses
+
+The output of the show ipv6 interface brief command displays two configured IPv6 addresses per interface. One address is the IPv6 global unicast address that was manually entered. The other address, which begins with FE80, is the link-local unicast address for the interface. A link-local address is automatically added to an interface whenever a global unicast address is assigned. An IPv6 network interface is required to have a link- local address, but not necessarily a global unicast address.
+
+The show ipv6 interface gigabitethernet 0/0/0 command displays the interface status and all of the IPv6 addresses belonging to the interface. Along with the link local address and global unicast address, the output includes the multicast addresses assigned to the interface, beginning with prefix FF02, as shown in the example.
+
+```
+R1# show ipv6 interface gigabitethernet 0/0/0
+GigabitEthernet0/0/0 is up, line protocol is up
+IPv6 is enabled, link-local address is FE80::7279:B3FF:FE92:3130
+No Virtual link-local address(es):
+Global unicast address(es):
+2001:DB8:ACAD:1::1, subnet is 2001:DB8:ACAD:1::/64
+Joined group address(es):
+FF02::1
+FF02::1:FF00:1
+FF02::1:FF92:3130
+MTU is 1500 bytes
+ICMP error messages limited to one every 100 milliseconds
+ICMP redirects are enabled
+ICMP unreachables are sent
+ND DAD is enabled, number of DAD attempts: 1
+ND reachable time is 30000 milliseconds (using 30000)
+ND advertised reachable time is 0 (unspecified)
+ND advertised retransmit interval is 0 (unspecified)
+ND router advertisements are sent every 200 seconds
+ND router advertisements live for 1800 seconds
+ND advertised default router preference is Medium 
+```
+
+## 1.5.4 Verify Interface Configuration
+
+The output of the `show running-config interface` command displays the current commands applied to the specified interface as shown.
+
+```
+R1 show running-config interface gigabitethernet 0/0/0
+Building configuration...
+Current configuration : 158 bytes
+!
+interface GigabitEthernet0/0/0
+ description Link to LAN 1
+ ip address 192.168.10.1 255.255.255.0
+ negotiation auto
+ ipv6 address 2001:DB8:ACAD:1::1/64
+end
+R1#
+```
+
+The following two commands are used to gather more detailed interface information:
+
+- **show interfaces** - Displays interface information and packet flow count for all interfaces on the device.
+- **show ip interface** and **show ipv6 interface** - Displays the IPv4 and IPv6 related information for all
+
+## 1.5.5 Verify Routes
+
+The output of the **show ip route** and **show ipv6 route** commands reveal the three directly connected network entries and the three local host route interface entries, as shown in the example. The local host route has an administrative distance of 0. It also has a /32 mask for IPv4, and a /128 mask for IPv6. The local host route is for routes on the router that owns the IP address. It is used to allow the router to process packets destined to that IP.
+
+```
+R1# show ip route
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+
+Gateway of last resort is not set
+192.168.10.0/24 is variably subnetted, 2 subnets, 2 masks
+C 192.168.10.0/24 is directly connected, GigabitEthernet0/0/0
+L 192.168.10.1/32 is directly connected, GigabitEthernet0/0/0
+192.168.11.0/24 is variably subnetted, 2 subnets, 2 masks
+C 192.168.11.0/24 is directly connected, GigabitEthernet0/0/1
+L 192.168.11.1/32 is directly connected, GigabitEthernet0/0/1
+209.165.200.0/24 is variably subnetted, 2 subnets, 2 masks
+C 209.165.200.224/30 is directly connected, Serial0/1/0
+L 209.165.200.225/32 is directly connected, Serial0/1/0
+
+R1# show ipv6 route
+IPv6 Routing Table default - 7 entries
+Codes: C - Connected, L - Local, S - Static, U - Per-user Static route
+
+C 2001:DB8:ACAD:1::/64 [0/0]
+via GigabitEthernet0/0/0, directly connected
+L 2001:DB8:ACAD:1::1/128 [0/0]
+via GigabitEthernet0/0/0, receive
+C 2001:DB8:ACAD:2::/64 [0/0]
+via GigabitEthernet0/0/1, directly connected
+L 2001:DB8:ACAD:2::1/128 [0/0]
+via GigabitEthernet0/0/1, receive
+C 2001:DB8:ACAD:3::/64 [0/0]
+via Serial0/1/0, directly connected
+L 2001:DB8:ACAD:3::1/128 [0/0]
+via Serial0/1/0, receive
+L FF00::/8 [0/0]
+via Null0, receive
+R1# 
+```
+
+A 'C' next to a route within the routing table indicates that this is a directly connected network. When the router interface is configured with a global unicast address and is in the "up/up" state, the IPv6 prefix and prefix length are added to the IPv6 routing table as a connected route.
+
+The IPv6 global unicast address applied to the interface is also installed in the routing table as a local route. The local route has a /128 prefix. Local routes are used by the routing table to efficiently process packets with the interface address of the router as the destination.
+
+The ping command for IPv6 is identical to the command used with IPv4 except that an IPv6 address is used. As shown in the example, the ping command is used to verify Layer 3 connectivity between R1 and PC1.
+
+```
+R1# ping 2001:db8:acad:1::10
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 2001:DB8:ACAD:1::10, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms
+```
+
+## 1.5.6 Filter Show Command Output
+
+Commands that generate multiple screens of output are, by default, paused after 24 lines. At the end of the paused output, the --More-- text displays. Pressing **Enter** displays the next line and pressing the spacebar displays the next set of lines. Use the **terminal length** command to specify the number of lines to be displayed. A value of 0 (zero) prevents the router from pausing between screens of output.
+
+Another very useful feature that improves the user experience in the CLI is the filtering of **show** output. Filtering commands can be used to display specific sections of output. To enable the filtering command, enter a pipe (|) character after the **show** command and then enter a filtering parameter and a filtering expression.
+
+There are four filtering parameters that can be configured after the pipe.
+
+### section
+
+Shows the entire section that starts with the filtering expression, as shown in the example.
+
+```
+R1# show running-config | section line vty
+line vty 0 4
+password 7 110A1016141D
+login
+transport input all
+```
+
+### include
+Includes all output lines that match the filtering expression, as shown in the example.
+
+```
+R1# show ip interface brief
+Interface IP-Address OK? Method Status Protocol
+GigabitEthernet0/0/0 192.168.10.1 YES manual up up
+GigabitEthernet0/0/1 192.168.11.1 YES manual up up
+Serial0/1/0 209.165.200.225 YES manual up up
+Serial0/1/1 unassigned NO unset down down
+R1#
+R1# show ip interface brief | include up
+GigabitEthernet0/0/0 192.168.10.1 YES manual up up
+GigabitEthernet0/0/1 192.168.11.1 YES manual up up
+Serial0/1/0 209.165.200.225 YES manual up up
+```
+
+### exclude
+Excludes all output lines that match the filtering expression, as shown in the example.
+
+```
+R1# show ip interface brief
+Interface | IP-Address | OK? Method Status | Protocol
+---|---|---|---
+GigabitEthernet0/0/0 | 192.168.10.1 | YES manual up | up
+GigabitEthernet0/0/1 | 192.168.11.1 | YES manual up | up
+Serial0/1/0 | 209.165.200.225 | YES manual up | up
+Serial0/1/1 | unassigned | NO unset down | down
+R1#
+
+R1# show ip interface brief | exclude unassigned
+Interface | IP-Address | OK? Method Status | Protocol
+---|---|---|---
+GigabitEthernet0/0/0 | 192.168.10.1 | YES manual up | up
+GigabitEthernet0/0/1 | 192.168.11.1 | YES manual up | up
+Serial0/1/0 | 209.165.200.225 | YES manual up | up
+```
+
+### begin
+Shows all the output lines from a certain point, starting with the line that matches the filtering expression, as shown in the
+example.
+
+```
+R1# show ip route | begin Gateway
+Gateway of last resort is not set
+192.168.10.0/24 is variably subnetted, 2 subnets, 2 masks
+C    192.168.10.0/24 is directly connected, GigabitEthernet0/0/0
+L    192.168.10.1/32 is directly connected, GigabitEthernet0/0/0
+    192.168.11.0/24 is variably subnetted, 2 subnets, 2 masks
+C    192.168.11.0/24 is directly connected, GigabitEthernet0/0/1
+L    192.168.11.1/32 is directly connected, GigabitEthernet0/0/1
+    209.165.200.0/24 is variably subnetted, 2 subnets, 2 masks
+C    209.165.200.224/30 is directly connected, Serial0/1/0
+L    209.165.200.225/32 is directly connected, Serial0/1/0
+```
+
+**Note:** Output filters can be used in combination with any **show** command.
+
+## # 1.5.8 Command History Feature
+
+The command history feature is useful because it temporarily stores the list of executed commands to be recalled.
+
+To recall commands in the history buffer, press **Ctrl+P** or the **Up Arrow** key. The command output begins with the most recent command. Repeat the key sequence to recall successively older commands. To return to more recent commands in the history buffer, press **Ctrl+N** or the **Down Arrow** key. Repeat the key sequence to recall successively more recent commands.
+
+By default, command history is enabled and the system captures the last 10 command lines in its history buffer. Use the show history privileged EXEC command to display the contents of the buffer.
+
+It is also practical to increase the number of command lines that the history buffer records during the current terminal session only. Use the terminal history size user EXEC command to increase or decrease the size of the buffer.
+
+An example of the terminal history size and show history commands is shown in the figure.
+
+```
+R1# terminal history size 200
+R1# show history
+show ip int brief
+show interface g0/0/0
+show ip route
+show running-config
+show history
+terminal history size 200
+```
