@@ -566,3 +566,83 @@ Administrative Native VLAN tagging: enabled
 ```
 
 # 3.5 Dynamic Trunking Protocol 
+
+## 3.5.1 Introduction to DTP
+Some Cisco switches have a proprietary protocol that lets them automatically negotiate trunking with a neighboring device. This protocol is called Dynamic Trunking Protocol (DTP). DTP can speed up the configuration process for a network administrator. Ethernet trunk interfaces support different trunking modes. An interface can be set to trunking or nontrunking, or to negotiate trunking with the neighbor interface. Trunk negotiation is managed by DTP, which operates on a point-to-point basis only, between network devices.
+
+DTP is a Cisco proprietary protocol that is automatically enabled on Catalyst 2960 and Catalyst 3650 Series switches. DTP manages trunk negotiation only if the port on the neighbor switch is configured in a trunk mode that supports DTP. Switches from other vendors do not support DTP.
+
+Caution: Some internetworking devices might forward DTP frames improperly, which can cause misconfigurations. To avoid this, turn off DTP on Cisco switch interfaces that are connected to devices that do not support DTP.
+
+The default DTP configuration for Cisco Catalyst 2960 and 3650 switches is dynamic auto.
+
+To enable trunking from a Cisco switch to a device that does not support DTP, use the switchport mode trunk and switchport nonegotiate interface configuration mode commands. This causes the interface to become a trunk, but it will not generate DTP frames.
+
+```
+S1(config-if)# switchport mode trunk
+S1(config-if)# switchport nonegotiate
+```
+To re-enable dynamic trunking protocol use the switchport mode dynamic auto command.
+
+```
+S1(config-if)# switchport mode dynamic auto
+```
+
+If the ports connecting two switches are configured to ignore all DTP advertisements with the **switchport mode trunk** and the **switchport nonegotiate** commands, the ports will stay in trunk port mode. If the connecting ports are set to dynamic auto, they will not negotiate a trunk and will stay in the access mode state, creating an inactive trunk link.
+
+When configuring a port to be in trunk mode, use the **switchport mode trunk** command. Then there is no ambiguity about which state the trunk is in; it is always on.
+
+## 3.5.2 Negotiated Interface Modes
+
+The switchport mode command has additional options for negotiating the interface mode. The full command syntax is the following:
+
+```
+Switch(config-if)# switchport mode { access | dynamic { auto | desirable } | trunk }
+```
+
+The options are described in the table.
+
+| Option | Description |
+|---|---|
+| access | - Puts the interface (access port) into permanent nontrunking mode and negotiates to convert the link into a nontrunk link. <br> - The interface becomes a nontrunk interface, regardless of whether the neighboring interface is a trunk interface. |
+| dynamic auto | - Makes the interface able to convert the link to a trunk link. <br> - The interface becomes a trunk interface if the neighboring interface is set to trunk or desirable mode. <br> - The default switchport mode for all Ethernet interfaces is **dynamic auto**. |
+| dynamic desirable | - Makes the interface actively attempt to convert the link to a trunk link. <br> - The interface becomes a trunk interface if the neighboring interface is set to trunk, desirable, or dynamic auto mode. |
+| trunk | - Puts the interface into permanent trunking mode and negotiates to convert the neighboring link into a trunk link. <br> - The interface becomes a trunk interface even if the neighboring interface is not a trunk interface. |
+
+Use the **switchport nonegotiate** interface configuration command to stop DTP negotiation. The switch does not engage in DTP negotiation on this interface. You can use this command only when the interface switchport mode is **access** or **trunk**. You must manually configure the neighboring interface as a trunk interface to establish a trunk link.
+
+## # 3.5.3 Results of a DTP Configuration
+
+The table illustrates the results of the DTP configuration options on opposite ends of a trunk link connected to Catalyst 2960 switch ports. Best practice is to configure trunk links statically whenever possible.
+
+| | Dynamic Auto | Dynamic Desirable | Trunk | Access |
+|---|---|---|---|---|
+| Dynamic Auto | Access | Trunk | Trunk | Access |
+| Dynamic Desirable | Trunk | Trunk | Trunk | Access |
+| Trunk | Trunk | Trunk | Trunk | Limited connectivity |
+| Access | Access | Access | Limited connectivity | Access |
+
+## # 3.5.4 Verify DTP Mode
+
+The default DTP mode is dependent on the Cisco IOS Software version and on the platform. To determine the current DTP mode, issue the show dtp interface command as shown in the output.
+
+```
+S1# show dtp interface fa0/1
+DTP information for FastEthernet0/1:
+TOS/TAS/TNS: ACCESS/AUTO/ACCESS
+TOT/TAT/TNT: NATIVE/NEGOTIATE/NATIVE
+Neighbor address 1: C80084AEF101
+Neighbor address 2: 000000000000
+Hello timer expiration (sec/state): 11/RUNNING
+Access timer expiration (sec/state): never/STOPPED
+Negotiation timer expiration (sec/state): never/STOPPED
+Multidrop timer expiration (sec/state): never/STOPPED
+FSM state: S2:ACCESS
+# times multi & trunk 0
+Enabled: yes
+In STP: no
+```
+
+**Note:** A general best practice is to set the interface to **trunk** and **nonegotiate** when a trunk link is required. On links where trunking is not intended, DTP should be turned off.
+
+
