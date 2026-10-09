@@ -2,7 +2,407 @@
 
 # 1.1 Configure a Switch with Initial Settings
 
+## 1.1.1 Switch Boot Sequence
+
+Before you can configure a switch, you need to turn it on and allow it to go through the five-step boot sequence. This topic covers the basics of configuring a switch and includes a lab at the end.
+
+After a Cisco switch is powered on, it goes through the following five-step boot sequence:
+
+Step 1: First, the switch loads a power-on self-test (POST) program stored in ROM. POST checks the CPU subsystem. It tests the CPU, DRAM, and the portion of the flash device that makes up the flash file system.
+
+Step 2: Next, the switch loads the boot loader software. The boot loader is a small program stored in ROM that is run immediately after POST successfully completes.
+
+Step 3: The boot loader performs low-level CPU initialization. It initializes the CPU registers, which control where physical memory is mapped, the quantity of memory, and its speed.
+
+Step 4: The boot loader initializes the flash file system on the system board.
+
+Step 5: Finally, the boot loader locates and loads a default IOS operating system software image into memory and gives control of the switch over to the IOS.
+
+## 1.1.2 The boot system Command
+
+The switch attempts to automatically boot by using information in the BOOT environment variable. If this variable is not set, the switch attempts to load and execute the first executable file it can find. On Catalyst 2960 Series switches, the image file is normally contained in a directory that has the same name as the image file (excluding the .bin file extension).
+
+The IOS operating system then initializes the interfaces using the Cisco IOS commands found in the startup-config file. The startup-config file is called config.text and is located in flash.
+
+In the example, the BOOT environment variable is set using the boot system global configuration mode command. Notice that the IOS is located in a distinct folder and the folder path is specified. Use the command show boot to see what the current IOS boot file is set to.
+
+```
+S1(config)# boot system flash:/c2960-lanbasek9-mz.150-2.SE/c2960-lanbasek9-mz.150-2.SE.bin
+```
+
+The table defines each part of the boot system command.
+
+| Command | Definition |
+| --- | --- |
+| `boot system` | The main command |
+| `flash:` | The storage device |
+| `c2960-lanbasek9-mz.150-2.SE/` | The path to the file system |
+| `c2960-lanbasek9-mz.1502.SE.bin` | The IOS file name |
+
+
+## 1.1.3 Switch LED Indicators
+Cisco Catalyst switches have several status LED indicator lights. You can use the switch LEDs to quickly monitor switch activity and performance. Switches of different models and feature sets will have different LEDs and their placement on the front panel of the switch may also vary.
+
+The figure shows the switch LEDs and the Mode button for a Cisco Catalyst 2960 switch.
+
+![switchLEDIndicators](switchLEDIndicators.png)
+
+The Mode button (7 in the figure) is used to toggle through port status, port duplex, port speed, and if supported, the Power over Ethernet (PoE) status of the port LEDs (8 in the figure).
+
+### System LED
+
+Shows whether the system is receiving power and is functioning properly. If the LED is off, it means the system is not powered on. If the LED is green, the system is operating normally. If the LED is amber, the system is receiving power but is not functioning properly.
+
+### Redundant Power System (RPS) LED
+
+Shows the RPS status. If the LED is off, the RPS is off, or it is not properly connected. If the LED is green, the RPS is connected and ready to provide backup power. If the LED is blinking green, the RPS is connected but is unavailable because it is providing power to another device. If the LED is amber, the RPS is in standby mode, or in a fault condition. If the LED is blinking amber, the internal power supply in the switch has failed, and the RPS is providing power.
+
+### Port Status LED
+
+Indicates that the port status mode is selected when the LED is green. This is the default mode. When selected, the port LEDs will display colors with different meanings. If the LED is off, there is no link, or the port was administratively shut down. If the LED is green, a link is present. If the LED is blinking green, there is activity and the port is sending or receiving data. If the LED is alternating green-amber, there is a link fault. If the LED is amber, the port is blocked to ensure that a loop does not exist in the forwarding domain and is not forwarding data (typically, ports will remain in this state for the first 30 seconds after being activated). If the LED is blinking amber, the port is blocked to prevent a possible loop in the forwarding domain.
+
+### Port Duplex LED
+
+Indicates that the port duplex mode is selected when the LED is green. When selected, port LEDs that are off are in half-duplex mode. If the port LED is green, the port is in full-duplex mode.
+
+### Port Speed LED
+
+Indicates that the port speed mode is selected. When selected, the port LEDs will display colors with different meanings. If the LED is off, the port is operating at 10 Mbps. If the LED is green, the port is operating at 100 Mbps. If the LED is blinking green, the port is operating at 1000 Mbps.
+
+### Power over Ethernet (PoE) Mode LED
+
+If PoE is supported, a PoE mode LED will be present. If the LED is off, it indicates the PoE mode is not selected and that none of the ports have been denied power or placed in a fault condition. If the LED is blinking amber, the PoE mode is not selected but at least one of the ports has been denied power or has a PoE fault. If the LED is green, it indicates the PoE mode is selected and the port LEDs will display colors with different meanings. If the port LED is off, the PoE is off. If the port LED is green, the PoE is on. If the port LED is alternating green-amber, PoE is denied because providing power to the powered device will exceed the switch power capacity. If the LED is blinking amber, PoE is off because of a fault. If the LED is amber, PoE for the port has been disabled.
+
+## 1.1.4 Recovering from a System Crash
+The boot loader provides access into the switch if the operating system cannot be used because of missing or damaged system files. The boot loader has a command-line that provides access to the files stored in flash memory.
+
+The boot loader can be accessed through a console connection following these steps:
+
+Step 1. Connect a PC by console cable to the switch console port. Configure terminal emulation software to connect to the switch.
+
+Step 2. Unplug the switch power cord.
+
+Step 3. Reconnect the power cord to the switch and, within 15 seconds, press and hold down the Mode button while the System LED is still flashing green.
+
+Step 4. Continue pressing the Mode button until the System LED turns briefly amber and then solid green; then release the Mode button.
+
+Step 5. The boot loader switch: prompt appears in the terminal emulation software on the PC.
+
+Type the help or ? at the boot loader prompt to view a list of available commands.
+
+By default, the switch attempts to automatically boot up by using information in the BOOT environment variable. To view the path of the switch BOOT environment variable type the set command. Then, initialize the flash file system using the flash_init command to view the current files in flash, as shown in the output.
+
+```
+switch: set
+BOOT=flash:/c2960-lanbasek9-mz.122-55.SE7/c2960-lanbasek9-mz.122-55.SE7.bin
+(output omitted)
+switch: flash_init
+Initializing Flash...
+flashfs[0]: 2 files, 1 directories
+flashfs[0]: 0 orphaned files, 0 orphaned directories
+flashfs[0]: Total bytes: 32514048
+flashfs[0]: Bytes used: 11838464
+flashfs[0]: Bytes available: 20675584
+flashfs[0]: flashfs fsck took 10 seconds.
+...done Initializing Flash.
+```
+
+After flash has finished initializing you can enter the dir flash: command to view the directories and files in flash, as shown in the output.
+
+```
+switch: dir flash:
+Directory of flash:/
+    2  -rwx  11834846  <date>               c2960-lanbasek9-mz.150-2.SE8.bin
+    3  -rwx  2072      <date>               multiple-fs
+```
+
+Enter the BOOT=flash command to change the BOOT environment variable path the switch uses to load the new IOS in flash. To verify the new BOOT environment variable path, issue the set command again. Finally, to load the new IOS type the boot command without any arguments, as shown in the output.
+
+```
+switch: BOOT=flash:c2960-lanbasek9-mz.150-2.SE8.bin
+switch: set
+BOOT=flash:c2960-lanbasek9-mz.150-2.SE8.bin
+(output omitted)
+switch: boot
+```
+
+The boot loader commands support initializing flash, formatting flash, installing a new IOS, changing the BOOT environment variable and recovery of lost or forgotten passwords.
+
+## 1.1.5 Switch Management Access
+
+To prepare a switch for remote management access, the switch must have a switch virtual interface (SVI) configured with an IPv4 address and subnet mask or an IPv6 address and a prefix length for IPv6. The SVI is a virtual interface, not a physical port on the switch. Keep in mind that to manage the switch from a remote network, the switch must be configured with a default gateway. This is very similar to configuring the IP address information on host devices.
+
+![switchManagementAccess](switchManagementAccess.png)
+
+## 1.1.6 Switch SVI Configuration Example
+By default, the switch is configured to have its management controlled through VLAN 1. All ports are assigned to VLAN 1 by default. For security purposes, it is considered a best practice to use a VLAN other than VLAN 1 for the management VLAN, such as VLAN 99 in the example.
+
+### Step 1
+
+Configure the Management Interface
+
+From VLAN interface configuration mode, an IPv4 address and subnet mask is applied to the management SVI of the switch. Specifically, SVI VLAN 99 will be assigned the 172.17.99.11/24 IPv4 address and the 2001:db8:acad:99::1/64 IPv6 address as shown.
+
+Note: The SVI for VLAN 99 will not appear as “up/up” until VLAN 99 is created and there is a device connected to a switch port associated with VLAN 99.
+
+Note: The switch may need to be configured for IPv6. For example, before you can configure IPv6 addressing on a Cisco Catalyst 2960 running IOS version 15.0, you will need to enter the global configuration command sdm prefer dual-ipv4-and-ipv6 default and then reload the switch.
+
+| Task | IOS Commands |
+| --- | --- |
+| Enter gloabl configuration mode | `S1# configure terminal` |
+| Enter interface configuration mode for the SVI | `S1(config)# interface vlan 99` |
+| Configure the management interface IPv4 address | `S1(config-if)# ip address 172.17.99.11 255.255.255.0` |
+| Configure the management interface IPv6 address | `S1(config-if)# ipv6 address 2001:db8:acad:99::11/64` |
+| Enable the management interface | `S1(config-if)# no shutdown` |
+| Return to the privileged EXEC mode | `S1(config-if)# end` | 
+| Save the running config to the startup config | `S1# copy running-config startup-config` |
+
+### Step 2
+
+Configure the Default Gateway
+
+The switch should be configured with a default gateway if it will be managed remotely from networks that are not directly connected.
+
+Note: Because, it will receive its default gateway information from a router advertisement (RA) message, the switch does not require an IPv6 default gateway.
+
+| Task | IOS Commands |
+| --- | --- |
+| Enter global configuration mode | `S1# configure terminal` |
+| Configure the default gateway for the switch | `S1(config)# ip default-gateway 172.17.99.1` |
+| Return to the privileged EXEC mode | `S1(config)# end` |
+| Save the running config to the startup config | `S1# copy running-config startup-config` |
+
+### Step 3
+
+Verify Configuration
+
+The show ip interface brief and show ipv6 interface brief commands are useful for determining the status of both physical and virtual interfaces. The output shown confirms that interface VLAN 99 has been configured with an IPv4 and IPv6 address.
+
+Note: An IP address applied to the SVI is only for remote management access to the switch; this does not allow the switch to route Layer 3 packets.
+
+```
+S1# show ip interface brief 
+Interface       IP-Address      OK? Method      Status      Protocol 
+Vlan 99         172.17.99.11    YES manual      down        down
+(output omitted)
+S1# show ipv6 interface brief 
+Vlan99                      [down/down]
+    FE80::C27B:BCFF:FEC4:A9C1
+    2001:DB8:ACAD:99::11 
+(output omitted)
+```
+
 # 1.2 Configure Switch Ports 
+
+## 1.2.1 Duplex Communication
+The ports of a switch can be configured independently for different needs. This topic covers how to configure switch ports, how to verify your configurations, common errors, and how to troubleshoot switch configuration issues.
+
+Full-duplex communication increases bandwidth efficiency by allowing both ends of a connection to transmit and receive data simultaneously. This is also known as bidirectional communication and it requires microsegmentation. A microsegmented LAN is created when a switch port has only one device connected and is operating in full-duplex mode. There is no collision domain associated with a switch port operating in full-duplex mode.
+
+Unlike full-duplex communication, half-duplex communication is unidirectional. Half-duplex communication creates performance issues because data can flow in only one direction at a time, often resulting in collisions. Half-duplex connections are typically seen in older hardware, such as hubs. Half-duplex hubs have been replaced by switches that use full-duplex communications by default.
+
+The figure illustrates full-duplex and half-duplex communication.
+
+![fullDuplexHalfDuplex](fullDuplexHalfDuplex.png)
+
+Gigabit Ethernet and 10 Gb NICs require full-duplex connections to operate. In full-duplex mode, the collision detection circuit on the NIC is disabled. Full-duplex offers 100 percent efficiency in both directions (transmitting and receiving).
+
+## 1.2.2 Configure Switch Ports at the Physical Layer
+
+Switch ports can be manually configured with specific duplex and speed settings. Use the duplex interface configuration mode command to manually specify the duplex mode for a switch port. Use the speed interface configuration mode command to manually specify the speed. For example, both switches in the topology should always operate in full-duplex at 100 Mbps.
+
+![100Mbps](100Mbps.png)
+
+The table shows the commands for S1. The same commands can be applied to S2.
+
+| Task | IOS Commands |
+| --- | --- |
+| Enter gloabl configuration mode | `S1# configure terminal` |
+| Enter interface configuration mode | `S1(config)# interface FastEthernet 0/1` |
+| Configure the interface duplex | `S1(config-if)# duplex full` |
+| Configure the interface speed | `S1(config-if)# speed 100` |
+| Return to the privileged EXEC mode | `S1(config-if)# end` |
+| Save the running config config to the startup config | `S1# copy running-config startup-config` |
+
+The default setting for both duplex and speed for switch ports on Cisco Catalyst 2960 and 3560 switches is auto. The 10/100/1000 ports operate in either half- or full-duplex mode when they are set to 10 or 100 Mbps and operate only in full-duplex mode when it is set to 1000 Mbps (1 Gbps). Autonegotiation is useful when the speed and duplex settings of the device connecting to the port are unknown or may change. When connecting to known devices such as servers, dedicated workstations, or network devices, a best practice is to manually set the speed and duplex settings.
+
+When troubleshooting switch port issues, it is important that the duplex and speed settings should be checked.
+
+Note: Mismatched settings for the duplex mode and speed of switch ports can cause connectivity issues. Autonegotiation failure creates mismatched settings.
+
+All fiber-optic ports, such as 1000BASE-SX ports, operate only at one preset speed and are always full-duplex.
+
+## 1.2.3 Auto-MDIX
+
+Until recently, certain cable types (straight-through or crossover) were required when connecting devices. Switch-to-switch or switch-to-router connections required using different Ethernet cables. Using the automatic medium-dependent interface crossover (auto-MDIX) feature on an interface eliminates this problem. When auto-MDIX is enabled, the interface automatically detects the required cable connection type (straight-through or crossover) and configures the connection appropriately. When connecting to switches without the auto-MDIX feature, straight-through cables must be used to connect to devices such as servers, workstations, or routers. Crossover cables must be used to connect to other switches or repeaters.
+
+With auto-MDIX enabled, either type of cable can be used to connect to other devices, and the interface automatically adjusts to communicate successfully. On newer Cisco switches, the mdix auto interface configuration mode command enables the feature. When using auto-MDIX on an interface, the interface speed and duplex must be set to auto so that the feature operates correctly.
+
+The command to enable auto-MDIX is issued in interface configuration mode on the switch as shown:
+
+```
+S1(config-if)# mdix auto
+```
+
+Note: The auto-MDIX feature is enabled by default on Catalyst 2960 and Catalyst 3560 switches but is not available on the older Catalyst 2950 and Catalyst 3550 switches.
+
+To examine the auto-MDIX setting for a specific interface, use the show controllers ethernet-controller command with the phy keyword. To limit the output to lines referencing auto-MDIX, use the include MDIX filter. As shown the output indicates On or Off for the feature.
+
+```
+S1# show controllers ethernet-controller fa0/1 phy | include MDIX
+Auto-MDIX           :  On   [AdminState=1   Flags=0x00052248]
+```
+
+## 1.2.4 Switch Verification Commands
+
+The table summarizes some of the more useful switch verification commands.
+
+| Task | IOS Commands | 
+| --- | --- |
+| Display interface status and configuration | `S1# show interfaces [interface-id]` |
+| Display current startup configuration | `S1# show startup-config` |
+| Display current running configuration | `S1# show running-config` |
+| Display information about flash file system | `S1# show flash` |
+| Display system hardware and software status | `S1# show version` |
+| Display history of command entered | `S1# show history` |
+| Display IP information about an interface | `S1# show ip interface [interface-id]` or `S1# show ipv7 interface [interface-id]` |
+| Display the MAC address table | `S1# show mac-address-table` or `S1# show mac address-table` |
+
+## 1.2.5 Verify Switch Port Configuration
+
+The show running-config command can be used to verify that the switch has been correctly configured. From the sample abbreviated output on S1, some important information is shown in the figure:
+
+Fast Ethernet 0/18 interface is configured with the management VLAN 99
+VLAN 99 is configured with an IPv4 address of 172.17.99.11 255.255.255.0
+The default gateway is set to 172.17.99.1
+
+```
+S1# show running-config
+Building configuration...
+Current configuration : 1466 bytes
+!
+interface FastEthernet0/18
+switchport access vlan 99
+switchport mode access
+!
+(output omitted)
+!
+interface Vlan99
+ip address 172.17.99.11 255.255.255.0
+ipv6 address 2001:DB8:ACAD:99::1/64
+!
+ip default-gateway 172.17.99.1
+```
+
+The show interfaces command is another commonly used command, which displays status and statistics information on the network interfaces of the switch. The show interfaces command is frequently used when configuring and monitoring network devices.
+
+The first line of the output for the show interfaces fastEthernet 0/18 command indicates that the FastEthernet 0/18 interface is up/up, meaning that it is operational. Further down, the output shows that the duplex is full and the speed is 100 Mbps.
+
+```
+S1# show interfaces fastEthernet 0/18
+FastEthernet0/18 is up, line protocol is up (connected)
+  Hardware is Fast Ethernet, address is 0025.83e6.9092 (bia 0025.83e6.9092)
+  MTU 1500 bytes, BW 100000 Kbit/sec, DLY 100 usec,
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  Full-duplex, 100Mb/s, media type is 10/100BaseTX
+```
+
+## 1.2.6 Network Access Layer Issues
+The output from the show interfaces command is useful for detecting common media issues. One of the most important parts of this output is the display of the line and data link protocol status, as shown in the example.
+
+```
+S1# show interfaces fastEthernet 0/18
+FastEthernet0/18 is up, line protocol is up (connected)
+Hardware is Fast Ethernet, address is 0025.83e6.9092 (bia 0025.83e6.9092)MTU 1500 bytes, BW 100000 Kbit/sec, DLY 100 usec,
+```
+
+The first parameter (FastEthernet0/18 is up) refers to the hardware layer and indicates whether the interface is receiving a carrier detect signal. The second parameter (line protocol is up) refers to the data link layer and indicates whether the data link layer protocol keepalives are being received.
+
+Based on the output of the show interfaces command, possible problems can be fixed as follows:
+
+- If the interface is up and the line protocol is down, a problem exists. There could be an encapsulation type mismatch, the interface on the other end could be error-disabled, or there could be a hardware problem.
+- If the line protocol and the interface are both down, a cable is not attached, or some other interface problem exists. For example, in a back-to-back connection, the other end of the connection may be administratively down.
+- If the interface is administratively down, it has been manually disabled (the shutdown command has been issued) in the active configuration.
+
+The show interfaces command output displays counters and statistics for the FastEthernet0/18 interface, as highlighted in the example.
+
+```
+S1# show interfaces fastEthernet 0/18
+FastEthernet0/18 is up, line protocol is up (connected)
+  Hardware is Fast Ethernet, address is 0025.83e6.9092 (bia 0025.83e6.9092)
+  MTU 1500 bytes, BW 100000 Kbit/sec, DLY 100 usec,
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  Full-duplex, 100Mb/s, media type is 10/100BaseTX
+  input flow-control is off, output flow-control is unsupported
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input never, output 00:00:01, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/40 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     2295197 packets input, 305539992 bytes, 0 no buffer
+     Received 1925500 broadcasts (74 multicasts)
+     0 runts, 0 giants, 0 throttles
+     3 input errors, 3 CRC, 0 frame, 0 overrun, 0 ignored
+     0 watchdog, 74 multicast, 0 pause input
+     0 input packets with dribble condition detected
+     3594664 packets output, 436549843 bytes, 0 underruns
+     8 output errors, 0 collisions, 10 interface resets
+     0 unknown protocol drops
+     0 babbles, 235 late collision, 0 deferred
+```
+
+Some media errors are not severe enough to cause the circuit to fail but do cause network performance issues. The table explains some of these common errors which can be detected using the show interfaces command.
+
+| Error Type | Description |
+| --- | --- |
+| Input Errors | Total number of errors. It includes runts, giants, no buffer, CRC, frame, overrun, and ignored counts. |
+| Runts | Frames that are discarded because they are smaller than the minimum frame size for the medium. For instance, any Ethernet frame that is less than 64 bytes is considered a runt. |
+| Giants | Frames that are discarded because they exceed the maximum frame size for the medium. For example, any Ethernet frame that is greater than 1,518 bytes is considered a giant. |
+| CRC | CRC errors are generated when the calculated checksum is not the same as the checksum received. |
+| Output Errors | Sum of all errors that prevented the final transmission of datagrams out of the interface that is being examined. |
+| Collisions | Number of messages retransmitted because of an Ethernet collision. |
+| Late Collisions | A collision that occurs after 512 bits of the frame have been transmitted. |
+
+## 1.2.7 Interface Input and Output Errors
+
+“Input errors” is the sum of all errors in datagrams that were received on the interface being examined. This includes runts, giants, CRC, no buffer, frame, overrun, and ignored counts. The reported input errors from the show interfaces command include the following:
+
+- Runt Frames - Ethernet frames that are shorter than the 64-byte minimum allowed length are called runts. Malfunctioning NICs are the usual cause of excessive runt frames, but they can also be caused by collisions.
+- Giants - Ethernet frames that are larger than the maximum allowed size are called giants.
+- CRC errors - On Ethernet and serial interfaces, CRC errors usually indicate a media or cable error. Common causes include electrical interference, loose or damaged connections, or incorrect cabling. If you see many CRC errors, there is too much noise on the link and you should inspect the cable. You should also search for and eliminate noise sources.
+
+“Output errors” is the sum of all errors that prevented the final transmission of datagrams out the interface that is being examined. The reported output errors from the show interfaces command include the following:
+
+- Collisions - Collisions in half-duplex operations are normal. However, you should never see collisions on an interface configured for full-duplex communication.
+- Late collisions - A late collision refers to a collision that occurs after 512 bits of the frame have been transmitted. Excessive cable lengths are the most common cause of late collisions. Another common cause is duplex misconfiguration. For example, you could have one end of a connection configured for full-duplex and the other for half-duplex. You would see late collisions on the interface that is configured for half-duplex. In that case, you must configure the same duplex setting on both ends. A properly designed and configured network should never have late collisions.
+
+## 1.2.8 Troubleshooting Network Access Layer Issues
+
+Most issues that affect a switched network are encountered during the original implementation. Theoretically, after it is installed, a network continues to operate without problems. However, cabling gets damaged, configurations change, and new devices are connected to the switch that require switch configuration changes. Ongoing maintenance and troubleshooting of the network infrastructure is required.
+
+To troubleshoot scenarios involving no connection, or a bad connection, between a switch and another device, follow the general process shown in the figure.
+
+![troubleshootingNetworkAccess](troubleshootingNetworkAccess.png)
+
+Use the show interfaces command to check the interface status.
+
+If the interface is down:
+
+- Check to make sure that the proper cables are being used. Additionally, check the cable and connectors for damage. If a bad or incorrect cable is suspected, replace the cable.
+- If the interface is still down, the problem may be due to a mismatch in speed setting. The speed of an interface is typically autonegotiated; therefore, even if it is manually applied to one interface, the connecting interface should autonegotiate accordingly. If a speed mismatch does occur through misconfiguration, or a hardware or software issue, then that may result in the interface going down. Manually set the same speed on both connection ends if a problem is suspected.
+
+If the interface is up, but issues with connectivity are still present:
+
+- Using the show interfaces command, check for indications of excessive noise. Indications may include an increase in the counters for runts, giants, and CRC errors. If there is excessive noise, first find and remove the source of the noise, if possible. Also, verify that the cable does not exceed the maximum cable length and check the type of cable that is used.
+- If noise is not an issue, check for excessive collisions. If there are collisions or late collisions, verify the duplex settings on both ends of the connection. Much like the speed setting, the duplex setting is usually autonegotiated. If there does appear to be a duplex mismatch, manually set the duplex to full on both ends of the connection.
+
 
 # 1.3 Secure Remote Access
 
