@@ -627,3 +627,361 @@ C:\Users\PC2>
 
 # 4.4 Troubleshoot Inter-VLAN Routing 
 
+## 4.4.1 Common Inter-VLAN Issues
+
+By now, you know that when you configure and verify, you must also be able to troubleshoot. This topic discusses some common network problems associated with inter-VLAN routing.
+
+There are a number of reasons why an inter-VAN configuration may not work. All are related to connectivity issues. First, check the physical layer to resolve any issues where a cable might be connected to the wrong port. If the connections are correct, then use the list in the table for other common reasons why inter-VLAN connectivity may fail.
+
+ | Issue Type | How to Fix | How to Verify |
+|---|---|---|
+| Missing VLANs | • Create (or re-create) the VLAN if it does not exist. <br> • Ensure host port is assigned to the correct VLAN. | `show vlan [brief]` <br> `show interfaces switchport` <br> `ping` |
+| Switch Trunk Port Issues | • Ensure trunks are configured correctly. <br> • Ensure port is a trunk port and enabled. | `show interfaces trunk` <br> `show running-config` |
+| Switch Access Port Issues | • Assign correct VLAN to access port. <br> • Ensure port is an access port and enabled. <br> • Host is incorrectly configured in the wrong subnet. | `show interfaces switchport` <br> `show running-config interface` <br> `ipconfig` |
+| Router Configuration Issues | • Router subinterface IPv4 address is incorrectly configured. <br> • Router subinterface is assigned to the VLAN ID. | `show ip interface brief` <br> `show interfaces` |
+
+## 4.4.2 Troubleshoot Inter-VLAN Routing Scenario
+
+Examples of some of these inter-VLAN routing problems will now be covered in more detail. This topology will be used for all of these issues.
+
+![RoutingScenario](RoutingScenario.png)
+
+The VLAN and IPv4 addressing information for R1 is shown in the table.
+
+### Router R1 Subinterfaces
+
+| Subinterface | VLAN | IP Address |
+|---|---|---|
+| G0/0/0.10 | 10 | 192.168.10.1/24 |
+| G0/0/0.20 | 20 | 192.168.20.1/24 |
+| G0/0/0.30 | 99 | 192.168.99.1/24 |
+
+## # 4.4.3 Missing VLANs
+
+An inter-VLAN connectivity issue could be caused by a missing VLAN. The VLAN could be missing if it was not created, it was accidently deleted, or it is not allowed on the trunk link.
+
+For example, PC1 is currently connected to VLAN 10, as shown in the show vlan brief command output.
+
+```
+S1# show vlan brief
+VLAN Name                                    Status    Ports
+-------------------------------------------------------------------
+1            default                           active    Fa0/2, Fa0/3, Fa0/4, Fa0/7
+                                                         Fa0/8, Fa0/9, Fa0/10, Fa0/11
+                                                         Fa0/12, Fa0/13, Fa0/14, Fa0/15
+                                                         Fa0/16, Fa0/17, Fa0/18, Fa0/19
+                                                         Fa0/20, Fa0/21, Fa0/22, Fa0/23
+                                                         Fa0/24, Gi0/1, Gi0/2
+10           LAN10                             active    Fa0/6
+20           LAN20                             active
+99           Management                        active
+1002         fddi-default                      act/unsup
+1003         token-ring-default                act/unsup
+1004         fddinet-default                   act/unsup
+1005         trnet-default                     act/unsup
+S1#
+```
+
+Now assume that VLAN 10 is accidently deleted, as shown in the following output.
+
+```
+S1# show vlan brief
+VLAN Name                                    Status    Ports
+-------------------------------------------------------------------
+1            default                           active    Fa0/2, Fa0/3, Fa0/4, Fa0/7
+                                                         Fa0/8, Fa0/9, Fa0/10, Fa0/11
+                                                         Fa0/12, Fa0/13, Fa0/14, Fa0/15
+                                                         Fa0/16, Fa0/17, Fa0/18, Fa0/19
+                                                         Fa0/20, Fa0/21, Fa0/22, Fa0/23
+                                                         Fa0/24, Gi0/1, Gi0/2
+20           LAN20                             active
+99           Management                        active
+1002         fddi-default                      act/unsup
+1003         token-ring-default                act/unsup
+1004         fddinet-default                   act/unsup
+1005         trnet-default                     act/unsup
+S1#
+```
+
+Notice VLAN 10 is now missing from the output. Also notice that port Fa0/6 has not been reassigned to the default VLAN. The reason is because when you delete a VLAN, any ports assigned to that VLAN become inactive. They remain associated with the VLAN (and thus inactive) until you assign them to a new VLAN or recreate the missing VLAN.
+
+Use the show interface interface-id switchport command to verify the VLAN membership.
+
+```
+S1(config)# do show interface fa0/6 switchport
+Name: Fa0/6
+Switchport: Enabled
+Administrative Mode: static access
+Operational Mode: static access
+Administrative Trunking Encapsulation: dot1q
+Operational Trunking Encapsulation: native
+Negotiation of Trunking: Off
+Access Mode VLAN: 10 (Inactive)
+Trunking Native Mode VLAN: 1 (default)
+Administrative Native VLAN tagging: enabled
+Voice VLAN: none
+(Output omitted)
+```
+
+Recreating the missing VLAN would automatically reassign the hosts to it, as shown in the following output (this might not be right lol).
+
+```
+S1(config)# vlan 10
+S1(config-vlan)# do show vlan brief
+VLAN Name                                    Status    Ports
+-------------------------------------------------------------------
+1            default                           active    Fa0/2, Fa0/3, Fa0/4, Fa0/7
+                                                         Fa0/8, Fa0/9, Fa0/10, Fa0/11
+                                                         Fa0/12, Fa0/13, Fa0/14, Fa0/15
+                                                         Fa0/16, Fa0/17, Fa0/18, Fa0/19
+                                                         Fa0/20, Fa0/21, Fa0/22, Fa0/23
+                                                         Fa0/24, Gi0/1, Gi0/2
+20           LAN20                             active
+99           Management                        active
+1002         fddi-default                      act/unsup
+1003         token-ring-default                act/unsup
+1004         fddinet-default                   act/unsup
+1005         trnet-default                     act/unsup
+S1#
+```
+
+Notice that the VLAN has not been created as expected. The reason is because you must exit from VLAN sub-configuration mode to create the VLAN, as shown in the following output.
+
+```
+S1(config-vlan)# exit
+S1(config)# vlan 10
+S1(config)# do show vlan brief
+VLAN Name                                    Status    Ports
+-------------------------------------------------------------------
+1            default                           active    Fa0/2, Fa0/3, Fa0/4, Fa0/7
+                                                         Fa0/8, Fa0/9, Fa0/10, Fa0/11
+                                                         Fa0/12, Fa0/13, Fa0/14, Fa0/15
+                                                         Fa0/16, Fa0/17, Fa0/18, Fa0/19
+                                                         Fa0/20, Fa0/21, Fa0/22, Fa0/23
+                                                         Fa0/24, Gi0/1, Gi0/2
+10           VLAW0010                          active    Fa0/6
+20           LAN20                             active
+99           Management                        active
+1002         fddi-default                      act/unsup
+1003         token-ring-default                act/unsup
+1004         fddinet-default                   act/unsup
+1005         trnet-default                     act/unsup
+S1#
+```
+
+Now notice that the VLAN is included in the list and that the host connected to Fa0/6 is on VLAN 10.
+
+## # 4.4.4 Switch Trunk Port Issues
+
+Another issue for inter-VLAN routing includes misconfigured switch ports. In a legacy inter-VLAN solution, this could be caused when the connecting router port is not assigned to the correct VLAN.
+
+However, with a router-on-a-stick solution, the most common cause is a misconfigured trunk port.
+
+For example, assume PC1 was able to connect to hosts in other VLANs until recently. A quick look at maintenance logs revealed that the S1 Layer 2 switch was recently accessed for routine maintenance. Therefore, you suspect the problem may be related to that switch.
+
+On S1, verify that the port connecting to R1 (i.e., F0/5) is correctly configured as a trunk link using the show interfaces trunk command,
+as shown.
+
+S1# show interfaces trunk
+Port        Mode        Encapsulation       Status          Native vlan
+Fa0/1       on          802.1q              trunking        1
+Port        Vlans allowed on trunk
+Fa0/1       1-4094
+Port        Vlans allowed and active in management domain
+Fa0/1       1,10,20,99
+Port        Vlans in spanning tree forwarding state and not pruned
+Fa0/1       1,10,20,99
+S1#
+
+The Fa0/5 port connecting to R1 is mysteriously missing from the output. Verify the interface configuration using the show running- config interface fa0/5 command, as shown.
+
+```
+S1# show running-config | include interface fa0/5
+Building configuration.
+Current configuration : 96 bytes
+!
+interface FastEthernet0/5
+description Trunk link to R1
+switchport mode trunk
+shutdown
+end
+S1#
+```
+
+As you can see, the port was accidently shut down. To correct the problem, re-enable the port and verify the trunking status, as shown in the output.
+
+
+```
+S1(config)# interface fa0/5
+S1(config-if)# no shut
+S1(config-if)#
+*Mar 1 04:46:44.153: %LINK-3-UPDOWN: Interface FastEthernet0/5, changed state to up
+S1(config-if)#
+*Mar 1 04:46:47.962: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/5, changed state to up
+S1(config-if)# do show interface trunk
+| Port  | Mode | Encapsulation | Status   | Native vlan |
+|-------|------|---------------|----------|-------------|
+| Fa0/1 | on   | 802.1q        | trunking | 1           |
+| Fa0/5 | on   | 802.1q        | trunking | 1           |
+Port
+Vlans allowed on trunk
+Fa0/1
+1-4094
+Fa0/5
+1-4094
+Port
+Vlans allowed and active in management domain
+Fa0/1
+1,10,20,99
+Fa0/5
+1,10,20,99
+Port
+Vlans in spanning tree forwarding state and not pruned
+Fa0/1
+1,10,20,99
+Fa0/1
+1,10,20,99
+S1(config-if)#
+```
+
+To reduce the risk of a failed inter-switch link disrupting inter-VLAN routing, redundant links and alternate paths should be part of the network design.
+
+
+## 4.4.5 Switch Access Port Issues
+
+When a problem is suspected with a switch access port configuration, use verification commands to examine the configuration and identify the problem.
+
+Assume PC1 has the correct IPv4 address and default gateway but is not able to ping its own default gateway. PC1 is supposed to be connected to a VLAN 10 port.
+
+```
+S1# show interface fa0/6 switchport
+Name: Fa0/6
+Switchport: Enabled
+Administrative Mode: static access
+Operational Mode: static access
+Administrative Trunking Encapsulation: dot1q
+Operational Trunking Encapsulation: native
+Negotiation of Trunking: Off
+Access Mode VLAN: 1 (default)
+Trunking Native Mode VLAN: 1 (default)
+Administrative Native VLAN tagging: enabled
+Voice VLAN: none
+```
+
+The Fa0/6 port has been configured as an access port as indicated by "static access". However, it appears that it has not been configured to be in VLAN 10. Verify the configuration of the interface.
+
+```
+S1# show running-config interface fa0/6
+Building configuration...
+Current configuration : 87 bytes
+!
+interface FastEthernet0/6
+description PC-A access port
+switchport mode access
+end
+S1#
+```
+
+Assign port Fa0/6 to VLAN 10 and verify the port assignment.
+
+```
+S1# configure terminal
+S1(config)# interface fa0/6
+S1(config-if)# switchport access vlan 10
+S1(config-if)#
+S1(config-if)# do show interface fa0/6 switchport
+Name: Fa0/6
+Switchport: Enabled
+Administrative Mode: static access
+Operational Mode: static access
+Administrative Trunking Encapsulation: dot1q
+Operational Trunking Encapsulation: native
+Negotiation of Trunking: Off
+Access Mode VLAN: 10 (VLAN0010)
+Trunking Native Mode VLAN: 1 (default)
+Administrative Native VLAN tagging: enabled
+Voice VLAN: none
+(Output omitted)
+```
+
+PC1 is now able to communicate with hosts on other VLANs.
+
+## # 4.4.6 Router Configuration Issues
+
+Router-on-a-stick configuration problems are usually related to subinterface misconfigurations. For example, an incorrect IP address was configured or the wrong VLAN ID was assigned to the subinterface.
+
+For example, R1 should be providing inter-VLAN routing for users in VLANs 10, 20, and 99. However, users in VLAN 10 cannot reach any other VLAN.
+
+You verified the switch trunk link and all appears to be in order. Verify the subinterface status using the show ip interface brief command.
+
+```
+R1# show ip interface brief
+Interface               IP-Address      OK? Method      Status                  Protocol
+GigabitEthernet0/0/0    unassigned      YES unset       administratively down   down
+GigabitEthernet0/0/1    unassigned      YES unset       up                      up
+Gi0/0/1.10              192.168.10.1    YES manual      up                      up
+Gi0/0/1.20              192.168.20.1    YES manual      up                      up
+Gi0/0/1.99              192.168.99.1    YES manual      up                      up
+Serial0/1/0             unassigned      YES unset       administratively down   down
+Serial0/1/1             unassigned      YES unset       administratively down   down
+R1#
+```
+
+The subinterfaces have been assigned the correct IPv4 addresses and they are operational.
+
+Verify which VLANs each of the subinterfaces is on. To do so, the show interfaces command is useful but it generates a great deal of additional unrequired output. The command output can be reduced using IOS command filters as shown in the output.
+
+```
+R1# show interfaces | include Gig|802.1Q
+GigabitEthernet0/0/0 is administratively down, line protocol is down
+GigabitEthernet0/0/1 is up, line protocol is up
+Encapsulation 802.1Q Virtual LAN, Vlan ID 1., loopback not set
+GigabitEthernet0/0/1.10 is up, line protocol is up
+Encapsulation 802.1Q Virtual LAN, Vlan ID 100.
+GigabitEthernet0/0/1.20 is up, line protocol is up
+Encapsulation 802.1Q Virtual LAN, Vlan ID 20.
+GigabitEthernet0/0/1.99 is up, line protocol is up
+Encapsulation 802.1Q Virtual LAN, Vlan ID 99.
+R1#
+```
+
+The pipe symbol (1) along with some select keywords is a useful method to help filter command output. In this example, the keyword include was used to identify that only lines containing the letters "Gig" or "802.1Q" will be displayed. Because of the way the show interface output is naturally listed, using these filters produces a condensed list of interfaces and their assigned VLANs.
+
+Notice that the G0/0/1.10 interface has been incorrectly assigned to VLAN 100 instead of VLAN 10. This is confirmed by looking at the configuration of the R1 GigabitEthernet 0/0/1.10 subinterface, as shown.
+
+```
+R1# show running-config interface g0/0/1.10
+Building configuration...
+Current configuration : 146 bytes
+!
+interface GigabitEthernet0/0/1.10
+description Default Gateway for VLAN 10
+encapsulation dot10 100
+ip address 192.168.10.1 255.255.255.0
+end
+R1#
+```
+
+To correct this problem, configure subinterface G0/0/1.10 to be on the correct VLAN using the encapsulation dot1q 10 subinterface configuration mode command.
+
+```R1# conf t
+Enter configuration commands, one per line. End with CNTL/Z.
+R1(config)# interface gigabitEthernet 0/0/1.10
+R1(config-subif)# encapsulation dot1Q 10
+R1(config-subif)# end
+R1#
+R1# show interfaces | include Gig|802.1Q
+GigabitEthernet0/0/0 is administratively down, line protocol is down
+GigabitEthernet0/0/1 is up, line protocol is up
+Encapsulation 802.1Q Virtual LAN, Vlan ID 1., loopback not set
+GigabitEthernet0/0/1.10 is up, line protocol is up
+Encapsulation 802.1Q Virtual LAN, Vlan ID 10.
+GigabitEthernet0/0/1.20 is up, line protocol is up
+Encapsulation 802.1Q Virtual LAN, Vlan ID 20.
+GigabitEthernet0/0/1.99 is up, line protocol is up
+R1#
+```
+
+When the subinterface has been assigned to the correct VLAN, it is accessible by devices on that VLAN and the router can perform inter- VLAN routing.
+
+With verification, router configuration problems are quickly addressed, allowing inter-VLAN routing to function properly.
