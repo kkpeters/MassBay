@@ -201,6 +201,368 @@ Voice VLAN: 150 (voice)
 
 # 3.3 VLAN Configuration 
 
+## # 3.3.1 VLAN Ranges on Catalyst Switches
+
+Creating VLANs, like most other aspects of networking, is a matter of entering the appropriate commands. This topic details how to
+configure and verify different types of VLANs.
+
+Different Cisco Catalyst switches support various numbers of VLANs. The number of supported VLANs is large enough to accommodate
+the needs of most organizations. For example, the Catalyst 2960 and 3650 Series switches support over 4,000 VLANs. Normal range
+VLANs on these switches are numbered 1 to 1,005 and extended range VLANs are numbered 1,006 to 4,094. The figure illustrates the
+default VLANs on a Catalyst 2960 switch running Cisco IOS Release 15.x.
+
+```
+Switch# show vlan brief
+VLAN Name                Status  Ports
+---- ------------------- ------- --------------------
+1    default             active  Fa0/1, Fa0/2, Fa0/3, Fa0/4 
+                                 Fa0/5, Fa0/6, Fa0/7, Fa0/8
+                                 Fa0/9, Fa0/10, Fa0/11, Fa0/12
+                                 Fa0/13, Fa0/14, Fa0/15, Fa0/16
+                                 Fa0/17, Fa0/18, Fa0/19, Fa0/20
+                                 Fa0/21, Fa0/22, Fa0/23, Fa0/24
+                                 Gi0/1, Gi0/2
+1002 fddi-default                       act/unsup
+1003 token-ring-default                 act/unsup
+1004 fddinet-default                    act/unsup
+1005 trnet-default                      act/unsup
+```
+
+Normal Range VLANs
+
+The following are characteristics of normal range VLANs:
+* They are used in all small- and medium-sized business and enterprise networks.
+* They are identified by a VLAN ID between 1 and 1005.
+* IDs 1002 through 1005 are reserved for legacy network technologies (i.e., Token Ring and Fiber Distributed Data Interface).
+* IDs 1 and 1002 to 1005 are automatically created and cannot be removed.
+* Configurations are stored in the switch flash memory in a VLAN database file called vlan.dat.
+* When configured, VLAN trunking protocol (VTP), helps synchronize the VLAN database between switches.
+
+Extended Range VLANs
+
+The following are characteristics of extended range VLANs:
+* They are used by service providers to service multiple customers and by global enterprises large enough to need extended range
+VLAN IDs.
+* They are identified by a VLAN ID between 1006 and 4094.
+* Configurations are saved, by default, in the running configuration.
+* They support fewer VLAN features than normal range VLANs.
+* Requires VTP transparent mode configuration to support extended range VLANs.
+
+Note: 4096 is the upper boundary for the number of VLANs available on Catalyst switches, because there are 12 bits in the VLAN ID field of the IEEE 802.1Q header.
+
+## 3.3.2 VLAN Creation Commands
+When configuring normal range VLANs, the configuration details are stored in flash memory on the switch in a file called vlan.dat. Flash memory is persistent and does not require the copy running-config startup-config command. However, because other details are often configured on a Cisco switch at the same time that VLANs are created, it is good practice to save running configuration changes to the startup configuration.
+
+The table displays the Cisco IOS command syntax used to add a VLAN to a switch and give it a name. Naming each VLAN is considered a best practice in switch configuration.
+
+| Task                                     | IOS Command                               |
+| :--------------------------------------- | :---------------------------------------- |
+| Enter global configuration mode.         | Switch# configure terminal                |
+| Create a VLAN with a valid ID number.    | Switch(config)# vlan vlan-id              |
+| Specify a unique name to identify the VLAN. | Switch(config-vlan)# name vlan-name       |
+| Return to the privileged EXEC mode.      | Switch(config-vlan)# end                  |
+
+## ### 3.3.3 VLAN Creation Example
+
+In the topology, the student computer (PC2) has not been associated with a VLAN yet, but it does have an IP address of 172.17.20.22, which belongs to VLAN 20.
+
+![VlanCreation](VlanCreation.png)
+
+The example shows how the student VLAN (VLAN 20) is configured on switch S1.
+
+```
+S1# configure terminal
+S1(config)# vlan 20
+S1(config-vlan)# name student
+S1(config-vlan)# end
+```
+
+Note: In addition to entering a single VLAN ID, a series of VLAN IDs can be entered separated by commas, or a range of VLAN IDs separated by hyphens using the vlan vlan-id command. For example, entering the vlan 100,102,105-107 global configuration command would create VLANs 100, 102, 105, 106, and 107.
+
+## # 3.3.4 VLAN Port Assignment Commands
+
+After creating a VLAN, the next step is to assign ports to the VLAN.
+
+The table displays the syntax for defining a port to be an access port and assigning it to a VLAN. The **switchport mode access** command is optional, but strongly recommended as a security best practice. With this command, the interface changes to strictly access mode. Access mode indicates that the port belongs to a single VLAN and will not negotiate to become a trunk link.
+
+| Task                               | IOS Command                                       |
+| :--------------------------------- | :------------------------------------------------ |
+| Enter global configuration mode.   | Switch# configure terminal                        |
+| Enter interface configuration mode. | Switch(config)# interface interface-id            |
+| Set the port to access mode.       | Switch(config-if)# switchport mode access         |
+| Assign the port to a VLAN.         | Switch(config-if)# switchport access vlan vlan-id |
+| Return to the privileged EXEC mode. | Switch(config-if)# end                            |
+
+Note: Use the **interface range** command to simultaneously configure multiple interfaces.
+
+## ### 3.3.5 VLAN Port Assignment Example
+
+In the figure, port F0/6 on switch S1 is configured as an access port and assigned to VLAN 20. Any device connected to that port will be associated with VLAN 20. Therefore, in our example, PC2 is in VLAN 20.
+
+![VLANPortAssignment](VLANPortAssignment.png)
+
+The example shows the configuration for S1 to assign F0/6 to VLAN 20.
+
+```
+S1# configure terminal
+S1(config)# interface fa0/6
+S1(config-if)# switchport mode access
+S1(config-if)# switchport access vlan 20
+S1(config-if)# end
+```
+
+VLANs are configured on the switch port and not on the end device. PC2 is configured with an IPv4 address and subnet mask that is associated with the VLAN, which is configured on the switch port. In this example, it is VLAN 20. When VLAN 20 is configured on other switches, the network administrator must configure the other student computers to be in the same subnet as PC2 (172.17.20.0/24).
+
+
+## # 3.3.6 Data and Voice VLANs
+
+An access port can belong to only one data VLAN at a time. However, a port can also be associated to a voice VLAN. For example, a port connected to an IP phone and an end device would be associated with two VLANs: one for voice and one for data.
+
+Consider the topology in the figure. PC5 is connected to the Cisco IP phone, which in turn is connected to the FastEthernet 0/18 interface on S3. To implement this configuration, a data VLAN and a voice VLAN are created.
+
+![DataVoiceVLANs](DataVoiceVLANs.png)
+
+## # 3.3.7 Data and Voice VLAN Example
+
+Use the switchport voice vlan vlan-id interface configuration command to assign a voice VLAN to a port.
+
+LANs supporting voice traffic typically also have quality of service (QoS) enabled. Voice traffic must be labeled as trusted as soon as it enters the network. Use the mls qos trust [cos | device cisco-phone | dscp | ip-precedence] interface configuration command to set the trusted state of an interface, and to indicate which fields of the packet are used to classify traffic.
+
+The configuration in the example creates the two VLANs (i.e., VLAN 20 and VLAN 150) and then assigns the F0/18 interface of S3 as a switchport in VLAN 20. It also assigns voice traffic to VLAN 150 and enables QoS classification based on the class of service (CoS) assigned by the IP phone.
+
+```
+S3(config)# vlan 20
+S3(config-vlan)# name student
+S3(config-vlan)# vlan 150
+S3(config-vlan)# name VOICE
+S3(config-vlan)# exit
+S3(config)# interface fa0/18
+S3(config-if)# switchport mode access
+S3(config-if)# switchport access vlan 20
+S3(config-if)# mls qos trust cos
+S3(config-if)# switchport voice vlan 150
+S3(config-if)# end
+S3#
+```
+
+Note: The implementation of QoS is beyond the scope of this course.
+
+The **switchport access vlan** command forces the creation of a VLAN if it does not already exist on the switch. For example, VLAN 30 is not present in the **show vlan brief** output of the switch. If the **switchport access vlan 30** command is entered on any interface with no previous configuration, then the switch displays the following:
+
+```
+% Access VLAN does not exist. Creating vlan 30
+```
+
+## # 3.3.8 Verify VLAN Information
+
+After a VLAN is configured, VLAN configurations can be validated using Cisco IOS show commands.
+
+The show vlan command displays a list of all configured VLANs. The show vlan command can also be used with options. The complete syntax is show vlan [brief | id vlan-id | name vlan-name | summary].
+
+The table describes the show vlan command options.
+
+| Task                                                                                             | Command Option |
+| :----------------------------------------------------------------------------------------------- | :------------- |
+| Display VLAN name, status, and its ports one VLAN per line.                                      | brief          |
+| Display information about the identified VLAN ID number. For vlan-id, the range is 1 to 4094.    | id vlan-id     |
+| Display information about the identified VLAN name. The vlan-name is an ASCII string from 1 to 32 | name vlan-name |
+| characters.                                                                                      |                |
+| Display VLAN summary information.                                                                | summary        |
+
+The show vlan summary command displays the count of all configured VLANs.
+```
+S1# show vlan summary
+Number of existing VLANS            : 7
+Number of existing VTP VLANS        : 7
+Number of existing extended VLANS   : 0
+```
+
+Other useful commands are the show interfaces interface-id switchport and the show interfaces vlan vlan-id command. For example, the show interfaces fa0/18 switchport command can be used to confirm that the FastEthernet 0/18 port has been correctly assigned to data and voice VLANs.
+
+```
+S1# show interfaces fa0/18 switchport
+Name: Fa0/18
+Switchport: Enabled
+Administrative Mode: static access
+Operational Mode: static access
+Administrative Trunking Encapsulation: dot1q
+Operational Trunking Encapsulation: native
+Negotiation of Trunking: Off
+Access Mode VLAN: 20 (student)
+Trunking Native Mode VLAN: 1 (default)
+Voice VLAN: 150
+Administrative private-vlan host-association: none
+(Output omitted)
+```
+
+## 3.3.9 Change VLAN Port Membership
+
+There are a number of ways to change VLAN port membership.
+
+If the switch access port has been incorrectly assigned to a VLAN, then simply re-enter the switchport access vlan vlan-id interface configuration command with the correct VLAN ID. For instance, assume Fa0/18 was incorrectly configured to be on the default VLAN 1 instead of VLAN 20. To change the port to VLAN 20, simply enter switchport access vlan 20.
+
+To change the membership of a port back to the default VLAN 1, use the no switchport access vlan interface configuration mode command as shown.
+
+In the output for example, Fa0/18 is configured to be on the default VLAN 1 as confirmed by the show vlan brief command.
+
+![StudentPort](StudentPort.png)
+
+Notice that VLAN 20 is still active, even though no ports are assigned to it. The show interfaces f0/18 switchport output can also be used to verify that the access VLAN for interface F0/18 has been reset to VLAN 1 as shown in the output.
+
+```
+S1# show interfaces fa0/18 switchport
+Name: Fa0/18
+Switchport: Enabled
+Administrative Mode: static access
+Operational Mode: static access
+Administrative Trunking Encapsulation: negotiate
+Operational Trunking Encapsulation: native
+Negotiation of Trunking: Off
+Access Mode VLAN: 1 (default)
+Trunking Native Mode VLAN: 1 (default)
+```
+
+## 3.3.10 Delete VLANs
+
+The no vlan vlan-id global configuration mode command is used to remove a VLAN from the switch vlan.dat file.
+
+**Caution:** Before deleting a VLAN, reassign all member ports to a different VLAN first. Any ports that are not moved to an active VLAN are unable to communicate with other hosts after the VLAN is deleted and until they are assigned to an active VLAN.
+
+The entire vlan.dat file can be deleted using the delete flash:vlan.dat privileged EXEC mode command. The abbreviated command version (delete vlan.dat) can be used if the vlan.dat file has not been moved from its default location. After issuing this command and reloading the switch, any previously configured VLANs are no longer present. This effectively places the switch into its factory default condition with regard to VLAN configurations.
+
+**Note:** To restore a Catalyst switch to its factory default condition, unplug all cables except the console and power cable from the switch. Then enter the erase startup-config privileged EXEC mode command followed by the delete vlan.dat command.
+
 # 3.4 VLAN Trunks 
+
+## 3.4.1 Trunk Configuration Commands
+Now that you have configured and verified VLANs, it is time to configure and verify VLAN trunks. A VLAN trunk is a Layer 2 link between two switches that carries traffic for all VLANs (unless the allowed VLAN list is restricted manually or dynamically).
+
+To enable trunk links, configure the interconnecting ports with the set of interface configuration commands shown in the table.
+
+| Task                                                              | IOS Command                                                              |
+| :---------------------------------------------------------------- | :----------------------------------------------------------------------- |
+| Enter global configuration mode.                                  | Switch# configure terminal                                               |
+| Enter interface configuration mode.                               | Switch(config)# interface interface-id                                   |
+| Set the port to permanent trunking mode.                          | Switch(config-if)# switchport mode trunk                                 |
+| Sets the native VLAN to something other than VLAN 1.              | Switch(config-if)# switchport trunk native vlan vlan-id                  |
+| Specify the list of VLANs to be allowed on the trunk link.        | Switch(config-if)# switchport trunk allowed vlan vlan-list               |
+| Return to the privileged EXEC mode.                               | Switch(config-if)# end                                                   |
+
+## 3.4.2 Trunk Configuration Example
+
+In the figure, VLANs 10, 20, and 30 support the Faculty, Student, and Guest computers (PC1, PC2, and PC3). The F0/1 port on switch S1 is configured as a trunk port and forwards traffic for VLANs 10, 20, and 30. VLAN 99 is configured as the native VLAN.
+
+![TrunkConfig](TrunkConfig.png)
+
+The subnets associated with each VLAN are:
+- VLAN 10 - Faculty/Staff - 172.17.10.0/24
+- VLAN 20 - Students - 172.17.20.0/24
+- VLAN 30 - Guests - 172.17.30.0/24
+- VLAN 99 - Native - 172.17.99.0/24
+
+The example shows the configuration of port F0/1 on switch S1 as a trunk port. The native VLAN is changed to VLAN 99 and the allowed VLAN list is restricted to 10, 20, 30, and 99.
+
+```
+S1(config)# interface fastEthernet 0/1
+S1(config-if)# switchport mode trunk
+S1(config-if)# switchport trunk native vlan 99
+S1(config-if)# switchport trunk allowed vlan 10,20,30,99
+S1(config-if)# end
+```
+
+Note: This configuration assumes the use of Cisco Catalyst 2960 switches which automatically use 802.1Q encapsulation on trunk links. Other switches may require manual configuration of the encapsulation. Always configure both ends of a trunk link with the same native VLAN. If 802.1Q trunk configuration is not the same on both ends, Cisco IOS Software reports errors.
+
+## 3.4.3 Verify Trunk Configuration
+
+The switch output displays the configuration of switch port F0/1 on switch S1. The configuration is verified with the show interfaces interface-ID switchport command.
+
+```
+S1# show interfaces fa0/1 switchport
+Name: Fa0/1
+Switchport: Enabled
+Administrative Mode: trunk
+Operational Mode: trunk
+Administrative Trunking Encapsulation: dot1q
+Operational Trunking Encapsulation: dot1q
+Negotiation of Trunking: On
+Access Mode VLAN: 1 (default)
+Trunking Native Mode VLAN: 99 (VLAN0099)
+Voice VLAN: none
+Administrative private-vlan host-association: none
+Administrative private-vlan mapping: none
+Administrative private-vlan trunk native VLAN: none
+Administrative private-vlan trunk encapsulation: dot1q
+Administrative private-vlan trunk normal VLANs: none
+Administrative private-vlan trunk associations: none
+Administrative private-vlan trunk private VLANs: none
+Operational private-vlan: none
+Trunking VLANs Enabled: 10,20,30,99
+Pruning VLANs Enabled: 2-1001
+(output omitted)
+```
+
+The top highlighted area shows that port F0/1 has its administrative mode set to trunk. The port is in trunking mode. The next highlighted area verifies that the native VLAN is VLAN 99. Further down in the output, the bottom highlighted area shows that VLANs 10, 20, 30, and 99 are enabled on the trunk.
+
+Note: Another useful command for veryfing trunk interfaces is the show interface trunk command.
+
+## 3.4.4 Reset the Trunk to the Default State
+
+Use the no switchport trunk allowed vlan and the no switchport trunk native vlan commands to remove the allowed VLANs and reset the native VLAN of the trunk. When it is reset to the default state, the trunk allows all VLANs and uses VLAN 1 as the native VLAN. The example shows the commands used to reset all trunking characteristics of a trunking interface to the default settings.
+
+```
+S1(config)# interface fa0/1
+S1(config-if)# no switchport trunk allowed vlan
+S1(config-if)# no switchport trunk native vlan
+S1(config-if)# end
+```
+
+The show interfaces fa0/1 switchport command reveals that the trunk has been reconfigured to a default state.
+
+```
+S1# show interfaces fa0/1 switchport
+Name: Fa0/1
+Switchport: Enabled
+Administrative Mode: trunk
+Operational Mode: trunk
+Administrative Trunking Encapsulation: dot1q
+Operational Trunking Encapsulation: dot1q
+Negotiation of Trunking: On
+Access Mode VLAN: 1 (default)
+Trunking Native Mode VLAN: 1 (default)
+Administrative Native VLAN tagging: enabled
+Voice VLAN: none
+Administrative private-vlan host-association: none
+Administrative private-vlan mapping: none
+Administrative private-vlan trunk native VLAN: none
+Administrative private-vlan trunk Native VLAN tagging: enabled
+Administrative private-vlan trunk encapsulation: dot1q
+Administrative private-vlan trunk normal VLANs: none
+Administrative private-vlan trunk associations: none
+Administrative private-vlan trunk mappings: none
+Operational private-vlan: none
+Trunking VLANs Enabled: ALL
+Pruning VLANs Enabled: 2-1001
+(output omitted)
+```
+
+This sample output shows the commands used to remove the trunk feature from the F0/1 switch port on switch S1. The show interfaces f0/1 switchport command reveals that the F0/1 interface is now in static access mode.
+
+```
+S1(config)# interface fa0/1
+S1(config-if)# switchport mode access
+S1(config-if)# end
+S1# show interfaces fa0/1 switchport
+Name: Fa0/1
+Switchport: Enabled
+Administrative Mode: static access
+Operational Mode: static access
+Administrative Trunking Encapsulation: dot1q
+Operational Trunking Encapsulation: native
+Negotiation of Trunking: Off
+Access Mode VLAN: 1 (default)
+Trunking Native Mode VLAN: 1 (default)
+Administrative Native VLAN tagging: enabled
+(output omitted)
+```
 
 # 3.5 Dynamic Trunking Protocol 
