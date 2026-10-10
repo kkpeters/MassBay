@@ -45,7 +45,7 @@ Cisco Catalyst switches have several status LED indicator lights. You can use th
 
 The figure shows the switch LEDs and the Mode button for a Cisco Catalyst 2960 switch.
 
-![switchLEDIndicators](switchLEDIndicators.png)
+![switchLEDIndicators](imgs/switchLEDIndicators.png)
 
 The Mode button (7 in the figure) is used to toggle through port status, port duplex, port speed, and if supported, the Power over Ethernet (PoE) status of the port LEDs (8 in the figure).
 
