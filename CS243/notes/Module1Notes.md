@@ -132,7 +132,7 @@ The boot loader commands support initializing flash, formatting flash, installin
 
 To prepare a switch for remote management access, the switch must have a switch virtual interface (SVI) configured with an IPv4 address and subnet mask or an IPv6 address and a prefix length for IPv6. The SVI is a virtual interface, not a physical port on the switch. Keep in mind that to manage the switch from a remote network, the switch must be configured with a default gateway. This is very similar to configuring the IP address information on host devices.
 
-![switchManagementAccess](switchManagementAccess.png)
+![switchManagementAccess](imgs/switchManagementAccess.png)
 
 ## 1.1.6 Switch SVI Configuration Example
 By default, the switch is configured to have its management controlled through VLAN 1. All ports are assigned to VLAN 1 by default. For security purposes, it is considered a best practice to use a VLAN other than VLAN 1 for the management VLAN, such as VLAN 99 in the example.
@@ -203,7 +203,7 @@ Unlike full-duplex communication, half-duplex communication is unidirectional. H
 
 The figure illustrates full-duplex and half-duplex communication.
 
-![fullDuplexHalfDuplex](fullDuplexHalfDuplex.png)
+![fullDuplexHalfDuplex](imgs/fullDuplexHalfDuplex.png)
 
 Gigabit Ethernet and 10 Gb NICs require full-duplex connections to operate. In full-duplex mode, the collision detection circuit on the NIC is disabled. Full-duplex offers 100 percent efficiency in both directions (transmitting and receiving).
 
@@ -211,7 +211,7 @@ Gigabit Ethernet and 10 Gb NICs require full-duplex connections to operate. In f
 
 Switch ports can be manually configured with specific duplex and speed settings. Use the duplex interface configuration mode command to manually specify the duplex mode for a switch port. Use the speed interface configuration mode command to manually specify the speed. For example, both switches in the topology should always operate in full-duplex at 100 Mbps.
 
-![100Mbps](100Mbps.png)
+![100Mbps](imgs/100Mbps.png)
 
 The table shows the commands for S1. The same commands can be applied to S2.
 
@@ -389,7 +389,7 @@ Most issues that affect a switched network are encountered during the original i
 
 To troubleshoot scenarios involving no connection, or a bad connection, between a switch and another device, follow the general process shown in the figure.
 
-![troubleshootingNetworkAccess](troubleshootingNetworkAccess.png)
+![troubleshootingNetworkAccess](imgs/troubleshootingNetworkAccess.png)
 
 Use the show interfaces command to check the interface status.
 
@@ -412,14 +412,14 @@ You might not always have direct access to your switch when you need to configur
 
 Telnet uses TCP port 23. It is an older protocol that uses unsecure plaintext transmission of both the login authentication (username and password) and the data transmitted between the communicating devices. A threat actor can monitor packets using Wireshark. For example, in the figure the threat actor captured the username admin and password ccna from a Telnet session.
 
-![telnetOperations](telnetOperations.png)
+![telnetOperations](imgs/telnetOperations.png)
 
 ## 1.3.2 SSH Operation
 Secure Shell (SSH) is a secure protocol that uses TCP port 22. It provides a secure (encrypted) management connection to a remote device. SSH should replace Telnet for management connections. SSH provides security for remote connections by providing strong encryption when a device is authenticated (username and password) and also for the transmitted data between the communicating devices.
 
 For example, the figure shows a Wireshark capture of an SSH session. The threat actor can track the session using the IP address of the administrator device. However, unlike Telnet, with SSH the username and password are encrypted.
 
-![SSHOperation](SSHOperation.png)
+![SSHOperation](imgs/SSHOperation.png)
 
 ## 1.3.3 Verify the Switch Supports SSH
 
@@ -509,7 +509,7 @@ Interface VLAN 99 (SVI) with IPv4 address 172.17.99.11 on switch S1
 PC1 with IPv4 address 172.17.99.21
 The figure shows the PuTTY settings for PC1 to initiate an SSH connection to the SVI VLAN IPv4 address of S1.
 
-![ConnectViaSSH](ConnectViaSSH.png)
+![ConnectViaSSH](imgs/ConnectViaSSH.png)
 
 When connected, the user is prompted for a username and password as shown in the example. Using the configuration from the previous example, the username admin and password ccna are entered. After entering the correct combination, the user is connected via SSH to the command line interface (CLI) on the Catalyst 2960 switch.
 
@@ -583,7 +583,7 @@ Building configuration...
 
 One distinguishing feature between switches and routers is the type of interfaces supported by each. For example, Layer 2 switches support LANs; therefore, they have multiple FastEthernet or Gigabit Ethernet ports. The dual stack topology in the figure is used to demonstrate the configuration of router IPv4 and IPv6 interfaces.
 
-![DualStackTopology](DualStackTopology.png)
+![DualStackTopology](imgs/DualStackTopology.png)
 
 ## 1.4.4 Configure Router Interfaces
 
@@ -658,7 +658,7 @@ Tracer.
 There are several **show** commands that can be used to verify the operation and configuration of an interface.
 The topology in the figure is used to demonstrate the verification of router interface settings.
 
-![TopologyFigure](TopologyFigure.png)
+![TopologyFigure](imgs/TopologyFigure.png)
 
 The following commands are especially useful to quickly identify the status of an interface:
 
