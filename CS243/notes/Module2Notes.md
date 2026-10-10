@@ -57,14 +57,14 @@ Store-and-forward switching, as distinguished from cut-through switching, has th
 
 The figure illustrates how store-and-forward makes a decision based on the Ethernet frame.
 
-![StoreAndForward](StoreAndForward.png)
+![StoreAndForward](imgs/StoreAndForward.png)
 
 ## 2.1.7 Cut-Through Switching
 The store-and-forward switching method drops frames that do not pass the FCS check. Therefore, it does not forward invalid frames.
 
 By contrast, the cut-through switching method may forward invalid frames because no FCS check is performed. However, cut-through switching has the ability to perform rapid frame switching. This means the switch can make a forwarding decision as soon as it has looked up the destination MAC address of the frame in its MAC address table, as shown in the figure.
 
-![CutThroughSwitching](CutThroughSwitching.png)
+![CutThroughSwitching](imgs/CutThroughSwitching.png)
 
 The switch does not have to wait for the rest of the frame to enter the ingress port before making its forwarding decision.
 
@@ -88,7 +88,7 @@ By default, Ethernet switch ports will autonegotiate full-duplex when the adjace
 
 As shown in the figure, full-duplex is chosen if both devices have the capability along with their highest common bandwidth.
 
-![CollisionDomains](CollisionDomains.png)
+![CollisionDomains](imgs/CollisionDomains.png)
 
 ## # 2.2.2 Broadcast Domains
 
