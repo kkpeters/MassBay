@@ -7,7 +7,7 @@ Of course organizing your network into smaller networks is not as simple as sepa
 
 As shown in the figure, VLANs in a switched network enable users in various departments (i.e., IT, HR, and Sales) to connect to the same network regardless of the physical switch being used or location in a campus LAN.
 
-![VLANDefs](VLANDefs.png) 
+![VLANDefs](imgs/VLANDefs.png) 
 
 VLANs allow an administrator to segment networks based on factors such as function, team, or application, without regard for the physical location of the users or devices. Each VLAN is considered a separate logical network. Devices within a VLAN act as if they are in their own independent network, even if they share a common infrastructure with other VLANs. Any switch port can belong to a VLAN.
 
@@ -23,7 +23,7 @@ Using VLANs, network administrators can implement access and security policies a
 
 Each VLAN in a switched network corresponds to an IP network. Therefore, VLAN design must take into consideration the implementation of a hierarchical network-addressing scheme. Hierarchical network addressing means that IP network numbers are applied to network segments or VLANs in a way that takes the network as a whole into consideration. Blocks of contiguous network addresses are reserved for and configured on devices in a specific area of the network, as shown in the figure.
 
-![BenefitsOfVLANDesign](BenefitsOfVLANDesign.png)
+![BenefitsOfVLANDesign](imgs/BenefitsOfVLANDesign.png)
 
 | Benefit | Description |
 |---|---|
@@ -92,7 +92,7 @@ To meet these requirements, the entire network has to be designed to support VoI
 
 In the figure, VLAN 150 is designed to carry voice traffic. The student computer PC5 is attached to the Cisco IP phone, and the phone is attached to switch S3. PC5 is in VLAN 20, which is used for student data.
 
-![VoiceVLAN](VoiceVLAN.png)
+![VoiceVLAN](imgs/VoiceVLAN.png)
 
 # 3.2 VLANs in a Multi-Switched Environment 
 
@@ -105,7 +105,7 @@ A VLAN trunk does not belong to a specific VLAN. Instead, it is a conduit for mu
 
 In the figure, the highlighted links between switches S1 and S2, and S1 and S3 are configured to transmit traffic coming from VLANs 10, 20, 30, and 99 (i.e., native VLAN) across the network. This network could not function without VLAN trunks.
 
-![VLANTrunks](VLANTrunks.png)
+![VLANTrunks](imgs/VLANTrunks.png)
 
 ## # 3.2.2 Network without VLANs
 
@@ -140,7 +140,7 @@ and VLAN ID field:
 
 After the switch inserts the tag control information fields, it recalculates the FCS values and inserts the new FCS into the frame.
 
-![VLANTag](VLANTag.png)
+![VLANTag](imgs/VLANTag.png)
 
 ## 3.2.5 Native VLANs and 802.1Q Tagging
 
@@ -156,7 +156,7 @@ When a Cisco switch trunk port receives untagged frames (which are unusual in a 
 
 In the figure, PC1 is connected by a hub to an 802.1Q trunk link.
 
-![802TrunkLink](802TrunkLink.png)
+![802TrunkLink](imgs/802TrunkLink.png)
 
 PC1 sends untagged traffic, which the switches associate with the native VLAN configured on the trunk ports, and forward accordingly. Tagged traffic on the trunk received by PC1 is dropped. This scenario reflects poor network design for several reasons: it uses a hub, it has a host connected to a trunk link, and it implies that the switches have access ports assigned to the native VLAN. It also illustrates the motivation for the IEEE 802.1Q specification for native VLANs as a means of handling legacy scenarios.
 
@@ -178,7 +178,7 @@ The switch access port sends CDP packets instructing the attached IP phone to se
 
 In the figure, the student computer PC5 is attached to a Cisco IP phone, and the phone is attached to switch S3. VLAN 150 is designed to carry voice traffic, while PC5 is in VLAN 20, which is used for student data.
 
-![VoiceVLAN](VoiceVLAN.png)
+![VoiceVLAN](imgs/VoiceVLAN.png)
 
 ## # 3.2.7 Voice VLAN Verification Example
 
@@ -266,7 +266,7 @@ The table displays the Cisco IOS command syntax used to add a VLAN to a switch a
 
 In the topology, the student computer (PC2) has not been associated with a VLAN yet, but it does have an IP address of 172.17.20.22, which belongs to VLAN 20.
 
-![VlanCreation](VlanCreation.png)
+![VlanCreation](imgs/VlanCreation.png)
 
 The example shows how the student VLAN (VLAN 20) is configured on switch S1.
 
@@ -299,7 +299,7 @@ Note: Use the **interface range** command to simultaneously configure multiple i
 
 In the figure, port F0/6 on switch S1 is configured as an access port and assigned to VLAN 20. Any device connected to that port will be associated with VLAN 20. Therefore, in our example, PC2 is in VLAN 20.
 
-![VLANPortAssignment](VLANPortAssignment.png)
+![VLANPortAssignment](imgs/VLANPortAssignment.png)
 
 The example shows the configuration for S1 to assign F0/6 to VLAN 20.
 
@@ -320,7 +320,7 @@ An access port can belong to only one data VLAN at a time. However, a port can a
 
 Consider the topology in the figure. PC5 is connected to the Cisco IP phone, which in turn is connected to the FastEthernet 0/18 interface on S3. To implement this configuration, a data VLAN and a voice VLAN are created.
 
-![DataVoiceVLANs](DataVoiceVLANs.png)
+![DataVoiceVLANs](imgs/DataVoiceVLANs.png)
 
 ## # 3.3.7 Data and Voice VLAN Example
 
@@ -405,7 +405,7 @@ To change the membership of a port back to the default VLAN 1, use the no switch
 
 In the output for example, Fa0/18 is configured to be on the default VLAN 1 as confirmed by the show vlan brief command.
 
-![StudentPort](StudentPort.png)
+![StudentPort](imgs/StudentPort.png)
 
 Notice that VLAN 20 is still active, even though no ports are assigned to it. The show interfaces f0/18 switchport output can also be used to verify that the access VLAN for interface F0/18 has been reset to VLAN 1 as shown in the output.
 
@@ -452,7 +452,7 @@ To enable trunk links, configure the interconnecting ports with the set of inter
 
 In the figure, VLANs 10, 20, and 30 support the Faculty, Student, and Guest computers (PC1, PC2, and PC3). The F0/1 port on switch S1 is configured as a trunk port and forwards traffic for VLANs 10, 20, and 30. VLAN 99 is configured as the native VLAN.
 
-![TrunkConfig](TrunkConfig.png)
+![TrunkConfig](imgs/TrunkConfig.png)
 
 The subnets associated with each VLAN are:
 - VLAN 10 - Faculty/Staff - 172.17.10.0/24
