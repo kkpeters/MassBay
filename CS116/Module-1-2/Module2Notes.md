@@ -41,7 +41,8 @@
     - **Spear Phishing**. Whereas phishing usually sends generic email messages to millions of users, spear phishing targets specific users. The emails used in spear phishing are customized to the recipient, often including their names and detailed personal information, in order to make the message appear legitimate.
     - **Whaling**. Instead of going after little fish or average sers, whaling targets the big fish, namely, wealthy individuals or senior executitves within a business who typically would have larger sums of money in a bank account that an attacker could access. 
     - **Vishing**. Known as vishing (voice phishing), an attacker calls a target who, upon answering, hears a recorded message that pretends to be from the user's bank stating that a large charge is being made on their credit card or that their bank account has had an unusual activity. The target is instructed to call a specific phone nuber immediately... when the target calls, it is answered by automated instructions telling them to enter their credit card numbers, bank account number, SSN, or other information on the telephone's keypad- all of which is then captured by the threat actor. 
-    - **Smishing**. Another avenue for spreading social engineering attacks uses the short message vervice (SMS) to send fraudulent text messages. Threat actors first send a text message to a user's cell phone that pretends to come from their bank saying that a large withdrawl from their account has occured and asks the user if this is legitimate. Along with the text message is a callback telephone number the customer is instructed to call immediately. That phone number plays a recording telling the customer to first enter their credit card number for verification. The attackers then simpply capture the information that is entered. 
+    - **Smishing**. Another avenue for spreading social engineering attacks uses the short message vervice (SMS) to send fraudulent text messages. Threat actors first send a text message to a user's cell phone that pretends to come from their bank saying that a large withdrawl from their account has occured and asks the user if this is legitimate. Along with the text message is a callback telephone number the customer is instructed to call immediately. That phone number plays a recording telling the customer to first enter their credit card number for verification. The attackers then simply capture the information that is entered. 
+
 - One particular type of phising attack that is increasing in popularity is a **business email compromise (BEC)**. A BEC takes advantage of the common practice today by businesses and organizations of electronically making payments or transferring funds. Attackers take advantage of the size and comlexity of large enterprises to request funds from what appears to be a legitimate source, knowing that the target will often comply without investigating if the request is legitimate.
 
 | BEC attack | Description |
@@ -71,3 +72,35 @@
 
 ### Watering Hole Attack 
 
+- Directed towards a smaller group of individuals who tend to visit a common website, such as that of a parts supplier to a manufacturer. A threat actor attempts to infect this website with malware that will make its way onto the individuals' computers.
+
+### Data Reconnaissance 
+
+- **Dumpster Diving**. Digging through trash receptables to find information thatcan be useful in an attack: calendars, organizational charts, phone directories, policy manuals. 
+- **Google Dorking**. Electronic variation of dumpster diving, using google to do this is called **Google dorking**. 
+- **Shoulder Surfng**. If a relatively small amount of data is needed, such as the access code for a door, a threat actor can simply watch an individual entering the security code on a keypad. Attackers often use hidden webcams and smartphone cameras to shoulder surf unsuspecting victims. 
+
+# Physical Security Controls 
+
+## Perimeter Defenses 
+
+### Barriers 
+
+- **Fencing** is usually a tall, permanent structure to keep out unauthorized personnel. Accomplished using signage and proper lighting so that the area can be monitored after dark. However, chain-link fencing offers limited security because it can be easily circumvented by climbing over it or cutting the links. Most modern perimeter security consists of a fence equipped with other deterrents.
+
+#### Table 2-3: Fencing Deterrents 
+| Technology | Description | Comments |
+| --- | --- | --- | 
+| Anticlimb paint | A nontoxic petroleum gel-based paint that is thickly applied and does not harden, making any coated surface difficult to climb. | Typically used on poles, downpipes, wall tops, and railings. |
+| Anticlimb collar | Spiked collar that extends horizontally for up to 3 feet from the pole to prevent anyone from climbing it; serves as both a practical and visual deterrent. | Used for protecting equipment mounted on poles like cameras or in areas where climbing a pole can be an easy point of access over a security fence. 
+| Roller barrier | Independently rotating large cups affixed to the top of a fence prevent the hands of intruders from gripping the top of a fence to climb over it. | Often found around public grounds and schools were a nonaggressive barrier is important. |
+| Rotating spikes | Installed at the top of walls, gates, or fences; the tri-wing spike collars rotate around a central spindle. | Designed for high-security areas; can be painted to blend into fencing. |
+
+- A **barricade** is designed to block the passage of traffic, used for directing large crowds and designed to keep out individuals. 
+- A **bollard** is a short but sturdy vertical post that is used as a vehicular barricade to prevent a car from "ramming" into a secure area.
+
+### Security Guards 
+
+- Security guards who atrol and monitor restricted areas are an active security defense. Unlike passive devices, security gaurds can differentiate bewteen an intruder and someone looking for a lost pet.
+- Using 2 gaurds is called **two-person integrity/control**.
+- Responsible for monitoring **video surveillance** captured by cameras.
