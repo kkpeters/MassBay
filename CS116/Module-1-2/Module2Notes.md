@@ -12,7 +12,7 @@
 - Begins with the threat actor selecting a human target, and then creating a believable scenario specific to the user.
 
 
-### Table 2-1 HUman Manipulation for Social Engineering 
+### Table 2-1 Human Manipulation for Social Engineering 
 
 | Principle | Description | Example |
 | --- | --- | --- |
@@ -27,10 +27,31 @@
 - Note: Another technique is called prepending, which is influencing before the event occurs. "You need to reset my password immediately because my meeting with the board starts in 5 minutes"
 - Some social engineering involves person-to-person contact. When it involved direct contact with the target, attackers use a variety of personal techniques to gain their trust:
     - **Provide a Reason**. By giving a rationalization and using the word *because*, it is much more likely for the target to provide the information. 
-    - **Project Confidence**.
-    - **Use Evasion and Diversion**
-    - **Make them Laugh**.
+    - **Project Confidence**. A threat is unlikely to generate suspicion if they enter a restricted area but calmly walks through the building as if they know exactly here they are doing (without looking at signs, down hallways, or reading door labels) and even greets people they see with a friendly, "Hi, how are you doing?"
+    - **Use Evasion and Diversion**. When challenged, a threat actor might evade a question by giving a vague or irrelevant answer. THey could also feign innocence or confusion, or just keep denying any allegations, until the target eventually believes their suspicions are wrong. Sometimes a threat actor can resort to anger and cause the target to drop the challenge. "Who are you to ask that? Connect me with your supervisor immediately!"
+    - **Make them Laugh**. Humor is an excellent tool to pout people at ease and to develop a sense of trust. "I can't believe I left my badge in my office again! You know, some mistakes are too much fun to only make once!"
 
 ## Types of Social Engineering Attacks 
 
-### Phising
+### Phishing
+
+- Phishing is sending an email or displaying a web annoucement that falsely claims to be from a legitimate source in an attempt to trick the user into taking action. 
+- In a typical phishing attack, users are asked to respond to an email or are directed to a website where they are requested to update personal information, such as passwords, credit card numbers, SSNs, bank account numbers, or other information. However, the email or website is actually an imposter and is set up to steal the entered information. 
+- Several variations on phishing attacks are:
+    - **Spear Phishing**. Whereas phishing usually sends generic email messages to millions of users, spear phishing targets specific users. The emails used in spear phishing are customized to the recipient, often including their names and detailed personal information, in order to make the message appear legitimate.
+    - **Whaling**. Instead of going after little fish or average sers, whaling targets the big fish, namely, wealthy individuals or senior executitves within a business who typically would have larger sums of money in a bank account that an attacker could access. 
+    - **Vishing**. Known as vishing (voice phishing), an attacker calls a target who, upon answering, hears a recorded message that pretends to be from the user's bank stating that a large charge is being made on their credit card or that their bank account has had an unusual activity. The target is instructed to call a specific phone nuber immediately... when the target calls, it is answered by automated instructions telling them to enter their credit card numbers, bank account number, SSN, or other information on the telephone's keypad- all of which is then captured by the threat actor. 
+    - **Smishing**. Another avenue for spreading social engineering attacks uses the short message vervice (SMS) to send fraudulent text messages. Threat actors first send a text message to a user's cell phone that pretends to come from their bank saying that a large withdrawl from their account has occured and asks the user if this is legitimate. Along with the text message is a callback telephone number the customer is instructed to call immediately. That phone number plays a recording telling the customer to first enter their credit card number for verification. The attackers then simpply capture the information that is entered. 
+- One particular type of phising attack that is increasing in popularity is a **business email compromise (BEC)**. A BEC takes advantage of the common practice today by businesses and organizations of electronically making payments or transferring funds. Attackers take advantage of the size and comlexity of large enterprises to request funds from what appears to be a legitimate source, knowing that the target will often comply without investigating if the request is legitimate.
+
+| BEC attack | Description |
+| --- | --- |
+| Bogus invoice | Pretending to be a legitimate supplier, an attacker sends a fake invoice for goods or services demanding immediate payment on an overdue account. |
+| Executive fraud | Posing as a company executive, a threat actor sends an email to employees in the Finance Department telling them to immediately transfer funds for an unpublicized new company initiative but not to tell anyone about it. |
+| Account compromise | A Finance Department employee's email account is compromised and then each vendor in the contact list is sent an email demanding immediate payment for a ficticious service. |
+
+- BECs are not limited to businesses: Users can also be victims of these attacks demanding immediate payment for goods or services. For example, a threat actor can pose as a distant relative on a vacation overseas who had just had their wallet stolen, and immediately needs money wired to them.
+
+### Impersonation 
+
+
