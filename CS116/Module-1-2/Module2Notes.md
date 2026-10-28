@@ -54,4 +54,20 @@
 
 ### Impersonation 
 
+- Social enginerring impersonation is masquerading as a real or ficticious character and then playing out the role of that person on a target. For example, an attacker could impersonate a help desk support technician who calles the target, pretends that there is a problem with the network, and asks them for their username and password to reset their account. Smetimes the goal of the impersonation is to obtain private information, called **pretexting**. 
+- One type of impersonation is **brand impersonation**. As the name implies, a threat actor uses brand impersonation to pretendto be a highly recognizable and well-known brand of a product or service (such as a bank) in an attempt to build immediate recognition and trust. By posing as a recognizable brand that is familiar to the target, attackers can trick them into a dangerous action, such as clicking a link or opening an attachment in an email.
+
+### Redirection 
+
+- **Typo Squatting**. When a fake site takes advantage of a user mistyping the domain name of a website, which redirects them to a malicious site hosted by a threat actor. 
+- Threat actors have also made domain names that are one bit different, which changes a single character in the domain name. 
+- **Pharming**. An attempt to exploit how a URL such as www.cengage.com is converted into its corresponding Internet Protocoll address, 69.32.308.75. Malware may attempt to perform a redirection when the user enteres the URL in a web browser, a variation infects DNS to direct large numbers of users to the fake site. 
+
+### Misinformation and Disinformation 
+
+- **Misinformation**. False or inaccurate information, regardless of the intent to mislead.
+- **Disinformation**. False or inaccurate misinformation that comes from a malicious intent. 
+- A **hoax** is an example of cyber disinformation. Often contained in an email, a threat actor claiming to be IT, saying that a deadly virus is circulating and the user should erase specific files or change security configs, then forward the message to others. Problems may arise from these changes, prompting the user to contact the threat actor via a telephone number listed in the hoax email.
+
+### Watering Hole Attack 
 
