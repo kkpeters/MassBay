@@ -19,5 +19,43 @@
 
 ## Benefits of Cryptography 
 
+- Helps with **mitigation** (reducing the vulnerability or severity).
+- Considered **hardening** (technique that makes a system more resilient to attacks. 
+- Protects data in each of its three states. 
+
+- Common cases for which cryptography can provide security:
+    - **Confidentiality**: ensures only authorized parties can view it
+    - **Integrity**: protects the integrity of informaiton, no alternation has been made by an attacker
+    - **Authentication**: authentication of the sender can be verified through cryptography 
+    - **Nonrepudiation**: repudation is defined as denial, Nonrepudiation is the inability to deny. Nonrepudiation is the process of proving that a user performed an action. 
+    - **Obfuscation**: can provide a degree of obfuscation by encrypting data so that an unauthorized user cannot read it.
+
+- **Security through Obscurity** (if the bad guys dont know about it, it is secure) is flawed. 
+
+#### Table 3-1: Information Protections by cryptography 
+| Characteristic | Description | Protection |
+|---|---|---|
+| Confidentiality | Ensures that only authorized parties can view the information | Encrypted information can only be viewed by those who have been provided the key. |
+| Integrity | Ensures that the information is correct and no unauthorized person or malicious software has altered the data | Encrypted information cannot be changed except by authorized users who have the key. |
+| Authentication | Provides proof of the genuineness of the user | Proof that the sender was legitimate and not an imposter can be obtained. |
+| Nonrepudiation | Proves that a user performed an action | Individuals are prevented from fraudulently denying that they were involved in a transaction. |
+| Obfuscation | Makes something obscure or unclear | By making it obscure, the original information cannot be determined. |
+
+# Cryptographic Algorithms
+
+## Variations of Algorithms 
+
+### Cipher Machines versus Computers 
+
+- Cipher disk: two rotating disks that helped encrypt and decrypt messages. Enigma is a more modern and enhanced version of this. 
+- **One-time Pad**: combined plaintext with a random key. A **pad** is a long sequence of random letters. Combined to produce the ciphertext. To decipher, recipient must have a copy of the pad to reverse the process. Should be used once and then destroyed. 
+
+### Stream Versus Block 
+
+- **Stream cipher**: takes one character and replaces it with another.
+- **Block cipher**: manipulates an entire block of plaintext. Blocks can be randomized for extra security.
+- **Sponge cipher**: takes an input of any length and returns a string with a requested length. Repeatedly applies a process on the input that has been padded with additional characters until all characters are used. 
+
+## Hash Algorithms 
 
 
