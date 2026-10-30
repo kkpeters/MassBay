@@ -104,3 +104,128 @@
 - Security guards who atrol and monitor restricted areas are an active security defense. Unlike passive devices, security gaurds can differentiate bewteen an intruder and someone looking for a lost pet.
 - Using 2 gaurds is called **two-person integrity/control**.
 - Responsible for monitoring **video surveillance** captured by cameras.
+
+### Sensors
+
+- **Infared**. 
+    - Invisible energy. 
+    - Can be used for data transmission by the intensity of the IR light wave pulses. Increase in pulse intensity could mean 1.
+    - Most TV remotes use IR.
+    - **Infared Sensor**: an electronnic device that can detect IR in the surounding area.
+        - Types: active and passive. Active: both emit and detect infared radiation usieng LEDs and a reciever. Proximity sensor. Passove does not rely on IR reflection. Can only detect IR radiation. Can be used for motion-based detection. 
+- **Microwave**.
+    - Monitors a large area.
+    - **Microwave sensors** use high-frequency radio waves, functions similarly to radar. 
+    - Project in 360 degrees, can detect changes in reflected radio waves.
+- **Ultrasonic**.
+    - Audible Frequency: 16-20,000 Hertz
+    - Infrasound: below normal human range
+    - Ultrasound: Alove normal human range (bats)
+    - **Unstrasonic Sensors** can measure how far away a target is. Distance = 1/2 Time * 343 (speed of sound in m/s)
+        - Not as susceptable to interference like smoke, gas, and other airborne particles. 
+- **Pressure**.
+    - A **Pressure Sensor** can be used in physical security to detect if a person has entered an area.
+    - Can differentiate between what has entered and where they are going. 
+
+### Security Buffers 
+
+- A **buffer** serves as a protective barrier.
+
+#### HIgh Security: Access Control Vestibule 
+
+- Vestibule: small rooms.
+- **Mantrap**: before electronic locks, access badges would be shown to a security officer, person moves into vestibule while ID is checked, and then the second door is unlocked. Otherwise the person is trapped in the room if the ID is incorrect. 
+- **Access Control Vestibule**: used instead as a buffer between a nonsecure and a secure area. 
+
+#### Medium Security: Reception area
+
+- Receptionist can check credentials. 
+- Anyone not approved should not be allowed to pass through the inner door to the next area. 
+- Can be a risk, once visitors are in the reception area, they are already within the facility. 
+- Receptionist responsibilities can help mitigate this risk. 
+
+#### Low Security: Waiting Room 
+
+- More friendly to the public 
+
+### Locks 
+
+- Used to restrict physical access. 
+- Can be compromised if keys are lost, stolen, or duplicated. 
+- Multiple users can also increase the risk of a key being compromised. 
+- More secure option: electronic lock. Buttons must be pushed in a specific order. Can be programmed to only be valid at specific times. Can maintain a record of when the door was opened and by who. 
+- Smartlocks: use a smartphont to send a code via Bluetooth to open the door. 
+
+## Preventing Data Leakage 
+
+### Faraday Cage 
+
+- Computer systems, printers, and similar digital electronic devices emit electromagnetic fields, can result in interferenece (**electromagnetic interferenece (EMI)**). Unauthorized persons could detect and read these signals. 
+- One means of prevention: **faraday cage**: magnetic enclosure that prevents entry or escape of an electromagnetic field. Often used for testing in electronic labs. Can be made protable for smaller devices. 
+
+### Protected Distribution System 
+
+- Cable Conduits: hollow tubes that carry cooper wire or fiber-optic cables. 
+- **Protected Distribution Systems (PDS)** are systems of cable conduits to protect data being transmitted between two secure areas. 
+- Standard created by the US Dept of Defense 
+- Two Types:
+    - **Hardened Carrier PDS**: special electrical metallic tubing, buried underground, encased in concrete, any maintenance hole covers must be locked down. 
+    - **Alarmed Carrier PDS**: Deployed with specialized opitcal fibers in the conduit that can sense acoustic vibrations. Above the ceiling or below the floor, eliminates the need for welding or sealing connections. 
+
+## Computer Hardware Security 
+
+- **Cable locks** can be inserted into the security slot of a portable device and locked. 
+- Laptops can be placed in a vault or safe. Can lock up important papers in a safe as well. 
+
+# Data Controls 
+
+## Data Classifications 
+
+#### Table 2-4: Data Classifications 
+
+| Data type | Description | Recommended handling |
+|---|---|---|
+| Confidential | Highest level of data sensitivity | Should only be made available to users with the highest level of preapproved authentication |
+| Private | Restricted data with a medium level of confidentiality | For users who have a need-to-know basis of the contents |
+| Sensitive | Data that could cause catastrophic harm to the company if disclosed, such as technical specifications for a new product | Restricted to employees who have a business need to access the data and have been approved |
+| Critical | Data classified according to availability needs; if critical data are not available, the function and mission would be severely impacted | Critical data must be rigorously protected |
+| Public | No risk of release | For all public consumption; data is assumed to be public if no other data label is attached |
+| Restricted | Data that is not available to the public | Caution should be exercised before using this kind of information in emails |
+
+## Types of Data 
+
+- **Regulated**: that which external stipulations are placed on it regarding who can see and use the data and in what contexts. Example: Protected Health Information (PHI)
+- **Intellectual Property (IP)**: invention or work that is the result of creativity. Owner of IP can apply for protection from others who attempt to duplicate it: patent, trademark, copyright, or trade secret. 
+- **Trade Secret**: enterprise data is that undisclosed. Three elements:
+    - info that has either actual or potential independent economic value by virtue of not being generally known 
+    - it has value to others who cannot legitimately obtain the info 
+    - it is subject to reasonable efforts to maintain its secrecy 
+- **Enterprise Informaiton**:
+    - **Legal Information**: general factual info about the la and legal process. Considered neutral.
+    - **Financial Information**: data about the monetary transactions of the enterprise. 
+- **Human and non-human-readable**: JSON and XML are considered non-human-readable.
+
+## Data Breach Consequences 
+
+- **Reputation Damage**
+- **IP Theft**
+- **Fines**
+
+## Protecting Data 
+
+### General Data Considerations 
+
+- **Data in processing (data in use)**: data on which actions are being performed by devices, such as printing a report
+- **Data in transit (data in motion)**: actions that transmit the data across a network, like an email sent across the Internet
+- **Data at rest**: data that is stored on electronic media
+
+- **Geolocation** is a term encompassing all techniques that identify the data's location. In terms of longitude and latitude. GeoIP is accessing the location of data via the IP address of the device on which the data resides. 
+- **Data Sovereignty** is hte country specific requirements that apply to data. Generally, data is subject to the laws of the country in which it is collected or processed, and must remain within its borders. 
+
+### Data Security Methods 
+
+- **Data Minimization**: limiting the collection of personal information to that which is directly relevant and necessay to accomplish a specific task. 
+- **Data Masking**: involves creating a copy of the data but using **obfuscation** (making unintelligible) any sensitive elements. Should replace all actual information that is not absolutely required. No intention to undo the proccess. Data masking is one means of performing **data sanitization**, which is the process of cleaning data to provide privacy protection. 
+- **Tokenization**: obfuscates sensitive data into a random string of characters (a token). Then stored in a database called a token vault, can be retrieved when needed. Restoring the actual data is known as **pseudo-anonymization**.
+- **Restrictions**: **permission restrictions** limit individuals and devices to only those who have a legitimate business need to access the data. **Geographic restrictions** limit access to data to specific locations. 
+- **Segmentation**: involves first identifying the classification of data elements, then tagging them with that classification, and finally separating the most sensitive data from the rest. Most sensitive data is defined as the "protect surface" and additional security measures are applied. 
