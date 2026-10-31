@@ -99,4 +99,55 @@
 
 ### Digital Signature Algorithm (DSA)
 
-- Proof that the sender is who they really are (not someone pretending to be your friend), a digital Signature can be made as electronic verification of the sender. 
+- A digital signature can:
+    - **verify the sender**
+    - **prevent the sender from disowning the message**
+    - **prove the integrity of the message**
+
+### Key Exchange 
+
+#### Table 3-5 Asymmetric cryptography practices
+
+| Action | Whose key to use | Which key to use | Explanation |
+|---|---|---|---|
+| Bob wants to send Alice an encrypted message. | Alice's key | Public key | When an encrypted message is to be sent, the recipient's, and not the sender's, key is used. |
+| Alice wants to read an encrypted message sent by Bob. | Bob's key | Private key | An encrypted message can be read only by the recipient's private key. |
+| Bob wants to send a copy to himself of the encrypted message that he sent to Alice. | Bob's key | Public key to encrypt | An encrypted message can be read only by the recipient's private key. Bob would need to encrypt it with his public key and then use his private key to decrypt it. |
+| Bob receives an encrypted reply message from Alice. | Bob's key | Private key to decrypt | The recipient's private key is used to decrypt received messages. |
+| Bob wants Susan to read Alice's reply message that he received. | Susan's key | Public key | The message should be encrypted with Susan's key for her to decrypt and read with her private key. |
+| Bob wants to send Alice a message with a digital signature. | Bob's key | Private key | Bob's private key is used to encrypt the hash. |
+| Alice wants to see Bob's digital signature. | Alice's key | Public key | Because Bob's public and private keys work in both directions, Alice can use his public key to decrypt the hash. |
+
+- Issues with key exchange can be solved with some of the following solutions:
+    - **Diffie-Hellman (DH)**: Bob and Alice agree to a large prime number and a related integer, use math to create the same key. 
+    - **Diffie-Hellman Ephemeral (DHE)**: uses different keys. Ephemeral keys are temporary keys that are discarded after one use.
+    - **Elliptic Curve Diffie-Hellman (ECDH)**: sues ECC instead of prime numbers 
+    - **Perfect forward secrecy**: public key systems that generate random public keys that are different for each session. 
+
+## Using Cryptography 
+
+### Encryption through Software 
+
+### File nad File System Cryptography 
+
+- **file-level encryption**: encrypt or decrypt files one by one. Uses OS and file system to help make less cumbersome. 
+
+#### Third-Party Software 
+
+- Essentially file-level encryption.
+- Includes GNU privacy Guard, AxCrypt, Folder Lock, and Veracrypt
+
+#### Operating System Encryption 
+
+- Modern OSs provide encryption support natively (Microsoft's Encryption File System (EFS), Apple's FileVault)
+- Tightly integrated with the file system, encryption and decryption are transparent to the user. 
+- Files created or added to an encrypted folder are automatically encrypted. When an authorized user opens a file, it is decrypted to allow for reading, and encrypted again when the data is written to disk. 
+
+### Disk Encryption 
+
+- **Disk-level Encryption**: Protecting the entire drive is known as **full-disk encryption (FDE)**. BitLocker is an example.  
+- **Volume-level Encryption**: a **volume** is a section of a drive that is accessible by a user nad has a file system associated with it. A **partition** is a logical division of a hard drive, does not contain a file system or even formatted to store data. **Volume-level encryption** applies to volume, **Partition-level encryption** applies to a partition depending on if it is formatted and contains a file system.
+
+### Database Encryption 
+
+
