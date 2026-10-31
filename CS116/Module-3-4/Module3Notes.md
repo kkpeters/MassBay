@@ -58,4 +58,45 @@
 
 ## Hash Algorithms 
 
+- A **hash** algorithm creates a unique "digital fingerprint" of a set of data, process is called **hashing**, resulting fingerprint is called a **digest** (or **message digest** or hash) that represents the contents. 
+- Hashing protects the integrity of the data. Used primarily for comparison purposes. 
+- A hashing algorithm is considered secure if it has these characteristics:
+    - **Fixed size**: digest of a short set of data should produce the same size as a digest of a long set of data.
+    - **Unique**: two different sets of data cannot produce the same digest 
+    - **Original**: it should not be possible to produce a data set that has a desired or predefined hash.
+    - **Secure**: the resulting hash cannot be reversed to determine the original plaintext. 
+- Secure hash algorithms:
+    - **Secure Hash Algorithm (SH5A)**: Most common versions are SHA-256, SHA-384, and SHA-512 (last number is how many bits are in hte digest)
+    - **RipeMD**: Uses two different and independent parallel chains of compution that are combined at the end of the process.
+    - **Whirlpool**: uses a block cipher and takes any message less than 2256 bits and returns a 512 bit digest. 
 
+## Symmetric Cryptographic Algorithms 
+
+- Use the same key to encrypt and decrypt data. Key must be kept private, therefore also called **private key encryption**. 
+- Algorithms:
+    - **Advanced Encryption Standard (AES)**
+    - **Blowfish and Twofish**
+
+## Asymmetric Cryptographic Algorithms 
+
+- **Public key cryptography** uses two keys instead of one, a private and public key. Public key is public, private key is only known to the person to whom it belongs. 
+- When Bob wants to send a secure message to Alice, he uses Alice's public key to encrypt the message, then Alice uses her private key to decrypt it. 
+- Important principles:
+    - **Key pairs**
+    - **Public key**: do not need to be protected.
+    - **Private key**
+    - **Both directions**: Asymmetric cryptography keys can work in both directions. 
+
+### RSA 
+
+- Asymmetric Algorithm 
+- I'm not writing all that down 
+
+### Elliptic Curve Cryptography (ECC)
+
+- Instead of using large prime numbers like with RSA, ECC uses sloping curves.
+- I'm also not writing all this down
+
+### Digital Signature Algorithm (DSA)
+
+- Proof that the sender is who they really are (not someone pretending to be your friend), a digital Signature can be made as electronic verification of the sender. 
